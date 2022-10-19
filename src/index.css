@@ -6,3 +6,63 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.social-icon-container{
+  display: flex;
+  justify-content: center;
+}
+
+.social-icon{
+  margin: 0 5px;
+}
+
+.card-overlay-body{
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  opacity: 0;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: all 1s;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.card .card-overlay-body:hover{
+  opacity: 1;
+  transition: all 1s;
+  background-color: rgba(0,0,0,0.8);
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+@media (min-width: 992px){
+  .order-lg-1{
+    order: 1!important;
+  }
+  .order-lg-0{
+    order: 0!important;
+  }
+
+}
+
+@media (max-width: 768px){
+  .container {
+      max-width: none!important;
+      padding: 0 10px;
+  }
+}
+
+
+@media (min-width: 768px){
+  .order-md-1{
+    order: 1!important;
+  }
+  .order-md-0{
+    order: 0!important;
+  }
+}
+
