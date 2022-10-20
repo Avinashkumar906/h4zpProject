@@ -14,7 +14,7 @@ function Iframe(props) {
 
     setSrc(src+suffix);
     return () => console.log('clean iframe')
-  }, [])
+  }, [props.data.autoplay,props.data?.mute])
   
   return (
     <Container className={`p-0 ${props.data?.theme}`} fluid>

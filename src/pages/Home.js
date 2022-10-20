@@ -1,10 +1,10 @@
 import React, { Fragment, useEffect, useState } from "react";
 import DynamicComponent from "../components/Component";
-import Jumbotron from '../components/jumbotron/Jumbotron';
-// import of static data
+
 import { FIRESTORE_DB } from '../firebase/firebase';
-import { getDocs, collection, addDoc } from 'firebase/firestore/lite'
-import { BANNER_LIST, BLOG_LIST, GROUP, GROUP_2, IFRAME_SRC_1, JUMBOTRON_1, NEWS_LIST } from '../dummy/dummy';
+import { getDocs,
+  // addDoc, 
+  collection, } from 'firebase/firestore/lite'
 
 export default function Home(props) {
 
