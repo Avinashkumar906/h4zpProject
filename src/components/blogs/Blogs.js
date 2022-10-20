@@ -3,8 +3,8 @@ import { Card, Col, Container, Row } from "react-bootstrap";
 
 function Blogs(props) {
   return (
-    <Container className={`p-0 ${props.theme}`} fluid>
-      <Container className="py-5" fluid={props.fluid}>
+    <Container className={`p-0 ${props.data?.theme}`} fluid>
+      <Container className="py-5" fluid={props.data?.fluid}>
         <Row>
           <Col xl={12}>
             <div className="text-center display-2 pb-4">

@@ -4,20 +4,20 @@ import Carousel from 'react-bootstrap/Carousel';
 
 function Banner(props) {
   return (
-    <Container className={`p-0 ${props.theme}`} fluid>
-      <Container className="p-0" fluid={props.fluid}>
+    <Container className={`p-0 ${props.data?.theme}`} fluid>
+      <Container className="p-0" fluid={props.data?.fluid}>
         <Carousel>
           {
-            props.data?.list?.map((m,index) => (
-              <Carousel.Item key={`carousel-${index}`} style={{height:'calc(100vh - 56px)'}}>
+            props.data?.list?.map((m, index) => (
+              <Carousel.Item key={`${props.id}-${index}`} style={{ height: 'calc(100vh - 56px)' }}>
                 <img
                   className="d-block h-100 w-100"
-                  style={{objectPosition:'center center',objectFit:'cover'}}
-                  src="https://images.squarespace-cdn.com/content/v1/572e314422482e952aae8c6c/1496011701472-N1ESFLMYP39Z983OCUVV/header-%28reduced%29.jpg?format=2500w"
-                  alt="First slide"/>
+                  style={{ objectPosition: 'center center', objectFit: 'cover' }}
+                  src={m.url}
+                  alt={`slide ${index}`} />
                 <Carousel.Caption>
-                  <h3>First slide label</h3>
-                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                  <h3>{m.title}</h3>
+                  <p>{m.subTitle}</p>
                 </Carousel.Caption>
               </Carousel.Item>
             ))

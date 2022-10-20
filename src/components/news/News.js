@@ -3,27 +3,31 @@ import { Card, Col, Container, Row } from "react-bootstrap";
 
 function News(props) {
   return (
-    <Container className={`p-0 ${props.theme}`} fluid>
-      <Container className="py-5" fluid={props.fluid}>
+    <Container className={`p-0 ${props.data?.theme}`} fluid>
+      <Container className="py-5" fluid={props.data?.fluid}>
         <Row>
           <Col xl={12}>
             <div className="text-center display-2 pb-4">
-              <strong>Recent Activities</strong>
+              <strong>{props.data?.title}</strong>
             </div>
           </Col>
           {
             props.data?.list?.map((m, index) => (
-              <Col key={`News-ID-${index}`} xl={12} className="pb-5">
+              <Col key={`${props.id}-${index}`} xl={12} className="pb-5">
                 <Card style={{overflow:'hidden'}}>
                     <Row>
-                      <Col md={6} lg={5} className={`order-0 order-md-${index % 2 === 0 ? 1 : 0}`}>
+                      <Col sm={12} lg={5} className={`order-0 order-lg-${index % 2 === 0 ? 1 : 0}`}>
                         <img alt="" className="w-100" src={m.url}/>
                       </Col>
-                      <Col md={6} lg={7} className={`order-0 order-md-${index % 2 === 0 ? 0 : 1}`}>
+                      <Col sm={12} lg={7} className={`order-0 order-lg-${index % 2 === 0 ? 0 : 1}`}>
                         <Card.Body className="h-100">
                           <div className="d-flex flex-column h-100" style={{justifyContent:'space-around'}}>
                             <Card.Title>
-                              {m.title.map((m,index)=><div key={`News-ID-title-${index}`} className="mb-2">{m}</div>)}
+                              {
+                                m.title.split('\n').map((m,index)=>
+                                  <div key={`${props.id}-title-${index}`} className="mb-2">{m}</div>
+                                )
+                              }
                             </Card.Title>
                             <Card.Title className="text-center">
                               <a href={m.BtnUrl} className="btn btn-dark">{m.BtnText}</a>
@@ -31,7 +35,7 @@ function News(props) {
                             <Card.Text>
                               <span>{m.subtitle}</span><br/>
                             </Card.Text>
-                            <Card.Text className={index % 2 === 1 ? 'text-end': ''}>
+                            <Card.Text className={'text-end'}>
                               <span className="blockquote-footer">
                                 26-Dec-2022
                               </span>
