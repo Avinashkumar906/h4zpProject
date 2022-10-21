@@ -35,23 +35,23 @@ function News(props) {
                       <Col sm={12} lg={7} className={`order-0 order-lg-${index % 2 === 0 ? 0 : 1}`}>
                         <Card.Body className="h-100">
                           <div className="d-flex flex-column h-100" style={{justifyContent:'space-around'}}>
-                            <Card.Title>
+                            <Card.Title className="text-justify">
                               {
                                 m.title.split('\n').map((m,index)=>
                                   <div key={`${props.id}-title-${index}`} className="mb-2">{m}</div>
                                 )
                               }
                             </Card.Title>
-                            <Card.Title className="text-center">
+                            <Card.Title className="text-center mb-2">
                               <a href={m.BtnUrl} className="btn btn-dark">{m.BtnText}</a>
                             </Card.Title>
-                            <Card.Text>
-                              <span>{m.subtitle}</span><br/>
-                            </Card.Text>
                             <Card.Text className={'text-end'}>
                               <span className="blockquote-footer">
                                 {m.credit || 'Unknown'}
                               </span>
+                            </Card.Text>
+                            <Card.Text className="text-center">
+                              <span>{m.subtitle}</span><br/>
                             </Card.Text>
                           </div>
                         </Card.Body>

@@ -5,12 +5,12 @@ import Col from 'react-bootstrap/Col';
 
 function Jumbotron(props) {
   return (
-    <Container className={`p-0 ${props.data?.theme}`} >
+    <Container className={`p-0 ${props.data?.theme}`} fluid>
       <Container fluid={props.data?.fluid}>
         <Row className="py-5">
           <Col className="py-5 text-center">
             <div>
-              <div className="display-2" fluid data-aos="fade-in">
+              <div className="display-2" data-aos="fade-in">
                 <strong>{props.data?.title}</strong>
               </div>
               <div className=" my-4" data-aos="fade-up">

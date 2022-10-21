@@ -11,6 +11,15 @@ body {
   overflow-x: hidden;
 }
 
+.text-justify{
+  text-align: justify!important;
+}
+
+.border-bottom-1{
+  border-bottom: 1px solid;
+  border-radius: 2px;
+}
+
 .react-parallax-bgimage{
   height: 100%!important;
   width: 100%!important;
@@ -55,10 +64,10 @@ body {
   transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-.card .card-overlay-body:hover{
+.card-overlay-body:hover{
   opacity: 1;
   transition: all 1s;
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(0,0,0,0.7)!important;
   transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
