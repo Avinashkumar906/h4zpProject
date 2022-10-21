@@ -19,7 +19,7 @@ function Banner(props) {
   return (
     <Container className={`p-0 ${props.data?.theme}`} fluid >
       <Container className="p-0" fluid={props.data?.fluid} ref={placeholder} data-aos="fade-in">
-        <Carousel interval={10000} fade variant="dark" indicators={props.data?.list?.length > 1} controls={props.data?.list?.length > 1}>
+        <Carousel interval={10000} fade variant="light" indicators={props.data?.list?.length > 1} controls={props.data?.list?.length > 1}>
           {
             props.data?.list?.map((m, index) => (
               <Carousel.Item key={`${props.id}-${index}`} style={{ height: '100vh' }} >

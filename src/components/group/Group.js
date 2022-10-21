@@ -17,7 +17,7 @@ function Group(props) {
   return (
     <Container className={`p-0 ${props.data?.theme}`} fluid >
       <Container className="py-5 overflow-hidden" fluid={props.data?.fluid}>
-        <Row className="justify-content-center pb-5">
+        <Row className="justify-content-center pb-3">
           {
             props.data?.title && (
               <Col xl={12} data-aos="fade-in">
@@ -28,8 +28,15 @@ function Group(props) {
             )
           }
           {props.data?.list?.map((m,index) => (
-            <Col  data-aos="fade-up" ref={placeholder} key={`Group-ID-${index}`} xl={props.data?.xl} lg={props.data?.lg} md={props.data?.md} sm={props.data?.sm} className="text-center py-2">
-              <img alt="" className={`w-100 ${props.data?.style}`} src={dimention && cloudinaryUtilARWidth({url:m.url, ...dimention, ar :props.data?.imgRatio})}/>
+            <Col  data-aos="fade-up" ref={placeholder} key={`Group-ID-${index}`} xl={props.data?.xl} lg={props.data?.lg} md={props.data?.md} sm={props.data?.sm} className="text-center p-2">
+              <img alt="" className={`w-100 mb-2 ${props.data?.style}`} src={dimention && cloudinaryUtilARWidth({url:m.url, ...dimention, ar :props.data?.imgRatio})}/>
+              {
+                m.label && (
+                  <div className={`text-center h5`}>
+                    <span>{m.label}</span>
+                  </div>
+                )
+              }
             </Col> 
           ))}
         </Row>

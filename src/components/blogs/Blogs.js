@@ -26,19 +26,22 @@ function Blogs(props) {
           {
             props.data?.list?.map((m,index) => (
               <Col key={`Blogs-ID-${index}`} lg={6} sm={12} className="pb-5"  ref={placeholder}>
-                <Card data-aos="fade-up">
-                  <Card.Img variant="top" className="h-100 w-100 rounded" src={dimention && cloudinaryUtilARWidth({url:m.url, ...dimention, ar:'4:3'})} />
-                  <Card.Body className="card-overlay-body text-light rounded">
-                    <Card.Title>
-                      <div className="h4">
+                <Card data-aos="fade-up" className="h-100">
+                  <Card.Body className="rounded h-100">
+                    <Card.Title className="text-justify">
+                      <div className="h3 mb-2">
                         <span>{m.title}</span>
                       </div>
+                      <div className="border-bottom-1 w-100" ></div>
                     </Card.Title>
-                    <Card.Text className="mb-2 h5">
+                    <div className="mb-3">
+                      <Card.Img className="h-100 w-100" src={dimention && cloudinaryUtilARWidth({url:m.url, ...dimention, ar:'4:3'})} />
+                    </div>
+                    <Card.Text className="mb-3 h5 text-justify">
                         <span>{m.subtitle}</span>
                     </Card.Text>
-                    <Card.Text className="mb-2 h5">
-                        <a href={m.BtnUrl}>{m.BtnText}</a>
+                    <Card.Text className="mb-2 h5 text-end">
+                        <a className="btn btn-dark" href={m.BtnUrl}>{m.BtnText}</a>
                     </Card.Text>
                     <Card.Text className="text-end">
                       <span className="blockquote-footer">
