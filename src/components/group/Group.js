@@ -1,23 +1,44 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-
+import { cloudinaryUtilARWidth } from "../../util/util";
+// imgRatio
 function Group(props) {
+  const [dimention, setDimention] = useState();
+  const placeholder = useRef(null);
+
+  useEffect(() => {
+    if(placeholder.current?.clientWidth || placeholder.current?.clientHeight){
+      setDimention(
+        {height:placeholder.current.clientHeight,width:placeholder.current.clientWidth}
+      )
+    }
+  }, [])
+
   return (
-    <Container className={`p-0 ${props.data?.theme}`} fluid>
+    <Container className={`p-0 ${props.data?.theme}`} fluid >
       <Container className="py-5 overflow-hidden" fluid={props.data?.fluid}>
         <Row className="justify-content-center pb-5">
+          {
+            props.data?.title && (
+              <Col xl={12} data-aos="fade-in">
+                <div className="text-center display-2 pb-4">
+                  <strong>{props.data?.title}</strong>
+                </div>
+              </Col>
+            )
+          }
           {props.data?.list?.map((m,index) => (
-            <Col key={`Group-ID-${index}`} xl={props.data?.xl} lg={props.data?.lg} md={props.data?.md} sm={props.data?.sm} className="text-center py-2">
-              <img alt="" className={`w-100 ${props.data?.style}`} src={m.url}/>
+            <Col  data-aos="fade-up" ref={placeholder} key={`Group-ID-${index}`} xl={props.data?.xl} lg={props.data?.lg} md={props.data?.md} sm={props.data?.sm} className="text-center py-2">
+              <img alt="" className={`w-100 ${props.data?.style}`} src={dimention && cloudinaryUtilARWidth({url:m.url, ...dimention, ar :props.data?.imgRatio})}/>
             </Col> 
           ))}
         </Row>
-        <Row className="text-center">
-            <div className="h4 my-4">
+        <Row className="text-center" >
+            <div className="h4 my-4" >
               {
                 props.data?.description.split('\n')
                   .map((m,index)=>
-                    <div key={`${props.id}-${index}`} className="mb-2">{m}</div>
+                    <div key={`${props.id}-${index}`} className="mb-2" data-aos="fade-up">{m}</div>
                   )
               }
             </div>
@@ -27,4 +48,4 @@ function Group(props) {
   )
 }
 
-export default Group;
+export default React.memo(Group);

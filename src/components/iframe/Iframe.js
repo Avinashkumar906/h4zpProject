@@ -16,10 +16,10 @@ function Iframe(props) {
   }, [autoplay, mute, src])
   
   return (
-    <Container className={`p-0 ${props.data?.theme}`} fluid>
+    <Container className={`p-0 ${props.data?.theme}`} fluid data-aos="fade-up">
       <Container fluid={props.data?.fluid}>
         <Row style={{ minHeight: '560px' }}>
-          <Col>
+          <Col data-aos="fade-up">
             <iframe title="this is iframe" src={iframe} allow='autoplay' className="w-100 h-100" scrolling="no" frameBorder="0" allowFullScreen></iframe>
           </Col>
         </Row>

@@ -7,6 +7,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+#root{
+  overflow-x: hidden;
+}
+
+.react-parallax-bgimage{
+  height: 100%!important;
+  width: 100%!important;
+  object-fit: cover;
+  object-position: center center;
+}
+
 .social-icon-container{
   display: flex;
   justify-content: center;
@@ -14,6 +25,18 @@ body {
 
 .social-icon{
   margin: 0 5px;
+}
+
+.nav-on-top{
+  background: rgba(0,0,0,0.4)!important;
+  height: 72px!important;
+  transition: all .5s;
+}
+
+.nav-not-on-top{
+  /* background: brown!important; */
+  height: 56px!important;
+  transition: all .5s;
 }
 
 .card-overlay-body{
