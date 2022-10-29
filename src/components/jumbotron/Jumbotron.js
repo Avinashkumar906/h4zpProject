@@ -2,6 +2,8 @@ import React from "react";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Parser from 'html-react-parser';
+import { Link } from "react-router-dom";
 
 function Jumbotron(props) {
   return (
@@ -14,18 +16,16 @@ function Jumbotron(props) {
                 <strong>{props.data?.title}</strong>
               </div>
               <div className=" my-4" data-aos="fade-up">
-                {
-                  props.data?.subTitle.split('\n').map((m, index) =>
-                    <div key={`${props.id}-${index}`} className="h4 my-2">{m}</div>
-                  )
-                }
+                <div className="h4 my-2">
+                  {Parser(props.data?.subTitle)}
+                </div>
               </div>
               <div className="pt-4" data-aos="fade-up">
                 {
-                  props.data?.btnList.map((m, index) =>
-                    <a key={`${props.id}-btn-${index}`} href={m.btnLink} className="btn btn-dark m-2">
+                  props.data?.btnList?.map((m, index) =>
+                    <Link key={`${props.id}-btn-${index}`} to={m.btnLink} className="btn btn-dark m-2">
                       {m.btnText}
-                    </a>
+                    </Link>
                   )
                 }
               </div>

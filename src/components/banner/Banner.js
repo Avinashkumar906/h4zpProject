@@ -36,9 +36,10 @@ function Banner(props) {
                       alt={`slide ${index}`} />
                   )
                 }
+                 {/* style={{background:'rgba(0,0,0,0.4)'}} */}
                 <Carousel.Caption>
-                  <h3>{m.title}</h3>
-                  <p>{m.subTitle}</p>
+                  <div className="h1 m-0 p-2">{m.title}</div>
+                  <div className="h3 m-0 p-2">{m.subTitle}</div>
                 </Carousel.Caption>
               </Carousel.Item>
             ))

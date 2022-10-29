@@ -18,21 +18,25 @@ function Blogs(props) {
     <Container className={`p-0 ${props.data?.theme}`} fluid >
       <Container className="py-5" fluid={props.data?.fluid}>
         <Row>
-          <Col xl={12} data-aos="fade-in">
-            <div className="text-center display-2 pb-4">
-              <strong>{props.data?.title}</strong>
-            </div>
-          </Col>
+          {
+            props.data?.title && (
+              <Col xl={12} data-aos="fade-in">
+                <div className="text-center display-2 pb-4">
+                  <strong>{props.data?.title}</strong>
+                </div>
+              </Col>
+            )
+          }
           {
             props.data?.list?.map((m,index) => (
               <Col key={`Blogs-ID-${index}`} lg={6} sm={12} className="pb-5"  ref={placeholder}>
-                <Card data-aos="fade-up" className="h-100">
+                <Card data-aos="fade-up" className={`h-100 border-0 ${props.data?.theme}`}>
                   <Card.Body className="rounded h-100">
                     <Card.Title className="text-justify">
-                      <div className="h3 mb-2">
+                      <div className="h4 mb-2">
                         <span>{m.title}</span>
                       </div>
-                      <div className="border-bottom-1 w-100" ></div>
+                      <div className="border-bottom-2 w-50 ms-auto" ></div>
                     </Card.Title>
                     <div className="mb-3">
                       <Card.Img className="h-100 w-100" src={dimention && cloudinaryUtilARWidth({url:m.url, ...dimention, ar:'4:3'})} />
