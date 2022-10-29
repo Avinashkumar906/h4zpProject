@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Routes, Route, Navigate } from "react-router-dom";
-import Home from './pages/Home';
+import Page from './pages/Page';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 
@@ -19,7 +19,11 @@ function App() {
       {/* Routing of application */}
       <Routes>
         <Route path="/" element={<Navigate to="/home" />}/> 
-        <Route path="/home" element={<Home />} />  
+        <Route path="/:page" element={<Page />} />  
+        {/* <Route path="/project" element={<Page />} />
+        <Route path="/blog" element={<Page />} />
+        <Route path="/about" element={<Page />} />
+        <Route path="/donate" element={<Page />} /> */}
       </Routes>
       <Footer theme={'bg-dark'}/>
     </Fragment>

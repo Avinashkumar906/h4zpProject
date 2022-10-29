@@ -26,15 +26,21 @@ function News(props) {
           {
             props.data?.list?.map((m, index) => (
               <Col key={`${props.id}-${index}`} xl={12} className="pb-5 mb-5" >
-                <Card style={{overflow:'hidden'}} ref={dimention} data-aos="fade-up">
+                <Card style={{overflow:'hidden'}} className={`border-0 ${props.data?.theme}`} ref={dimention} data-aos="fade-up">
                     <Row>
                       <Col sm={12} lg={5} className={`order-0 order-lg-${index % 2 === 0 ? 1 : 0}`}>
-                        <img alt="" className="react-parallax-bgimage" src={optimizeData({url:m.url})}/>
+                        <Card.Img variant="right" alt="" className="react-parallax-bgimage" src={optimizeData({url:m.url})}/>
                         {/* <img alt="" className="w-100" src={m.url}/> */}
                       </Col>
                       <Col sm={12} lg={7} className={`order-0 order-lg-${index % 2 === 0 ? 0 : 1}`}>
                         <Card.Body className="h-100">
                           <div className="d-flex flex-column h-100" style={{justifyContent:'space-around'}}>
+                            {
+                              m.heading && 
+                              (
+                                <Card.Text className="text-center h3">{m.heading}</Card.Text>
+                              )
+                            }
                             <Card.Title className="text-justify">
                               {
                                 m.title.split('\n').map((m,index)=>
