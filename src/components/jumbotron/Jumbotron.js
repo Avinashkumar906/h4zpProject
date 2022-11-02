@@ -17,7 +17,7 @@ function Jumbotron(props) {
               </div>
               <div className=" my-4" data-aos="fade-up">
                 <div className="h4 my-2">
-                  {Parser(props.data?.subTitle)}
+                  {Parser(props.data?.description || '')}
                 </div>
               </div>
               <div className="pt-4" data-aos="fade-up">

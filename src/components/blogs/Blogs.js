@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { cloudinaryUtilARWidth } from "../../util/util";
 
 function Blogs(props) {
@@ -13,6 +14,8 @@ function Blogs(props) {
       )
     }
   }, [])
+
+  // console.log(props.data)
 
   return (
     <Container className={`p-0 ${props.data?.theme}`} fluid >
@@ -42,14 +45,14 @@ function Blogs(props) {
                       <Card.Img className="h-100 w-100" src={dimention && cloudinaryUtilARWidth({url:m.url, ...dimention, ar:'4:3'})} />
                     </div>
                     <Card.Text className="mb-3 h5 text-justify">
-                        <span>{m.subtitle}</span>
+                        <span>{m.description}</span>
                     </Card.Text>
                     <Card.Text className="mb-2 h5 text-end">
-                        <a className="btn btn-dark" href={m.BtnUrl}>{m.BtnText}</a>
+                        <Link className="btn btn-dark" to={m.BtnUrl}>{m.BtnText}</Link>
                     </Card.Text>
                     <Card.Text className="text-end">
                       <span className="blockquote-footer">
-                        {m.credit || 'Unknown'}
+                        {m.credit || 'Anonymous'}, {m.date}
                       </span>
                     </Card.Text>
                   </Card.Body>
@@ -59,7 +62,7 @@ function Blogs(props) {
           }
           <Col xl={12}>
             <div className="text-end">
-              <a href="/" className="text-dark">More..</a>
+              <Link to="/blogs" className="text-dark">More..</Link>
             </div>
           </Col>
         </Row>

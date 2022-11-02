@@ -8,6 +8,7 @@ import News from './news/News'
 
 function DynamicComponent(props) {
   let component;
+  // console.log(props.data)
   switch (props.data.component) {
     case 'banner': 
       component = <Banner data={props.data} id={props.id} />

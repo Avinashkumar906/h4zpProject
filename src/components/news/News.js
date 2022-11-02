@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { optimizeData } from "../../util/util";
+import Parser from 'html-react-parser';
+import { Link } from "react-router-dom";
 
 function News(props) {
   const [dimention, setDimention] = useState();
@@ -36,28 +38,24 @@ function News(props) {
                         <Card.Body className="h-100">
                           <div className="d-flex flex-column h-100" style={{justifyContent:'space-around'}}>
                             {
-                              m.heading && 
+                              m.title && 
                               (
-                                <Card.Text className="text-center h3">{m.heading}</Card.Text>
+                                <Card.Text className="text-center h3">{m.title}</Card.Text>
                               )
                             }
-                            <Card.Title className="text-justify">
-                              {
-                                m.title.split('\n').map((m,index)=>
-                                  <div key={`${props.id}-title-${index}`} className="mb-2">{m}</div>
-                                )
-                              }
+                            <Card.Title className="text-justify" style={{whiteSpace:'pre-wrap'}}>
+                              {Parser(m.description || '')}
                             </Card.Title>
                             <Card.Title className="text-center mb-2">
-                              <a href={m.BtnUrl} className="btn btn-dark">{m.BtnText}</a>
+                              <Link to={m.BtnUrl} className="btn btn-dark">{m.BtnText}</Link>
                             </Card.Title>
                             <Card.Text className={'text-end'}>
                               <span className="blockquote-footer">
-                                {m.credit || 'Unknown'}
+                              {m.credit || 'Anonymous'}, {m.date}
                               </span>
                             </Card.Text>
                             <Card.Text className="text-center">
-                              <span>{m.subtitle}</span><br/>
+                              <span>{Parser(m.footer || '')}</span><br/>
                             </Card.Text>
                           </div>
                         </Card.Body>
@@ -69,7 +67,7 @@ function News(props) {
           }
           <Col xl={12} data-aos="fade-up">
             <div className="text-end">
-              <a href="/" className="text-dark">More..</a>
+              <Link to="/blogs" className="text-dark">More..</Link>
             </div>
           </Col>
         </Row>

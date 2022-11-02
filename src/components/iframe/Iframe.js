@@ -3,7 +3,7 @@ import { Col, Container, Row } from "react-bootstrap";
 
 function Iframe(props) {
   const [iframe, setIframe] = useState();
-  const [src] = useState(props.data?.src);
+  const [src] = useState(props.data?.url);
   const [ autoplay ] = useState(props.data?.autoplay);
   const [ mute ] = useState(props.data?.mute);
   
@@ -12,7 +12,6 @@ function Iframe(props) {
     if(autoplay) suffix+=`&autoplay=1`;
     if(mute) suffix+=`&mute=1`;
     setIframe(src+suffix);
-    return () => console.log('clean iframe')
   }, [autoplay, mute, src])
   
   return (

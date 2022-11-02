@@ -28,7 +28,7 @@ function Group(props) {
             )
           }
           {props.data?.list?.map((m,index) => (
-            <Col  data-aos="fade-up" ref={placeholder} key={`Group-ID-${index}`} md={12/props.data.list.length}  className="text-center p-2">
+            <Col  data-aos="fade-up" ref={placeholder} key={`Group-ID-${index}`} md={12/props.data.itemInRow}  className="text-center p-2">
               <img alt="" className={`w-100 mb-2 ${props.data?.style}`} src={dimention && cloudinaryUtilARWidth({url:m.url, ...dimention, ar :props.data?.imgRatio})}/>
               {
                 m.title && (

@@ -1,168 +1,345 @@
-import React, { Fragment, useState } from 'react';
-import { useFormik } from 'formik';
-import { Col, Form, Row } from 'react-bootstrap';
-
+import React, { Fragment, useEffect, useState } from 'react';
+import { Formik, Field, FieldArray } from 'formik';
+import { Col, Form, Row, Spinner } from 'react-bootstrap';
+import { AiFillCloseCircle, AiFillDownCircle, AiFillUpCircle, AiFillPlusCircle } from 'react-icons/ai'
+import Moment from 'moment';
 
 const UpdateComponent = props => {
-  const [formData] = useState(props.data.data)
+  const [formData, setFormData] = useState(props.data.data)
+  const [submitted, setSubmitted] = useState(false)
 
-  const formik = useFormik({
-    initialValues: formData,
-    onSubmit: values => props.onUpdate(values)
-  });
+  useEffect(() => {
+    setFormData(props.data.data)
+  }, [props.data.data])
 
-  // console.log(formData);
+
+  const getListItem = () => {
+    switch (formData.component) {
+      case 'banner':
+        return { title: '', subTitle: '', url: '' }
+      case 'jumbotron':
+        return { btnLink: '', btnText: '' }
+      case 'news':
+        return { BtnUrl: '', description: '', title: '', url: '', BtnText: '', credit: '', date: Moment(new Date()).format('YYYY-MM-DD'), footer: '' }
+      case 'blogs':
+        return { BtnUrl: '', description: '', title: '', url: '', BtnText: '', credit: '', date: Moment(new Date()).format('YYYY-MM-DD') }
+      case 'group':
+        return { title: '', url: '' }
+      default:
+        break;
+    }
+  }
+
+  const submitForm = (values) => {
+    setSubmitted(true)
+    props.onUpdate(values)
+    setTimeout(() => setSubmitted(false), 500)
+  }
+
   return (
     <Fragment>
-      <form onSubmit={formik.handleSubmit}>
-        <Row className='mb-2'>
-        {
-          formData.hasOwnProperty('fluid') && (
-            <Col sm={3} className="mb-2">
-              <Form.Label>Width</Form.Label>
-              <Form.Select size='sm' name="fluid" id="fluid" value={formik.values.fluid} onChange={formik.handleChange}>
-                <option value="true">Full</option>
-                <option value="false">Default</option>
-              </Form.Select>
-            </Col>
-          )
-        }
-        {
-          formData.hasOwnProperty('parallax') && (
-            <Col sm={3} className="mb-2">
-              <Form.Label>Scroll Effect</Form.Label>
-              <Form.Select size='sm' name="parallax" id="parallax" value={formik.values.parallax} onChange={formik.handleChange}>
-                <option value="true">Parallax</option>
-                <option value="false">No Effect</option>
-              </Form.Select>
-            </Col>
-          )
-        }
-        {
-          formData.hasOwnProperty('theme') && (
-            <Col sm={3} className="mb-2">
-              <Form.Label>Background</Form.Label>
-              <Form.Select size='sm' name="theme" id="theme" value={formik.values.theme} onChange={formik.handleChange}>
-                <option value=''>No Background</option>
-                <option value="bg-light">Light</option>
-              </Form.Select>
-            </Col>
-          )
-        }
-        {
-          formData.hasOwnProperty('order') && (
-            <Col sm={3} className="mb-2">
-              <Form.Label>Position</Form.Label>
-              <Form.Control size='sm' type="number" name="order" id="order" value={formik.values.order} onChange={formik.handleChange} />
-            </Col>
-          )
-        }
-        {
-          formData.hasOwnProperty('imgRatio') && (
-            <Col sm={3} className="mb-2">
-              <Form.Label>Aspect ratio</Form.Label>
-              <Form.Control size='sm' name="imgRatio" value={formik.values.imgRatio} onChange={formik.handleChange}/>
-            </Col>
-          )
-        }
-        </Row>
-        <Row className='mb-2'>
-          {
-            formData.hasOwnProperty('title') && (
-              <Col sm={12} className="mb-2">
-                <Form.Label>Title</Form.Label>
-                <Form.Control size='sm' name="title" value={formik.values.title} onChange={formik.handleChange}/>
-              </Col>
-            )
-          }
-          {
-            formData.hasOwnProperty('subTitle') && (
-              <Col sm={12} className="mb-2">
-                <Form.Label>Sub title</Form.Label>
-                <Form.Control size='sm' as="textarea" name="subTitle" value={formik.values.subTitle} onChange={formik.handleChange}/>
-              </Col>
-            )
-          }
-          {
-            formData.hasOwnProperty('description') && (
-              <Col sm={12} className="mb-2">
-                <Form.Label>Description</Form.Label>
-                <Form.Control size='sm' as="textarea" name="description" value={formik.values.description} onChange={formik.handleChange}/>
-              </Col>
-            )
-          }
-        </Row>
-        {
-          formData.hasOwnProperty('list') && (
-            <div>
+      <Formik initialValues={formData}
+        enableReinitialize
+        onSubmit={submitForm}>
+        {(form) => (
+          <form onSubmit={form.handleSubmit}>
+            <Row className='mb-2'>
               {
-                formData.list.map((m,index) => (
-                  <Row key={`list-update-${index}`}>
-                    {
-                      m.hasOwnProperty('title') && (
-                        <Col sm={6} className="mb-2">
-                          <Form.Label>Title</Form.Label>
-                          <Form.Control size='sm' type="text" name={`list[${index}].title`} value={formik.values.list[index].title} onChange={formik.handleChange} />
-                        </Col>
-                      )
-                    }
-                    {
-                      m.hasOwnProperty('subTitle') && (
-                        <Col sm={6} className="mb-2">
-                          <Form.Label>Sub title</Form.Label>
-                          <Form.Control size='sm' type="text" name={`list[${index}].subTitle`} value={formik.values.list[index].subTitle} onChange={formik.handleChange} />
-                        </Col>
-                      )
-                    }
-                    {
-                      m.hasOwnProperty('url') && (
-                        <Col className="mb-2">
-                          <Form.Label>Image Url</Form.Label>
-                          <Form.Control size='sm' type="text" name={`list[${index}].url`} value={formik.values.list[index].url} onChange={formik.handleChange} />
-                        </Col>
-                      )
-                    }
-                  </Row>
-                ))
+                form.values.hasOwnProperty('fluid') && (
+                  <Col sm={3} className="mb-2">
+                    <Form.Label>Width</Form.Label>
+                    <Field as="select" name="fluid" className="form-select form-select-sm">
+                      <option value={true}>Full</option>
+                      <option value={false}>Default</option>
+                    </Field>
+                  </Col>
+                )
               }
-            </div>
-          )
-        }
-        {
-          formData.hasOwnProperty('btnList') && (
-            <div>
               {
-                formData.btnList.map((m,index) => (
-                  <Row key={`btnList-update-${index}`}>
-                    {
-                      m.hasOwnProperty('btnLink') && (
-                        <Col sm={6} className="mb-2">
-                          <Form.Label>Button link</Form.Label>
-                          <Form.Control size='sm' type="text" name={`btnList[${index}].btnLink`} value={formik.values.btnList[index].btnLink} onChange={formik.handleChange} />
-                        </Col>
-                      )
-                    }
-                    {
-                      m.hasOwnProperty('btnText') && (
-                        <Col sm={6} className="mb-2">
-                          <Form.Label>Button teaxt</Form.Label>
-                          <Form.Control size='sm' type="text" name={`btnList[${index}].btnText`} value={formik.values.btnList[index].btnText} onChange={formik.handleChange} />
-                        </Col>
-                      )
-                    }
-                  </Row>
-                ))
+                form.values.hasOwnProperty('autoplay') && (
+                  <Col sm={3} className="mb-2">
+                    <Form.Label>Auto play</Form.Label>
+                    <Field as="select" name="autoplay" className="form-select form-select-sm">
+                      <option value={true}>On</option>
+                      <option value={false}>Off</option>
+                    </Field>
+                  </Col>
+                )
               }
-            </div>
-          )
-        }
-        <Row>
-          <Col>
-            <button type="submit" className='btn btn-dark'>Submit</button>
-          </Col>
-        </Row>
-      </form>
-      {/* {JSON.stringify(props.data)} */}
+              {
+                form.values.hasOwnProperty('mute') && (
+                  <Col sm={3} className="mb-2">
+                    <Form.Label>Mute video</Form.Label>
+                    <Field as="select" name="mute" className="form-select form-select-sm">
+                      <option value={true}>On</option>
+                      <option value={false}>Off</option>
+                    </Field>
+                  </Col>
+                )
+              }
+              {
+                form.values.hasOwnProperty('parallax') && (
+                  <Col sm={3} className="mb-2">
+                    <Form.Label>Scroll Effect</Form.Label>
+                    <Field as="select" name="parallax" className="form-select form-select-sm">
+                      <option value={true}>Parallax</option>
+                      <option value={false}>No Effect</option>
+                    </Field>
+                  </Col>
+                )
+              }
+              {
+                form.values.hasOwnProperty('theme') && (
+                  <Col sm={3} className="mb-2">
+                    <Form.Label>Background</Form.Label>
+                    <Field as="select" name="theme" className="form-select form-select-sm">
+                      <option value=''>No Background</option>
+                      <option value="bg-light">Light</option>
+                    </Field>
+                  </Col>
+                )
+              }
+              {
+                form.values.hasOwnProperty('order') && (
+                  <Col sm={3} className="mb-2">
+                    <Form.Label>Position</Form.Label>
+                    <Field type="number" name="order" className="form-control form-control-sm" />
+                  </Col>
+                )
+              }
+              {
+                form.values.hasOwnProperty('itemInRow') && (
+                  <Col sm={3} className="mb-2">
+                    <Form.Label>Item in Row</Form.Label>
+                    <Field type="number" name="itemInRow" className="form-control form-control-sm" />
+                  </Col>
+                )
+              }
+              {
+                form.values.hasOwnProperty('style') && (
+                  <Col sm={3} className="mb-2">
+                    <Form.Label>Image Style</Form.Label>
+                    <Field as="select" name="style" className="form-select form-select-sm">
+                      <option value="">No Style</option>
+                      <option value='rounded-circle'>Circle</option>
+                      <option value="rounded">Rounded Corner</option>
+                    </Field>
+                  </Col>
+                )
+              }
+
+              {
+                form.values.hasOwnProperty('imgRatio') && (
+                  <Col sm={3} className="mb-2">
+                    <Form.Label>Aspect ratio</Form.Label>
+                    <Field type="text" name="imgRatio" className="form-control form-control-sm" />
+                  </Col>
+                )
+              }
+            </Row>
+            <Row className='mb-2'>
+              {
+                form.values.hasOwnProperty('title') && (
+                  <Col className="mb-2">
+                    <Form.Label>Title</Form.Label>
+                    <Field name="title" className="form-control form-control-sm" />
+                  </Col>
+                )
+              }
+              {
+                form.values.hasOwnProperty('subTitle') && (
+                  <Col className="mb-2">
+                    <Form.Label>Sub title</Form.Label>
+                    <Field as="textarea" name="subTitle" className="form-control form-control-sm" />
+                  </Col>
+                )
+              }
+              {
+                form.values.hasOwnProperty('url') && (
+                  <Col className="mb-2">
+                    <Form.Label>Image/Iframe Url</Form.Label>
+                    <Field name="url" className="form-control form-control-sm" />
+                  </Col>
+                )
+              }
+              {
+                form.values.hasOwnProperty('description') && (
+                  <Col sm={12} className="mb-2">
+                    <Form.Label>Description</Form.Label>
+                    <Field as="textarea" name="description" className="form-control form-control-sm" />
+                  </Col>
+                )
+              }
+            </Row>
+            {
+              form.values.hasOwnProperty('list') && (
+                <FieldArray name="list"
+                  render={
+                    ({ remove, insert, swap, push }) => (
+                      <div>
+                        <hr />
+                        <Form.Label>List:</Form.Label>
+                        {
+                          form.values.list.length > 0 ? (
+                            form.values.list.map((m, index) => (
+                              <Row key={`list-update-${index}`} className="mb-3 pt-2 bg-light m-0" style={{ position: 'relative' }}>
+                                <div className='list-close h4' >
+                                  <AiFillPlusCircle onClick={() => insert(index, getListItem())} />
+                                  <AiFillUpCircle onClick={() => swap(index, index - 1)} className={index === 0 && 'd-none'} />
+                                  <AiFillDownCircle onClick={() => swap(index, index + 1)} className={index === form.values.list.length - 1 && 'd-none'} />
+                                  <AiFillCloseCircle onClick={() => remove(index)} />
+                                </div>
+                                {
+                                  m.hasOwnProperty('title') && (
+                                    <Col sm={6} className="mb-2">
+                                      <Form.Label>Title</Form.Label>
+                                      <Field name={`list[${index}].title`} className="form-control form-control-sm" />
+                                    </Col>
+                                  )
+                                }
+                                {
+                                  m.hasOwnProperty('subTitle') && (
+                                    <Col sm={6} className="mb-2">
+                                      <Form.Label>Sub title</Form.Label>
+                                      <Field name={`list[${index}].subTitle`} className="form-control form-control-sm" />
+                                    </Col>
+                                  )
+                                }
+                                {
+                                  m.hasOwnProperty('url') && (
+                                    <Col className="mb-2">
+                                      <Form.Label>Image Url</Form.Label>
+                                      <Field name={`list[${index}].url`} className="form-control form-control-sm" />
+                                    </Col>
+                                  )
+                                }
+                                <div className='w-100'></div>
+                                {
+                                  m.hasOwnProperty('BtnText') && (
+                                    <Col className="mb-2">
+                                      <Form.Label>Button Text</Form.Label>
+                                      <Field name={`list[${index}].BtnText`} className="form-control form-control-sm" />
+                                    </Col>
+                                  )
+                                }
+                                {
+                                  m.hasOwnProperty('date') && (
+                                    <Col className="mb-2">
+                                      <Form.Label>Created On</Form.Label>
+                                      <Field type="date" name={`list[${index}].date`} className="form-control form-control-sm" />
+                                    </Col>
+                                  )
+                                }
+                                {
+                                  m.hasOwnProperty('BtnUrl') && (
+                                    <Col className="mb-2">
+                                      <Form.Label>Page reference</Form.Label>
+                                      <Field name={`list[${index}].BtnUrl`} className="form-control form-control-sm" />
+                                    </Col>
+                                  )
+                                }
+                                {
+                                  m.hasOwnProperty('credit') && (
+                                    <Col className="mb-2">
+                                      <Form.Label>Organised by</Form.Label>
+                                      <Field name={`list[${index}].credit`} className="form-control form-control-sm" />
+                                    </Col>
+                                  )
+                                }
+                                <div className='w-100'></div>
+                                {
+                                  m.hasOwnProperty('footer') && (
+                                    <Col sm={12} className="mb-2">
+                                      <Form.Label>Footer</Form.Label>
+                                      <Field as="textarea" name={`list[${index}].footer`} className="form-control form-control-sm" />
+                                    </Col>
+                                  )
+                                }
+                                {
+                                  m.hasOwnProperty('description') && (
+                                    <Col sm={12} className="mb-2">
+                                      <Form.Label>Description</Form.Label>
+                                      <Field as="textarea" name={`list[${index}].description`} className="form-control form-control-sm" />
+                                    </Col>
+                                  )
+                                }
+                              </Row>
+                            ))
+                          ) : (
+                            <div className='w-100 mb-2'>
+                              <div className='btn btn-sm btn-danger b-radius-0 w-100' onClick={() => push(getListItem())}>Add item</div>
+                            </div>
+                          )
+                        }
+                      </div>
+                    )
+                  }
+                />
+              )
+            }
+            {
+              form.values.hasOwnProperty('btnList') && (
+                <FieldArray name="btnList"
+                  render={
+                    ({ remove, insert, swap, push }) => (
+                      <div>
+                        <hr />
+                        <Form.Label>Button List:</Form.Label>
+                        {
+                          form.values.btnList.length > 0 ? (
+                            form.values.btnList.map((m, index) => (
+                              <Row data-aos="fade-in" key={`btnList-update-${index}`} className="my-3 pt-2 bg-light m-0" style={{ position: 'relative' }}>
+                                <div className='list-close h4' >
+                                  <AiFillPlusCircle onClick={() => insert(index, getListItem())} />
+                                  <AiFillUpCircle onClick={() => swap(index, index - 1)} className={index === 0 && 'd-none'} />
+                                  <AiFillDownCircle onClick={() => swap(index, index + 1)} className={index === form.values.btnList.length - 1 && 'd-none'} />
+                                  <AiFillCloseCircle onClick={() => remove(index)} />
+                                </div>
+                                {
+                                  m.hasOwnProperty('btnLink') && (
+                                    <Col sm={6} className="mb-2">
+                                      <Form.Label>Button Link</Form.Label>
+                                      <Field name={`btnList[${index}].btnLink`} className="form-control form-control-sm" />
+                                    </Col>
+                                  )
+                                }
+                                {
+                                  m.hasOwnProperty('btnText') && (
+                                    <Col sm={6} className="mb-2">
+                                      <Form.Label>Button Text</Form.Label>
+                                      <Field name={`btnList[${index}].btnText`} className="form-control form-control-sm" />
+                                    </Col>
+                                  )
+                                }
+                              </Row>
+                            ))
+                          ) : (
+                            <div className='w-100 mb-2'>
+                              <div className='btn btn-sm btn-danger w-100' onClick={() => push(getListItem())}>Add Button</div>
+                            </div>
+                          )
+                        }
+                      </div>
+                    )
+                  }
+                />
+              )
+            }
+            <Row className='mb-2'>
+              <Col className='text-center'>
+                <hr />
+                {
+                  submitted ? (
+                    <Spinner animation="border" />
+                  ) : (
+                    <button type="submit" className='btn btn-sm btn-dark m-auto w-100'>Submit</button>
+                  )
+                }
+              </Col>
+            </Row>
+          </form>
+        )}
+      </Formik>
     </Fragment>
   )
 }

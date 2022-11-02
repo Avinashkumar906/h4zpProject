@@ -1,29 +1,48 @@
-import React from 'react'
+import React, { Fragment, useState } from 'react'
 import Modal from 'react-bootstrap/Modal';
-import { updateDocToCollection } from '../../firebase/util';
+import { addComponentToPage, updateComponentOfPage } from '../../firebase/util';
+import AddComponent from '../AddComponent';
 import UpdateComponent from '../UpdateComponent';
 
 export const CModal = (props) => {
-  
-  const onUpdate = (data, updatedData) => {
-    // console.log(data, updatedData);
-    updateDocToCollection(data.collection, data.docId, updatedData, console.log)
+  const { pageID, action } = props;
+  const [formData, setFormData] = useState(props.data)
+
+  const onUpdate = (updatedData) => {
+    if (action === 'ADD') {
+      addComponentToPage(pageID, updatedData, (snapShot) => console.log(snapShot.id))
+    } else if (action === 'EDIT') {
+      updateComponentOfPage(formData.collection, formData.docId, updatedData, console.log)
+    }
+  }
+
+  const onComponentChange = (data) => {
+    setFormData({ data })
   }
 
   return (
-    <Modal fullscreen size="lg" centered show={props.show} onHide={() => props.close()} backdrop="static" keyboard={false}>
+    <Modal fullscreen="lg-down" size="lg" centered show={props.show} onHide={() => props.close()} backdrop="static" keyboard={false}>
       <Modal.Header closeButton>
-        <Modal.Title>{props.data?.data?.component.toUpperCase()}</Modal.Title>
+        <Modal.Title>{formData?.data?.component.toUpperCase() || 'Add Component'}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <UpdateComponent onUpdate={(updatedData) => onUpdate(props.data, updatedData)} data={props.data}></UpdateComponent>
+        {
+          action === 'ADD' && (
+            <Fragment>
+              <AddComponent onComponentChange={onComponentChange} />
+              {
+                formData &&
+                <UpdateComponent onUpdate={(updatedData) => onUpdate(updatedData)} data={formData}></UpdateComponent>
+              }
+            </Fragment>
+          )
+        }
+        {
+          action === 'EDIT' && (
+            <UpdateComponent onUpdate={(updatedData) => onUpdate(updatedData)} data={formData}></UpdateComponent>
+          )
+        }
       </Modal.Body>
-      {/* <Modal.Footer>
-        <Button variant="danger" onClick={() => props.close()}>
-          Close
-        </Button>
-        <Button variant="dark">Understood</Button>
-      </Modal.Footer> */}
     </Modal>
   )
 }

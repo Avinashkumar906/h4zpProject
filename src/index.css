@@ -10,6 +10,9 @@ body {
 
 #root{
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .text-justify{
@@ -64,6 +67,27 @@ body {
 
 .b-radius-0{
   border-radius: 0!important;
+}
+
+.list-close{
+  height: 30px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0;
+  cursor: pointer;
+}
+
+.floating-icon{
+  position: fixed;
+  top: 80px;
+  right: 0;
+}
+.pointer{
+  cursor: pointer;
 }
 
 /* not in use */

@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import logoSrc from '../../logo.svg' 
 import { NavLink, useLocation } from "react-router-dom";
-// import { scrollTo, scrollIntoView } from 'scroll-js';
+import Tool from "./Tool";
 
 const navLinks = [
   {label:'HOME',link:'/home'},
@@ -16,11 +16,8 @@ const navLinks = [
 
 function Header(props) {
   const { search } = useLocation();
-  // console.log(search)
-  // //   scrollTo(window, { top: 100 }).then(function () {
-  // //     console.log('Scrolled to 10px')
-  // // });
-  
+  const { editable, isAuth } = props;
+
   return (
     <Container className={`p-0 ${props.theme}`} fluid>
       <Navbar bg="dark" variant="dark" expand={'md'} fixed="top" className={props.navOnTop ? 'nav-on-top' : 'nav-not-on-top'}>
@@ -35,19 +32,19 @@ function Header(props) {
           <Navbar.Offcanvas id={`offcanvasNavbar-expand-md`} placement="end">
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-md`}>
-                {/* H4ZP */}
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body >
-              <Nav className="justify-content-end flex-grow-1 pe-3 text-center">
+              <Nav className="align-items-center justify-content-end flex-grow-1 pe-3 text-center">
                 {
                   navLinks.map((m,index)=>(
-                    <Nav.Link as="li" key={`Nav-link-ID-${index}`}>
-                      <NavLink className="nav-link" to={`${m.link}${search}`}>
-                        <strong>{m.label}</strong>
-                      </NavLink>
-                    </Nav.Link>
+                    <NavLink key={`Nav-link-ID-${index}`} className="nav-link" to={`${m.link}${search}`}>
+                      {m.label}
+                    </NavLink>
                   ))
+                }
+                {
+                  editable && <Tool isAuth={isAuth}></Tool>
                 }
               </Nav>
             </Offcanvas.Body>
@@ -58,4 +55,4 @@ function Header(props) {
   );
 }
 
-export default React.memo(Header);
+export default Header;

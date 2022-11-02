@@ -15,10 +15,11 @@ function Banner(props) {
       )
     }
   }, [])
+  console.log(props.data?.fluid)
   
   return (
     <Container className={`p-0 ${props.data?.theme}`} fluid >
-      <Container className="p-0" fluid={props.data?.fluid} ref={placeholder} data-aos="fade-in">
+      <Container className="p-0" fluid={props.data.fluid === true} ref={placeholder} data-aos="fade-in">
         <Carousel interval={10000} fade variant="light" indicators={props.data?.list?.length > 1} controls={props.data?.list?.length > 1}>
           {
             props.data?.list?.map((m, index) => (

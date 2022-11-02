@@ -1,38 +1,46 @@
 import React, { Fragment, useEffect, useState } from "react";
 import DynamicComponent from "../components/Component";
-import { useLocation, useParams } from 'react-router-dom'
-import {AiFillEdit,AiFillDelete} from 'react-icons/ai'
-import { deleteDocById, getDocList } from "../firebase/util";
+import { useParams } from 'react-router-dom'
+import { AiFillEdit, AiFillDelete, AiOutlineAppstoreAdd } from 'react-icons/ai'
+import { deleteComponentOfPage, getPageComponents } from "../firebase/util";
 import { CModal } from "../components/modal/Modal";
+import { ListGroup } from "react-bootstrap";
 
 export default function Page(props) {
-
+  const {isAuth, editable} = props;
   const [data, setData] = useState();
   const [modalData, setModalData] = useState(null);
+  const [modalAction, setModalAction] = useState(null);
   const [modalState, setModalState] = useState(false);
-  const editable = useQuery().get("editable");
   const { page } = useParams();
   
   const handleClose = () => setModalState(false);
   
   const onDelete = (docId, collection) => {
-    console.log('deletting => ', docId, collection )
     if (window.confirm('Are you sure you want to Delete?'))
-      deleteDocById(collection, docId, console.log)
+    deleteComponentOfPage(collection, docId, console.log)
   }
 
-  const onFetch = (collection) => {
-    getDocList(collection, (data) => setData(data))
+  const onFetch = (page) => {
+    getPageComponents(page, (res) => {
+      setData(res);
+    })
   }
   
   const onEdit = (docId, collection, data) => {
     setModalState(true);
+    setModalAction('EDIT')
     setModalData({ docId, collection, data })
+  }
+
+  const onAddComponent = () => {
+    setModalAction('ADD')
+    setModalState(true);
   }
   
   useEffect(() => {
     onFetch(page);
-  }, [page, editable]);
+  }, [page]);
 
   return (
     <Fragment>
@@ -42,24 +50,37 @@ export default function Page(props) {
             <div key={m.id} style={{position:'relative'}}>
               <DynamicComponent data={m.data} id={m.id}></DynamicComponent>
               {
-                editable === 'true' ? (
+                isAuth && editable === 'true' ? (
                 <div className="h5 editable">
-                  <div className="p-2 btn btn-warning b-radius-0" onClick={() => onEdit(m.id, page, m.data)}><AiFillEdit/></div>
-                  <div className="p-2 btn btn-warning b-radius-0" onClick={() => onDelete(m.id, page)}><AiFillDelete/></div>
+                  <ListGroup horizontal className="pointer">
+                    <ListGroup.Item onClick={() => onEdit(m.id, page, m.data)}>
+                        <AiFillEdit/>
+                    </ListGroup.Item>
+                    <ListGroup.Item onClick={() => onDelete(m.id, page)}>
+                        <AiFillDelete/>
+                    </ListGroup.Item>
+                  </ListGroup>
                 </div>
                 ) : ('')
               }
             </div>
           ))
       }
-      <CModal show={modalState} close={handleClose} data={modalData}></CModal>
+      {
+        modalState ?
+        <CModal show={modalState} close={handleClose} data={modalData} action={modalAction} pageID={page}></CModal> :''
+      }
+      {
+        isAuth && editable === 'true' && (
+          <div className="floating-icon">
+            <ListGroup horizontal className="pointer" style={{borderTopRightRadius:0,borderBottomRightRadius:0}}>
+              <ListGroup.Item onClick={onAddComponent}>
+                <AiOutlineAppstoreAdd/>
+              </ListGroup.Item>
+            </ListGroup>
+          </div>
+        )
+      }
     </Fragment>
   )
-}
-
-// A custom hook that builds on useLocation to parse
-// the query string for you.
-function useQuery() {
-  const { search } = useLocation();
-  return React.useMemo(() => new URLSearchParams(search), [search]);
 }
