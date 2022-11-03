@@ -17,11 +17,15 @@ export const CModal = (props) => {
   }
 
   const onComponentChange = (data) => {
-    setFormData({ data })
+    data ? setFormData({ data }) : setFormData(null)
+  }
+
+  const onCloseModal = () => {
+    props.close()
   }
 
   return (
-    <Modal fullscreen="lg-down" size="lg" centered show={props.show} onHide={() => props.close()} backdrop="static" keyboard={false}>
+    <Modal fullscreen="lg-down" size="lg" centered show={props.show} onHide={onCloseModal} >
       <Modal.Header closeButton>
         <Modal.Title>{formData?.data?.component.toUpperCase() || 'Add Component'}</Modal.Title>
       </Modal.Header>

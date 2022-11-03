@@ -16,19 +16,23 @@ function Jumbotron(props) {
                 <strong>{props.data?.title}</strong>
               </div>
               <div className=" my-4" data-aos="fade-up">
-                <div className="h4 my-2">
+                <div className="h4 my-2" style={{whiteSpace:'pre-wrap'}}>
                   {Parser(props.data?.description || '')}
                 </div>
               </div>
-              <div className="pt-4" data-aos="fade-up">
-                {
-                  props.data?.btnList?.map((m, index) =>
-                    <Link key={`${props.id}-btn-${index}`} to={m.btnLink} className="btn btn-dark m-2">
-                      {m.btnText}
-                    </Link>
-                  )
-                }
-              </div>
+              {
+                props.data?.btnList.length ? (
+                  <div className="pt-4" data-aos="fade-up">
+                    {
+                      props.data?.btnList?.map((m, index) =>
+                        <Link key={`${props.id}-btn-${index}`} to={m.btnLink} className="btn btn-dark m-2">
+                          {m.btnText}
+                        </Link>
+                      )
+                    }
+                  </div>
+                ) : ''
+              }
             </div>
           </Col>
         </Row>

@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { Formik, Field, FieldArray } from 'formik';
 import { Col, Form, Row, Spinner } from 'react-bootstrap';
 import { AiFillCloseCircle, AiFillDownCircle, AiFillUpCircle, AiFillPlusCircle } from 'react-icons/ai'
-import Moment from 'moment';
+import { getListItemOfComponent } from '../util/util';
 
 const UpdateComponent = props => {
   const [formData, setFormData] = useState(props.data.data)
@@ -14,20 +14,7 @@ const UpdateComponent = props => {
 
 
   const getListItem = () => {
-    switch (formData.component) {
-      case 'banner':
-        return { title: '', subTitle: '', url: '' }
-      case 'jumbotron':
-        return { btnLink: '', btnText: '' }
-      case 'news':
-        return { BtnUrl: '', description: '', title: '', url: '', BtnText: '', credit: '', date: Moment(new Date()).format('YYYY-MM-DD'), footer: '' }
-      case 'blogs':
-        return { BtnUrl: '', description: '', title: '', url: '', BtnText: '', credit: '', date: Moment(new Date()).format('YYYY-MM-DD') }
-      case 'group':
-        return { title: '', url: '' }
-      default:
-        break;
-    }
+    return getListItemOfComponent(formData.component)
   }
 
   const submitForm = (values) => {
@@ -133,6 +120,14 @@ const UpdateComponent = props => {
                   <Col sm={3} className="mb-2">
                     <Form.Label>Aspect ratio</Form.Label>
                     <Field type="text" name="imgRatio" className="form-control form-control-sm" />
+                  </Col>
+                )
+              }
+              {
+                form.values.hasOwnProperty('height') && (
+                  <Col sm={3} className="mb-2">
+                    <Form.Label>Height</Form.Label>
+                    <Field type="number" max="100" min="10" name="height" className="form-control form-control-sm"></Field>
                   </Col>
                 )
               }

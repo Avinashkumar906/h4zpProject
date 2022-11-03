@@ -1,25 +1,11 @@
 import React, { Fragment } from 'react'
 import { Col, Form, Row } from 'react-bootstrap'
-import { MOCK_BANNER, MOCK_BLOGS, MOCK_GROUP, MOCK_IFRAME, MOCK_JUMBOTRON, MOCK_NEWS } from '../mockdata/mockData'
+import { getMockdata } from '../util/util'
 
 function AddComponent({ onComponentChange }) {
-  const handleChange = (selectedComponent) => {
-    switch (selectedComponent) {
-      case 'banner':
-        return onComponentChange(MOCK_BANNER)
-      case 'jumbotron':
-        return onComponentChange(MOCK_JUMBOTRON)
-      case 'news':
-        return onComponentChange(MOCK_NEWS)
-      case 'blogs':
-        return onComponentChange(MOCK_BLOGS)
-      case 'iframe':
-        return onComponentChange(MOCK_IFRAME)
-      case 'group':
-        return onComponentChange(MOCK_GROUP)
-      default:
-        break;
-    }
+
+  const handleChange = (selectedComponent) => {    
+    return onComponentChange(getMockdata(selectedComponent));
   }
 
   return (

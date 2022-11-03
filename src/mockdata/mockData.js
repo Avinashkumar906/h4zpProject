@@ -20,6 +20,7 @@ export const MOCK_BANNER = {
   ],
   "fluid": true,
   "theme": "",
+  "height": 100,
   "order": 1,
   "component": "banner",
   "parallax": true
