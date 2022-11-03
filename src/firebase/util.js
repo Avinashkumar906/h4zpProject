@@ -1,25 +1,21 @@
 import { FIRESTORE_DB } from './firebase';
 import {
-  getDocs, updateDoc, doc, deleteDoc, collection, addDoc, getDoc
+  getDocs, updateDoc, doc, deleteDoc, collection, addDoc, setDoc
 } from 'firebase/firestore/lite';
 
+const getBlogMeta = () => ({
+  isBlog:true,
+  date: new Date()
+})
 
-export const getDocList = async (page, cb) => {
-  let docsList = collection(FIRESTORE_DB, page);
-  let res = (await getDocs(docsList))
-    .docs.map(
-      doc => ({ id: doc.id, data: doc.data() })
-    );
-  cb(res);
-}
-
-export const getDocListById = async (page, id, cb) => {
-  // let docsList = collection(FIRESTORE_DB, page);
-  let res = (await getDoc(doc(FIRESTORE_DB, page, id))).data()
-    // .docs.map(
-    //   doc => ({ id: doc.id, data: doc.data() })
-    // );
-  cb(res);
+export const addPage = async (pageID, cb) => {
+  if(pageID) {
+    await setDoc(doc(FIRESTORE_DB, 'Pages', pageID), getBlogMeta())
+    return cb(pageID);
+  } else {
+    let res = (await addDoc(collection(FIRESTORE_DB, 'Pages'), getBlogMeta()));
+    return cb(res.id);
+  }
 }
 
 export const getPageComponents = async (pageID, cb) => {
@@ -57,15 +53,5 @@ export const updateComponentOfPage = async (pageID, docId, data, cb) => {
 export const deleteComponentOfPage = async (pageID, docId, cb) => {
   let componentRef = doc(FIRESTORE_DB,'Pages', pageID, 'Components', docId)
   let res = await deleteDoc(componentRef)
-  cb(res);
-}
-
-export const updateDocToCollection = async (page, id, data, cb) => {
-  let res = await updateDoc(doc(FIRESTORE_DB, page, id), data)
-  cb(res);
-}
-
-export const deleteDocById = async (page, id, cb) => {
-  let res = await deleteDoc(doc(FIRESTORE_DB, page, id))
   cb(res);
 }

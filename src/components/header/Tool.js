@@ -1,11 +1,20 @@
 import { signInWithEmailAndPassword, signOut } from 'firebase/auth'
 import { useFormik } from 'formik'
-import React, { Fragment } from 'react'
-import { Button, Dropdown, DropdownButton, Form } from 'react-bootstrap'
+import React, { Fragment, useState } from 'react'
+import { Button, Dropdown, DropdownButton, Form, Spinner } from 'react-bootstrap'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { FIREBASE_AUTH } from '../../firebase/firebase'
+import { addPage } from '../../firebase/util'
 
 function Tool(props) {
   const {isAuth} = props;
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [dropDownState, setDropDownState] = useState(false)
+  const navigate = useNavigate();
+  const { search } = useLocation();
+
+  const handleToggle = () => setDropDownState(!dropDownState);
+  
   const formik = useFormik({
     initialValues:{
       email:'',
@@ -18,7 +27,15 @@ function Tool(props) {
     initialValues:{
       pageName:''
     },
-    onSubmit: ({pageName}) => console.log(pageName)
+    onSubmit: ({pageName}) => {
+      setFormSubmitted(true)
+      addPage(pageName, (pageID) => {
+        formik2.resetForm()
+        setFormSubmitted(false)
+        setDropDownState(false);
+        return navigate(`/${pageID}${search || ''}`)
+      })
+    }
   })
 
   const onLogout = () => {
@@ -26,7 +43,7 @@ function Tool(props) {
   }
 
   return (
-    <DropdownButton size='sm' align="end" title="ADMIN" variant="dark">
+    <DropdownButton show={dropDownState} onClick={() => handleToggle()} size='sm' align="end" title="ADMIN" variant="dark">
       {
         isAuth ? (
         <Fragment>
@@ -35,9 +52,15 @@ function Tool(props) {
               <Form.Control name='pageName' value={formik2.values.pageName} onChange={formik2.handleChange} size='sm' placeholder="Page name (optional)" />
             </Form.Group>
             <div className='text-center'>
-              <Button variant="dark" className=' w-100' size='sm' type="submit">
-                Create Page
-              </Button>
+              {
+                formSubmitted ? (
+                    <Spinner animation="border" size='sm' />
+                ):(
+                  <Button variant="dark" className=' w-100' size='sm' type="submit">
+                    Create Page
+                  </Button>
+                )
+              }
             </div>
           </Form>
           <Dropdown.Divider />

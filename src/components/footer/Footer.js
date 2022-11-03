@@ -1,11 +1,16 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { AiFillFacebook,AiOutlineInstagram,AiFillLinkedin } from 'react-icons/ai';
+import { AiFillFacebook,AiOutlineInstagram, AiFillYoutube, AiFillLinkedin, AiFillTwitterSquare } from 'react-icons/ai';
+import { Link } from "react-router-dom";
 
 
 function Footer(props) {
   const icons = [
-    {icon:<AiFillFacebook/>},{icon:<AiOutlineInstagram/>},{icon:<AiFillLinkedin/>},
+    {icon:<AiFillFacebook/>,to:"//www.facebook.com/h4zp.org"},
+    {icon:<AiOutlineInstagram/>,to:'//www.instagram.com/h4zp/'},
+    {icon:<AiFillLinkedin/>,to:'//www.linkedin.com/company/hands-4-zero-poverty/'},
+    {icon:<AiFillYoutube/>,to:'//www.youtube.com/channel/UCbuJGROMb59lf8_gDAH_YnA'},
+    {icon:<AiFillTwitterSquare/>,to:'//twitter.com/hands4zero'},
   ];
 
   return (
@@ -25,9 +30,9 @@ function Footer(props) {
           <Col className="social-icon-container">
             {
               icons.map((m,index)=>(
-                <a href="/" className="social-icon h2 text-light" key={`Icon-ID-${index}`}>
+                <Link target={'_blank'} to={m.to} className="social-icon h2 text-light" key={`Icon-ID-${index}`}>
                   {m.icon}
-                </a>
+                </Link>
               ))
             }
           </Col>

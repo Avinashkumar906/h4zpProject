@@ -17,8 +17,7 @@
     "react-parallax": "^3.5.1",
     "react-router-dom": "^6.4.2",
     "react-scripts": "3.1.1",
-    "save": "^2.9.0",
-    "scroll-js": "^3.5.2"
+    "save": "^2.9.0"
   },
   "scripts": {
     "start": "react-scripts start",

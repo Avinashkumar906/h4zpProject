@@ -13,7 +13,7 @@ export default function Page(props) {
   const [modalAction, setModalAction] = useState(null);
   const [modalState, setModalState] = useState(false);
   const { page } = useParams();
-  
+
   const handleClose = () => setModalState(false);
   
   const onDelete = (docId, collection) => {
@@ -36,6 +36,7 @@ export default function Page(props) {
   const onAddComponent = () => {
     setModalAction('ADD')
     setModalState(true);
+    setModalData(null)
   }
   
   useEffect(() => {
