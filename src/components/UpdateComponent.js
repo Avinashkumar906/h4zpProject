@@ -1,8 +1,9 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Formik, Field, FieldArray } from 'formik';
-import { Col, Form, Row, Spinner } from 'react-bootstrap';
+import { Col, Form, InputGroup, Row, Spinner } from 'react-bootstrap';
 import { AiFillCloseCircle, AiFillDownCircle, AiFillUpCircle, AiFillPlusCircle } from 'react-icons/ai'
 import { getListItemOfComponent } from '../util/util';
+import ImageUpload from './imageUploader/ImageUpload';
 
 const UpdateComponent = props => {
   const [formData, setFormData] = useState(props.data.data)
@@ -204,7 +205,12 @@ const UpdateComponent = props => {
                                   m.hasOwnProperty('url') && (
                                     <Col className="mb-2">
                                       <Form.Label>Image Url</Form.Label>
-                                      <Field name={`list[${index}].url`} className="form-control form-control-sm" />
+                                      <InputGroup size="sm">
+                                        <Field name={`list[${index}].url`} className="form-control form-control-sm" />
+                                        <InputGroup.Text>
+                                          <ImageUpload fieldname={`list[${index}].url`} />
+                                        </InputGroup.Text>
+                                      </InputGroup>
                                     </Col>
                                   )
                                 }
