@@ -7,32 +7,29 @@ import { FIREBASE_AUTH } from './firebase/firebase';
 
 function App() {
   const [navOnTop, setNavOnTop] = useState(true)
-  const [isAuth,setIsAuth] = useState(FIREBASE_AUTH.currentUser)
+  const [isAuth, setIsAuth] = useState(FIREBASE_AUTH.currentUser)
   const editable = useQuery().get("editable");
 
-  useEffect(()=>{
-    window.addEventListener('scroll', ()=> setNavOnTop(!window.pageYOffset))
+  useEffect(() => {
+    window.addEventListener('scroll', () => setNavOnTop(!window.pageYOffset))
     const unsubscribe = FIREBASE_AUTH.onAuthStateChanged(
       (user) => user ? setIsAuth(user) : setIsAuth(null)
     )
     return unsubscribe;
-  },[])
+  }, [])
 
   return (
     <Fragment>
-      <Header navOnTop={navOnTop} isAuth={isAuth} editable={editable}/>
-      {/* Routing starts */}
+      <Header navOnTop={navOnTop} isAuth={isAuth} editable={editable} />
       <div className="d-flex flex-column flex-grow-1">
         <Routes>
-          <Route path="/" element={<Navigate to="/home" />}/> 
+          <Route path="/" element={<Navigate to="/home" />} />
           {/* <Route path="/blog" element={<Blog />} /> */}
           <Route path="/:page" element={<Page isAuth={isAuth} editable={editable} />} />
-          {/* <Route path="/project" element={<Page />} />
-          <Route path="/donate" element={<Page />} /> */}
+          <Route path='*' exact={true} element={<Navigate to="/home" />} />
         </Routes>
       </div>
-      {/* Routing ends */}
-      <Footer theme={'bg-dark'}/>
+      <Footer theme={'bg-dark'} />
     </Fragment>
   );
 }
