@@ -37,12 +37,7 @@ function News(props) {
                     <Col sm={12} lg={7} className={`order-0 order-lg-${index % 2 === 0 ? 0 : 1}`}>
                       <Card.Body className="h-100">
                         <div className="d-flex flex-column h-100" style={{ justifyContent: 'space-around' }}>
-                          {
-                            m.title &&
-                            (
-                              <Card.Text className="text-center h3">{m.title}</Card.Text>
-                            )
-                          }
+                          {m.title && <Card.Text className="text-center h3">{m.title}</Card.Text>}
                           <Card.Title className="" style={{ whiteSpace: 'pre-wrap' }}>
                             {Parser(m.description || '')}
                           </Card.Title>
@@ -67,7 +62,7 @@ function News(props) {
           }
           <Col xl={12} data-aos="fade-up">
             <div className="text-end">
-              <Link to="/blogs" className="text-dark">More..</Link>
+              <Link to="/blog" className="text-dark">More..</Link>
             </div>
           </Col>
         </Row>
