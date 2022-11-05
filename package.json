@@ -19,7 +19,8 @@
     "react-router-dom": "^6.4.2",
     "react-scripts": "3.1.1",
     "save": "^2.9.0",
-    "suneditor-react": "^3.4.1"
+    "suneditor-react": "^3.4.1",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",
