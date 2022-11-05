@@ -43,7 +43,7 @@ function Group(props) {
         </Row>
         {
           props.data?.description && (
-            <Row className="text-center" >
+            <Row className="" >
               <div className="h4 my-4" >
                 {Parser(props.data?.description)}
               </div>

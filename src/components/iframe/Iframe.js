@@ -35,7 +35,7 @@ function Iframe(props) {
           {
             props.data?.description && (
               <Col sm="12" data-aos="fade-in" className="pb-5">
-                <div className="h4 text-justify" style={{ whiteSpace: 'pre-wrap' }}>
+                <div className="h4" style={{ whiteSpace: 'pre-wrap' }}>
                   {Parser(props.data?.description)}
                 </div>
               </Col>

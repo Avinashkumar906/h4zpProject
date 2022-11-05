@@ -10,19 +10,19 @@ function Jumbotron(props) {
     <Container className={`p-0 ${props.data?.theme}`} fluid>
       <Container fluid={props.data?.fluid}>
         <Row className="py-5">
-          <Col className="py-5 text-center">
+          <Col className="py-5">
             <div>
-              <div className="display-2" data-aos="fade-in">
+              <div className="display-2 text-center" data-aos="fade-in">
                 <strong>{props.data?.title}</strong>
               </div>
               <div className=" my-4" data-aos="fade-up">
-                <div className="h4 my-2" style={{whiteSpace:'pre-wrap'}}>
+                <div className="h4 my-2" style={{ whiteSpace: 'pre-wrap' }}>
                   {Parser(props.data?.description || '')}
                 </div>
               </div>
               {
                 props.data?.btnList.length ? (
-                  <div className="pt-4" data-aos="fade-up">
+                  <div className="pt-4 text-center" data-aos="fade-up">
                     {
                       props.data?.btnList?.map((m, index) =>
                         <Link key={`${props.id}-btn-${index}`} to={m.btnLink} className="btn btn-dark m-2">

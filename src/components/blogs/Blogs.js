@@ -51,7 +51,7 @@ function Blogs(props) {
                     </div>
                     {
                       m.description && (
-                        <Card.Text as="div" className="mb-3 h5 text-justify">
+                        <Card.Text as="div" className="mb-3 h5">
                           {Parser(m.description)}
                         </Card.Text>
                       )
