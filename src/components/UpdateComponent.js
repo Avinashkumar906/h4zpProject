@@ -4,7 +4,7 @@ import { Col, Form, InputGroup, Row, Spinner } from 'react-bootstrap';
 import { AiFillCloseCircle, AiFillDownCircle, AiFillUpCircle, AiFillPlusCircle } from 'react-icons/ai'
 import { getListItemOfComponent } from '../util/util';
 import ImageUpload from './imageUploader/ImageUpload';
-import Rte from './rte/Rte';
+import Rte from './editor/Rte';
 
 const UpdateComponent = props => {
   const [formData, setFormData] = useState(props.data.data)
