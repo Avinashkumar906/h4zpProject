@@ -1,9 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 import Carousel from 'react-bootstrap/Carousel';
 import { Parallax } from 'react-parallax';
 import { cloudinaryUtilFixedHnW, isTrue } from "../../util/util";
-import loader from '../../loading.gif';
 
 function Banner(props) {
   const [dimention, setDimention] = useState();
@@ -20,7 +19,9 @@ function Banner(props) {
   return (
     <Container className={`p-0 ${props.data?.theme}`} fluid >
       <Container className="p-0" fluid={isTrue(props.data.fluid)} ref={placeholder} data-aos="fade-in">
-        <div className="loader-container" style={{ backgroundImage: `url(${loader})` }} />
+        <div className="loader-container">
+          <Spinner animation="border" />
+        </div>
         <Carousel fade variant="light" indicators={props.data?.list?.length > 1} controls={props.data?.list?.length > 1}>
           {
             props.data?.list?.map((m, index) => (

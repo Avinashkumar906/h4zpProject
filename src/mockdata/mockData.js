@@ -31,21 +31,21 @@ export const MOCK_GROUP = {
   "title": "OTHER SPECIAL PROJECTS",
   "style": "rounded-circle",
   "component": "group",
-  "itemInRow":3,
+  "itemInRow": 3,
   "order": 4,
   "list": [
-      {
-        "title": "Fighting Poverty one Step at a Time",
-        "url": "https://res.cloudinary.com/ddfh2nxrt/image/upload/v1666436083/H4ZP/group/moreProject/image-asset_izixlp.jpg"
-      },
-      {
-        "title": "Fighting Poverty one Step at a Time",
-        "url": "https://res.cloudinary.com/ddfh2nxrt/image/upload/v1666436096/H4ZP/group/moreProject/DSC_1096_khblje.jpg"
-      },
-      {
-        "title": "Fighting Poverty one Step at a Time",
-        "url": "https://res.cloudinary.com/ddfh2nxrt/image/upload/v1666436109/H4ZP/group/moreProject/H4ZP_IRC_Video_Contest_cuprg7.jpg",
-      }
+    {
+      "title": "Fighting Poverty one Step at a Time",
+      "url": "https://res.cloudinary.com/ddfh2nxrt/image/upload/v1666436083/H4ZP/group/moreProject/image-asset_izixlp.jpg"
+    },
+    {
+      "title": "Fighting Poverty one Step at a Time",
+      "url": "https://res.cloudinary.com/ddfh2nxrt/image/upload/v1666436096/H4ZP/group/moreProject/DSC_1096_khblje.jpg"
+    },
+    {
+      "title": "Fighting Poverty one Step at a Time",
+      "url": "https://res.cloudinary.com/ddfh2nxrt/image/upload/v1666436109/H4ZP/group/moreProject/H4ZP_IRC_Video_Contest_cuprg7.jpg",
+    }
   ],
   "fluid": false,
   "theme": "",
@@ -80,9 +80,9 @@ export const MOCK_NEWS = {
       "footer": "If you would like to support or join us on the ground, helping communities in need, please contact us out at info@h4zp.org. We would be delighted to get your help.",
       "BtnText": "BLANKET & FOOD DISTRIBUTION",
       "BtnUrl": "/",
-      "title":'Title',
+      "title": 'Title',
       "date": Moment(new Date()).format('YYYY-MM-DD'),
-      "credit":''
+      "credit": ''
     },
     {
       "reference": "",
@@ -91,9 +91,9 @@ export const MOCK_NEWS = {
       "url": "https://res.cloudinary.com/ddfh2nxrt/image/upload/v1666336289/H4ZP/news/initial/Hands_4_Zero_Poverty_7C_Food_Distribution_u8imb2.jpg",
       "description": "Poverty can lead to household food insecurity, inadequate care, and lack of proper health. Malnutrition is a contributor to poverty. Malnutrition impedes the ability for people to perform simple tasks. It weakens their body, their immune system. Thanks to our supporters, Hands 4 Zero Poverty continues to support food distributions across communities in need. Click on the link below to view H4ZP's latest food distribution and learn what medical professionals shared with us regarding consequences associated with malnutrition.",
       "BtnUrl": "/",
-      "title":'Title',
+      "title": 'Title',
       "date": Moment(new Date()).format('YYYY-MM-DD'),
-      "credit":''
+      "credit": ''
     },
     {
       "BtnUrl": "#",
@@ -102,9 +102,9 @@ export const MOCK_NEWS = {
       "footer": "If you would like to support a Medical Camp, contact us at info@h4zp.org.",
       "reference": "",
       "BtnText": "MEDICAL CAMP",
-      "title":'Title',
+      "title": 'Title',
       "date": Moment(new Date()).format('YYYY-MM-DD'),
-      "credit":''
+      "credit": ''
     },
     {
       "url": "https://res.cloudinary.com/ddfh2nxrt/image/upload/v1666336312/H4ZP/news/initial/Hands_4_Zero_Poverty_7C_H4ZP_7C_Scholarship_myd5mf.jpg",
@@ -113,9 +113,9 @@ export const MOCK_NEWS = {
       "description": "Thanks to your support, Hands 4 Zero Poverty had to privilege to provide the means to welcome a child back to school after one year. Due to financial distress, Sneha’s family had no choice but to pull her out of school. Sneha is now back in school, where she belongs. \n We can make a positive change in people's lives. If you are interested in sponsoring a child's education, contact us at info@h4zp.org. The estimated cost for a child's education is $25-30 per month. We pledge one-hundred percent of your contributions go towards the child's education.We invite you to read the blog written by Mikaela Cauble describing Sneha's story. We hope to continue sharing stories as such.",
       "reference": "",
       "BtnUrl": "#",
-      "title":'Title',
+      "title": 'Title',
       "date": Moment(new Date()).format('YYYY-MM-DD'),
-      "credit":''
+      "credit": ''
     }
   ],
   "component": "news",
@@ -125,7 +125,7 @@ export const MOCK_NEWS = {
   "theme": "",
 }
 
-export const MOCK_BLOGS ={
+export const MOCK_BLOGS = {
   "list": [
     {
       "BtnUrl": "#",
@@ -135,7 +135,7 @@ export const MOCK_BLOGS ={
       "url": "https://res.cloudinary.com/ddfh2nxrt/image/upload/v1666334204/H4ZP/blogs/oct-2022/IMG_2816-2_28R_29_ybs592.jpg",
       "BtnText": "Read more",
       "date": Moment(new Date()).format('YYYY-MM-DD'),
-      "credit":''
+      "credit": ''
     },
     {
       "description": "One hundred and thirty-four people attended the camp…",
@@ -144,7 +144,7 @@ export const MOCK_BLOGS ={
       "BtnText": "Read more",
       "reference": "",
       "date": Moment(new Date()).format('YYYY-MM-DD'),
-      "credit":'',
+      "credit": '',
       "title": "Learn about our recent medical camp, completed as part of our fall 2022 projects. "
     }
   ],
@@ -163,5 +163,7 @@ export const MOCK_IFRAME = {
   "mute": true,
   "url": "//www.youtube.com/embed/xPFlY6fY2c0?wmode=opaque&enablejsapi=1",
   "autoplay": false,
-  "fluid": false
+  "fluid": false,
+  "title": 'Some title about video',
+  "description": 'Some description about video'
 }

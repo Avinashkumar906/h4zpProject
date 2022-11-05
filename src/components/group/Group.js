@@ -1,15 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { cloudinaryUtilARWidth } from "../../util/util";
-// imgRatio
+import Parser from 'html-react-parser';
+
 function Group(props) {
   const [dimention, setDimention] = useState();
   const placeholder = useRef(null);
 
   useEffect(() => {
-    if(placeholder.current?.clientWidth || placeholder.current?.clientHeight){
+    if (placeholder.current?.clientWidth || placeholder.current?.clientHeight) {
       setDimention(
-        {height:placeholder.current.clientHeight,width:placeholder.current.clientWidth}
+        { height: placeholder.current.clientHeight, width: placeholder.current.clientWidth }
       )
     }
   }, [])
@@ -27,9 +28,9 @@ function Group(props) {
               </Col>
             )
           }
-          {props.data?.list?.map((m,index) => (
-            <Col  data-aos="fade-up" ref={placeholder} key={`Group-ID-${index}`} md={12/props.data.itemInRow}  className="text-center p-2">
-              <img alt="" className={`w-100 mb-2 ${props.data?.style}`} src={dimention && cloudinaryUtilARWidth({url:m.url, ...dimention, ar :props.data?.imgRatio})}/>
+          {props.data?.list?.map((m, index) => (
+            <Col data-aos="fade-up" ref={placeholder} key={`Group-ID-${index}`} md={12 / props.data.itemInRow} className="text-center p-2">
+              <img alt="" className={`w-100 mb-2 ${props.data?.style}`} src={dimention && cloudinaryUtilARWidth({ url: m.url, ...dimention, ar: props.data?.imgRatio })} />
               {
                 m.title && (
                   <div className={`text-center h5`}>
@@ -37,19 +38,18 @@ function Group(props) {
                   </div>
                 )
               }
-            </Col> 
+            </Col>
           ))}
         </Row>
-        <Row className="text-center" >
-            <div className="h4 my-4" >
-              {
-                props.data?.description.split('\n')
-                  .map((m,index)=>
-                    <div key={`${props.id}-${index}`} className="mb-2" data-aos="fade-up">{m}</div>
-                  )
-              }
-            </div>
-        </Row>
+        {
+          props.data?.description && (
+            <Row className="text-center" >
+              <div className="h4 my-4" >
+                {Parser(props.data?.description)}
+              </div>
+            </Row>
+          )
+        }
       </Container>
     </Container>
   )

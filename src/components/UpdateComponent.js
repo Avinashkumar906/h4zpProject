@@ -4,6 +4,7 @@ import { Col, Form, InputGroup, Row, Spinner } from 'react-bootstrap';
 import { AiFillCloseCircle, AiFillDownCircle, AiFillUpCircle, AiFillPlusCircle } from 'react-icons/ai'
 import { getListItemOfComponent } from '../util/util';
 import ImageUpload from './imageUploader/ImageUpload';
+import Rte from './rte/Rte';
 
 const UpdateComponent = props => {
   const [formData, setFormData] = useState(props.data.data)
@@ -162,7 +163,7 @@ const UpdateComponent = props => {
                 form.values.hasOwnProperty('description') && (
                   <Col sm={12} className="mb-2">
                     <Form.Label>Description</Form.Label>
-                    <Field as="textarea" name="description" className="form-control form-control-sm" />
+                    <Rte fieldname="description" value={form.values.description}></Rte>
                   </Col>
                 )
               }
@@ -260,7 +261,8 @@ const UpdateComponent = props => {
                                   m.hasOwnProperty('description') && (
                                     <Col sm={12} className="mb-2">
                                       <Form.Label>Description</Form.Label>
-                                      <Field as="textarea" name={`list[${index}].description`} className="form-control form-control-sm" />
+                                      <Rte fieldname={`list[${index}].description`} value={form.values.list[index].description}></Rte>
+                                      {/* <Field as="textarea" name={`list[${index}].description`} className="form-control form-control-sm" /> */}
                                     </Col>
                                   )
                                 }
@@ -289,7 +291,7 @@ const UpdateComponent = props => {
                         {
                           form.values.btnList.length > 0 ? (
                             form.values.btnList.map((m, index) => (
-                              <Row data-aos="fade-in" key={`btnList-update-${index}`} className="my-3 pt-2 bg-light m-0" style={{ position: 'relative' }}>
+                              <Row key={`btnList-update-${index}`} className="my-3 pt-2 bg-light m-0" style={{ position: 'relative' }}>
                                 <div className='list-close h4' >
                                   <AiFillPlusCircle onClick={() => insert(index, getListItem())} />
                                   <AiFillUpCircle onClick={() => swap(index, index - 1)} className={index === 0 && 'd-none'} />
