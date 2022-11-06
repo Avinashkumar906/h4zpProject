@@ -1,6 +1,6 @@
 import { FIRESTORE_DB } from './firebase';
 import {
-  getDocs, updateDoc, doc, deleteDoc, collection, addDoc, setDoc
+  getDocs, updateDoc, doc, deleteDoc, collection, addDoc, setDoc, getDoc
 } from 'firebase/firestore/lite';
 
 export const addPage = async (values, cb) => {
@@ -15,16 +15,17 @@ export const addPage = async (values, cb) => {
 }
 
 export const getPageComponents = async (pageID, cb) => {
-  let docsList = collection(FIRESTORE_DB, 'Pages', pageID, 'Components');
-  try {
-    let res = (await getDocs(docsList))
+  let componentListRef = collection(FIRESTORE_DB, 'Pages', pageID, 'Components');
+  let pageRef = doc(FIRESTORE_DB, 'Pages', pageID,)
+  let page = await (await getDoc(pageRef))
+  if (page.exists()) {
+    let res = (await getDocs(componentListRef))
       .docs.map(
         doc => ({ id: doc.id, data: doc.data() })
       );
-    cb(res);
-  } catch (error) {
-    console.log(error)
-    cb([])
+    cb(res)
+  } else {
+    cb(null)
   }
 }
 
