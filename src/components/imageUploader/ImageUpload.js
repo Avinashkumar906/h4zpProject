@@ -24,7 +24,7 @@ function ImageUpload({ fieldname }) {
         method: 'POST',
         body: formData
       }).then(r => r.json());
-      setFieldValue(fieldname, data.url);
+      setFieldValue(fieldname, data.secure_url);
       setSubmitted(false);
     }
   }

@@ -57,7 +57,7 @@ body {
 }
 
 .nav-not-on-top {
-  /* background: brown!important; */
+  padding: 0;
   height: 56px !important;
   transition: all .5s;
 }
