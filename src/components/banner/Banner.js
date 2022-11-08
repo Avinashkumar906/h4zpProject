@@ -17,8 +17,8 @@ function Banner(props) {
   }, [])
 
   return (
-    <Container className={`p-0 ${props.data?.theme}`} fluid >
-      <Container className="p-0" fluid={isTrue(props.data.fluid)} ref={placeholder} data-aos="fade-in">
+    <Container className={`p-0 ${props.data?.theme || ''}`} fluid >
+      <Container className="p-0" fluid={isTrue(props.data?.fluid)} ref={placeholder} data-aos="fade-in">
         <div className="loader-container">
           <Spinner animation="border" />
         </div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { cloudinaryUtilARWidth } from "../../util/util";
+import { cloudinaryUtilARWidth, isTrue } from "../../util/util";
 import Parser from 'html-react-parser';
 
 function Group(props) {
@@ -16,8 +16,8 @@ function Group(props) {
   }, [])
 
   return (
-    <Container className={`p-0 ${props.data?.theme}`} fluid >
-      <Container className="py-5 overflow-hidden" fluid={props.data?.fluid}>
+    <Container className={`p-0 ${props.data?.theme || ''}`} fluid >
+      <Container className="py-5 overflow-hidden" fluid={isTrue(props.data.fluid)}>
         <Row className="justify-content-center pb-3">
           {
             props.data?.title && (

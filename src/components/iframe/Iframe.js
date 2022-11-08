@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Parser from 'html-react-parser';
+import { isTrue } from "../../util/util";
 
 function Iframe(props) {
   const [iframe, setIframe] = useState();
@@ -16,8 +17,8 @@ function Iframe(props) {
   }, [autoplay, mute, src])
 
   return (
-    <Container className={`p-0 ${props.data?.theme}`} fluid data-aos="fade-up">
-      <Container fluid={props.data?.fluid}>
+    <Container className={`p-0 ${props.data?.theme || ''}`} fluid data-aos="fade-up">
+      <Container fluid={isTrue(props.data.fluid)}>
         <Row >
           {
             props.data?.title && (

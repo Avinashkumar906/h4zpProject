@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { cloudinaryUtilARWidth } from "../../util/util";
+import { cloudinaryUtilARWidth, isTrue } from "../../util/util";
 import Parser from 'html-react-parser';
 
 function Blogs(props) {
@@ -19,8 +19,8 @@ function Blogs(props) {
   // console.log(props.data)
 
   return (
-    <Container className={`p-0 ${props.data?.theme}`} fluid >
-      <Container className="py-5" fluid={props.data?.fluid}>
+    <Container className={`p-0 ${props.data?.theme || ''}`} fluid >
+      <Container className="py-5" fluid={isTrue(props.data.fluid)}>
         <Row>
           {
             props.data?.title && (

@@ -1,12 +1,27 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-    sans-serif;
+  font-family: 'Raleway', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+.btn {
+  border-radius: 3px;
+}
+
+.nav-item.dropdown .dropdown-menu {
+  border-radius: 3px;
+  padding: .125rem 0;
+}
+
+.nav-item.dropdown .dropdown-menu a {
+  padding: 0.25rem 0.5rem;
+  border-bottom: 1px solid var(--bs-dropdown-divider-bg);
+}
+
+.nav-item.dropdown .dropdown-menu a:last-child {
+  border-bottom: none;
+}
 
 #root {
   overflow-x: hidden;

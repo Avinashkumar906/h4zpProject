@@ -4,11 +4,12 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Parser from 'html-react-parser';
 import { Link } from "react-router-dom";
+import { isTrue } from "../../util/util";
 
 function Jumbotron(props) {
   return (
-    <Container className={`p-0 ${props.data?.theme}`} fluid>
-      <Container fluid={props.data?.fluid}>
+    <Container className={`p-0 ${props.data?.theme || ''}`} fluid>
+      <Container fluid={isTrue(props.data.fluid)}>
         <Row className="py-5">
           <Col className="py-5">
             <div>

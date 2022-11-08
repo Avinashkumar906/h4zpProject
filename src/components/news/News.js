@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
-import { optimizeData } from "../../util/util";
+import { isTrue, optimizeData } from "../../util/util";
 import Parser from 'html-react-parser';
 import { Link } from "react-router-dom";
 
@@ -17,8 +17,8 @@ function News(props) {
   }, [])
 
   return (
-    <Container className={`p-0 ${props.data?.theme}`} fluid >
-      <Container className="py-5" fluid={props.data?.fluid}>
+    <Container className={`p-0 ${props.data?.theme || ''}`} fluid >
+      <Container className="py-5" fluid={isTrue(props.data.fluid)}>
         <Row>
           <Col xl={12} data-aos="fade-in">
             <div className="text-center display-2 pb-4">
