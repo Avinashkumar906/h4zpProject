@@ -6,6 +6,7 @@ import { deleteComponentOfPage, getPageComponents } from "../firebase/util";
 import { CModal } from "../components/modal/Modal";
 import { ListGroup } from "react-bootstrap";
 import NotFound from "./NotFound";
+// import { scrollTo } from 'scroll-js';
 
 export default function Page(props) {
   const { isAuth, editable } = props;
@@ -41,6 +42,7 @@ export default function Page(props) {
   }
 
   useEffect(() => {
+    // scrollTo(window, { top: 0 })
     onFetch(page);
   }, [page]);
 

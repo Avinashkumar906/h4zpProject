@@ -16,9 +16,12 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.6.0",
     "react-parallax": "^3.5.1",
+    "react-responsive-masonry": "^2.1.6",
     "react-router-dom": "^6.4.2",
     "react-scripts": "3.1.1",
+    "react-spring-lightbox": "^1.7.1",
     "save": "^2.9.0",
+    "scroll-js": "^3.5.2",
     "suneditor-react": "^3.4.1",
     "yup": "^0.32.11"
   },

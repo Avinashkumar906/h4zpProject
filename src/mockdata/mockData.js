@@ -33,6 +33,7 @@ export const MOCK_GROUP = {
   "component": "group",
   "itemInRow": 3,
   "order": 4,
+  "clickable": false,
   "list": [
     {
       "title": "Fighting Poverty one Step at a Time",

@@ -2,9 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { cloudinaryUtilARWidth, isTrue } from "../../util/util";
 import Parser from 'html-react-parser';
+import LightBox from "../lightbox/LightBox";
 
 function Group(props) {
   const [dimention, setDimention] = useState();
+  const [lightBoxState, setLightBoxState] = useState({ show: false, activeIndex: 0 });
   const placeholder = useRef(null);
 
   useEffect(() => {
@@ -14,6 +16,10 @@ function Group(props) {
       )
     }
   }, [])
+
+  const toggleLightBox = (visible, index) => {
+    setLightBoxState({ show: visible || !lightBoxState.show, activeIndex: index || 0 });
+  }
 
   return (
     <Container className={`p-0 ${props.data?.theme || ''}`} fluid >
@@ -30,7 +36,7 @@ function Group(props) {
           }
           {props.data?.list?.map((m, index) => (
             <Col data-aos="fade-up" ref={placeholder} key={`Group-ID-${index}`} md={12 / props.data.itemInRow} className="text-center p-2">
-              <img alt="" className={`w-100 mb-2 ${props.data?.style}`} src={dimention && cloudinaryUtilARWidth({ url: m.url, ...dimention, ar: props.data?.imgRatio })} />
+              <img onClick={() => isTrue(props.data.clickable) && toggleLightBox(null, index)} style={{ cursor: `${isTrue(props.data.clickable) && 'pointer'}` }} alt="" className={`w-100 mb-2 ${props.data?.style}`} src={dimention && cloudinaryUtilARWidth({ url: m.url, ...dimention, ar: props.data?.imgRatio })} />
               {
                 m.title && (
                   <div className={`text-center h5`}>
@@ -49,6 +55,9 @@ function Group(props) {
               </div>
             </Row>
           )
+        }
+        {
+          lightBoxState.show && <LightBox lightBoxState={lightBoxState} toggleLightBox={toggleLightBox} data={props.data.list} />
         }
       </Container>
     </Container>

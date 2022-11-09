@@ -56,6 +56,17 @@ const UpdateComponent = props => {
                 )
               }
               {
+                form.values.hasOwnProperty('clickable') && (
+                  <Col sm={3} className="mb-2">
+                    <Form.Label>Clickable Images</Form.Label>
+                    <Field as="select" name="clickable" className="form-select form-select-sm">
+                      <option value={true}>On</option>
+                      <option value={false}>Off</option>
+                    </Field>
+                  </Col>
+                )
+              }
+              {
                 form.values.hasOwnProperty('mute') && (
                   <Col sm={3} className="mb-2">
                     <Form.Label>Mute video</Form.Label>

@@ -60,9 +60,6 @@ function Header(props) {
                           m.children.map((mc, index) => (
                             <Fragment key={`Nav-Drop-link-ID-${index}`}>
                               <NavDropdown.Item as={NavLink} to={mc.link}>{mc.label}</NavDropdown.Item>
-                              {/* {
-                                m.children.length - 1 !== index && <NavDropdown.Divider />
-                              } */}
                             </Fragment>
                           ))
                         }

@@ -11,8 +11,8 @@ function Iframe(props) {
 
   useEffect(() => {
     let suffix = src.indexOf('?') === -1 ? '?' : '';
-    if (autoplay) suffix += `&autoplay=1`;
-    if (mute) suffix += `&mute=1`;
+    if (isTrue(autoplay)) suffix += `&autoplay=1`;
+    if (isTrue(mute)) suffix += `&mute=1`;
     setIframe(src + suffix);
   }, [autoplay, mute, src])
 
