@@ -42,11 +42,11 @@ function Blogs(props) {
                         <Card.Body className="rounded h-100">
                           {
                             m.title && (
-                              <Card.Title className="text-justify">
+                              <Card.Title className="text-center">
                                 <div className="h3 mb-2">
                                   <span>{m.title}</span>
                                 </div>
-                                <div className="border-bottom-2 w-50 ms-auto" ></div>
+
                               </Card.Title>
                             )
                           }
@@ -69,6 +69,7 @@ function Blogs(props) {
                             </span>
                           </Card.Text>
                         </Card.Body>
+                        {/* <div className="border-bottom-2 w-100 ms-auto" ></div> */}
                       </Card>
                     </Col>
                   ))
