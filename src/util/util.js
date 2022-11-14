@@ -38,6 +38,12 @@ export const isTrue = (val) => {
   return (val === 'true' || val === true)
 }
 
+export const isExternalLink = (url) => {
+  const tmp = document.createElement('a');
+  tmp.href = url;
+  return tmp.host !== window.location.host;
+};
+
 export const getMockdata = (component) => {
   switch (component) {
     case 'banner':

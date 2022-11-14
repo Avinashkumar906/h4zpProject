@@ -6,6 +6,7 @@ import { FIREBASE_AUTH } from '../../firebase/firebase'
 import { addPage } from '../../firebase/util'
 import CreatePageForm from './CreatePageForm'
 import LoginForm from './LoginForm'
+import { FaTools } from 'react-icons/fa'
 
 
 
@@ -35,7 +36,7 @@ function Tool(props) {
   }
 
   return (
-    <DropdownButton ref={dropDownRef} size='sm' align="end" title="ADMIN" variant="dark">
+    <DropdownButton id="no-caret" ref={dropDownRef} align="end" title={<FaTools />} variant="light" size='sm'>
       {
         isAuth ? (
           <CreatePageForm handlePageCreate={handlePageCreate} onLogout={onLogout} formSubmitted={formSubmitted} />

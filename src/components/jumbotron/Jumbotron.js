@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Parser from 'html-react-parser';
 import { Link } from "react-router-dom";
-import { isTrue } from "../../util/util";
+import { isTrue, isExternalLink } from "../../util/util";
 
 function Jumbotron(props) {
   return (
@@ -26,7 +26,7 @@ function Jumbotron(props) {
                   <div className="pt-4 text-center" data-aos="fade-up">
                     {
                       props.data?.btnList?.map((m, index) =>
-                        <Link key={`${props.id}-btn-${index}`} to={m.btnLink} className="btn btn-dark m-2">
+                        <Link key={`${props.id}-btn-${index}`} to={m.btnLink} target={isExternalLink(m.btnLink) ? '_blank' : '_self'} className="btn btn-dark m-2">
                           {m.btnText}
                         </Link>
                       )
@@ -38,7 +38,7 @@ function Jumbotron(props) {
           </Col>
         </Row>
       </Container>
-    </Container>
+    </Container >
   )
 }
 

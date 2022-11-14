@@ -5,6 +5,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+#no-caret::after {
+  display: none !important;
+}
+
 .btn {
   border-radius: 3px;
 }
