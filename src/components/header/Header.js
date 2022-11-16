@@ -20,7 +20,7 @@ const navLinks = [
       { label: 'CARE CENTER', link: '/care-support' },
     ]
   },
-  { label: 'BLOG', link: '/blog' },
+  { label: 'ACTIVITY', link: '/blog' },
   { label: 'ABOUT', link: '/about' },
   { label: 'DONATE', link: '/donate', type: '' },
 ]
