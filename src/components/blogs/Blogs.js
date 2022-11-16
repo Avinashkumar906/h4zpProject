@@ -79,7 +79,7 @@ function Blogs(props) {
           }
           <Col xl={12}>
             <div className="text-end">
-              <Link to="/blogs" className="text-dark">More..</Link>
+              <Link to="/blog" className="text-dark">More..</Link>
             </div>
           </Col>
         </Row>

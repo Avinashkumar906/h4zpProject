@@ -34,6 +34,10 @@ export const optimizeData = (data) => {
   }
 }
 
+export const getFormatedDate = (date, format) => {
+  return Moment(new Date(date)).format(format)
+}
+
 export const isTrue = (val) => {
   return (val === 'true' || val === true)
 }

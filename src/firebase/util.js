@@ -1,7 +1,19 @@
 import { FIRESTORE_DB } from './firebase';
 import {
-  getDocs, updateDoc, doc, deleteDoc, collection, addDoc, setDoc, getDoc
+  getDocs, updateDoc, doc, deleteDoc, collection, addDoc, setDoc, getDoc, query, where
 } from 'firebase/firestore/lite';
+
+export const getBlogList = async (cb) => {
+  const componentListRef = query(
+    collection(FIRESTORE_DB, 'Pages'),
+    where("isBlog", "==", true)
+  );
+  const res = (await getDocs(componentListRef))
+    .docs.map(
+      doc => ({ id: doc.id, data: doc.data() })
+    );
+  cb(res)
+}
 
 export const addPage = async (values, cb) => {
   const { pageName: pageID, meta } = values;

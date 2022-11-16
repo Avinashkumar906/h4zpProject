@@ -32,7 +32,6 @@ function News(props) {
                   <Row>
                     <Col sm={12} lg={5} className={`order-0 order-lg-${index % 2 === 0 ? 1 : 0}`}>
                       <Card.Img variant="right" alt="" className="react-parallax-bgimage" src={optimizeData({ url: m.url })} />
-                      {/* <img alt="" className="w-100" src={m.url}/> */}
                     </Col>
                     <Col sm={12} lg={7} className={`order-0 order-lg-${index % 2 === 0 ? 0 : 1}`}>
                       <Card.Body className="h-100">
