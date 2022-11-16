@@ -15,7 +15,7 @@ function App() {
     const unsubscribe = FIREBASE_AUTH.onAuthStateChanged(
       (user) => user ? setIsAuth(user) : setIsAuth(null)
     )
-    return unsubscribe;
+    return () => unsubscribe();
   }, [])
 
   return (

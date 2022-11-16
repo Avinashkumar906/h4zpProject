@@ -1,6 +1,10 @@
 export const rteConfig = {
   mode: "classic",
+  resizeEnable: true,
+  resizingBar: true,
   defaultTag: 'div',
+  imageFileInput: false,
+  videoFileInput: false,
   charCounter: true,
   fontSizeUnit: 'rem',
   fontSize: [.25, .5, .75, 1, 1.25, 1.5, 1.75, 2, 2.5, 3, 3.5, 4, 5],
@@ -13,7 +17,7 @@ export const rteConfig = {
     ['removeFormat'],
     ['outdent', 'indent'],
     ['align', 'horizontalRule', 'list', 'lineHeight'],
-    ['table', 'link', /**'image', 'video', 'audio'  ,'math' */], // You must add the 'katex' library at options to use the 'math' plugin.
+    ['table', 'link', 'image', 'video', /**'audio'  ,'math' */], // You must add the 'katex' library at options to use the 'math' plugin.
     /** ['imageGallery'] */ // You must add the "imageGalleryUrl".
     ['showBlocks', 'codeView'],
     ['preview', 'print', 'fullScreen'],

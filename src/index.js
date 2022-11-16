@@ -1,6 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'aos/dist/aos.css';
+import 'suneditor/dist/css/suneditor.min.css';
 import AOS from 'aos/dist/aos.js';
 import './index.css';
 import App from './App';
