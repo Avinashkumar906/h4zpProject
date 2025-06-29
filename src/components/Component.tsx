@@ -1,4 +1,3 @@
-import React from "react";
 import Banner from "./banner/Banner";
 import Group from "./group/Group";
 import Jumbotron from "./jumbotron/Jumbotron";
