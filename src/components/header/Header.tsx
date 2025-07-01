@@ -1,7 +1,7 @@
 import { Nav, Offcanvas } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-// import logoSrc from '../../logo.svg'
+import logoSrc from '../../logo.svg'
 import { NavLink, useLocation } from 'react-router-dom';
 import Tool from './Tool';
 
@@ -29,11 +29,11 @@ function Header(props: any) {
         fixed="top"
         className={props.navOnTop ? 'nav-on-top' : 'nav-not-on-top'}
       >
-        <Container className="h-100" fluid="xl">
+        <Container className="h-100" fluid="xxl">
           <Navbar.Brand className="h-100">
             <NavLink className="d-flex align-items-center nav-link h-100" to="/home">
-              {/* <img alt="logo" src={logoSrc} style={{ height: '90%' }} className="d-inline-block align-top rounded-circle pe-2" /> */}
-              <span>H4ZP</span>
+              <img alt="logo" src={logoSrc} style={{ height: '90%' }} className="d-inline-block align-top rounded-circle pe-2" />
+              {/* <span>H4ZP</span> */}
             </NavLink>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-md`} />

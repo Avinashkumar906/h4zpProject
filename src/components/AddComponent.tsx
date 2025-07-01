@@ -1,17 +1,7 @@
 import { Fragment } from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
 import { getMockdata } from '../util/mockData.util';
-
-export const componentOptions = [
-  { label: 'Please select a component', value: '' },
-  { label: 'Carousel/Banner', value: 'banner' },
-  { label: 'YouTube Video', value: 'iframe' },
-  { label: 'Jumbotron', value: 'jumbotron' },
-  // { label: "Text with Image", value: "jumbotron" },
-  { label: 'Card Group', value: 'group' },
-  { label: 'Blogs', value: 'blogs' },
-  { label: 'News', value: 'news' },
-];
+import { componentOptions } from '../util';
 
 function AddComponent({ onComponentChange }: { onComponentChange: any }) {
   const handleChange = (selectedComponent) => {

@@ -10,14 +10,13 @@ type componentPropType = {
 function Jumbotron({ data, id }: componentPropType) {
   return (
     <Container
-      className="p-4"
+      className="p-8"
       style={{
         backgroundColor: `${data?.theme || ''}`,
-        height: `${data?.height ? data.height + 'vh' : '100%'}`,
       }}
       fluid
     >
-      <Container className="h-100" fluid={smartParse(data.fluid)}>
+      <Container fluid={smartParse(data.fluid)}>
         <Design1 data={data} id={id} />
       </Container>
     </Container>

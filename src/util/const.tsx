@@ -22,3 +22,14 @@ export const widthOptions = [
   { label: 'Full until xl screen', value: 'xl' },
   { label: 'Full until xxl screen', value: 'xxl' },
 ];
+
+export const componentOptions = [
+  { label: 'Please select a component', value: '' },
+  { label: 'Banner', value: 'banner' },
+  { label: 'YouTube Video', value: 'iframe' },
+  { label: 'Jumbotron', value: 'jumbotron' },
+  // { label: "Text with Image", value: "jumbotron" },
+  { label: 'Card Group', value: 'group' },
+  { label: 'Blogs', value: 'blogs' },
+  { label: 'News', value: 'news' },
+];
