@@ -18,8 +18,8 @@ function ImageUpload({ fieldname }: any) {
       setSubmitted(true);
       const formData = new FormData();
       formData.append('file', file);
-      formData.append('upload_preset', process.env.CLOUDINARY_UPLOAD_PRESET);
-      const data = await fetch(process.env.CLOUDINARY_UPLOAD_URL, {
+      formData.append('upload_preset', process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET);
+      const data = await fetch(process.env.REACT_APP_CLOUDINARY_UPLOAD_URL, {
         method: 'POST',
         body: formData,
       }).then((r) => r.json());
