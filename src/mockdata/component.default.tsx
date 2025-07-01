@@ -1,18 +1,10 @@
 import * as Moment from 'moment';
 
 export const MOCK_BANNER = {
-  list: [
-    {
-      url: 'https://res.cloudinary.com/ddfh2nxrt/image/upload/v1666330087/H4ZP/banner/WEB_28latest_29_dyhbkq.jpg',
-      title: 'Fighting Poverty one Step at a Time',
-      subTitle: 'HANDS 4 ZERO POVERTY',
-    },
-    {
-      subTitle: 'HANDS 4 ZERO POVERTY',
-      url: 'https://res.cloudinary.com/ddfh2nxrt/image/upload/v1666330174/H4ZP/banner/Contact-_28R_29_ie4ecj.jpg',
-      title: 'Fighting Poverty one Step at a Time',
-    },
-  ],
+  //     url: 'https://res.cloudinary.com/ddfh2nxrt/image/upload/v1670224137/dumpdata/em5i0ryece0hnzgk0g2j.png',
+  //     url: 'https://res.cloudinary.com/ddfh2nxrt/image/upload/v1666330174/H4ZP/banner/Contact-_28R_29_ie4ecj.jpg',
+  url: 'https://res.cloudinary.com/ddfh2nxrt/image/upload/v1670224137/dumpdata/em5i0ryece0hnzgk0g2j.png',
+  description: 'HANDS 4 ZERO POVERTY',
   fluid: true,
   theme: '',
   order: 1,
@@ -64,7 +56,6 @@ export const MOCK_JUMBOTRON = {
   fluid: false,
   theme: '',
   component: 'jumbotron',
-  height: 100,
   title: 'We are back!',
   description:
     'Supporting medical camps, food and shoe distributions, medical and school supplies, and much more. Help us expand our reach by donating today using Fundly or the H4ZP website.',
@@ -124,9 +115,9 @@ export const MOCK_IFRAME = {
   theme: 'bg-light',
   order: 5,
   mute: true,
-  url: '//www.youtube.com/embed/xPFlY6fY2c0?wmode=opaque&enablejsapi=1',
   autoplay: false,
   fluid: false,
   title: 'Some title about video',
+  url: '//www.youtube.com/embed/xPFlY6fY2c0?wmode=opaque&enablejsapi=1',
   description: 'Some description about video',
 };

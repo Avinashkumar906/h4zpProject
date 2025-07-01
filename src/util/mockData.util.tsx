@@ -11,6 +11,9 @@ import * as Moment from 'moment';
 
 export type JumbotronType = typeof MOCK_JUMBOTRON;
 export type ButtonList = typeof MOCK_BUTTON_LIST;
+export type BannerType = typeof MOCK_BANNER;
+export type IframeType = typeof MOCK_IFRAME;
+// export type BannerType = typeof MOCK_BANNER;
 
 export const cloudinaryUtilFixedHnW = (data) => {
   // h_200,w_400,c_fill,g_face,f_auto,ar_4:3
@@ -76,7 +79,7 @@ export const isExternalLink = (url) => {
   return tmp.host !== window.location.host;
 };
 
-export const getMockdata = (component, patchvalue?) => {
+export const getMockdata = (component, valueToPatch?) => {
   let mock;
   switch (component) {
     case 'banner':
@@ -103,8 +106,8 @@ export const getMockdata = (component, patchvalue?) => {
   // Deep clone to avoid mutating the original mock
   const clonedMock = JSON.parse(JSON.stringify(mock));
 
-  if (patchvalue && typeof patchvalue === 'object') {
-    return patchObject(clonedMock, patchvalue);
+  if (valueToPatch && typeof valueToPatch === 'object') {
+    return serializeObject(clonedMock, valueToPatch);
   }
   return clonedMock;
 };
@@ -143,20 +146,25 @@ export const getListItemOfComponent = (component) => {
   }
 };
 
-export const patchObject = (schema, target) => {
+export const serializeObject = (schema, target) => {
   if (Array.isArray(schema)) {
-    return (target || []).map((item) => patchObject(schema[0], item));
+    // If schema is an array, target should be an array:
+    return Array.isArray(target)
+      ? target.map((item) => serializeObject(schema[0], item))
+      : [];
   }
 
   if (schema && typeof schema === 'object') {
-    const merged = { ...schema, ...target };
+    const merged = {};
 
     Object.keys(schema).forEach((key) => {
       const schemaValue = schema[key];
       const targetValue = target?.[key];
 
       if (schemaValue && typeof schemaValue === 'object') {
-        merged[key] = patchObject(schemaValue, targetValue);
+        merged[key] = serializeObject(schemaValue, targetValue);
+      } else {
+        merged[key] = targetValue !== undefined ? targetValue : schemaValue;
       }
     });
 

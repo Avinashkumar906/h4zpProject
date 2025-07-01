@@ -1,8 +1,9 @@
 import { Fragment, useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { addComponentToPage, updateComponentOfPage } from '../../firebase/util';
-import AddComponent, { componentOptions } from '../AddComponent';
+import AddComponent from '../AddComponent';
 import UpdateComponent from '../UpdateComponent';
+import { componentOptions } from '../../util';
 
 export const CModal = (props: any) => {
   const { pageID, action } = props;

@@ -1,14 +1,20 @@
 import { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import Parser from 'html-react-parser';
-import { isTrue, smartParse } from '../../util/mockData.util';
+import { IframeType, isTrue, smartParse } from '../../util/mockData.util';
+import { safeParseHtml } from '../editor/rte.util';
+type componentPropType = {
+  data: IframeType | undefined;
+  id: string;
+};
 
-function Iframe(props: any) {
+function Iframe({data,id}: componentPropType) {
+  console.log(data)
   const [iframe, setIframe] = useState<any>();
-  const [src] = useState(props.data?.url);
-  const [autoplay] = useState(props.data?.autoplay);
-  const [mute] = useState(props.data?.mute);
-  const [fluid] = useState(props.data?.fluid);
+  const [src] = useState(data?.url);
+  const [autoplay] = useState(data?.autoplay);
+  const [mute] = useState(data?.mute);
+  const [fluid] = useState(data?.fluid);
+  const [description] = useState(safeParseHtml(data?.description));
 
   useEffect(() => {
     let suffix = src.indexOf('?') === -1 ? '?' : '';
@@ -18,32 +24,36 @@ function Iframe(props: any) {
   }, [autoplay, mute, src]);
 
   return (
-    <Container className={`p-0 ${props.data?.theme || ''}`} fluid data-aos="fade-up">
+    <Container className="p-8" 
+      style={{
+        backgroundColor: `${data?.theme || ''}`,
+      }}
+      fluid >
       <Container fluid={smartParse(fluid)}>
         <Row>
-          {props.data?.title && (
-            <Col sm={12} data-aos="fade-in" className="py-5">
-              <div className="text-center display-2 pt-5">
-                <strong>{props.data?.title}</strong>
+          {data?.title && (
+            <Col sm={12} data-aos="fade-in" className="my-2">
+              <div className="text-center h1">
+                <strong>{data?.title}</strong>
               </div>
             </Col>
           )}
-          <Col data-aos="fade-up" style={{ minHeight: '560px' }} className="my-3">
+          <Col sm={12} data-aos="fade-in" className="">
             <iframe
-              title={props.data?.title || 'Random clip.'}
+              title={data?.title || 'Random clip.'}
               src={iframe}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              className="w-100 h-100"
+              className="responsive-iframe"
               scrolling="no"
               frameBorder="0"
               allowFullScreen
             ></iframe>
           </Col>
 
-          {props.data?.description && (
-            <Col sm="12" data-aos="fade-in" className="pb-5">
-              <div className="h4" style={{ whiteSpace: 'pre-wrap' }}>
-                {Parser(props.data?.description)}
+          {description && (
+            <Col sm="12" data-aos="fade-in">
+              <div className="lead" style={{ whiteSpace: 'pre-wrap' }}>
+                {description}
               </div>
             </Col>
           )}
