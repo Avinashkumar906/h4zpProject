@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import { Parallax } from 'react-parallax';
-import { BannerType, cloudinaryUtilFixedHnW, isTrue, smartParse } from '../../util/mockData.util';
+import { BannerType, cloudinaryUtilForUrl, isTrue, smartParse } from '../../util/mockData.util';
 import * as React from 'react';
 import HTMLReactParser from 'html-react-parser';
 
@@ -11,7 +11,6 @@ type componentPropType = {
 }
 
 function Banner({data,id}: componentPropType) {
-  console.log("Banner.",data)
   const [dimention, setDimention] = useState<any>();
   const placeholder = useRef(null);
 
@@ -40,22 +39,22 @@ function Banner({data,id}: componentPropType) {
       >
         {
           data.url ? (
-            <div style={{ height: `${data?.height || 100}vh` }}>
+            <div style={{ height: `${data?.height || 100}dvh` }}>
               {
                 isTrue(data?.parallax) ? (
                   <Parallax
                     className="d-block h-100 w-100"
-                    bgImage={dimention && cloudinaryUtilFixedHnW({ url: data?.url, ...dimention })}
+                    bgImage={cloudinaryUtilForUrl({ url: data?.url, ...dimention,crop: 'thumb' })}
                     bgImageAlt={`Banner url ${data.url}`}
                     strength={300}
                   >
-                    <div className='p-8 d-flex w-100 h-100 justify-content-center align-items-end'>
+                    <div className='py-8 px-2 d-flex w-100 h-100 justify-content-center align-items-end'>
                       <div>{HTMLReactParser(data.description)}</div>
                     </div>
                   </Parallax>
                 ) : (
                   <>
-                    <div className='p-8 d-flex w-100 h-100 justify-content-center align-items-end'>
+                    <div className='py-8 px-2 d-flex w-100 h-100 justify-content-center align-items-end'>
                       <div className="text-white">{HTMLReactParser(data.description)}</div>
                       <img
                         className="react-parallax-bgimage"

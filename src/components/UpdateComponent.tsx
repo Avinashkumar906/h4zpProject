@@ -11,6 +11,9 @@ import { getListItemOfComponent } from '../util/mockData.util';
 import ImageUpload from './imageUploader/ImageUpload';
 import { backgroundOptions, widthOptions } from '../util/const';
 import Rte from './editor/Rte';
+import Control, { fieldConfigs } from './form.config';
+
+
 
 const UpdateComponent = (props: any) => {
   const [formData, setFormData] = useState(props.data.data);
@@ -38,8 +41,8 @@ const UpdateComponent = (props: any) => {
             <Tabs defaultActiveKey="basic" className="mb-3">
               <Tab eventKey="basic" title="Design">
                 <Row className="flex-column flex-sm-row flex-wrap" style={{ rowGap: '16px' }}>
-                  {/* <div className='w-100'><hr/></div> */}
-                  {getIn(form.values, 'fluid') !== undefined && (
+                  <Control id="Tab1" form = {form}/>
+                  {/* {getIn(form.values, 'fluid') !== undefined && (
                     <Col className="mw-250">
                       <Form.Label>Width</Form.Label>
                       <Field as="select" name="fluid" className="form-select form-select-sm">
@@ -59,7 +62,7 @@ const UpdateComponent = (props: any) => {
                         <option value={'false'}>Off</option>
                       </Field>
                     </Col>
-                  )}
+                  )} */}
                   {getIn(form.values, 'clickable') !== undefined && (
                     <Col className="mw-250">
                       <Form.Label>Clickable Images</Form.Label>

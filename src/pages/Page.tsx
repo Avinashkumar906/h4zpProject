@@ -63,7 +63,6 @@ export default function Page(props: any) {
   }, [page]);
 
   if (loading) {
-    // console.log('Loading')
     return (
       <div style={{ position: 'absolute', inset: 0, background: 'black' }}>
         <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-blue-500"></div>

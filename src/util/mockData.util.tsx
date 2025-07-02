@@ -1,11 +1,12 @@
 import {
   MOCK_BANNER,
+  MOCK_BLOG_LIST,
   MOCK_BLOGS,
   MOCK_BUTTON_LIST,
   MOCK_GROUP,
+  MOCK_GROUP_LIST,
   MOCK_IFRAME,
   MOCK_JUMBOTRON,
-  MOCK_NEWS,
 } from '../mockdata/component.default';
 import * as Moment from 'moment';
 
@@ -13,28 +14,54 @@ export type JumbotronType = typeof MOCK_JUMBOTRON;
 export type ButtonList = typeof MOCK_BUTTON_LIST;
 export type BannerType = typeof MOCK_BANNER;
 export type IframeType = typeof MOCK_IFRAME;
-// export type BannerType = typeof MOCK_BANNER;
+export type GroupType = typeof MOCK_GROUP;
+export type GroupListType = typeof MOCK_GROUP_LIST[0];
+export type BlogListType = typeof MOCK_BLOG_LIST[0];
+export type BlogType = typeof MOCK_BLOGS;
+interface CloudinaryParams {
+  url: string;
+  ar?: string; //4:3, 16:9
+  width?: number; //400 
+  height?: number; // 400
+  quality?: string; //auto, 80
+  crop?: 'fill'| 'fit'| 'thumb'| 'crop'| 'scale'; //
+  gravity?: 'face'| 'center'| 'auto'; //
+  format?: 'auto'| 'webp'| 'jpg'; //
+  [key: string]: any; // Allow additional Cloudinary params
+}
 
-export const cloudinaryUtilFixedHnW = (data) => {
-  // h_200,w_400,c_fill,g_face,f_auto,ar_4:3
-  if (data.url.indexOf('upload') !== -1) {
-    const [domain, fileID] = data.url.split('upload');
-    const url = domain + `upload/h_${data.height},w_${data.width},c_fill,g_face,f_auto`;
-    return url + fileID;
-  } else {
-    return data.url;
-  }
-};
+export const cloudinaryUtilForUrl = (data: CloudinaryParams): string => {
+  const { url, ar, width, height, quality, crop, gravity, format, ...rest } = data;
 
-export const cloudinaryUtilARWidth = (data) => {
-  if (data.url.indexOf('upload') !== -1) {
-    // h_200,w_400,c_fill,g_face,f_auto,ar_4:3
-    const [domain, fileID] = data.url.split('upload');
-    const url = domain + `upload/ar_${data.ar},w_${data.width},c_fill,g_face,f_auto`;
-    return url + fileID;
+  if (url.includes('res.cloudinary.com') && url.includes('/upload/')) {
+    // proceed with transformations
+    const [domain, fileID] = url.split('/upload/');
+  
+    const transformations: string[] = [];
+  
+    if (ar) transformations.push(`ar_${ar}`);
+    if (width) transformations.push(`w_${width}`);
+    if (height) transformations.push(`h_${height}`);
+    if (quality) transformations.push(`q_${quality}`);
+    if (crop) transformations.push(`c_${crop}`);
+    // if (gravity) transformations.push(`g_${gravity}`);
+    // if (format) transformations.push(`f_${format}`);
+    // else transformations.push('f_auto');
+  
+    // Add any additional custom transformations
+    Object.entries(rest).forEach(([key, value]) => {
+      if (value) {
+        transformations.push(`${key}_${value}`);
+      }
+    });
+  
+    const transformationString = transformations.join(',');
+  
+    return `${domain}/upload/${transformationString}/${fileID}`;
   } else {
-    return data.url;
+    return url;
   }
+
 };
 
 export const optimizeData = (data) => {
@@ -87,9 +114,6 @@ export const getMockdata = (component, valueToPatch?) => {
       break;
     case 'jumbotron':
       mock = MOCK_JUMBOTRON;
-      break;
-    case 'news':
-      mock = MOCK_NEWS;
       break;
     case 'blogs':
       mock = MOCK_BLOGS;
