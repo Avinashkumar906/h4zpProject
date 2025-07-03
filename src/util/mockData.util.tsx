@@ -9,27 +9,33 @@ import {
   MOCK_JUMBOTRON,
 } from '../mockdata/component.default';
 import * as Moment from 'moment';
-
 export type JumbotronType = typeof MOCK_JUMBOTRON;
 export type ButtonList = typeof MOCK_BUTTON_LIST;
 export type BannerType = typeof MOCK_BANNER;
 export type IframeType = typeof MOCK_IFRAME;
 export type GroupType = typeof MOCK_GROUP;
-export type GroupListType = typeof MOCK_GROUP_LIST[0];
-export type BlogListType = typeof MOCK_BLOG_LIST[0];
+export type GroupListType = (typeof MOCK_GROUP_LIST)[0];
 export type BlogType = typeof MOCK_BLOGS;
+export type BlogListType = (typeof MOCK_BLOG_LIST)[0];
+export type ComponentType =
+  | JumbotronType
+  | ButtonList
+  | BannerType
+  | IframeType
+  | GroupType
+  | BlogType;
 
 export type CloudinaryParams = {
   url: string;
   ar?: string; //4:3, 16:9
-  width?: number; //400 
+  width?: number; //400
   height?: number; // 400
   quality?: string; //auto, 80
-  crop?: 'fill'| 'fit'| 'thumb'| 'crop'| 'scale'; //
-  gravity?: 'face'| 'center'| 'auto'; //
-  format?: 'auto'| 'webp'| 'jpg'; //
+  crop?: 'fill' | 'fit' | 'thumb' | 'crop' | 'scale'; //
+  gravity?: 'face' | 'center' | 'auto'; //
+  format?: 'auto' | 'webp' | 'jpg'; //
   [key: string]: string | number; // Allow additional Cloudinary params
-}
+};
 
 export const cloudinaryUtilForUrl = (data: CloudinaryParams): string => {
   const { url, ar, width, height, quality, crop, ...rest } = data;
@@ -37,9 +43,9 @@ export const cloudinaryUtilForUrl = (data: CloudinaryParams): string => {
   if (url.includes('res.cloudinary.com') && url.includes('/upload/')) {
     // proceed with transformations
     const [domain, fileID] = url.split('/upload/');
-  
+
     const transformations: string[] = [];
-  
+
     if (ar) transformations.push(`ar_${ar}`);
     if (width) transformations.push(`w_${width}`);
     if (height) transformations.push(`h_${height}`);
@@ -48,21 +54,20 @@ export const cloudinaryUtilForUrl = (data: CloudinaryParams): string => {
     // if (gravity) transformations.push(`g_${gravity}`);
     // if (format) transformations.push(`f_${format}`);
     // else transformations.push('f_auto');
-  
+
     // Add any additional custom transformations
     Object.entries(rest).forEach(([key, value]) => {
       if (value) {
         transformations.push(`${key}_${value}`);
       }
     });
-  
+
     const transformationString = transformations.join(',');
-  
+
     return `${domain}/upload/${transformationString}/${fileID}`;
   } else {
     return url;
   }
-
 };
 
 export const optimizeData = (data) => {
@@ -174,9 +179,7 @@ export const getListItemOfComponent = (component) => {
 export const serializeObject = (schema, target) => {
   if (Array.isArray(schema)) {
     // If schema is an array, target should be an array:
-    return Array.isArray(target)
-      ? target.map((item) => serializeObject(schema[0], item))
-      : [];
+    return Array.isArray(target) ? target.map((item) => serializeObject(schema[0], item)) : [];
   }
 
   if (schema && typeof schema === 'object') {

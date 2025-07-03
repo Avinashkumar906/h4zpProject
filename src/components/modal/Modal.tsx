@@ -15,6 +15,8 @@ export const CModal = (props: any) => {
       addComponentToPage(pageID, updatedData, (snapShot) => console.log(snapShot.id));
     } else if (action === 'EDIT') {
       updateComponentOfPage(formData.collection, formData.docId, updatedData, console.log);
+    } else if (action === 'ORDER') {
+      console.log('Save order function!');
     }
   };
 
@@ -52,6 +54,7 @@ export const CModal = (props: any) => {
             data={formData}
           ></UpdateComponent>
         )}
+        {action === 'ORDER' && <div>Order component in progress!</div>}
       </Modal.Body>
     </Modal>
   );

@@ -1,7 +1,7 @@
 import { Nav, Offcanvas } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-import logoSrc from '../../logo.svg'
+import logoSrc from '../../logo.svg';
 import { NavLink, useLocation } from 'react-router-dom';
 import Tool from './Tool';
 
@@ -13,7 +13,7 @@ const navLinks = [
   },
   { label: 'ACTIVITY', link: '/blog' },
   { label: 'ABOUT', link: '/about' },
-  { label: 'DONATE', link: '/donate', type: '' },
+  { label: 'DONATE', link: '/donate', class: 'btn-lime py-1' },
 ];
 
 function Header(props: any) {
@@ -32,7 +32,12 @@ function Header(props: any) {
         <Container className="h-100" fluid="xxl">
           <Navbar.Brand className="h-100">
             <NavLink className="d-flex align-items-center nav-link h-100" to="/home">
-              <img alt="logo" src={logoSrc} style={{ height: '90%' }} className="d-inline-block align-top rounded-circle pe-2" />
+              <img
+                alt="logo"
+                src={logoSrc}
+                style={{ height: '90%' }}
+                className="d-inline-block align-top rounded-circle pe-2"
+              />
               {/* <span>H4ZP</span> */}
             </NavLink>
           </Navbar.Brand>
@@ -42,11 +47,11 @@ function Header(props: any) {
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-md`}></Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <Nav className="align-items-center justify-content-end flex-grow-1 text-center">
+              <Nav className="align-items-center gap-2 justify-content-end flex-grow-1 text-center">
                 {navLinks.map((m, index) => (
                   <NavLink
                     key={`Nav-link-ID-${index}`}
-                    className={`nav-link ${m.type || ''}`}
+                    className={m.class || 'nav-link'}
                     to={`${m.link}${search}`}
                   >
                     {m.label}
