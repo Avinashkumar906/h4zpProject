@@ -34,31 +34,30 @@ function Tool(props: any) {
   };
 
   return (
-    <>
-      <DropdownButton
-        as={ButtonGroup}
-        id="no-caret"
-        ref={dropDownRef}
-        align="end"
-        title={
-          <>
-            Admin <FaTools />
-          </>
-        }
-        variant="dark"
-        size="sm"
-      >
-        {isAuth ? (
-          <PageForm
-            handlePageCreate={handlePageCreate}
-            onLogout={onLogout}
-            formSubmitted={formSubmitted}
-          />
-        ) : (
-          <LoginForm handleLogin={handleLogin} />
-        )}
-      </DropdownButton>
-    </>
+    <DropdownButton
+      as={ButtonGroup}
+      id="no-caret"
+      ref={dropDownRef}
+      align="end"
+      title={
+        <>
+          Admin <FaTools />
+        </>
+      }
+      variant="dark"
+      size="sm"
+    >
+      {isAuth ? (
+        <PageForm
+          className="d-sm-none"
+          handlePageCreate={handlePageCreate}
+          onLogout={onLogout}
+          formSubmitted={formSubmitted}
+        />
+      ) : (
+        <LoginForm handleLogin={handleLogin} />
+      )}
+    </DropdownButton>
   );
 }
 

@@ -13,30 +13,32 @@ export const MOCK_BANNER = {
   parallax: true,
 };
 
+export const MOCK_GROUP_LIST = [
+  {
+    description: 'Fighting Poverty one Step at a Time',
+    url: 'https://res.cloudinary.com/ddfh2nxrt/image/upload/v1666436083/H4ZP/group/moreProject/image-asset_izixlp.jpg',
+  },
+  {
+    description: 'Fighting Poverty one Step at a Time',
+    url: 'https://res.cloudinary.com/ddfh2nxrt/image/upload/v1666436096/H4ZP/group/moreProject/DSC_1096_khblje.jpg',
+  },
+  {
+    description: 'Fighting Poverty one Step at a Time',
+    url: 'https://res.cloudinary.com/ddfh2nxrt/image/upload/v1666436109/H4ZP/group/moreProject/H4ZP_IRC_Video_Contest_cuprg7.jpg',
+  },
+];
+
 export const MOCK_GROUP = {
-  imgRatio: '1:1',
+  // imgRatio: '1:1',
+  // style: 'rounded-circle',
+  // height: 100,
+  stackOnSm: false,
   title: 'OTHER SPECIAL PROJECTS',
-  style: 'rounded-circle',
   component: 'group',
   itemInRow: 3,
   order: 4,
-  clickable: false,
-  list: [
-    {
-      title: 'Fighting Poverty one Step at a Time',
-      url: 'https://res.cloudinary.com/ddfh2nxrt/image/upload/v1666436083/H4ZP/group/moreProject/image-asset_izixlp.jpg',
-    },
-    {
-      title: 'Fighting Poverty one Step at a Time',
-      url: 'https://res.cloudinary.com/ddfh2nxrt/image/upload/v1666436096/H4ZP/group/moreProject/DSC_1096_khblje.jpg',
-    },
-    {
-      title: 'Fighting Poverty one Step at a Time',
-      url: 'https://res.cloudinary.com/ddfh2nxrt/image/upload/v1666436109/H4ZP/group/moreProject/H4ZP_IRC_Video_Contest_cuprg7.jpg',
-    },
-  ],
+  list: MOCK_GROUP_LIST,
   fluid: false,
-  height: 100,
   theme: '',
   description:
     'Join the group of people helping to make life better for the people living in extreme poverty. The H4ZP projects are possible because of the support and care of people like you.',
@@ -61,45 +63,23 @@ export const MOCK_JUMBOTRON = {
     'Supporting medical camps, food and shoe distributions, medical and school supplies, and much more. Help us expand our reach by donating today using Fundly or the H4ZP website.',
 };
 
-export const MOCK_NEWS = {
-  list: [
-    {
-      url: 'https://res.cloudinary.com/ddfh2nxrt/image/upload/v1666336275/H4ZP/news/initial/Hands_4_Zero_Poverty_H4ZP_Street_Blanket_Distribution_rlopmk.jpg',
-      reference: '',
-      description:
-        'In the last recent years, India has been experiencing record low-temperatures during the winter season. It has caught many of its citizens off-guard, especially people who live on the streets. Hands 4 Zero Poverty—along with loving volunteers—walked through the night to find and provide people with blankets and food.  The H4ZP team distributed 100 blankets and 150 sandwiches. We invite you to view the web page created to document the event…',
-      footer:
-        'If you would like to support or join us on the ground, helping communities in need, please contact us out at info@h4zp.org. We would be delighted to get your help.',
-      BtnText: 'BLANKET & FOOD DISTRIBUTION',
-      BtnUrl: '/',
-      btnColor: 'btn-dark',
-      title: 'Title',
-      date: Moment(new Date()).format('YYYY-MM-DD'),
-      credit: '',
-    },
-  ],
-  component: 'news',
-  title: 'Recent news',
-  order: 6,
-  fluid: false,
-  theme: '',
-};
+export const MOCK_BLOG_LIST = [
+  {
+    reference: '',
+    description:
+      'Seventy-five families received food supplies to last the average family of five approximately 2~3 weeks…',
+    title: 'Learn about our fall 2022 food distribution ',
+    url: 'https://res.cloudinary.com/ddfh2nxrt/image/upload/v1666334204/H4ZP/blogs/oct-2022/IMG_2816-2_28R_29_ybs592.jpg',
+    BtnText: 'Read more',
+    BtnUrl: '#',
+    btnColor: 'btn-dark',
+    date: Moment(new Date()).format('YYYY-MM-DD'),
+    credit: '',
+  },
+];
 
 export const MOCK_BLOGS = {
-  list: [
-    {
-      reference: '',
-      description:
-        'Seventy-five families received food supplies to last the average family of five approximately 2~3 weeks…',
-      title: 'Learn about our fall 2022 food distribution ',
-      url: 'https://res.cloudinary.com/ddfh2nxrt/image/upload/v1666334204/H4ZP/blogs/oct-2022/IMG_2816-2_28R_29_ybs592.jpg',
-      BtnText: 'Read more',
-      BtnUrl: '#',
-      btnColor: 'btn-dark',
-      date: Moment(new Date()).format('YYYY-MM-DD'),
-      credit: '',
-    },
-  ],
+  list: MOCK_BLOG_LIST,
   component: 'blogs',
   order: 4,
   title: 'Recent Activities',
@@ -107,6 +87,7 @@ export const MOCK_BLOGS = {
   fluid: false,
   height: 100,
   theme: '',
+  design: 'design1',
 };
 
 export const MOCK_IFRAME = {

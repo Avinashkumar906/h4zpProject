@@ -28,8 +28,8 @@ export const componentOptions = [
   { label: 'Banner', value: 'banner' },
   { label: 'YouTube Video', value: 'iframe' },
   { label: 'Jumbotron', value: 'jumbotron' },
-  // { label: "Text with Image", value: "jumbotron" },
   { label: 'Card Group', value: 'group' },
-  { label: 'Blogs', value: 'blogs' },
-  { label: 'News', value: 'news' },
+  { label: 'Activity', value: 'blogs' },
+  // { label: "Text with Image", value: "jumbotron" },
+  // { label: 'News', value: 'news' },
 ];

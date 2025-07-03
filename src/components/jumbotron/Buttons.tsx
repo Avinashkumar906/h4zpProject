@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ButtonList, isExternalLink } from '../../util/mockData.util';
 
 function Buttons({ data, id }: { data: ButtonList; id: string }) {
+  if (!data && !data.length) return null;
   return (
     <div>
       <div className="d-flex flex-wrap justify-content-center gap-2">

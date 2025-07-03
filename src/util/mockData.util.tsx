@@ -1,39 +1,72 @@
 import {
   MOCK_BANNER,
+  MOCK_BLOG_LIST,
   MOCK_BLOGS,
   MOCK_BUTTON_LIST,
   MOCK_GROUP,
+  MOCK_GROUP_LIST,
   MOCK_IFRAME,
   MOCK_JUMBOTRON,
-  MOCK_NEWS,
 } from '../mockdata/component.default';
 import * as Moment from 'moment';
-
 export type JumbotronType = typeof MOCK_JUMBOTRON;
 export type ButtonList = typeof MOCK_BUTTON_LIST;
 export type BannerType = typeof MOCK_BANNER;
 export type IframeType = typeof MOCK_IFRAME;
-// export type BannerType = typeof MOCK_BANNER;
+export type GroupType = typeof MOCK_GROUP;
+export type GroupListType = (typeof MOCK_GROUP_LIST)[0];
+export type BlogType = typeof MOCK_BLOGS;
+export type BlogListType = (typeof MOCK_BLOG_LIST)[0];
+export type ComponentType =
+  | JumbotronType
+  | ButtonList
+  | BannerType
+  | IframeType
+  | GroupType
+  | BlogType;
 
-export const cloudinaryUtilFixedHnW = (data) => {
-  // h_200,w_400,c_fill,g_face,f_auto,ar_4:3
-  if (data.url.indexOf('upload') !== -1) {
-    const [domain, fileID] = data.url.split('upload');
-    const url = domain + `upload/h_${data.height},w_${data.width},c_fill,g_face,f_auto`;
-    return url + fileID;
-  } else {
-    return data.url;
-  }
+export type CloudinaryParams = {
+  url: string;
+  ar?: string; //4:3, 16:9
+  width?: number; //400
+  height?: number; // 400
+  quality?: string; //auto, 80
+  crop?: 'fill' | 'fit' | 'thumb' | 'crop' | 'scale'; //
+  gravity?: 'face' | 'center' | 'auto'; //
+  format?: 'auto' | 'webp' | 'jpg'; //
+  [key: string]: string | number; // Allow additional Cloudinary params
 };
 
-export const cloudinaryUtilARWidth = (data) => {
-  if (data.url.indexOf('upload') !== -1) {
-    // h_200,w_400,c_fill,g_face,f_auto,ar_4:3
-    const [domain, fileID] = data.url.split('upload');
-    const url = domain + `upload/ar_${data.ar},w_${data.width},c_fill,g_face,f_auto`;
-    return url + fileID;
+export const cloudinaryUtilForUrl = (data: CloudinaryParams): string => {
+  const { url, ar, width, height, quality, crop, ...rest } = data;
+
+  if (url.includes('res.cloudinary.com') && url.includes('/upload/')) {
+    // proceed with transformations
+    const [domain, fileID] = url.split('/upload/');
+
+    const transformations: string[] = [];
+
+    if (ar) transformations.push(`ar_${ar}`);
+    if (width) transformations.push(`w_${width}`);
+    if (height) transformations.push(`h_${height}`);
+    if (quality) transformations.push(`q_${quality}`);
+    if (crop) transformations.push(`c_${crop}`);
+    // if (gravity) transformations.push(`g_${gravity}`);
+    // if (format) transformations.push(`f_${format}`);
+    // else transformations.push('f_auto');
+
+    // Add any additional custom transformations
+    Object.entries(rest).forEach(([key, value]) => {
+      if (value) {
+        transformations.push(`${key}_${value}`);
+      }
+    });
+
+    const transformationString = transformations.join(',');
+
+    return `${domain}/upload/${transformationString}/${fileID}`;
   } else {
-    return data.url;
+    return url;
   }
 };
 
@@ -88,9 +121,6 @@ export const getMockdata = (component, valueToPatch?) => {
     case 'jumbotron':
       mock = MOCK_JUMBOTRON;
       break;
-    case 'news':
-      mock = MOCK_NEWS;
-      break;
     case 'blogs':
       mock = MOCK_BLOGS;
       break;
@@ -114,33 +144,12 @@ export const getMockdata = (component, valueToPatch?) => {
 
 export const getListItemOfComponent = (component) => {
   switch (component) {
-    case 'banner':
-      return { title: '', subTitle: '', url: '' };
     case 'jumbotron':
-      return { btnLink: '', btnText: '' };
-    case 'news':
-      return {
-        BtnUrl: '',
-        description: '',
-        title: '',
-        url: '',
-        BtnText: '',
-        credit: '',
-        date: Moment(new Date()).format('YYYY-MM-DD'),
-        footer: '',
-      };
+      return MOCK_BUTTON_LIST[0];
     case 'blogs':
-      return {
-        BtnUrl: '',
-        description: '',
-        title: '',
-        url: '',
-        BtnText: '',
-        credit: '',
-        date: Moment(new Date()).format('YYYY-MM-DD'),
-      };
+      return MOCK_BLOG_LIST[0];
     case 'group':
-      return { title: '', url: '' };
+      return MOCK_GROUP_LIST[0];
     default:
       break;
   }
@@ -149,9 +158,7 @@ export const getListItemOfComponent = (component) => {
 export const serializeObject = (schema, target) => {
   if (Array.isArray(schema)) {
     // If schema is an array, target should be an array:
-    return Array.isArray(target)
-      ? target.map((item) => serializeObject(schema[0], item))
-      : [];
+    return Array.isArray(target) ? target.map((item) => serializeObject(schema[0], item)) : [];
   }
 
   if (schema && typeof schema === 'object') {

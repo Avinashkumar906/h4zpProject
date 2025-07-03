@@ -1,20 +1,19 @@
 import { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { IframeType, isTrue, smartParse } from '../../util/mockData.util';
-import { safeParseHtml } from '../editor/rte.util';
+import Title from '../common/Title';
+import Description from '../common/Description';
 type componentPropType = {
   data: IframeType | undefined;
   id: string;
 };
 
-function Iframe({data,id}: componentPropType) {
-  console.log(data)
-  const [iframe, setIframe] = useState<any>();
+function Iframe({ data }: componentPropType) {
+  const [iframe, setIframe] = useState<string>();
   const [src] = useState(data?.url);
   const [autoplay] = useState(data?.autoplay);
   const [mute] = useState(data?.mute);
   const [fluid] = useState(data?.fluid);
-  const [description] = useState(safeParseHtml(data?.description));
 
   useEffect(() => {
     let suffix = src.indexOf('?') === -1 ? '?' : '';
@@ -24,21 +23,17 @@ function Iframe({data,id}: componentPropType) {
   }, [autoplay, mute, src]);
 
   return (
-    <Container className="p-8" 
+    <Container
+      className="py-8 px-2"
       style={{
         backgroundColor: `${data?.theme || ''}`,
       }}
-      fluid >
+      fluid
+    >
       <Container fluid={smartParse(fluid)}>
         <Row>
-          {data?.title && (
-            <Col sm={12} data-aos="fade-in" className="my-2">
-              <div className="text-center h1">
-                <strong>{data?.title}</strong>
-              </div>
-            </Col>
-          )}
-          <Col sm={12} data-aos="fade-in" className="">
+          <Title title={data?.title} />
+          <Col sm={12} data-aos="slide-up" className="">
             <iframe
               title={data?.title || 'Random clip.'}
               src={iframe}
@@ -49,14 +44,7 @@ function Iframe({data,id}: componentPropType) {
               allowFullScreen
             ></iframe>
           </Col>
-
-          {description && (
-            <Col sm="12" data-aos="fade-in">
-              <div className="lead" style={{ whiteSpace: 'pre-wrap' }}>
-                {description}
-              </div>
-            </Col>
-          )}
+          <Description description={data.description} />
         </Row>
       </Container>
     </Container>

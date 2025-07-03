@@ -1,0 +1,87 @@
+/* Keep native h1-h6 and p as Bootstrap defaults */
+
+/* Apply custom typography to everything else */
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #333;
+  line-height: 1.6;
+  font-size: 1rem;
+  background-color: #fff;
+}
+
+/* Links */
+/* a {
+  color: #0d6efd;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+a:hover {
+  color: #0a58ca;
+  text-decoration: underline;
+} */
+
+/* Lists */
+ul,
+ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+li {
+  margin-bottom: 0.25rem;
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 4px solid #0d6efd;
+  padding-left: 1rem;
+  color: #555;
+  font-style: italic;
+  margin: 1rem 0;
+}
+
+/* Code & Pre */
+code {
+  background: #f8f9fa;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'SFMono-Regular', Consolas, monospace;
+  font-size: 0.95rem;
+}
+pre {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-family: 'SFMono-Regular', Consolas, monospace;
+  font-size: 0.95rem;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  /* border-radius: 8px; */
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+th,
+td {
+  border: 1px solid #dee2e6;
+  padding: 0.5rem;
+}
+th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  text-align: left;
+}
+
+/* Custom headings if needed elsewhere */
+.custom-heading {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 700;
+}

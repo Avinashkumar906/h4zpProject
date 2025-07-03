@@ -1,0 +1,33 @@
+.minimal-card {
+  width: 18rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  overflow: hidden;
+}
+
+.minimal-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.minimal-card .card-body {
+  padding: 1rem;
+}
+
+.minimal-card .card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.minimal-card .card-text {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.minimal-card .btn {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.85rem;
+}

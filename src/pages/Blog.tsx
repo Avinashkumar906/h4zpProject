@@ -41,7 +41,7 @@ function Blog() {
       ))}
       {blogList.length !== 0 && (
         <Row className="mt-5">
-          <Col xl={12} data-aos="fade-in">
+          <Col xl={12} data-aos="slide-up">
             <div className="text-center display-2 pt-3">
               <strong>Our Recent Activities</strong>
             </div>

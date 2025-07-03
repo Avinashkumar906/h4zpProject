@@ -10,7 +10,7 @@ type componentPropType = {
 function Jumbotron({ data, id }: componentPropType) {
   return (
     <Container
-      className="p-8"
+      className="py-8 px-2"
       style={{
         backgroundColor: `${data?.theme || ''}`,
       }}

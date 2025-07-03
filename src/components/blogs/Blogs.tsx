@@ -1,36 +1,43 @@
 import { useEffect, useRef, useState } from 'react';
-import { Card, Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { cloudinaryUtilARWidth, isTrue } from '../../util/mockData.util';
-import Parser from 'html-react-parser';
-import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
+import { BlogType, smartParse } from '../../util/mockData.util';
+// import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import * as React from 'react';
+import Title from '../common/Title';
+import CardDesign1 from './CardDesign1';
+import CardDesign2 from './CardDesign2';
 
-function Blogs(props: any) {
-  const [dimention, setDimention] = useState<any>();
-  const placeholder = useRef(null);
+type componentPropType = {
+  data: BlogType | undefined;
+  id: string;
+};
 
-  useEffect(() => {
-    if (placeholder.current?.clientWidth || placeholder.current?.clientHeight) {
-      setDimention({
-        height: placeholder.current.clientHeight,
-        width: placeholder.current.clientWidth,
-      });
+function Blogs({ data, id }: componentPropType) {
+  const content = (data: BlogType, id: string) => {
+    switch (data.design) {
+      case 'design1':
+        return <CardDesign1 data={data.list} id={id} />;
+      case 'design2':
+        return <CardDesign2 data={data.list} id={id} />;
+      default:
+        return null;
     }
-  }, []);
+  };
 
   return (
-    <Container className={`p-0 ${props.data?.theme || ''}`} fluid>
-      <Container className="py-5" fluid={isTrue(props.data.fluid)}>
+    <Container
+      className="py-8 px-2"
+      style={{
+        backgroundColor: `${data?.theme || ''}`,
+      }}
+      fluid
+    >
+      <Container fluid={smartParse(data.fluid)}>
         <Row>
-          {props.data?.title && (
-            <Col xl={12} data-aos="fade-in">
-              <div className="text-center display-2 pb-4">
-                <strong>{props.data?.title}</strong>
-              </div>
-            </Col>
-          )}
-          {
+          <Title title={data.title} />
+          {content(data, id)}
+          {/* {
             <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 767: 2, 1199: 3 }}>
               <Masonry>
                 {props.data?.list?.map((m, index) => (
@@ -40,7 +47,7 @@ function Blogs(props: any) {
                     ref={placeholder}
                     style={{ maxWidth: '36rem' }}
                   >
-                    <Card data-aos="fade-up" className={`h-100 border-0 ${props.data?.theme}`}>
+                    <Card data-aos="slide-up" className={`h-100 border-0 ${props.data?.theme}`}>
                       <Card.Body className="rounded h-100">
                         {m.title && (
                           <Card.Title className="text-center">
@@ -74,13 +81,12 @@ function Blogs(props: any) {
                           </span>
                         </Card.Text>
                       </Card.Body>
-                      {/* <div className="border-bottom-2 w-100 ms-auto" ></div> */}
                     </Card>
                   </Col>
                 ))}
               </Masonry>
             </ResponsiveMasonry>
-          }
+          } */}
           <Col xl={12}>
             <div className="text-end">
               <Link to="/blog" className="text-dark">
