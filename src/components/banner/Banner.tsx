@@ -9,7 +9,7 @@ import {
   smartParse,
 } from '../../util/mockData.util';
 import * as React from 'react';
-import HTMLReactParser from 'html-react-parser';
+import { safeParseHtml } from '../editor/rte.util';
 
 type componentPropType = {
   data: BannerType | undefined;
@@ -19,7 +19,7 @@ type componentPropType = {
 function Banner({ data }: componentPropType) {
   const [dimension, setDimension] = useState<Pick<CloudinaryParams, 'height' | 'width'>>();
   const placeholder = useRef(null);
-
+  console.log(data);
   useEffect(() => {
     if (placeholder.current?.clientWidth || placeholder.current?.clientHeight) {
       setDimension({
@@ -53,13 +53,13 @@ function Banner({ data }: componentPropType) {
                 strength={300}
               >
                 <div className="py-8 px-2 d-flex w-100 h-100 justify-content-center align-items-end">
-                  <div>{HTMLReactParser(data.description)}</div>
+                  <div>{safeParseHtml(data.description)}</div>
                 </div>
               </Parallax>
             ) : (
               <>
                 <div className="py-8 px-2 d-flex w-100 h-100 justify-content-center align-items-end">
-                  <div className="text-white">{HTMLReactParser(data.description)}</div>
+                  <div className="text-white">{safeParseHtml(data.description)}</div>
                   <img
                     className="react-parallax-bgimage"
                     src={data.url}
