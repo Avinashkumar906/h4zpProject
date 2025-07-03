@@ -19,7 +19,6 @@ type componentPropType = {
 function Banner({ data }: componentPropType) {
   const [dimension, setDimension] = useState<Pick<CloudinaryParams, 'height' | 'width'>>();
   const placeholder = useRef(null);
-  console.log(data);
   useEffect(() => {
     if (placeholder.current?.clientWidth || placeholder.current?.clientHeight) {
       setDimension({

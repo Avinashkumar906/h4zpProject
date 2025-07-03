@@ -30,6 +30,6 @@ export const componentOptions = [
   { label: 'Jumbotron', value: 'jumbotron' },
   { label: 'Card Group', value: 'group' },
   { label: 'Activity', value: 'blogs' },
-  // { label: "Text with Image", value: "jumbotron" },
+  // { label: "Statistics", value: "statistics" },
   // { label: 'News', value: 'news' },
 ];

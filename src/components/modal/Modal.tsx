@@ -4,6 +4,7 @@ import { addComponentToPage, updateComponentOfPage } from '../../firebase/util';
 import AddComponent from '../AddComponent';
 import UpdateComponent from '../UpdateComponent';
 import { componentOptions } from '../../util';
+import DraggableList from '../SortComponent';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const CModal = (props: any) => {
@@ -54,7 +55,7 @@ export const CModal = (props: any) => {
             data={formData}
           ></UpdateComponent>
         )}
-        {action === 'ORDER' && <div>Order component in progress!</div>}
+        {action === 'ORDER' && <DraggableList />}
       </Modal.Body>
     </Modal>
   );

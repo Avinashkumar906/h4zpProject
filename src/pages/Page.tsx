@@ -10,6 +10,7 @@ import NotFound from './NotFound';
 import { getMockdata } from '../util/mockData.util';
 import { subscribePageComponents } from '../firebase/firebase.util';
 import { MdOutlineRepeatOne } from 'react-icons/md';
+import Statistics from '../components/statistics/Statistics';
 // import { scrollTo } from 'scroll-js';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -107,6 +108,7 @@ export default function Page(props: any) {
             <DynamicComponent data={m.data} id={m.id}></DynamicComponent>
           </div>
         ))}
+      {/* <Statistics></Statistics> */}
       {modalState ? (
         <CModal
           show={modalState}
