@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import { Parallax } from 'react-parallax';
-import { BannerType, cloudinaryUtilForUrl, isTrue, smartParse } from '../../util/mockData.util';
+import { BannerType, CloudinaryParams, cloudinaryUtilForUrl, isTrue, smartParse } from '../../util/mockData.util';
 import * as React from 'react';
 import HTMLReactParser from 'html-react-parser';
 
@@ -10,13 +10,13 @@ type componentPropType = {
   id: string;
 }
 
-function Banner({data,id}: componentPropType) {
-  const [dimention, setDimention] = useState<any>();
+function Banner({data}: componentPropType) {
+  const [dimension, setDimension] = useState<Pick<CloudinaryParams,'height' | 'width'>>();
   const placeholder = useRef(null);
 
   useEffect(() => {
     if (placeholder.current?.clientWidth || placeholder.current?.clientHeight) {
-      setDimention({
+      setDimension({
         height: placeholder.current.clientHeight,
         width: placeholder.current.clientWidth,
       });
@@ -44,7 +44,7 @@ function Banner({data,id}: componentPropType) {
                 isTrue(data?.parallax) ? (
                   <Parallax
                     className="d-block h-100 w-100"
-                    bgImage={cloudinaryUtilForUrl({ url: data?.url, ...dimention,crop: 'thumb' })}
+                    bgImage={cloudinaryUtilForUrl({ url: data?.url, ...dimension,crop: 'thumb' })}
                     bgImageAlt={`Banner url ${data.url}`}
                     strength={300}
                   >

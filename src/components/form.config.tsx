@@ -19,16 +19,15 @@ export const fieldConfigs = [
   // add more fields easily in the future
 ];
 
-// const fieldType = typeof fieldConfigs[0]
-
 type componentPropType = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   form : FormikProps<any>,
   id : string
 }
 
 const Control = ({form}:componentPropType) => {
   {
-    fieldConfigs.map(({ name, label, options }) => {
+    fieldConfigs.map(({ name }) => {
       if (getIn(form.values, name) === undefined) {
         return null;
       }

@@ -8,8 +8,8 @@ type componentPropType = {
   id: string;
 };
 
-function Iframe({data,id}: componentPropType) {
-  const [iframe, setIframe] = useState<any>();
+function Iframe({data}: componentPropType) {
+  const [iframe, setIframe] = useState<string>();
   const [src] = useState(data?.url);
   const [autoplay] = useState(data?.autoplay);
   const [mute] = useState(data?.mute);

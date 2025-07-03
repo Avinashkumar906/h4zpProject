@@ -10,6 +10,7 @@ import { getMockdata } from '../util/mockData.util';
 import { subscribePageComponents } from '../firebase/firebase.util';
 // import { scrollTo } from 'scroll-js';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function Page(props: any) {
   const { isAuth, editable } = props;
   const [data, setData] = useState([]);

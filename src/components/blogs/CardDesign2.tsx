@@ -1,6 +1,6 @@
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import './css/CardDesign2.css';
-import { BlogListType, cloudinaryUtilForUrl } from '../../util';
+import { BlogListType, CloudinaryParams, cloudinaryUtilForUrl } from '../../util';
 import Description from '../common/Description';
 import { useEffect, useRef, useState } from 'react';
 
@@ -10,7 +10,7 @@ type componentPropType = {
 };
 
 const CardDesign2 = ({ data, id }: componentPropType) => {
-    const [dimention, setDimention] = useState<any>();
+    const [dimention, setDimention] = useState<Pick<CloudinaryParams,'width'>>();
     const placeholder = useRef(null);
   
     useEffect(() => {

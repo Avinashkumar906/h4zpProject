@@ -18,7 +18,8 @@ export type GroupType = typeof MOCK_GROUP;
 export type GroupListType = typeof MOCK_GROUP_LIST[0];
 export type BlogListType = typeof MOCK_BLOG_LIST[0];
 export type BlogType = typeof MOCK_BLOGS;
-interface CloudinaryParams {
+
+export type CloudinaryParams = {
   url: string;
   ar?: string; //4:3, 16:9
   width?: number; //400 
@@ -27,11 +28,11 @@ interface CloudinaryParams {
   crop?: 'fill'| 'fit'| 'thumb'| 'crop'| 'scale'; //
   gravity?: 'face'| 'center'| 'auto'; //
   format?: 'auto'| 'webp'| 'jpg'; //
-  [key: string]: any; // Allow additional Cloudinary params
+  [key: string]: string | number; // Allow additional Cloudinary params
 }
 
 export const cloudinaryUtilForUrl = (data: CloudinaryParams): string => {
-  const { url, ar, width, height, quality, crop, gravity, format, ...rest } = data;
+  const { url, ar, width, height, quality, crop, ...rest } = data;
 
   if (url.includes('res.cloudinary.com') && url.includes('/upload/')) {
     // proceed with transformations

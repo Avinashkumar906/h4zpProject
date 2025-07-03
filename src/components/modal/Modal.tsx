@@ -5,6 +5,7 @@ import AddComponent from '../AddComponent';
 import UpdateComponent from '../UpdateComponent';
 import { componentOptions } from '../../util';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const CModal = (props: any) => {
   const { pageID, action } = props;
   const [formData, setFormData] = useState(props.data);

@@ -9,12 +9,12 @@ import {
 } from 'react-icons/ai';
 import { getListItemOfComponent } from '../util/mockData.util';
 import ImageUpload from './imageUploader/ImageUpload';
-import { backgroundOptions, widthOptions } from '../util/const';
+import { backgroundOptions } from '../util/const';
 import Rte from './editor/Rte';
-import Control, { fieldConfigs } from './form.config';
+import Control from './form.config';
 
 
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const UpdateComponent = (props: any) => {
   const [formData, setFormData] = useState(props.data.data);
   const [submitted, setSubmitted] = useState(false);
