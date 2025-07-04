@@ -10,13 +10,19 @@ import {
 } from 'firebase/firestore';
 
 export const addAndUpdatePage = async (values, cb) => {
-  const { pageName: pageID, meta } = values;
-  if (pageID) {
-    await setDoc(doc(FIRESTORE_DB, 'Pages', pageID), meta);
-    cb(pageID);
-  } else {
-    const res = await addDoc(collection(FIRESTORE_DB, 'Pages'), meta);
-    cb(res.id);
+  try {
+    const { pageName: pageID, meta } = values;
+
+    if (pageID) {
+      await setDoc(doc(FIRESTORE_DB, 'Pages', pageID), meta);
+      cb(pageID);
+    } else {
+      const res = await addDoc(collection(FIRESTORE_DB, 'Pages'), meta);
+      cb(res.id);
+    }
+  } catch (error) {
+    console.error('Error in addAndUpdatePage:', error);
+    cb(null, error);
   }
 };
 

@@ -1,8 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { BlogType, smartParse } from '../../util/mockData.util';
-// import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import * as React from 'react';
 import Title from '../common/Title';
 import CardDesign1 from './CardDesign1';

@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import { GroupType, smartParse } from '../../util/mockData.util';
-// import Parser from 'html-react-parser';
-// import LightBox from '../lightbox/LightBox';
 import * as React from 'react';
 import MinimalCard from './Design1';
 import Title from '../common/Title';

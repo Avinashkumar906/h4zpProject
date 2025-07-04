@@ -4,7 +4,6 @@ import { FIRESTORE_DB } from './firebase';
 export const subscribePageComponents = async (pageID, cb) => {
   try {
     const pageRef = doc(FIRESTORE_DB, 'Pages', pageID);
-
     const pageSnap = await getDoc(pageRef);
 
     if (pageSnap.exists()) {
@@ -41,4 +40,19 @@ export const subscribeBlogList = (cb) => {
   });
 
   return unsubscribe; // cleanup handle
+};
+
+export const fetchPageMeta = async (pageID: string, cb: any) => {
+  try {
+    const pageRef = doc(FIRESTORE_DB, 'Pages', pageID);
+    const pageSnap = await getDoc(pageRef);
+
+    if (pageSnap.exists()) {
+      cb(pageSnap.data());
+    } else {
+      cb(null, new Error(`Page with ID "${pageID}" does not exist.`));
+    }
+  } catch (error) {
+    cb(null, error);
+  }
 };

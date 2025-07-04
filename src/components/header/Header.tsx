@@ -5,6 +5,8 @@ import logoSrc from '../../logo.svg';
 import { NavLink, useLocation } from 'react-router-dom';
 import Tool from './Tool';
 import { LuHandHeart } from 'react-icons/lu';
+import { signOut } from 'firebase/auth';
+import { FIREBASE_AUTH } from '../../firebase/firebase';
 
 const navLinks = [
   { label: 'HOME', link: '/home' },
@@ -14,15 +16,6 @@ const navLinks = [
   },
   { label: 'ACTIVITY', link: '/blog' },
   { label: 'ABOUT', link: '/about' },
-  {
-    label: (
-      <>
-        Contribute <LuHandHeart fontSize={18} />
-      </>
-    ),
-    link: '/donate',
-    class: 'btn-lime py-1',
-  },
 ];
 
 function Header(props: any) {
@@ -60,14 +53,29 @@ function Header(props: any) {
                 {navLinks.map((m, index) => (
                   <NavLink
                     key={`Nav-link-ID-${index}`}
-                    className={m.class || 'nav-link'}
+                    className={'nav-link'}
                     to={`${m.link}${search}`}
                   >
                     {m.label}
                   </NavLink>
                 ))}
 
-                {editable && <Tool isAuth={isAuth}></Tool>}
+                {editable && !isAuth ? <Tool isAuth={isAuth}></Tool> : ''}
+                {isAuth && (
+                  <div className="btn btn-dark py-1" onClick={() => signOut(FIREBASE_AUTH)}>
+                    Logout
+                  </div>
+                )}
+                <NavLink className={'btn btn-lime py-1'} to={'/donate'}>
+                  Contribute <LuHandHeart />
+                </NavLink>
+                {/* {
+                  label: (
+                    <>
+                    </>
+                  ),
+                  class:,
+                } */}
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

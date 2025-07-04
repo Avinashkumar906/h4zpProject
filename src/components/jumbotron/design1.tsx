@@ -7,7 +7,13 @@ function Design1({ data, id }: { data: JumbotronType; id: string }) {
   return (
     <Row className="justify-content-center align-items-center">
       <Col className="w-100">
-        <Card className="rounded-4 shadow-sm bg-light" data-aos="slide-up">
+        <Card
+          style={{
+            backgroundColor: `${data?.theme || ''}`,
+          }}
+          className="rounded-4 shadow-sm bg-light"
+          data-aos="slide-up"
+        >
           <Card.Body className="p-5">
             <Card.Text className="h1 text-center">{data?.title}</Card.Text>
             <Description description={data.description} />

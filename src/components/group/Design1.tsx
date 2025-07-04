@@ -25,9 +25,9 @@ const MinimalCard = ({ data, id }: componentPropType) => {
           >
             <Card className="minimal-card" data-aos="fade-up" data-aos-duration="600">
               <Card.Img variant="top" src={item.url} alt={'Card' + index} />
-              <Card.Body>
-                {safeParseHtml(item.description) && <div>{safeParseHtml(item.description)}</div>}
-              </Card.Body>
+              {safeParseHtml(item.description) && (
+                <div className="card-body">{safeParseHtml(item.description)}</div>
+              )}
             </Card>
           </Col>
         ))}

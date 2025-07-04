@@ -11,7 +11,6 @@ import { subscribePageComponents } from '../firebase/firebase.util';
 import { MdOutlineRepeatOne } from 'react-icons/md';
 // import Statistics from '../components/statistics/Statistics';
 import { BiShowAlt } from 'react-icons/bi';
-// import { scrollTo } from 'scroll-js';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function Page(props: any) {
@@ -21,6 +20,7 @@ export default function Page(props: any) {
   const [modalAction, setModalAction] = useState(null);
   const [modalState, setModalState] = useState(false);
   const [docId, setDocId] = useState(null);
+  const [visible, setvisible] = useState(false);
   const { page: collection } = useParams();
   const [loading, setLoading] = useState(true);
 
@@ -57,6 +57,12 @@ export default function Page(props: any) {
 
   const onOrder = (): void => {
     setModalAction('ORDER');
+    setModalState(true);
+    setModalData({ data });
+  };
+
+  const onPageMeta = () => {
+    setModalAction('PAGE');
     setModalState(true);
     setModalData({ data });
   };
@@ -126,8 +132,8 @@ export default function Page(props: any) {
         <div className="floating-icon">
           <ListGroup
             horizontal="false"
-            className="pointer align-items-end b-radius-0"
-            // style={{ borderTopRightRadius: 0, borderBottomRightRadius: 0 }}
+            className="pointer align-items-end b-radius-1"
+            style={{ borderTopRightRadius: 0, borderBottomRightRadius: 0 }}
           >
             <ListGroup.Item onClick={onAddComponent}>
               <MdAddCard />
@@ -147,11 +153,16 @@ export default function Page(props: any) {
             </ListGroup.Item>
             <ListGroup.Item>
               <MdOutlineInsertPageBreak />
-              <span className="hover-label">Page Meta</span>
+              <span className="hover-label" onClick={onPageMeta}>
+                Page Meta
+              </span>
             </ListGroup.Item>
-            <ListGroup.Item className={!docId ? 'not-allowed' : ''}>
+            <ListGroup.Item
+              className={!docId ? 'not-allowed' : ''}
+              onClick={() => setvisible(!visible)}
+            >
               <BiShowAlt />
-              <span className="hover-label">Visibile</span>
+              <span className="hover-label">{visible ? 'Visible' : 'Hidden'}</span>
             </ListGroup.Item>
           </ListGroup>
         </div>
