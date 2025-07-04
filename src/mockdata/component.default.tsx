@@ -6,6 +6,7 @@ export const MOCK_BANNER = {
   url: 'https://res.cloudinary.com/ddfh2nxrt/image/upload/v1670224137/dumpdata/em5i0ryece0hnzgk0g2j.png',
   description: 'HANDS 4 ZERO POVERTY',
   fluid: true,
+  visibility: false,
   theme: '',
   order: 1,
   height: 100,
@@ -29,9 +30,7 @@ export const MOCK_GROUP_LIST = [
 ];
 
 export const MOCK_GROUP = {
-  // imgRatio: '1:1',
-  // style: 'rounded-circle',
-  // height: 100,
+  visibility: false,
   stackOnSm: false,
   title: 'OTHER SPECIAL PROJECTS',
   component: 'group',
@@ -40,6 +39,7 @@ export const MOCK_GROUP = {
   list: MOCK_GROUP_LIST,
   fluid: false,
   theme: '',
+  design: 'design1',
   description:
     'Join the group of people helping to make life better for the people living in extreme poverty. The H4ZP projects are possible because of the support and care of people like you.',
 };
@@ -57,10 +57,10 @@ export const MOCK_JUMBOTRON = {
   btnList: MOCK_BUTTON_LIST,
   fluid: false,
   theme: '',
+  visibility: false,
   component: 'jumbotron',
   title: 'We are back!',
-  description:
-    'Supporting medical camps, food and shoe distributions, medical and school supplies, and much more. Help us expand our reach by donating today using Fundly or the H4ZP website.',
+  description: 'Some description here!',
 };
 
 export const MOCK_BLOG_LIST = [
@@ -86,6 +86,7 @@ export const MOCK_BLOGS = {
   more: '',
   fluid: false,
   height: 100,
+  visibility: false,
   theme: '',
   design: 'design1',
 };
@@ -97,6 +98,7 @@ export const MOCK_IFRAME = {
   order: 5,
   mute: true,
   autoplay: false,
+  visibility: false,
   fluid: false,
   title: 'Some title about video',
   url: '//www.youtube.com/embed/xPFlY6fY2c0?wmode=opaque&enablejsapi=1',

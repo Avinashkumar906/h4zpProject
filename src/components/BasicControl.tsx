@@ -16,6 +16,14 @@ export const fieldConfigs = [
       { label: 'Off', value: 'false' },
     ],
   },
+  {
+    name: 'visibility',
+    label: 'Show on Page',
+    options: [
+      { label: 'Show', value: 'true' },
+      { label: 'Hide', value: 'false' },
+    ],
+  },
   // add more fields easily in the future
 ];
 
@@ -25,7 +33,7 @@ type componentPropType = {
   id: string;
 };
 
-const Control = ({ form }: componentPropType) => {
+const BasicControl = ({ form }: componentPropType) => {
   {
     fieldConfigs.map(({ name }) => {
       if (getIn(form.values, name) === undefined) {
@@ -58,4 +66,4 @@ const Control = ({ form }: componentPropType) => {
   );
 };
 
-export default Control;
+export default BasicControl;

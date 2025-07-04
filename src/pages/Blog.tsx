@@ -5,7 +5,7 @@ import DynamicComponent from '../components/Component';
 import { getFormatedDate, optimizeData } from '../util/mockData.util';
 import Parser from 'html-react-parser';
 import { startCase } from 'lodash';
-import { subscribeBlogList, subscribePageComponents } from '../firebase/firebase.util';
+import { subscribeBlogList, subscribePageComponents } from '../firebase/getFromFirestore';
 
 function Blog() {
   const [data, setData] = useState([]);

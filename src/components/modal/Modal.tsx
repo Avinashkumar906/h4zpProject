@@ -5,7 +5,7 @@ import {
   addComponentToPage,
   updateComponentOfPage,
   updateMultipleComponentsOfPage,
-} from '../../firebase/util';
+} from '../../firebase/getFromFirestore';
 import AddComponent from '../AddComponent';
 import UpdateComponent from '../UpdateComponent';
 import { componentOptions, getMockdata } from '../../util';
@@ -21,14 +21,14 @@ export const CModal = (props: any) => {
   const { search } = useLocation();
 
   const modalData = page.data.find((f) => f.id === page?.docId);
+
   const [formData, setFormData] = useState(
-    action === 'EDIT' ? modalData && getMockdata(modalData.component, modalData) : null,
+    action === 'EDIT' ? { data: getMockdata(modalData.data.component, modalData.data) } : null,
   );
 
   const onUpdate = (formvalue) => {
     if (action === 'ADD') {
       formvalue.order = page.data.length;
-      formvalue.visible = false;
       addComponentToPage(pageID, formvalue, (snapShot) => console.log(snapShot.id));
     } else if (action === 'EDIT') {
       updateComponentOfPage(page.collection, page.docId, formvalue, console.log);

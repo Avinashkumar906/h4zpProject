@@ -11,7 +11,7 @@ import { getListItemOfComponent } from '../util/mockData.util';
 import ImageUpload from './imageUploader/ImageUpload';
 import { backgroundOptions } from '../util/const';
 import Rte from './editor/Rte';
-import Control from './form.config';
+import BasicControl from './BasicControl';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const UpdateComponent = (props: any) => {
@@ -40,28 +40,8 @@ const UpdateComponent = (props: any) => {
             <Tabs defaultActiveKey="basic" className="mb-3">
               <Tab eventKey="basic" title="Design">
                 <Row className="flex-column flex-sm-row flex-wrap" style={{ rowGap: '16px' }}>
-                  <Control id="Tab1" form={form} />
-                  {/* {getIn(form.values, 'fluid') !== undefined && (
-                    <Col className="mw-250">
-                      <Form.Label>Width</Form.Label>
-                      <Field as="select" name="fluid" className="form-select form-select-sm">
-                        {widthOptions.map((option) => (
-                          <option key={option.value} value={option.value}>
-                            {option.label}
-                          </option>
-                        ))}
-                      </Field>
-                    </Col>
-                  )}
-                  {getIn(form.values, 'autoplay') !== undefined && (
-                    <Col className="mw-250">
-                      <Form.Label>Auto play</Form.Label>
-                      <Field as="select" name="autoplay" className="form-select form-select-sm">
-                        <option value={'true'}>On</option>
-                        <option value={'false'}>Off</option>
-                      </Field>
-                    </Col>
-                  )} */}
+                  <BasicControl id="Tab1" form={form} />
+
                   {getIn(form.values, 'clickable') !== undefined && (
                     <Col className="mw-250">
                       <Form.Label>Clickable Images</Form.Label>

@@ -5,13 +5,12 @@ import ImageUpload from '../imageUploader/ImageUpload';
 import { Field, Form, Formik } from 'formik';
 import { Button, Col, Dropdown, InputGroup, Row, Spinner, Tab, Tabs } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import { fetchPageMeta } from '../../firebase/firebase.util';
-import { isTrue } from '../../util';
+import { fetchPageMeta } from '../../firebase/getFromFirestore';
 
 const initialPageData = {
   pageName: '',
   meta: {
-    isBlog: 'false',
+    isBlog: 'true',
     title: '',
     description: '',
     date: '',
@@ -41,11 +40,10 @@ function PageForm({ handlePageCreate, formSubmitted, handlePageUpdate }: any) {
   useEffect(() => {
     fetchPageMeta(page, (data) => {
       if (!data) return;
-
       setUpdatePageForm({
         pageName: page, // or extract if available in data
-        isBlog: isTrue(data.isBlog),
         meta: {
+          isBlog: data.isBlog ?? 'false',
           title: data.title ?? '',
           date: data.date ?? '',
           imageUrl: data.imageUrl ?? '',
@@ -91,13 +89,13 @@ function PageForm({ handlePageCreate, formSubmitted, handlePageUpdate }: any) {
                         className="form-control form-control-sm w-75"
                       />
                       <Field
-                        name="isBlog"
+                        name="meta.isBlog"
                         placeholder="Auto show on blog page"
                         as="select"
                         className={'form-control form-control-sm'}
                       >
-                        <option value={'true'}>Show</option>
-                        <option value={'false'}>Hide</option>
+                        <option value="true">Show</option>
+                        <option value="false">Hide</option>
                       </Field>
                     </InputGroup>
                   </Col>
@@ -175,14 +173,6 @@ function PageForm({ handlePageCreate, formSubmitted, handlePageUpdate }: any) {
                         className={`form-control form-control-sm`}
                       />
                     </Col>
-                    {/* <Col sm={6} className="mb-2">
-                        <Field
-                          name="pageName"
-                          disabled
-                          placeholder="Page route url"
-                          className={'form-control form-control-sm'}
-                        />
-                      </Col> */}
                     <Col sm={6} className="mb-2">
                       <InputGroup size="sm">
                         <Field
@@ -191,13 +181,13 @@ function PageForm({ handlePageCreate, formSubmitted, handlePageUpdate }: any) {
                           className="form-control form-control-sm w-75"
                         />
                         <Field
-                          name="isBlog"
+                          name="meta.isBlog"
                           placeholder="Auto show on blog page"
                           as="select"
                           className={'form-control form-control-sm'}
                         >
-                          <option value={'true'}>Show</option>
-                          <option value={'false'}>Hide</option>
+                          <option value="true">Show</option>
+                          <option value="false">Hide</option>
                         </Field>
                       </InputGroup>
                     </Col>

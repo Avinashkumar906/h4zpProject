@@ -7,7 +7,7 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { Button } from 'react-bootstrap';
+import { Button, Col, Row, Spinner } from 'react-bootstrap';
 import { componentOptions } from '../util';
 
 const SortableItem = ({ id, children }: { id: string; children: React.ReactNode }) => {
@@ -27,6 +27,7 @@ const SortableItem = ({ id, children }: { id: string; children: React.ReactNode 
 
 export default function DraggableList(props: any) {
   const [items, setItems] = useState(props.list);
+  const [submitted, setSubmitted] = useState(false);
 
   const sensors = useSensors(useSensor(PointerSensor));
 
@@ -42,7 +43,9 @@ export default function DraggableList(props: any) {
   };
 
   const handleSave = () => {
+    setSubmitted(true);
     props.onSave(items);
+    setTimeout(() => setSubmitted(false), 500);
   };
 
   return (
@@ -67,9 +70,17 @@ export default function DraggableList(props: any) {
         </SortableContext>
       </DndContext>
       <div className="text-center mt-3">
-        <Button variant="primary" onClick={handleSave}>
-          Save Order
-        </Button>
+        <Row className="mb-2">
+          <Col className="text-center">
+            {submitted ? (
+              <Spinner animation="border" />
+            ) : (
+              <Button variant="primary" size="sm" onClick={handleSave}>
+                Save Order
+              </Button>
+            )}
+          </Col>
+        </Row>
         <div className="p-3 mt-2 bg-light border-top" style={{ opacity: 0.9 }}>
           <span className="text-muted">🔒 Non-editable footer section</span>
         </div>

@@ -3,14 +3,12 @@ import DynamicComponent from '../components/Component';
 import { useParams } from 'react-router-dom';
 import { AiFillEdit, AiFillDelete } from 'react-icons/ai';
 import { MdAddCard, MdOutlineInsertPageBreak } from 'react-icons/md';
-import { deleteComponentOfPage } from '../firebase/util';
 import { CModal } from '../components/modal/Modal';
 import { ListGroup } from 'react-bootstrap';
 import NotFound from './NotFound';
-import { subscribePageComponents } from '../firebase/firebase.util';
+import { deleteComponentOfPage, subscribePageComponents } from '../firebase/getFromFirestore';
 import { MdOutlineRepeatOne } from 'react-icons/md';
 // import Statistics from '../components/statistics/Statistics';
-import { BiShowAlt } from 'react-icons/bi';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function Page(props: any) {
@@ -20,7 +18,6 @@ export default function Page(props: any) {
   const [modalAction, setModalAction] = useState(null);
   const [modalState, setModalState] = useState(false);
   const [docId, setDocId] = useState(null);
-  const [visible, setvisible] = useState(false);
   const { page: collection } = useParams();
   const [loading, setLoading] = useState(true);
 
@@ -101,8 +98,12 @@ export default function Page(props: any) {
 
   return data ? (
     <Fragment>
-      {data
-        ?.sort((a, b) => a.data.order - b.data.order)
+      {(data ?? [])
+        .sort((a, b) => a.data.order - b.data.order)
+        .filter((f) => {
+          if (editable === 'true') return true; // return all
+          return f.data.visibility === 'true'; // filter only visible
+        })
         .map((m) => (
           <div
             className={
@@ -156,13 +157,6 @@ export default function Page(props: any) {
               <span className="hover-label" onClick={onPageMeta}>
                 Page Meta
               </span>
-            </ListGroup.Item>
-            <ListGroup.Item
-              className={!docId ? 'not-allowed' : ''}
-              onClick={() => setvisible(!visible)}
-            >
-              <BiShowAlt />
-              <span className="hover-label">{visible ? 'Visible' : 'Hidden'}</span>
             </ListGroup.Item>
           </ListGroup>
         </div>
