@@ -1,24 +1,44 @@
 import { Fragment, useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
-import { addComponentToPage, updateComponentOfPage } from '../../firebase/util';
+import {
+  addComponentToPage,
+  addDocToCollection,
+  updateComponentOfPage,
+  updateMultipleComponentsOfPage,
+} from '../../firebase/util';
 import AddComponent from '../AddComponent';
 import UpdateComponent from '../UpdateComponent';
-import { componentOptions } from '../../util';
+import { componentOptions, getMockdata } from '../../util';
 import DraggableList from '../SortComponent';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const CModal = (props: any) => {
-  const { pageID, action } = props;
-  const [formData, setFormData] = useState(props.data);
+  const { pageID, action, data: page } = props;
 
-  const onUpdate = (updatedData) => {
+  const modalData = page.data.find((f) => f.id === page?.docId);
+  const [formData, setFormData] = useState(
+    action === 'EDIT' ? modalData && getMockdata(modalData.component, modalData) : null,
+  );
+
+  const onUpdate = (formvalue) => {
     if (action === 'ADD') {
-      addComponentToPage(pageID, updatedData, (snapShot) => console.log(snapShot.id));
+      // const selectedIndex = page.data.length
+      formvalue.order = page.data.length;
+      formvalue.visible = false;
+      addComponentToPage(pageID, formvalue, (snapShot) => console.log(snapShot.id));
     } else if (action === 'EDIT') {
-      updateComponentOfPage(formData.collection, formData.docId, updatedData, console.log);
+      updateComponentOfPage(page.collection, page.docId, formvalue, console.log);
     } else if (action === 'ORDER') {
       console.log('Save order function!');
     }
+  };
+
+  const onSort = (page) => {
+    const pageData = page.map((item, index) => {
+      item.data.order = index;
+      return item;
+    });
+    updateMultipleComponentsOfPage(pageID, pageData, console.log);
   };
 
   const onComponentChange = (data) => {
@@ -55,7 +75,7 @@ export const CModal = (props: any) => {
             data={formData}
           ></UpdateComponent>
         )}
-        {action === 'ORDER' && <DraggableList />}
+        {action === 'ORDER' && <DraggableList onSave={onSort} list={page.data} />}
       </Modal.Body>
     </Modal>
   );

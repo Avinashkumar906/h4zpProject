@@ -101,12 +101,12 @@ const UpdateComponent = (props: any) => {
                       </Field>
                     </Col>
                   )}
-                  {getIn(form.values, 'order') !== undefined && (
+                  {/* {getIn(form.values, 'order') !== undefined && (
                     <Col className="mw-250">
                       <Form.Label>Position</Form.Label>
                       <Field type="number" name="order" className="form-control form-control-sm" />
                     </Col>
-                  )}
+                  )} */}
                   {getIn(form.values, 'itemInRow') && (
                     <Col className="mw-250">
                       <Form.Label>Item in Row</Form.Label>

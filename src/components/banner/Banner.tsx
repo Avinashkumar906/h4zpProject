@@ -43,7 +43,7 @@ function Banner({ data }: componentPropType) {
         data-aos="fade-in"
       >
         {data.url ? (
-          <div style={{ height: `${data?.height || 100}dvh` }}>
+          <div style={{ height: `${data?.height || 100}vh` }}>
             {isTrue(data?.parallax) ? (
               <Parallax
                 className="d-block h-100 w-100"

@@ -1,7 +1,15 @@
 import { FIRESTORE_DB } from './firebase';
-import { updateDoc, doc, deleteDoc, collection, addDoc, setDoc } from 'firebase/firestore'; // ✅ switched from 'lite' to full SDK
+import {
+  updateDoc,
+  doc,
+  deleteDoc,
+  collection,
+  addDoc,
+  setDoc,
+  writeBatch,
+} from 'firebase/firestore';
 
-export const addPage = async (values, cb) => {
+export const addAndUpdatePage = async (values, cb) => {
   const { pageName: pageID, meta } = values;
   if (pageID) {
     await setDoc(doc(FIRESTORE_DB, 'Pages', pageID), meta);
@@ -20,6 +28,23 @@ export const addDocToCollection = async (collectionPath, data, cb) => {
   } catch (error) {
     console.error('Error adding doc to collection:', error);
     cb(null, error);
+  }
+};
+
+export const updateMultipleComponentsOfPage = async (pageID, componentsToUpdate, cb) => {
+  try {
+    const batch = writeBatch(FIRESTORE_DB);
+
+    componentsToUpdate.forEach(({ id, data }) => {
+      const componentRef = doc(FIRESTORE_DB, 'Pages', pageID, 'Components', id);
+      batch.set(componentRef, data, { merge: true }); // or use batch.update(componentRef, data);
+    });
+
+    await batch.commit();
+    cb(true);
+  } catch (error) {
+    console.error('Error updating components:', error);
+    cb(false, error);
   }
 };
 

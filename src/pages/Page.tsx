@@ -2,15 +2,15 @@ import { Fragment, useEffect, useState } from 'react';
 import DynamicComponent from '../components/Component';
 import { useParams } from 'react-router-dom';
 import { AiFillEdit, AiFillDelete } from 'react-icons/ai';
-import { MdAddCard } from 'react-icons/md';
+import { MdAddCard, MdOutlineInsertPageBreak } from 'react-icons/md';
 import { deleteComponentOfPage } from '../firebase/util';
 import { CModal } from '../components/modal/Modal';
 import { ListGroup } from 'react-bootstrap';
 import NotFound from './NotFound';
-import { getMockdata } from '../util/mockData.util';
 import { subscribePageComponents } from '../firebase/firebase.util';
 import { MdOutlineRepeatOne } from 'react-icons/md';
-import Statistics from '../components/statistics/Statistics';
+// import Statistics from '../components/statistics/Statistics';
+import { BiShowAlt } from 'react-icons/bi';
 // import { scrollTo } from 'scroll-js';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -29,7 +29,10 @@ export default function Page(props: any) {
   const onDelete = () => {
     if (!docId) return;
     if (window.confirm('Are you sure you want to Delete?')) {
-      deleteComponentOfPage(collection, docId, console.log);
+      deleteComponentOfPage(collection, docId, (res) => {
+        console.log(res);
+        setDocId(null);
+      });
     }
   };
 
@@ -37,8 +40,7 @@ export default function Page(props: any) {
     if (!docId) return;
     setModalState(true);
     setModalAction('EDIT');
-    const { data: modalData } = data.find((f) => f.id === docId);
-    setModalData({ docId, collection, data: getMockdata(modalData.component, modalData) });
+    setModalData({ docId, collection, data });
   };
 
   const componentClick = (id: string) => {
@@ -50,13 +52,13 @@ export default function Page(props: any) {
   const onAddComponent = () => {
     setModalAction('ADD');
     setModalState(true);
-    setModalData(null);
+    setModalData({ docId, collection, data });
   };
 
   const onOrder = (): void => {
     setModalAction('ORDER');
     setModalState(true);
-    setModalData(null);
+    setModalData({ data });
   };
 
   useEffect(() => {
@@ -124,20 +126,32 @@ export default function Page(props: any) {
         <div className="floating-icon">
           <ListGroup
             horizontal="false"
-            className="pointer"
-            style={{ borderTopRightRadius: 0, borderBottomRightRadius: 0 }}
+            className="pointer align-items-end b-radius-0"
+            // style={{ borderTopRightRadius: 0, borderBottomRightRadius: 0 }}
           >
             <ListGroup.Item onClick={onAddComponent}>
               <MdAddCard />
+              <span className="hover-label">Add</span>
             </ListGroup.Item>
-            <ListGroup.Item className={!docId ? 'disabled' : ''} onClick={onEdit}>
+            <ListGroup.Item className={!docId ? 'not-allowed' : ''} onClick={onEdit}>
               <AiFillEdit />
+              <span className="hover-label">Edit</span>
             </ListGroup.Item>
-            <ListGroup.Item className={!docId ? 'disabled' : ''} onClick={onDelete}>
+            <ListGroup.Item className={!docId ? 'not-allowed' : ''} onClick={onDelete}>
               <AiFillDelete />
+              <span className="hover-label">Delete</span>
             </ListGroup.Item>
             <ListGroup.Item onClick={onOrder}>
               <MdOutlineRepeatOne />
+              <span className="hover-label">Order</span>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <MdOutlineInsertPageBreak />
+              <span className="hover-label">Page Meta</span>
+            </ListGroup.Item>
+            <ListGroup.Item className={!docId ? 'not-allowed' : ''}>
+              <BiShowAlt />
+              <span className="hover-label">Visibile</span>
             </ListGroup.Item>
           </ListGroup>
         </div>

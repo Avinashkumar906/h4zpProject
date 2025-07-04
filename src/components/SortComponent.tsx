@@ -7,6 +7,8 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
+import { Button } from 'react-bootstrap';
+import { componentOptions } from '../util';
 
 const SortableItem = ({ id, children }: { id: string; children: React.ReactNode }) => {
   const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
@@ -23,8 +25,8 @@ const SortableItem = ({ id, children }: { id: string; children: React.ReactNode 
   );
 };
 
-export default function DraggableList() {
-  const [items, setItems] = useState(['Item 1', 'Item 2', 'Item 3', 'Item 4']);
+export default function DraggableList(props: any) {
+  const [items, setItems] = useState(props.list);
 
   const sensors = useSensors(useSensor(PointerSensor));
 
@@ -32,27 +34,46 @@ export default function DraggableList() {
     const { active, over } = event;
     if (active.id !== over.id) {
       setItems((prev) => {
-        const oldIndex = prev.indexOf(active.id);
-        const newIndex = prev.indexOf(over.id);
+        const oldIndex = prev.findIndex((i) => i.id === active.id);
+        const newIndex = prev.findIndex((i) => i.id === over.id);
         return arrayMove(prev, oldIndex, newIndex);
       });
     }
-    console.log(items);
+  };
+
+  const handleSave = () => {
+    props.onSave(items);
   };
 
   return (
-    <div className="container mt-4">
+    <div className="container-fluid">
+      <div
+        className="p-3 mb-2 bg-light border-bottom text-center"
+        style={{ cursor: 'not-allowed', opacity: 0.6 }}
+      >
+        🔒 Non-editable header section
+      </div>
       <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
         <SortableContext items={items} strategy={verticalListSortingStrategy}>
           {items.map((item) => (
-            <SortableItem key={item} id={item}>
-              <div className="list-group-item p-3 mb-2 bg-light border rounded shadow-sm">
-                {item}
+            <SortableItem key={item.id} id={item.id}>
+              <div className="list-group-item p-2 mb-2 bg-light border rounded shadow-sm">
+                {componentOptions.find((f) => f.value === item?.data?.component)?.label ||
+                  item.data.component}
+                {/* {item.data.component} */}
               </div>
             </SortableItem>
           ))}
         </SortableContext>
       </DndContext>
+      <div className="text-center mt-3">
+        <Button variant="primary" onClick={handleSave}>
+          Save Order
+        </Button>
+        <div className="p-3 mt-2 bg-light border-top" style={{ opacity: 0.9 }}>
+          <span className="text-muted">🔒 Non-editable footer section</span>
+        </div>
+      </div>
     </div>
   );
 }

@@ -43,7 +43,7 @@ a:active {
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  min-height: 100dvh;
+  min-height: 100vh;
 }
 
 .sun-editor-editable {
@@ -581,7 +581,7 @@ a:active {
 .responsive-iframe {
   width: 100%;
   /* optional max width for cleaner centering */
-  max-height: 70dvh;
+  max-height: 80vh;
   aspect-ratio: 16 / 9;
   border: none;
   border-radius: 0.5rem;
@@ -592,4 +592,29 @@ a:active {
 
 .responsive-iframe:hover {
   transform: scale(1.01);
+}
+
+.hover-label {
+  display: inline-block;
+  /* overflow: hidden; */
+  white-space: nowrap;
+  max-width: 0;
+  opacity: 0;
+  /* opacity: 1; */
+  transition:
+    max-width 0.3s ease,
+    opacity 0.3s ease,
+    margin-left 0.3s ease;
+  vertical-align: middle;
+}
+
+.list-group-item:hover .hover-label {
+  max-width: 100px; /* adjust to fit your longest label */
+  opacity: 1;
+  margin-left: 8px; /* spacing between icon and label on reveal */
+}
+
+.not-allowed {
+  pointer-events: all;
+  cursor: not-allowed;
 }

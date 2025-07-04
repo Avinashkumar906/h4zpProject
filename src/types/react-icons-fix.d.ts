@@ -51,7 +51,23 @@ declare module 'react-icons/md' {
 
   export const MdAddCard: FC<SVGProps<SVGSVGElement>>;
   export const MdOutlineRepeatOne: FC<SVGProps<SVGSVGElement>>;
+  export const MdHideSource: FC<SVGProps<SVGSVGElement>>;
+  export const MdOutlineInsertPageBreak: FC<SVGProps<SVGSVGElement>>;
+  //   export const AiFillTwitterSquare: FC<SVGProps<SVGSVGElement>>;
+}
+
+declare module 'react-icons/bi' {
+  import { FC, SVGProps } from 'react';
+
+  export const BiDonateHeart: FC<SVGProps<SVGSVGElement>>;
+  export const BiShowAlt: FC<SVGProps<SVGSVGElement>>;
   //   export const AiFillYoutube: FC<SVGProps<SVGSVGElement>>;
   //   export const AiFillLinkedin: FC<SVGProps<SVGSVGElement>>;
   //   export const AiFillTwitterSquare: FC<SVGProps<SVGSVGElement>>;
+}
+
+declare module 'react-icons/lu' {
+  import { FC, SVGProps } from 'react';
+
+  export const LuHandHeart: FC<SVGProps<SVGSVGElement>>;
 }

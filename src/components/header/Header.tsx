@@ -4,6 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import logoSrc from '../../logo.svg';
 import { NavLink, useLocation } from 'react-router-dom';
 import Tool from './Tool';
+import { LuHandHeart } from 'react-icons/lu';
 
 const navLinks = [
   { label: 'HOME', link: '/home' },
@@ -13,7 +14,15 @@ const navLinks = [
   },
   { label: 'ACTIVITY', link: '/blog' },
   { label: 'ABOUT', link: '/about' },
-  { label: 'DONATE', link: '/donate', class: 'btn-lime py-1' },
+  {
+    label: (
+      <>
+        Contribute <LuHandHeart fontSize={18} />
+      </>
+    ),
+    link: '/donate',
+    class: 'btn-lime py-1',
+  },
 ];
 
 function Header(props: any) {

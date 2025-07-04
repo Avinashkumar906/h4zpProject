@@ -3,7 +3,7 @@ import { useRef, useState } from 'react';
 import { ButtonGroup, DropdownButton } from 'react-bootstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FIREBASE_AUTH } from '../../firebase/firebase';
-import { addPage } from '../../firebase/util';
+import { addAndUpdatePage } from '../../firebase/util';
 import PageForm from './PageForm';
 import LoginForm from './LoginForm';
 import { FaTools } from 'react-icons/fa';
@@ -21,7 +21,7 @@ function Tool(props: any) {
 
   const handlePageCreate = (values, { resetForm }) => {
     setFormSubmitted(true);
-    addPage(values, (pageID) => {
+    addAndUpdatePage(values, (pageID) => {
       resetForm();
       setFormSubmitted(false);
       navigate(`/${pageID}${search || ''}`);
