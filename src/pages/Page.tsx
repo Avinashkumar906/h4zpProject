@@ -8,6 +8,7 @@ import { ListGroup } from 'react-bootstrap';
 import NotFound from './NotFound';
 import { deleteComponentOfPage, subscribePageComponents } from '../firebase/getFromFirestore';
 import { MdOutlineRepeatOne } from 'react-icons/md';
+import { copyToClipboard, pasteFromClipboard } from '../util';
 // import Statistics from '../components/statistics/Statistics';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -19,7 +20,6 @@ export default function Page(props: any) {
   const [modalState, setModalState] = useState(false);
   const [docId, setDocId] = useState(null);
   const { page: collection } = useParams();
-  const [loading, setLoading] = useState(true);
 
   const handleClose = () => setModalState(false);
 
@@ -65,13 +65,13 @@ export default function Page(props: any) {
   };
 
   useEffect(() => {
-    if (document.readyState === 'complete') {
-      setLoading(false);
-    } else {
-      window.addEventListener('load', () => {
-        setLoading(false);
-      });
-    }
+    const handleCopy = (e: ClipboardEvent) => {
+      const item = data.find((f) => f.id === docId);
+      copyToClipboard(e, item);
+    };
+    const handlePaste = (e: ClipboardEvent) => {
+      console.log('✅ Paste:', pasteFromClipboard(e));
+    };
 
     let unsubscribe;
     const init = async () => {
@@ -79,22 +79,17 @@ export default function Page(props: any) {
         setData(res);
       });
     };
+
     init();
+    document.addEventListener('copy', handleCopy);
+    document.addEventListener('paste', handlePaste);
 
     return () => {
       if (unsubscribe) unsubscribe();
-      window.removeEventListener('load', () => setLoading(false));
+      document.removeEventListener('copy', handleCopy);
+      document.removeEventListener('paste', handlePaste);
     };
-  }, [collection]);
-
-  if (loading) {
-    return (
-      <div style={{ position: 'absolute', inset: 0, background: 'black' }}>
-        <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-blue-500"></div>
-        <p className="ml-4">Loading...</p>
-      </div>
-    );
-  }
+  }, [collection, docId, data]);
 
   return data ? (
     <Fragment>
