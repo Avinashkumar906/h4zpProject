@@ -1,4 +1,4 @@
-import * as Moment from 'moment';
+import Moment from 'moment';
 
 export const MOCK_BANNER = {
   //     url: 'https://res.cloudinary.com/ddfh2nxrt/image/upload/v1670224137/dumpdata/em5i0ryece0hnzgk0g2j.png',

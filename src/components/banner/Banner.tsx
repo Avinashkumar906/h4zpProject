@@ -51,13 +51,13 @@ function Banner({ data }: componentPropType) {
                 bgImageAlt={`Banner url ${data.url}`}
                 strength={300}
               >
-                <div className="py-8 px-2 d-flex w-100 h-100 justify-content-center align-items-end">
+                <div className="py-8 px-2 d-flex w-100 h-100 align-items-end">
                   <div>{safeParseHtml(data.description)}</div>
                 </div>
               </Parallax>
             ) : (
               <>
-                <div className="py-8 px-2 d-flex w-100 h-100 justify-content-center align-items-end">
+                <div className="py-8 px-2 d-flex w-100 h-100 align-items-end">
                   <div className="text-white">{safeParseHtml(data.description)}</div>
                   <img
                     className="react-parallax-bgimage"

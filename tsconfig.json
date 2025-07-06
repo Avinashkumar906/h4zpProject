@@ -3,7 +3,9 @@
     "module": "esnext",
     "moduleResolution": "node",
     "allowJs": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
   },
   "include": ["src"]
 }

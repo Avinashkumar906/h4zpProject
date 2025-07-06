@@ -8,80 +8,81 @@ body {
   font-size: 1rem;
   background-color: #fff;
 }
-
-/* Links */
-/* a {
-  color: #0d6efd;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-a:hover {
-  color: #0a58ca;
-  text-decoration: underline;
-} */
-
-/* Lists */
-ul,
-ol {
-  padding-left: 1.5rem;
-  margin-bottom: 1rem;
-}
-li {
-  margin-bottom: 0.25rem;
+/* suneditor reset */
+.se-wrapper-inner .se-wrapper-wysiwyg {
+  font-family: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  color: inherit !important;
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
-/* Blockquotes */
-blockquote {
-  border-left: 4px solid #0d6efd;
-  padding-left: 1rem;
-  color: #555;
-  font-style: italic;
-  margin: 1rem 0;
+/* h1 → display-1 */
+h1 {
+  font-size: calc(1.625rem + 4.5vw);
+  font-weight: 300;
+  line-height: 1.2;
 }
 
-/* Code & Pre */
-code {
-  background: #f8f9fa;
-  padding: 0.2rem 0.4rem;
-  border-radius: 4px;
-  font-family: 'SFMono-Regular', Consolas, monospace;
-  font-size: 0.95rem;
-}
-pre {
-  background: #f8f9fa;
-  padding: 1rem;
-  border-radius: 8px;
-  overflow-x: auto;
-  font-family: 'SFMono-Regular', Consolas, monospace;
-  font-size: 0.95rem;
+@media (min-width: 1200px) {
+  h1 {
+    font-size: 5rem;
+  }
 }
 
-/* Images */
-img {
-  max-width: 100%;
-  height: auto;
-  /* border-radius: 8px; */
+/* h2 → display-2 */
+h2 {
+  font-size: calc(1.475rem + 2.7vw);
+  font-weight: 300;
+  line-height: 1.2;
 }
 
-/* Tables */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 1rem;
-}
-th,
-td {
-  border: 1px solid #dee2e6;
-  padding: 0.5rem;
-}
-th {
-  background-color: #f8f9fa;
-  font-weight: 600;
-  text-align: left;
+@media (min-width: 1200px) {
+  h2 {
+    font-size: 4.5rem;
+  }
 }
 
-/* Custom headings if needed elsewhere */
-.custom-heading {
-  font-family: 'Inter', system-ui, sans-serif;
-  font-weight: 700;
+/* h3 → display-3 */
+h3 {
+  font-size: calc(1.375rem + 1.5vw);
+  font-weight: 300;
+  line-height: 1.2;
 }
+
+@media (min-width: 1200px) {
+  h3 {
+    font-size: 4rem;
+  }
+}
+
+/* h4 → display-4 */
+h4 {
+  font-size: calc(1.325rem + 0.9vw);
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+@media (min-width: 1200px) {
+  h4 {
+    font-size: 3.5rem;
+  }
+}
+
+/* h5 → display-5 */
+h5 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+/* h6 → display-6 */
+h6 {
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+/* Sunedito */

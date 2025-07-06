@@ -8,7 +8,7 @@ import {
   MOCK_IFRAME,
   MOCK_JUMBOTRON,
 } from '../mockdata/component.default';
-import * as Moment from 'moment';
+import Moment from 'moment';
 export type JumbotronType = typeof MOCK_JUMBOTRON;
 export type ButtonList = typeof MOCK_BUTTON_LIST;
 export type BannerType = typeof MOCK_BANNER;

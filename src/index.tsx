@@ -1,9 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'aos/dist/aos.css';
 import 'suneditor/dist/css/suneditor.min.css';
-import AOS from 'aos/dist/aos.js';
 import './css/index.css';
 import './css/typography.css';
+import AOS from 'aos/dist/aos.js';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
