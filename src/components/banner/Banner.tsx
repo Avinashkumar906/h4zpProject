@@ -10,6 +10,7 @@ import {
 } from '../../util/mockData.util';
 import * as React from 'react';
 import { safeParseHtml } from '../editor/rte.util';
+import { getRGBAString } from '../common/ColorField';
 
 type componentPropType = {
   data: BannerType | undefined;
@@ -19,6 +20,8 @@ type componentPropType = {
 function Banner({ data }: componentPropType) {
   const [dimension, setDimension] = useState<Pick<CloudinaryParams, 'height' | 'width'>>();
   const placeholder = useRef(null);
+  const measureUnit = data.order === 0 && data.height == 100 ? 'dvh' : 'vh';
+  // console.log(data.contentBg)
   useEffect(() => {
     if (placeholder.current?.clientWidth || placeholder.current?.clientHeight) {
       setDimension({
@@ -43,7 +46,7 @@ function Banner({ data }: componentPropType) {
         data-aos="fade-in"
       >
         {data.url ? (
-          <div style={{ height: `${data?.height || 100}vh` }}>
+          <div style={{ height: `${data?.height || 100}${measureUnit}` }}>
             {isTrue(data?.parallax) ? (
               <Parallax
                 className="d-block h-100 w-100"
@@ -51,13 +54,23 @@ function Banner({ data }: componentPropType) {
                 bgImageAlt={`Banner url ${data.url}`}
                 strength={300}
               >
-                <div className="py-8 px-2 d-flex w-100 h-100 align-items-end">
-                  {safeParseHtml(data.description)}
+                <div
+                  className={`py-8 px-2 d-flex w-100 h-100 ${data.contentPosition.horizontal} ${data.contentPosition.verticle}`}
+                >
+                  <div
+                    className="p-4 rounded"
+                    style={{ backgroundColor: getRGBAString(data.contentBg) }}
+                  >
+                    {safeParseHtml(data.description)}
+                    {/* {data.contentBg} */}
+                  </div>
                 </div>
               </Parallax>
             ) : (
               <>
-                <div className="py-8 px-2 d-flex w-100 h-100 align-items-end">
+                <div
+                  className={`py-8 px-2 d-flex w-100 h-100 ${data.contentPosition.horizontal} ${data.contentPosition.verticle}`}
+                >
                   {safeParseHtml(data.description)}
                   <img
                     className="react-parallax-bgimage"

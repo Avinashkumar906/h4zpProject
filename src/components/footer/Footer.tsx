@@ -26,14 +26,15 @@ function Footer(props: any) {
   const links = [
     { label: 'Privacy Policy', to: '/privacy-policy' },
     { label: 'Terms & Conditions', to: '/terms-and-conditions' },
+    { label: 'Contact Us', to: '/contact-us' },
     { label: 'Refund Policy', to: '/refund-policy' },
-    { label: 'Contact Us', to: '/contact' },
+    { label: 'About Us', to: '/about' },
     { label: 'Manage Page', to: '?editable=true' },
   ];
 
   return (
-    <footer className="bg-dark text-light pt-4 pb-3 mt-5">
-      <Container>
+    <footer className="bg-dark text-light pt-4 pb-3">
+      <Container fluid="xl">
         <Row className="gy-4">
           {/* Left: About */}
           <Col md={5} sm={12}>
@@ -85,7 +86,7 @@ function Footer(props: any) {
 
         <Row>
           <Col className="text-center small">
-            {/* <br/> */}© {new Date().getFullYear()} Hands4ZeroPoverty Trust. All rights reserved.
+            © {new Date().getFullYear()} Hands4ZeroPoverty Trust. All rights reserved.
           </Col>
         </Row>
       </Container>

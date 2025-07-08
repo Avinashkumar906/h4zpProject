@@ -1,14 +1,17 @@
 import Moment from 'moment';
 
 export const MOCK_BANNER = {
-  //     url: 'https://res.cloudinary.com/ddfh2nxrt/image/upload/v1670224137/dumpdata/em5i0ryece0hnzgk0g2j.png',
-  //     url: 'https://res.cloudinary.com/ddfh2nxrt/image/upload/v1666330174/H4ZP/banner/Contact-_28R_29_ie4ecj.jpg',
-  url: 'https://res.cloudinary.com/ddfh2nxrt/image/upload/v1670224137/dumpdata/em5i0ryece0hnzgk0g2j.png',
+  contentPosition: {
+    horizontal: 'true',
+    verticle: 'true',
+  },
+  contentBg: '#000000',
+  url: 'https://placehold.co/600?text=Hello+World',
   description: 'HANDS 4 ZERO POVERTY',
   fluid: true,
   visibility: false,
   theme: '',
-  order: 1,
+  order: 0,
   height: 100,
   component: 'banner',
   parallax: true,
@@ -17,15 +20,15 @@ export const MOCK_BANNER = {
 export const MOCK_GROUP_LIST = [
   {
     description: 'Fighting Poverty one Step at a Time',
-    url: 'https://res.cloudinary.com/ddfh2nxrt/image/upload/v1666436083/H4ZP/group/moreProject/image-asset_izixlp.jpg',
+    url: 'https://placehold.co/400?text=Hello+World',
   },
   {
     description: 'Fighting Poverty one Step at a Time',
-    url: 'https://res.cloudinary.com/ddfh2nxrt/image/upload/v1666436096/H4ZP/group/moreProject/DSC_1096_khblje.jpg',
+    url: 'https://placehold.co/400?text=Hello+World',
   },
   {
     description: 'Fighting Poverty one Step at a Time',
-    url: 'https://res.cloudinary.com/ddfh2nxrt/image/upload/v1666436109/H4ZP/group/moreProject/H4ZP_IRC_Video_Contest_cuprg7.jpg',
+    url: 'https://placehold.co/400?text=Hello+World',
   },
 ];
 
@@ -34,8 +37,7 @@ export const MOCK_GROUP = {
   stackOnSm: false,
   title: 'OTHER SPECIAL PROJECTS',
   component: 'group',
-  itemInRow: 3,
-  order: 4,
+  // itemInRow: 3,
   list: MOCK_GROUP_LIST,
   fluid: false,
   theme: '',
@@ -53,7 +55,6 @@ export const MOCK_BUTTON_LIST = [
 ];
 
 export const MOCK_JUMBOTRON = {
-  order: 2,
   btnList: MOCK_BUTTON_LIST,
   fluid: false,
   theme: '',
@@ -69,7 +70,7 @@ export const MOCK_BLOG_LIST = [
     description:
       'Seventy-five families received food supplies to last the average family of five approximately 2~3 weeks…',
     title: 'Learn about our fall 2022 food distribution ',
-    url: 'https://res.cloudinary.com/ddfh2nxrt/image/upload/v1666334204/H4ZP/blogs/oct-2022/IMG_2816-2_28R_29_ybs592.jpg',
+    url: 'https://placehold.co/400?text=Hello+World',
     BtnText: 'Read more',
     BtnUrl: '#',
     btnColor: 'btn-dark',
@@ -81,7 +82,6 @@ export const MOCK_BLOG_LIST = [
 export const MOCK_BLOGS = {
   list: MOCK_BLOG_LIST,
   component: 'blogs',
-  order: 4,
   title: 'Recent Activities',
   more: '',
   fluid: false,
@@ -95,7 +95,6 @@ export const MOCK_IFRAME = {
   component: 'iframe',
   height: 100,
   theme: 'bg-light',
-  order: 5,
   mute: true,
   autoplay: false,
   visibility: false,

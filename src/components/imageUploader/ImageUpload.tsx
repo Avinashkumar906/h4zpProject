@@ -4,15 +4,13 @@ import { Spinner } from 'react-bootstrap';
 import { FaCloudUploadAlt } from 'react-icons/fa';
 import { useLocation } from 'react-router-dom';
 
-function ImageUpload({ fieldname }: any) {
+function ImageUpload({ fieldname, uploadPath }: Record<string, string>) {
   const location = useLocation();
   const { setFieldValue } = useFormikContext();
   const elRef = useRef(null);
   const [submitted, setSubmitted] = useState(false);
-  const folderPath = location.pathname
-    .replace(/^\/+/, '')
-    .replace(/\/$/, '')
-    .replace(/[?#&]/g, '_');
+  const folderPath =
+    uploadPath || location.pathname.replace(/^\/+/, '').replace(/\/$/, '').replace(/[?#&]/g, '_');
 
   const handleClick = () => {
     elRef.current.click();
@@ -45,8 +43,10 @@ function ImageUpload({ fieldname }: any) {
         <Spinner animation="border" size="sm" />
       ) : (
         <>
-          Upload image&nbsp;
-          <FaCloudUploadAlt onClick={handleClick} />
+          <span onClick={handleClick}>
+            Upload image&nbsp;
+            <FaCloudUploadAlt />
+          </span>
         </>
       )}
       <input type="file" ref={elRef} hidden onChange={handleChange}></input>

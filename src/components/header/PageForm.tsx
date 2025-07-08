@@ -169,7 +169,7 @@ function PageForm({ handlePageCreate, formSubmitted, handlePageUpdate }: any) {
                   <Col sm={6} className="mb-2">
                     <InputGroup size="sm">
                       <InputGroup.Text>
-                        <ImageUpload fieldname="meta.imageUrl" />
+                        <ImageUpload fieldname="meta.imageUrl" uploadPath="createPage" />
                       </InputGroup.Text>
                       <Field
                         name="meta.imageUrl"

@@ -9,7 +9,7 @@ import {
 } from 'react-icons/ai';
 import { getListItemOfComponent } from '../util/mockData.util';
 import ImageUpload from './imageUploader/ImageUpload';
-import { backgroundOptions } from '../util/const';
+import { backgroundOptions, basicFieldConfig } from '../util/const';
 import Rte from './editor/Rte';
 import BasicControl from './BasicControl';
 
@@ -40,7 +40,7 @@ const UpdateComponent = (props: any) => {
             <Tabs defaultActiveKey="basic" className="mb-3">
               <Tab eventKey="basic" title="Design">
                 <Row className="flex-column flex-sm-row flex-wrap" style={{ rowGap: '16px' }}>
-                  <BasicControl id="Tab1" form={form} />
+                  <BasicControl form={form} fieldConfig={basicFieldConfig} />
 
                   {getIn(form.values, 'clickable') !== undefined && (
                     <Col className="mw-250">
