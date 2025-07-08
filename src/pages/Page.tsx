@@ -70,7 +70,7 @@ export default function Page(props: any) {
       copyToClipboard(e, item);
     };
     const handlePaste = (e: ClipboardEvent) => {
-      console.log('✅ Paste:', pasteFromClipboard(e));
+      // console.log('✅ Paste:', pasteFromClipboard(e));
     };
 
     let unsubscribe;
@@ -81,15 +81,15 @@ export default function Page(props: any) {
     };
 
     init();
-    document.addEventListener('copy', handleCopy);
-    document.addEventListener('paste', handlePaste);
+    // document.addEventListener('copy', handleCopy);
+    // document.addEventListener('paste', handlePaste);
 
     return () => {
       if (unsubscribe) unsubscribe();
-      document.removeEventListener('copy', handleCopy);
-      document.removeEventListener('paste', handlePaste);
+      // document.removeEventListener('copy', handleCopy);
+      // document.removeEventListener('paste', handlePaste);
     };
-  }, [collection, docId, data]);
+  }, [collection]);
 
   return data ? (
     <Fragment>

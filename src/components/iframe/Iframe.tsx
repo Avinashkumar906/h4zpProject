@@ -3,6 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { IframeType, isTrue, smartParse } from '../../util/mockData.util';
 import Title from '../common/Title';
 import Description from '../common/Description';
+import { safeParseHtml } from '../editor/rte.util';
 type componentPropType = {
   data: IframeType | undefined;
   id: string;
@@ -24,7 +25,6 @@ function Iframe({ data }: componentPropType) {
 
   return (
     <Container
-      className="py-8 px-2"
       style={{
         backgroundColor: `${data?.theme || ''}`,
       }}
@@ -32,7 +32,11 @@ function Iframe({ data }: componentPropType) {
     >
       <Container fluid={smartParse(fluid)}>
         <Row>
-          <Title title={data?.title} />
+          {data?.title && (
+            <Col className="pt-8">
+              <Title title={data?.title} />
+            </Col>
+          )}
           <Col sm={12} data-aos="slide-up" className="">
             <iframe
               title={data?.title || 'Random clip.'}
@@ -44,7 +48,11 @@ function Iframe({ data }: componentPropType) {
               allowFullScreen
             ></iframe>
           </Col>
-          <Description description={data.description} />
+          {safeParseHtml(data.description) && (
+            <Col className="pb-8">
+              <Description description={data.description} />
+            </Col>
+          )}
         </Row>
       </Container>
     </Container>

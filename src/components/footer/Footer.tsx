@@ -23,51 +23,47 @@ function Footer(props: any) {
     { icon: <AiFillTwitterSquare fontSize={32} />, to: '//twitter.com/hands4zero' },
   ];
 
+  const links = [
+    { label: 'Privacy Policy', to: '/privacy-policy' },
+    { label: 'Terms & Conditions', to: '/terms-and-conditions' },
+    { label: 'Refund Policy', to: '/refund-policy' },
+    { label: 'Contact Us', to: '/contact' },
+    { label: 'Manage Page', to: '?editable=true' },
+  ];
+
   return (
     <footer className="bg-dark text-light pt-4 pb-3 mt-5">
       <Container>
         <Row className="gy-4">
           {/* Left: About */}
-          <Col md={4} sm={12}>
+          <Col md={5} sm={12}>
             <h5 className="text-uppercase">Hands 4 Zero Poverty Trust</h5>
-            <p className="small">PAN:AACTH7197M</p>
-            <p className="small">
+            <div className="small">Registered Under Indian Trusts Act, 1882</div>
+            {/* <p className="small">
               Hands 4 Zero Poverty, health, education, empowerment—our core values to success!
-            </p>
+            </p> */}
           </Col>
 
           {/* Middle: Quick Links */}
           <Col md={4} sm={6}>
             <h6 className="text-uppercase">Quick Links</h6>
-            <ul className="list-unstyled">
-              <li>
-                <a href="/privacy-policy" className="text-light text-decoration-none small">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="/terms-and-conditions" className="text-light text-decoration-none small">
-                  Terms & Conditions
-                </a>
-              </li>
-              <li>
-                <a href="/refund-policy" className="text-light text-decoration-none small">
-                  Refund Policy
-                </a>
-              </li>
-              <li>
-                <a href="/contact" className="text-light text-decoration-none small">
-                  Contact Us
-                </a>
-              </li>
-            </ul>
+            <div>
+              {links.map((m, index, arr) => (
+                <div className="d-inline" key={`footerlink-${index}`}>
+                  <Link to={m.to} className="text-light text-decoration-none small">
+                    {m.label} {arr.length - 1 !== index ? ' | ' : ''}
+                  </Link>
+                </div>
+              ))}
+            </div>
           </Col>
 
           {/* Right: Social & Contact */}
-          <Col md={4} sm={6}>
+          <Col md={3} sm={6}>
             <h6 className="text-uppercase">Contact</h6>
             <p className="small mb-1">Email: info@yourdomain.com</p>
-            <p className="small mb-2">Phone: +91-9876543210</p>
+            <p className="small mb-1">Phone: +91-9876543210</p>
+            <p className="small mb-2">PAN: AACTH7197M</p>
 
             <div className="d-flex gap-1">
               {icons.map((m, index) => (
@@ -81,18 +77,6 @@ function Footer(props: any) {
                   {m.icon}
                 </Link>
               ))}
-              {/* <a href="https://facebook.com/yourpage" target="_blank" rel="noopener noreferrer" className="text-light">
-                <FaFacebookF />
-              </a>
-              <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener noreferrer" className="text-light">
-                <FaTwitter />
-              </a>
-              <a href="https://instagram.com/yourpage" target="_blank" rel="noopener noreferrer" className="text-light">
-                <FaInstagram />
-              </a>
-              <a href="https://linkedin.com/company/yourorg" target="_blank" rel="noopener noreferrer" className="text-light">
-                <FaLinkedinIn />
-              </a> */}
             </div>
           </Col>
         </Row>
@@ -101,7 +85,7 @@ function Footer(props: any) {
 
         <Row>
           <Col className="text-center small">
-            © {new Date().getFullYear()} Hands4ZeroPoverty Trust. All rights reserved.
+            {/* <br/> */}© {new Date().getFullYear()} Hands4ZeroPoverty Trust. All rights reserved.
           </Col>
         </Row>
       </Container>

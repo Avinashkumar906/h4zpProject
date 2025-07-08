@@ -9,5 +9,5 @@ export function safeParseHtml(html: string | undefined | null): ReturnType<typeo
     return null;
   }
 
-  return <div className="editor p-0">{parse(html)}</div>;
+  return <div className="w-100">{parse(html)}</div>;
 }

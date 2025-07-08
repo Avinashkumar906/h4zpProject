@@ -2,11 +2,17 @@ import { useFormikContext } from 'formik';
 import { useRef, useState } from 'react';
 import { Spinner } from 'react-bootstrap';
 import { FaCloudUploadAlt } from 'react-icons/fa';
+import { useLocation } from 'react-router-dom';
 
 function ImageUpload({ fieldname }: any) {
+  const location = useLocation();
   const { setFieldValue } = useFormikContext();
   const elRef = useRef(null);
   const [submitted, setSubmitted] = useState(false);
+  const folderPath = location.pathname
+    .replace(/^\/+/, '')
+    .replace(/\/$/, '')
+    .replace(/[?#&]/g, '_');
 
   const handleClick = () => {
     elRef.current.click();
@@ -19,11 +25,16 @@ function ImageUpload({ fieldname }: any) {
       const formData = new FormData();
       formData.append('file', file);
       formData.append('upload_preset', process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET);
-      const data = await fetch(process.env.REACT_APP_CLOUDINARY_UPLOAD_URL, {
-        method: 'POST',
-        body: formData,
-      }).then((r) => r.json());
-      setFieldValue(fieldname, data.secure_url);
+      formData.append('folder', folderPath);
+      try {
+        const data = await fetch(process.env.REACT_APP_CLOUDINARY_UPLOAD_URL, {
+          method: 'POST',
+          body: formData,
+        }).then((r) => r.json());
+        setFieldValue(fieldname, data.secure_url);
+      } catch (err) {
+        console.error('Upload error', err);
+      }
       setSubmitted(false);
     }
   };
@@ -33,7 +44,10 @@ function ImageUpload({ fieldname }: any) {
       {submitted ? (
         <Spinner animation="border" size="sm" />
       ) : (
-        <FaCloudUploadAlt onClick={handleClick} />
+        <>
+          Upload image&nbsp;
+          <FaCloudUploadAlt onClick={handleClick} />
+        </>
       )}
       <input type="file" ref={elRef} hidden onChange={handleChange}></input>
     </div>

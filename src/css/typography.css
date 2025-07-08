@@ -20,6 +20,7 @@ body {
 }
 
 /* h1 → display-1 */
+.sun-editor-editable h1,
 h1 {
   font-size: calc(1.625rem + 4.5vw);
   font-weight: 300;
@@ -27,12 +28,14 @@ h1 {
 }
 
 @media (min-width: 1200px) {
+  .sun-editor-editable h1,
   h1 {
     font-size: 5rem;
   }
 }
 
 /* h2 → display-2 */
+.sun-editor-editable h2,
 h2 {
   font-size: calc(1.475rem + 2.7vw);
   font-weight: 300;
@@ -40,12 +43,14 @@ h2 {
 }
 
 @media (min-width: 1200px) {
+  .sun-editor-editable h2,
   h2 {
     font-size: 4.5rem;
   }
 }
 
 /* h3 → display-3 */
+.sun-editor-editable h3,
 h3 {
   font-size: calc(1.375rem + 1.5vw);
   font-weight: 300;
@@ -53,12 +58,14 @@ h3 {
 }
 
 @media (min-width: 1200px) {
+  .sun-editor-editable h3,
   h3 {
     font-size: 4rem;
   }
 }
 
 /* h4 → display-4 */
+.sun-editor-editable h4,
 h4 {
   font-size: calc(1.325rem + 0.9vw);
   font-weight: 300;
@@ -66,12 +73,14 @@ h4 {
 }
 
 @media (min-width: 1200px) {
+  .sun-editor-editable h4,
   h4 {
     font-size: 3.5rem;
   }
 }
 
 /* h5 → display-5 */
+.sun-editor-editable h5,
 h5 {
   font-size: 2.5rem;
   font-weight: 300;
@@ -79,10 +88,33 @@ h5 {
 }
 
 /* h6 → display-6 */
+.sun-editor-editable h6,
 h6 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 300;
   line-height: 1.2;
 }
 
+.sun-editor-editable p,
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
 /* Sunedito */
+
+p.small {
+  font-size: 0.875rem;
+}
+
+p.lead {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+p.no-margin {
+  margin: 0 !important;
+}
+
+p.padded {
+  padding: 0.5rem 1rem;
+}

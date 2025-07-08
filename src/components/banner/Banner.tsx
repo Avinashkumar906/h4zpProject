@@ -52,13 +52,13 @@ function Banner({ data }: componentPropType) {
                 strength={300}
               >
                 <div className="py-8 px-2 d-flex w-100 h-100 align-items-end">
-                  <div>{safeParseHtml(data.description)}</div>
+                  {safeParseHtml(data.description)}
                 </div>
               </Parallax>
             ) : (
               <>
                 <div className="py-8 px-2 d-flex w-100 h-100 align-items-end">
-                  <div className="text-white">{safeParseHtml(data.description)}</div>
+                  {safeParseHtml(data.description)}
                   <img
                     className="react-parallax-bgimage"
                     src={data.url}
@@ -70,7 +70,7 @@ function Banner({ data }: componentPropType) {
             )}
           </div>
         ) : (
-          <div>Please add url to see content!</div>
+          <div className="p-4 text-center h3">Please add url to see content!</div>
         )}
       </Container>
     </Container>

@@ -120,10 +120,8 @@ export const CModal = (props: any) => {
         {action === 'ORDER' && <DraggableList onSave={onSort} list={page.data} />}
         {action === 'PAGE' && (
           <PageForm
-            className="d-sm-none"
             handlePageCreate={handlePageCreate}
             handlePageUpdate={handlePageUpdate}
-            // onLogout={onLogout}
             formSubmitted={formSubmitted}
           />
         )}

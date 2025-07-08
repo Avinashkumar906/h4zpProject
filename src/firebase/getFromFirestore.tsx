@@ -41,7 +41,7 @@ export const subscribePageComponents = async (pageID, cb) => {
 };
 
 export const subscribeBlogList = (cb) => {
-  const componentListRef = query(collection(FIRESTORE_DB, 'Pages'), where('isBlog', '==', true));
+  const componentListRef = query(collection(FIRESTORE_DB, 'Pages'), where('isBlog', '==', 'true'));
 
   const unsubscribe = onSnapshot(componentListRef, (snapshot) => {
     const blogs = snapshot.docs.map((doc) => ({
