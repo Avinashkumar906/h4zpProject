@@ -241,7 +241,7 @@ a:active {
 
 /* Btn styles */
 .btn-dark {
-  background-color: #343a40; /* Bootstrap dark shade */
+  background-color: #343a40;
   color: #ffffff;
   border: none;
   padding: 0.5rem 1rem;
@@ -250,11 +250,6 @@ a:active {
   transition:
     background-color 0.2s,
     transform 0.1s;
-}
-
-.btn-dark:hover {
-  background-color: #23272b;
-  transform: scale(1.03);
 }
 
 .btn-primary {
@@ -269,11 +264,6 @@ a:active {
     transform 0.1s;
 }
 
-.btn-primary:hover {
-  background-color: #3a6edc;
-  transform: scale(1.03);
-}
-
 .btn-secondary {
   background-color: #34c9a3;
   color: #fff;
@@ -284,11 +274,6 @@ a:active {
   transition:
     background-color 0.2s,
     transform 0.1s;
-}
-
-.btn-secondary:hover {
-  background-color: #2ba88b;
-  transform: scale(1.03);
 }
 
 .btn-pink {
@@ -303,11 +288,6 @@ a:active {
     transform 0.1s;
 }
 
-.btn-pink:hover {
-  background-color: #e6779d;
-  transform: scale(1.03);
-}
-
 .btn-yellow {
   background-color: #ffd36e;
   color: #333;
@@ -318,11 +298,6 @@ a:active {
   transition:
     background-color 0.2s,
     transform 0.1s;
-}
-
-.btn-yellow:hover {
-  background-color: #f6c04f;
-  transform: scale(1.03);
 }
 
 .btn-purple {
@@ -337,11 +312,6 @@ a:active {
     transform 0.1s;
 }
 
-.btn-purple:hover {
-  background-color: #8e6ce3;
-  transform: scale(1.03);
-}
-
 .btn-orange {
   background-color: #ffa07a;
   color: #fff;
@@ -352,11 +322,6 @@ a:active {
   transition:
     background-color 0.2s,
     transform 0.1s;
-}
-
-.btn-orange:hover {
-  background-color: #f8895f;
-  transform: scale(1.03);
 }
 
 .btn-teal {
@@ -371,11 +336,6 @@ a:active {
     transform 0.1s;
 }
 
-.btn-teal:hover {
-  background-color: #18a67b;
-  transform: scale(1.03);
-}
-
 .btn-coral {
   background-color: #ff6b6b;
   color: #fff;
@@ -386,11 +346,6 @@ a:active {
   transition:
     background-color 0.2s,
     transform 0.1s;
-}
-
-.btn-coral:hover {
-  background-color: #e25454;
-  transform: scale(1.03);
 }
 
 .btn-lime {
@@ -405,7 +360,73 @@ a:active {
     transform 0.1s;
 }
 
-.btn-lime:hover {
+/* Unified hover + active + .active for consistent interactivity */
+.btn-dark:hover,
+.btn-dark:active,
+.btn-dark.active {
+  background-color: #23272b;
+  transform: scale(1.03);
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary.active {
+  background-color: #3a6edc;
+  transform: scale(1.03);
+}
+
+.btn-secondary:hover,
+.btn-secondary:active,
+.btn-secondary.active {
+  background-color: #2ba88b;
+  transform: scale(1.03);
+}
+
+.btn-pink:hover,
+.btn-pink:active,
+.btn-pink.active {
+  background-color: #e6779d;
+  transform: scale(1.03);
+}
+
+.btn-yellow:hover,
+.btn-yellow:active,
+.btn-yellow.active {
+  background-color: #f6c04f;
+  transform: scale(1.03);
+}
+
+.btn-purple:hover,
+.btn-purple:active,
+.btn-purple.active {
+  background-color: #8e6ce3;
+  transform: scale(1.03);
+}
+
+.btn-orange:hover,
+.btn-orange:active,
+.btn-orange.active {
+  background-color: #f8895f;
+  transform: scale(1.03);
+}
+
+.btn-teal:hover,
+.btn-teal:active,
+.btn-teal.active {
+  background-color: #18a67b;
+  transform: scale(1.03);
+}
+
+.btn-coral:hover,
+.btn-coral:active,
+.btn-coral.active {
+  background-color: #e25454;
+  transform: scale(1.03);
+}
+
+.btn-lime:hover,
+.btn-lime:active,
+.btn-lime.active {
   background-color: #8eb12f;
   transform: scale(1.03);
 }

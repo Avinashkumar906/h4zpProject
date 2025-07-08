@@ -62,9 +62,14 @@ function Footer(props: any) {
           {/* Right: Social & Contact */}
           <Col md={3} sm={6}>
             <h6 className="text-uppercase">Contact</h6>
-            <p className="small mb-1">Email: info@yourdomain.com</p>
-            <p className="small mb-1">Phone: +91-9876543210</p>
-            <p className="small mb-2">PAN: AACTH7197M</p>
+            <a className="small mb-1 text-decoration-none d-block" href="mailto:info@h4zpindia.org">
+              Email: info@h4zpindia.org
+            </a>
+
+            <a className="small mb-1 text-decoration-none d-block" href="tel:+919876543210">
+              Phone: +91-9876543210
+            </a>
+            <p className="small mb-2 text-decoration-none">PAN: AACTH7197M</p>
 
             <div className="d-flex gap-1">
               {icons.map((m, index) => (

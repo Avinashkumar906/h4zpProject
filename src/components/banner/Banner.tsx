@@ -55,14 +55,13 @@ function Banner({ data }: componentPropType) {
                 strength={300}
               >
                 <div
-                  className={`py-8 px-2 d-flex w-100 h-100 ${data.contentPosition.horizontal} ${data.contentPosition.verticle}`}
+                  className={`py-8 px-2 d-flex w-100 h-100 ${data.contentPosition?.horizontal} ${data.contentPosition?.verticle}`}
                 >
                   <div
                     className="p-4 rounded"
-                    style={{ backgroundColor: getRGBAString(data.contentBg) }}
+                    style={{ backgroundColor: getRGBAString(data?.contentBg) }}
                   >
                     {safeParseHtml(data.description)}
-                    {/* {data.contentBg} */}
                   </div>
                 </div>
               </Parallax>
@@ -71,7 +70,12 @@ function Banner({ data }: componentPropType) {
                 <div
                   className={`py-8 px-2 d-flex w-100 h-100 ${data.contentPosition.horizontal} ${data.contentPosition.verticle}`}
                 >
-                  {safeParseHtml(data.description)}
+                  <div
+                    className="p-4 rounded"
+                    style={{ backgroundColor: getRGBAString(data?.contentBg) }}
+                  >
+                    {safeParseHtml(data.description)}
+                  </div>
                   <img
                     className="react-parallax-bgimage"
                     src={data.url}

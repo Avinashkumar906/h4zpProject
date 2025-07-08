@@ -35,8 +35,10 @@ type ComponentPropsType = {
 };
 
 // Helper to convert stored color to CSS rgba string
-export function getRGBAString(color: RGBColor | string) {
+export function getRGBAString(color: RGBColor | string | undefined) {
+  if (!color) return ''; // or return a default like 'rgba(0,0,0,1)'
   if (typeof color === 'string') return color;
+
   const { r, g, b, a } = color;
   return `rgba(${r}, ${g}, ${b}, ${a ?? 1})`;
 }

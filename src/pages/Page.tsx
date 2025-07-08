@@ -76,6 +76,7 @@ export default function Page(props: any) {
     let unsubscribe;
     const init = async () => {
       unsubscribe = await subscribePageComponents(collection, (res) => {
+        console.log(res);
         setData(res);
       });
     };
@@ -96,8 +97,8 @@ export default function Page(props: any) {
       {(data ?? [])
         .sort((a, b) => a.data.order - b.data.order)
         .filter((f) => {
-          if (editable === 'true') return true; // return all
-          return f.data.visibility === 'true'; // filter only visible
+          if (isAuth && editable === 'true') return true; // return all
+          return f.data.visibility != 'false'; // filter only visible
         })
         .map((m) => (
           <div
