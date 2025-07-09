@@ -66,7 +66,7 @@ function Header(props: any) {
                     Logout
                   </div>
                 )}
-                <NavLink className={'btn btn-lime py-1'} to={'/donate'}>
+                <NavLink className={'btn btn-lime py-1'} to={`/donate${search}`}>
                   Contribute <LuHandHeart />
                 </NavLink>
                 {/* {

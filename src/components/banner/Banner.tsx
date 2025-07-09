@@ -20,7 +20,8 @@ type componentPropType = {
 function Banner({ data }: componentPropType) {
   const [dimension, setDimension] = useState<Pick<CloudinaryParams, 'height' | 'width'>>();
   const placeholder = useRef(null);
-  const measureUnit = data.order === 0 && data.height == 100 ? 'dvh' : 'vh';
+  const measureUnit = data.order == 0 && data.height == 100 ? 'dvh' : 'vh';
+  const descriptionHtml = safeParseHtml(data.description);
   // console.log(data.contentBg)
   useEffect(() => {
     if (placeholder.current?.clientWidth || placeholder.current?.clientHeight) {
@@ -43,7 +44,7 @@ function Banner({ data }: componentPropType) {
         className="p-0"
         fluid={smartParse(data?.fluid)}
         ref={placeholder}
-        data-aos="fade-in"
+        data-aos={!isTrue(data.parallax ? 'fade-in' : '')}
       >
         {data.url ? (
           <div style={{ height: `${data?.height || 100}${measureUnit}` }}>
@@ -57,12 +58,14 @@ function Banner({ data }: componentPropType) {
                 <div
                   className={`py-8 px-2 d-flex w-100 h-100 ${data.contentPosition?.horizontal} ${data.contentPosition?.verticle}`}
                 >
-                  <div
-                    className="p-4 rounded"
-                    style={{ backgroundColor: getRGBAString(data?.contentBg) }}
-                  >
-                    {safeParseHtml(data.description)}
-                  </div>
+                  {descriptionHtml && (
+                    <div
+                      className="p-4 glass"
+                      style={{ backgroundColor: getRGBAString(data?.contentBg) }}
+                    >
+                      {descriptionHtml}
+                    </div>
+                  )}
                 </div>
               </Parallax>
             ) : (
@@ -70,17 +73,19 @@ function Banner({ data }: componentPropType) {
                 <div
                   className={`py-8 px-2 d-flex w-100 h-100 ${data.contentPosition.horizontal} ${data.contentPosition.verticle}`}
                 >
-                  <div
-                    className="p-4 rounded"
-                    style={{ backgroundColor: getRGBAString(data?.contentBg) }}
-                  >
-                    {safeParseHtml(data.description)}
-                  </div>
+                  {descriptionHtml && (
+                    <div
+                      className="p-4 glass"
+                      style={{ backgroundColor: getRGBAString(data?.contentBg), zIndex: '5' }}
+                    >
+                      {descriptionHtml}
+                    </div>
+                  )}
                   <img
                     className="react-parallax-bgimage"
                     src={data.url}
                     alt={`Banner url ${data.url}`}
-                    style={{ position: 'absolute', inset: '0', zIndex: '-10' }}
+                    style={{ position: 'absolute', inset: '0' }}
                   />
                 </div>
               </>

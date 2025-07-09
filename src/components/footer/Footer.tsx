@@ -33,21 +33,19 @@ function Footer(props: any) {
   ];
 
   return (
-    <footer className="bg-dark text-light pt-4 pb-3">
+    <footer className="bg-dark text-light pt-4 pb-2">
       <Container fluid="xl">
         <Row className="gy-4">
           {/* Left: About */}
           <Col md={5} sm={12}>
-            <h5 className="text-uppercase">Hands 4 Zero Poverty Trust</h5>
+            <div className="text-uppercase h4">Hands 4 Zero Poverty Trust</div>
             <div className="small">Registered Under Indian Trusts Act, 1882</div>
-            {/* <p className="small">
-              Hands 4 Zero Poverty, health, education, empowerment—our core values to success!
-            </p> */}
+            <p className="small mb-2 text-decoration-none">PAN: AACTH7197M</p>
           </Col>
 
           {/* Middle: Quick Links */}
           <Col md={4} sm={6}>
-            <h6 className="text-uppercase">Quick Links</h6>
+            <div className="text-uppercase h5">Quick Links</div>
             <div>
               {links.map((m, index, arr) => (
                 <div className="d-inline" key={`footerlink-${index}`}>
@@ -61,7 +59,7 @@ function Footer(props: any) {
 
           {/* Right: Social & Contact */}
           <Col md={3} sm={6}>
-            <h6 className="text-uppercase">Contact</h6>
+            <div className="text-uppercase h5">Contact</div>
             <a className="small mb-1 text-decoration-none d-block" href="mailto:info@h4zpindia.org">
               Email: info@h4zpindia.org
             </a>
@@ -69,7 +67,6 @@ function Footer(props: any) {
             <a className="small mb-1 text-decoration-none d-block" href="tel:+919876543210">
               Phone: +91-9876543210
             </a>
-            <p className="small mb-2 text-decoration-none">PAN: AACTH7197M</p>
 
             <div className="d-flex gap-1">
               {icons.map((m, index) => (
@@ -87,7 +84,7 @@ function Footer(props: any) {
           </Col>
         </Row>
 
-        <hr className="border-light my-4" />
+        <hr className="border-light mb-2" />
 
         <Row>
           <Col className="text-center small">

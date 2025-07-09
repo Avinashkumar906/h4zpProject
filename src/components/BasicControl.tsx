@@ -18,7 +18,7 @@ const BasicControl = ({ form, fieldConfig }: componentPropType) => {
 
         if (type === 'color') {
           return (
-            <Col className="mw-250" key={name}>
+            <Col sm={4} className="mw-250" key={name}>
               <Form.Label>{label}</Form.Label>
               <div className="form-control form-control-sm">
                 <ColorField fieldname={name} />
@@ -28,7 +28,7 @@ const BasicControl = ({ form, fieldConfig }: componentPropType) => {
         }
         if (type === 'select') {
           return (
-            <Col className="mw-250" key={name}>
+            <Col sm={4} className="mw-250" key={name}>
               <Form.Label>{label}</Form.Label>
               <Field as={type} name={name} className="form-select form-select-sm">
                 {options.map((option, index) => (
@@ -43,7 +43,7 @@ const BasicControl = ({ form, fieldConfig }: componentPropType) => {
 
         if (type === 'group') {
           return (
-            <Col className="mw-250" key={name}>
+            <Col sm={4} className="mw-250" key={name}>
               <Form.Label>{label}</Form.Label>
               <InputGroup size="sm">
                 {options.map((child) => (

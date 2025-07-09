@@ -2,44 +2,44 @@ import Moment from 'moment';
 
 export const MOCK_BANNER = {
   contentPosition: {
-    horizontal: 'true',
-    verticle: 'true',
+    horizontal: 'justify-content-center',
+    verticle: 'align-items-center',
   },
-  contentBg: '#000000',
+  contentBg: '#ffffff',
   url: 'https://placehold.co/600?text=Hello+World',
   description: 'HANDS 4 ZERO POVERTY',
-  fluid: true,
-  visibility: false,
+  fluid: 'true',
+  visibility: 'false',
   theme: '',
   order: 0,
   height: 100,
   component: 'banner',
-  parallax: true,
+  parallax: 'true',
 };
 
 export const MOCK_GROUP_LIST = [
   {
-    description: 'Fighting Poverty one Step at a Time',
+    description: 'Hellow world',
     url: 'https://placehold.co/400?text=Hello+World',
   },
   {
-    description: 'Fighting Poverty one Step at a Time',
+    description: 'Hellow world',
     url: 'https://placehold.co/400?text=Hello+World',
   },
   {
-    description: 'Fighting Poverty one Step at a Time',
+    description: 'Hellow world',
     url: 'https://placehold.co/400?text=Hello+World',
   },
 ];
 
 export const MOCK_GROUP = {
-  visibility: false,
-  stackOnSm: false,
+  visibility: 'false',
+  stackOnSm: 'false',
   title: 'OTHER SPECIAL PROJECTS',
   component: 'group',
   // itemInRow: 3,
   list: MOCK_GROUP_LIST,
-  fluid: false,
+  fluid: 'false',
   theme: '',
   design: 'design1',
   description:
@@ -56,9 +56,9 @@ export const MOCK_BUTTON_LIST = [
 
 export const MOCK_JUMBOTRON = {
   btnList: MOCK_BUTTON_LIST,
-  fluid: false,
+  fluid: 'false',
   theme: '',
-  visibility: false,
+  visibility: 'false',
   component: 'jumbotron',
   title: 'We are back!',
   description: 'Some description here!',
@@ -84,9 +84,9 @@ export const MOCK_BLOGS = {
   component: 'blogs',
   title: 'Recent Activities',
   more: '',
-  fluid: false,
+  fluid: 'false',
   height: 100,
-  visibility: false,
+  visibility: 'false',
   theme: '',
   design: 'design1',
 };
@@ -95,10 +95,12 @@ export const MOCK_IFRAME = {
   component: 'iframe',
   height: 100,
   theme: 'bg-light',
-  mute: true,
-  autoplay: false,
-  visibility: false,
-  fluid: false,
+  youtube: {
+    mute: 'true',
+    autoplay: 'false',
+  },
+  visibility: 'false',
+  fluid: 'false',
   title: 'Some title about video',
   url: '//www.youtube.com/embed/xPFlY6fY2c0?wmode=opaque&enablejsapi=1',
   description: 'Some description about video',

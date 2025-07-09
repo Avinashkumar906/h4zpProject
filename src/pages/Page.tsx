@@ -41,7 +41,7 @@ export default function Page(props: any) {
   };
 
   const componentClick = (id: string) => {
-    if (isAuth && editable === 'true') {
+    if (isAuth && editable) {
       setDocId(id);
     }
   };
@@ -64,15 +64,15 @@ export default function Page(props: any) {
     setModalData({ data });
   };
 
-  useEffect(() => {
-    const handleCopy = (e: ClipboardEvent) => {
-      const item = data.find((f) => f.id === docId);
-      copyToClipboard(e, item);
-    };
-    const handlePaste = (e: ClipboardEvent) => {
-      // console.log('✅ Paste:', pasteFromClipboard(e));
-    };
+  const handleCopy = () => {
+    const item = data.find((f) => f.id === docId);
+    copyToClipboard(item);
+  };
 
+  const handlePaste = () => {
+    console.log('✅ Paste:', pasteFromClipboard());
+  };
+  useEffect(() => {
     let unsubscribe;
     const init = async () => {
       unsubscribe = await subscribePageComponents(collection, (res) => {
@@ -81,13 +81,9 @@ export default function Page(props: any) {
     };
 
     init();
-    // document.addEventListener('copy', handleCopy);
-    // document.addEventListener('paste', handlePaste);
 
     return () => {
       if (unsubscribe) unsubscribe();
-      // document.removeEventListener('copy', handleCopy);
-      // document.removeEventListener('paste', handlePaste);
     };
   }, [collection]);
 
@@ -96,14 +92,13 @@ export default function Page(props: any) {
       {(data ?? [])
         .sort((a, b) => a.data.order - b.data.order)
         .filter((f) => {
-          if (isAuth && editable === 'true') return true; // return all
+          if (isAuth && editable) return true; // return all
           return f.data.visibility != false; // filter only visible
         })
         .map((m) => (
           <div
             className={
-              `${isAuth && editable === 'true' ? 'pointer' : ''} ` +
-              `${docId === m.id ? 'highlight' : ''}`
+              `${isAuth && editable ? 'pointer' : ''} ` + `${docId === m.id ? 'highlight' : ''}`
             }
             key={m.id}
             style={{ position: 'relative' }}
@@ -124,7 +119,7 @@ export default function Page(props: any) {
       ) : (
         ''
       )}
-      {isAuth && editable === 'true' && (
+      {isAuth && editable && (
         <div className="floating-icon">
           <ListGroup
             horizontal="false"

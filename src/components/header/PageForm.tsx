@@ -25,7 +25,7 @@ const initialPageData = {
     description: '',
     date: '',
     createdBy: '',
-    imageUrl: '',
+    imageUrl: 'https://placehold.co/800?text=Hello+World',
   },
 };
 

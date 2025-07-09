@@ -23,6 +23,18 @@ export const widthOptions = [
   { label: 'Full until xxl screen', value: 'xxl' },
 ];
 
+const heightOptions = [
+  { label: 'Auto', value: 'auto' },
+  { label: '25', value: '25' },
+  { label: '33', value: '33' },
+  { label: '50', value: '50' },
+  { label: '60', value: '60' },
+  { label: '75', value: '75' },
+  { label: '80', value: '80' },
+  { label: '90', value: '90' },
+  { label: '100', value: '100' },
+];
+
 const verticalPositionOptions = [
   { label: 'Verticle Top', value: 'align-items-start' },
   { label: 'Verticle Center', value: 'align-items-center' },
@@ -59,12 +71,28 @@ export const basicFieldConfig = [
     options: widthOptions, // your existing widthOptions
   },
   {
-    name: 'autoplay',
-    type: 'select',
-    label: 'Auto play',
+    name: 'youtube',
+    label: 'Video Preset',
+    type: 'group',
     options: [
-      { label: 'On', value: 'true' },
-      { label: 'Off', value: 'false' },
+      {
+        name: 'autoplay',
+        type: 'select',
+        label: 'Auto play',
+        options: [
+          { label: 'Auto play On', value: 'true' },
+          { label: 'Auto play Off', value: 'false' },
+        ],
+      },
+      {
+        name: 'mute',
+        type: 'select',
+        label: 'Mute on Play',
+        options: [
+          { label: 'Mute', value: 'true' },
+          { label: 'Unmute', value: 'false' },
+        ],
+      },
     ],
   },
   {
@@ -99,5 +127,27 @@ export const basicFieldConfig = [
         options: verticalPositionOptions,
       },
     ],
+  },
+  {
+    name: 'parallax',
+    label: 'Scroll Effect',
+    type: 'select',
+    options: [
+      { label: 'Parallax', value: 'true' },
+      { label: 'No Effect', value: 'false' },
+    ],
+  },
+  {
+    name: 'theme',
+    label: 'Background',
+    type: 'select',
+    options: backgroundOptions,
+  },
+  {
+    name: 'height',
+    label: 'Section height',
+    size: 4,
+    type: 'select',
+    options: heightOptions,
   },
 ];

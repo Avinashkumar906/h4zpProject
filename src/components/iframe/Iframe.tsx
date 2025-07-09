@@ -12,8 +12,8 @@ type componentPropType = {
 function Iframe({ data }: componentPropType) {
   const [iframe, setIframe] = useState<string>();
   const [src] = useState(data?.url);
-  const [autoplay] = useState(data?.autoplay);
-  const [mute] = useState(data?.mute);
+  const [autoplay] = useState(data?.youtube?.autoplay);
+  const [mute] = useState(data?.youtube?.mute);
   const [fluid] = useState(data?.fluid);
 
   useEffect(() => {

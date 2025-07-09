@@ -12,6 +12,7 @@ import ImageUpload from './imageUploader/ImageUpload';
 import { backgroundOptions, basicFieldConfig } from '../util/const';
 import Rte from './editor/Rte';
 import BasicControl from './BasicControl';
+import FormRange from 'react-bootstrap/esm/FormRange';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const UpdateComponent = (props: any) => {
@@ -42,7 +43,7 @@ const UpdateComponent = (props: any) => {
                 <Row className="flex-column flex-sm-row flex-wrap" style={{ rowGap: '16px' }}>
                   <BasicControl form={form} fieldConfig={basicFieldConfig} />
 
-                  {getIn(form.values, 'clickable') !== undefined && (
+                  {/* {getIn(form.values, 'clickable') !== undefined && (
                     <Col className="mw-250">
                       <Form.Label>Clickable Images</Form.Label>
                       <Field as="select" name="clickable" className="form-select form-select-sm">
@@ -81,51 +82,22 @@ const UpdateComponent = (props: any) => {
                       </Field>
                     </Col>
                   )}
-                  {/* {getIn(form.values, 'order') !== undefined && (
-                    <Col className="mw-250">
-                      <Form.Label>Position</Form.Label>
-                      <Field type="number" name="order" className="form-control form-control-sm" />
-                    </Col>
-                  )} */}
-                  {getIn(form.values, 'itemInRow') && (
-                    <Col className="mw-250">
-                      <Form.Label>Item in Row</Form.Label>
-                      <Field
-                        type="number"
-                        name="itemInRow"
-                        className="form-control form-control-sm"
-                      />
-                    </Col>
-                  )}
-                  {getIn(form.values, 'style') !== undefined && (
-                    <Col className="mw-250">
-                      <Form.Label>Image Style</Form.Label>
-                      <Field as="select" name="style" className="form-select form-select-sm">
-                        <option value="">No Style</option>
-                        <option value="rounded-circle">Circle</option>
-                        <option value="rounded">Rounded Corner</option>
-                      </Field>
-                    </Col>
-                  )}
-
-                  {getIn(form.values, 'imgRatio') !== undefined && (
-                    <Col className="mw-250">
-                      <Form.Label>Aspect ratio</Form.Label>
-                      <Field type="text" name="imgRatio" className="form-control form-control-sm" />
-                    </Col>
-                  )}
                   {getIn(form.values, 'height') !== undefined && (
                     <Col className="mw-250">
                       <Form.Label>Height</Form.Label>
-                      <Field as="select" name="height" className="form-select form-select-sm">
-                        <option value="auto">Auto</option>
-                        <option value="60">60%</option>
-                        <option value="80">80%</option>
-                        <option value="90">90%</option>
-                        <option value="100">100%</option>
-                      </Field>
+                      <InputGroup>
+                        <Field name="height" className="form-control form-control-sm"/>
+                        <Field as="select" name="height" className="form-select form-select-sm">
+                          <option>Custom</option>
+                          <option value="auto">Auto</option>
+                          <option value="60">60%</option>
+                          <option value="80">80%</option>
+                          <option value="90">90%</option>
+                          <option value="100">100%</option>
+                        </Field>
+                      </InputGroup>
                     </Col>
-                  )}
+                  )} */}
                 </Row>
                 <hr />
               </Tab>

@@ -142,6 +142,7 @@ a:active {
   background: rgba(255, 249, 196, 0.2); /* soft yellow with transparency */
   pointer-events: none; /* allow clicks to pass through */
   border-radius: inherit; /* match parent corners if needed */
+  z-index: 100;
 }
 
 .imageUploader {
@@ -638,4 +639,12 @@ a:active {
 .not-allowed {
   pointer-events: all;
   cursor: not-allowed;
+}
+
+.glass {
+  color: white;
+  border-radius: 8px;
+  backdrop-filter: blur(10px); /* the actual glass effect */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
