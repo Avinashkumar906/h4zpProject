@@ -15,6 +15,7 @@ export const MOCK_BANNER = {
   height: 100,
   component: 'banner',
   parallax: 'true',
+  design: 'design1',
 };
 
 export const MOCK_GROUP_LIST = [

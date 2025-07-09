@@ -37,7 +37,7 @@ function Iframe({ data }: componentPropType) {
               <Title title={data?.title} />
             </Col>
           )}
-          <Col sm={12} data-aos="slide-up" className="">
+          <Col sm={12} className="">
             <iframe
               title={data?.title || 'Random clip.'}
               src={iframe}

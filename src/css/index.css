@@ -648,3 +648,32 @@ a:active {
   -webkit-backdrop-filter: blur(10px); /* Safari support */
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
+
+/* Parallax wrapper */
+.parallax {
+  position: relative;
+  background-attachment: fixed; /* key for parallax */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px; /* adjust as needed */
+}
+
+/* Optional overlay */
+.parallax::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3); /* dark overlay for text visibility */
+}
+
+/* Content inside parallax */
+.parallax-content {
+  position: relative;
+  color: white;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  text-shadow: 0 0 10px black;
+}

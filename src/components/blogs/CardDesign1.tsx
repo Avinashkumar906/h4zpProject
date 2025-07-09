@@ -28,13 +28,7 @@ const CardDesign1 = ({ data, id }: componentPropType) => {
       <Row className="g-3">
         {data.map((item, index) => (
           <Col key={id + index} xs={12} md={4}>
-            <Card
-              ref={placeholder}
-              className="impact-card h-100"
-              data-aos="fade-up"
-              data-aos-duration="600"
-              data-aos-delay={index * 50}
-            >
+            <Card ref={placeholder} className="impact-card h-100">
               <Card.Img
                 variant="top"
                 src={cloudinaryUtilForUrl({ url: item.url, ...dimention, crop: 'fit' })}

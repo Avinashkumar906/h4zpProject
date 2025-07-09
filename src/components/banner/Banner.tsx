@@ -1,16 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
-import { Container } from 'react-bootstrap';
-import { Parallax } from 'react-parallax';
-import {
-  BannerType,
-  CloudinaryParams,
-  cloudinaryUtilForUrl,
-  isTrue,
-  smartParse,
-} from '../../util/mockData.util';
+import { BannerType } from '../../util/mockData.util';
 import * as React from 'react';
-import { safeParseHtml } from '../editor/rte.util';
-import { getRGBAString } from '../common/ColorField';
+import Design1 from './Design1';
 
 type componentPropType = {
   data: BannerType | undefined;
@@ -18,85 +8,18 @@ type componentPropType = {
 };
 
 function Banner({ data }: componentPropType) {
-  const [dimension, setDimension] = useState<Pick<CloudinaryParams, 'height' | 'width'>>();
-  const placeholder = useRef(null);
-  const measureUnit = data.order == 0 && data.height == 100 ? 'dvh' : 'vh';
-  const descriptionHtml = safeParseHtml(data.description);
-  // console.log(data.contentBg)
-  useEffect(() => {
-    if (placeholder.current?.clientWidth || placeholder.current?.clientHeight) {
-      setDimension({
-        height: placeholder.current.clientHeight,
-        width: placeholder.current.clientWidth,
-      });
+  const design = () => {
+    switch (data.design) {
+      case 'design1':
+        return <Design1 data={data} />;
+      case 'design2':
+        return <div>Not Implemented!</div>;
+      default:
+        return <Design1 data={data} />;
     }
-  }, []);
+  };
 
-  return (
-    <Container
-      className="p-0"
-      style={{
-        backgroundColor: `${data?.theme || ''}`,
-      }}
-      fluid
-    >
-      <Container
-        className="p-0"
-        fluid={smartParse(data?.fluid)}
-        ref={placeholder}
-        data-aos={!isTrue(data.parallax ? 'fade-in' : '')}
-      >
-        {data.url ? (
-          <div style={{ height: `${data?.height || 100}${measureUnit}` }}>
-            {isTrue(data?.parallax) ? (
-              <Parallax
-                className="d-block h-100 w-100"
-                bgImage={cloudinaryUtilForUrl({ url: data?.url, ...dimension, crop: 'thumb' })}
-                bgImageAlt={`Banner url ${data.url}`}
-                strength={300}
-              >
-                <div
-                  className={`py-8 px-2 d-flex w-100 h-100 ${data.contentPosition?.horizontal} ${data.contentPosition?.verticle}`}
-                >
-                  {descriptionHtml && (
-                    <div
-                      className="p-4 glass"
-                      style={{ backgroundColor: getRGBAString(data?.contentBg) }}
-                    >
-                      {descriptionHtml}
-                    </div>
-                  )}
-                </div>
-              </Parallax>
-            ) : (
-              <>
-                <div
-                  className={`py-8 px-2 d-flex w-100 h-100 ${data.contentPosition.horizontal} ${data.contentPosition.verticle}`}
-                >
-                  {descriptionHtml && (
-                    <div
-                      className="p-4 glass"
-                      style={{ backgroundColor: getRGBAString(data?.contentBg), zIndex: '5' }}
-                    >
-                      {descriptionHtml}
-                    </div>
-                  )}
-                  <img
-                    className="react-parallax-bgimage"
-                    src={data.url}
-                    alt={`Banner url ${data.url}`}
-                    style={{ position: 'absolute', inset: '0' }}
-                  />
-                </div>
-              </>
-            )}
-          </div>
-        ) : (
-          <div className="p-4 text-center h3">Please add url to see content!</div>
-        )}
-      </Container>
-    </Container>
-  );
+  return design();
 }
 
 export default React.memo(Banner);

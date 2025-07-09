@@ -12,7 +12,6 @@ function Design1({ data, id }: { data: JumbotronType; id: string }) {
             backgroundColor: `${data?.theme || ''}`,
           }}
           className="rounded-4 shadow-sm bg-light"
-          data-aos="slide-up"
         >
           <Card.Body className="py-5 p-md-5 p-sm-2">
             <Card.Text className="h1 text-center">{data?.title}</Card.Text>

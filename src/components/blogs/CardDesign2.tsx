@@ -25,13 +25,7 @@ const CardDesign2 = ({ data, id }: componentPropType) => {
   return (
     <Container className="">
       {data.map((item, idx) => (
-        <Row
-          key={id + idx}
-          className="align-items-center g-4"
-          data-aos="fade-up"
-          data-aos-duration="600"
-          data-aos-delay={idx * 50}
-        >
+        <Row key={id + idx} className="align-items-center g-4">
           {/* IMAGE always on top in mobile */}
           <Col
             xs={12}

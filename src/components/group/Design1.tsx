@@ -23,7 +23,7 @@ const MinimalCard = ({ data, id }: componentPropType) => {
             sm={4}
             className="d-flex justify-content-center align-items-center"
           >
-            <Card className="minimal-card" data-aos="fade-up" data-aos-duration="600">
+            <Card className="minimal-card">
               <Card.Img variant="top" src={item.url} alt={'Card' + index} />
               {safeParseHtml(item.description) && (
                 <div className="card-body">{safeParseHtml(item.description)}</div>

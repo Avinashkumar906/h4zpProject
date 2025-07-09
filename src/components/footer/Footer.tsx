@@ -38,7 +38,7 @@ function Footer(props: any) {
         <Row className="gy-4">
           {/* Left: About */}
           <Col md={5} sm={12}>
-            <div className="text-uppercase h4">Hands 4 Zero Poverty Trust</div>
+            <div className="text-uppercase h3">Hands 4 Zero Poverty Trust</div>
             <div className="small">Registered Under Indian Trusts Act, 1882</div>
             <p className="small mb-2 text-decoration-none">PAN: AACTH7197M</p>
           </Col>
