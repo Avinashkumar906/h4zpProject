@@ -55,7 +55,7 @@ const horizontalPositionOptions = [
 export const componentOptions = [
   { label: 'Please select a component', value: '' },
   { label: 'Banner', value: 'banner' },
-  { label: 'YouTube Video', value: 'iframe' },
+  { label: 'Iframe', value: 'iframe' },
   { label: 'Jumbotron', value: 'jumbotron' },
   { label: 'Card Group', value: 'group' },
   { label: 'Activity', value: 'blogs' },

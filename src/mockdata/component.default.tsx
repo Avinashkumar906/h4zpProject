@@ -10,7 +10,7 @@ export const MOCK_BANNER = {
   description: 'HANDS 4 ZERO POVERTY',
   fluid: 'true',
   visibility: 'false',
-  theme: '',
+  theme: 'bg-light',
   order: 0,
   height: 100,
   component: 'banner',
@@ -40,7 +40,7 @@ export const MOCK_GROUP = {
   // itemInRow: 3,
   list: MOCK_GROUP_LIST,
   fluid: 'false',
-  theme: '',
+  theme: 'bg-light',
   design: 'design1',
   description:
     'Join the group of people helping to make life better for the people living in extreme poverty. The H4ZP projects are possible because of the support and care of people like you.',
@@ -57,7 +57,7 @@ export const MOCK_BUTTON_LIST = [
 export const MOCK_JUMBOTRON = {
   btnList: MOCK_BUTTON_LIST,
   fluid: 'false',
-  theme: '',
+  theme: 'bg-light',
   visibility: 'false',
   component: 'jumbotron',
   title: 'We are back!',
@@ -85,9 +85,8 @@ export const MOCK_BLOGS = {
   title: 'Recent Activities',
   more: '',
   fluid: 'false',
-  height: 100,
   visibility: 'false',
-  theme: '',
+  theme: 'bg-light',
   design: 'design1',
 };
 

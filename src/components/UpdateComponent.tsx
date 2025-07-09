@@ -42,62 +42,6 @@ const UpdateComponent = (props: any) => {
               <Tab eventKey="basic" title="Design">
                 <Row className="flex-column flex-sm-row flex-wrap" style={{ rowGap: '16px' }}>
                   <BasicControl form={form} fieldConfig={basicFieldConfig} />
-
-                  {/* {getIn(form.values, 'clickable') !== undefined && (
-                    <Col className="mw-250">
-                      <Form.Label>Clickable Images</Form.Label>
-                      <Field as="select" name="clickable" className="form-select form-select-sm">
-                        <option value={'true'}>On</option>
-                        <option value={'false'}>Off</option>
-                      </Field>
-                    </Col>
-                  )}
-                  {getIn(form.values, 'mute') !== undefined && (
-                    <Col className="mw-250">
-                      <Form.Label>Mute video</Form.Label>
-                      <Field as="select" name="mute" className="form-select form-select-sm">
-                        <option value={'true'}>On</option>
-                        <option value={'false'}>Off</option>
-                      </Field>
-                    </Col>
-                  )}
-                  {getIn(form.values, 'parallax') !== undefined && (
-                    <Col className="mw-250">
-                      <Form.Label>Scroll Effect</Form.Label>
-                      <Field as="select" name="parallax" className="form-select form-select-sm">
-                        <option value={'true'}>Parallax</option>
-                        <option value={'false'}>No Effect</option>
-                      </Field>
-                    </Col>
-                  )}
-                  {getIn(form.values, 'theme') !== undefined && (
-                    <Col className="mw-250">
-                      <Form.Label>Background</Form.Label>
-                      <Field as="select" name="theme" className="form-select form-select-sm">
-                        {backgroundOptions.map((option) => (
-                          <option key={option.value || 'no-bg'} value={option.value}>
-                            {option.label}
-                          </option>
-                        ))}
-                      </Field>
-                    </Col>
-                  )}
-                  {getIn(form.values, 'height') !== undefined && (
-                    <Col className="mw-250">
-                      <Form.Label>Height</Form.Label>
-                      <InputGroup>
-                        <Field name="height" className="form-control form-control-sm"/>
-                        <Field as="select" name="height" className="form-select form-select-sm">
-                          <option>Custom</option>
-                          <option value="auto">Auto</option>
-                          <option value="60">60%</option>
-                          <option value="80">80%</option>
-                          <option value="90">90%</option>
-                          <option value="100">100%</option>
-                        </Field>
-                      </InputGroup>
-                    </Col>
-                  )} */}
                 </Row>
                 <hr />
               </Tab>

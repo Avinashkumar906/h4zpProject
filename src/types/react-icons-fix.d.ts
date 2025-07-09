@@ -22,8 +22,8 @@ declare module 'react-icons/fa' {
 
   export const FaTools: FC<SVGProps<SVGSVGElement>>;
   export const FaCloudUploadAlt: FC<SVGProps<SVGSVGElement>>;
-  //   export const AiFillYoutube: FC<SVGProps<SVGSVGElement>>;
-  //   export const AiFillLinkedin: FC<SVGProps<SVGSVGElement>>;
+  export const FaCopy: FC<SVGProps<SVGSVGElement>>;
+  export const FaPaste: FC<SVGProps<SVGSVGElement>>;
   //   export const AiFillTwitterSquare: FC<SVGProps<SVGSVGElement>>;
 }
 declare module 'react-icons/hi' {

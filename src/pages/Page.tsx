@@ -8,7 +8,8 @@ import { ListGroup } from 'react-bootstrap';
 import NotFound from './NotFound';
 import { deleteComponentOfPage, subscribePageComponents } from '../firebase/getFromFirestore';
 import { MdOutlineRepeatOne } from 'react-icons/md';
-import { copyToClipboard, pasteFromClipboard } from '../util';
+import { copyToClipboard, isTrue, pasteFromClipboard } from '../util';
+import { FaCopy, FaPaste } from 'react-icons/fa';
 // import Statistics from '../components/statistics/Statistics';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -90,11 +91,8 @@ export default function Page(props: any) {
   return data ? (
     <Fragment>
       {(data ?? [])
-        .sort((a, b) => a.data.order - b.data.order)
-        .filter((f) => {
-          if (isAuth && editable) return true; // return all
-          return f.data.visibility != false; // filter only visible
-        })
+        .sort((a, b) => a.data?.order - b.data?.order)
+        .filter((f) => (isAuth && editable) || isTrue(f.data?.visibility) === true)
         .map((m) => (
           <div
             className={
@@ -137,6 +135,14 @@ export default function Page(props: any) {
             <ListGroup.Item className={!docId ? 'not-allowed' : ''} onClick={onDelete}>
               <AiFillDelete />
               <span className="hover-label">Delete</span>
+            </ListGroup.Item>
+            <ListGroup.Item className={!docId ? 'not-allowed' : ''} onClick={handleCopy}>
+              <FaCopy />
+              <span className="hover-label">Copy</span>
+            </ListGroup.Item>
+            <ListGroup.Item className={!docId ? 'not-allowed' : ''} onClick={handlePaste}>
+              <FaPaste />
+              <span className="hover-label">Paste</span>
             </ListGroup.Item>
             <ListGroup.Item onClick={onOrder}>
               <MdOutlineRepeatOne />

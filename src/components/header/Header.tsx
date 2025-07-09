@@ -14,7 +14,7 @@ const navLinks = [
     label: 'PROJECTS',
     link: '/project',
   },
-  { label: 'ACTIVITY', link: '/blog' },
+  { label: 'BLOGS', link: '/blog' },
   { label: 'ABOUT', link: '/about' },
 ];
 
