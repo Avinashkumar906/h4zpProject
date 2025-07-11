@@ -65,8 +65,19 @@ const UpdateComponent = (props: any) => {
                   )}
                   {getIn(form.values, 'url') !== undefined && (
                     <Col className="mb-2">
+                      <Form.Label>Image Url</Form.Label>
+                      <InputGroup size="sm">
+                        <Field name="url" className="form-control form-control-sm" />
+                        <InputGroup.Text>
+                          <ImageUpload fieldname="url" />
+                        </InputGroup.Text>
+                      </InputGroup>
+                    </Col>
+                  )}
+                  {getIn(form.values, 'iframeUrl') !== undefined && (
+                    <Col className="mb-2">
                       <Form.Label>Image/Iframe Url</Form.Label>
-                      <Field name="url" className="form-control form-control-sm" />
+                      <Field name="iframeUrl" className="form-control form-control-sm" />
                     </Col>
                   )}
                   {getIn(form.values, 'description') !== undefined && (

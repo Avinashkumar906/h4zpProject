@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Container } from 'react-bootstrap';
-import { Parallax } from 'react-parallax';
+// import { Parallax } from 'react-parallax';
 import {
   BannerType,
   CloudinaryParams,
@@ -11,6 +11,7 @@ import {
 import * as React from 'react';
 import { safeParseHtml } from '../editor/rte.util';
 import { getRGBAString } from '../common/ColorField';
+import { ParallaxBanner, ParallaxBannerLayer } from 'react-scroll-parallax';
 
 type componentPropType = {
   data: BannerType | undefined;
@@ -18,7 +19,6 @@ type componentPropType = {
 };
 
 function Design1({ data }: componentPropType) {
-  console.log(data);
   const [dimension, setDimension] = useState<Pick<CloudinaryParams, 'height' | 'width'>>();
   const placeholder = useRef(null);
   //data.order == 0 && data.height == 100 ? 'dvh' : 'vh';
@@ -34,48 +34,41 @@ function Design1({ data }: componentPropType) {
     }
   }, []);
 
-  const content = (flag: boolean) => (
-    <Container className="p-0" fluid={smartParse(data?.fluid)} ref={placeholder}>
-      {data.url ? (
-        <div style={{ height: `${data?.height || 100}${measureUnit}` }}>
-          <div
-            className={`py-8 px-2 d-flex w-100 h-100 ${data.contentPosition?.horizontal} ${data.contentPosition?.verticle}`}
-          >
-            {descriptionHtml && (
-              <div
-                className="p-4 glass"
-                style={{ backgroundColor: getRGBAString(data?.contentBg) }}
-              >
-                {descriptionHtml}
-              </div>
-            )}
-            {flag && (
-              <img
-                className="react-parallax-bgimage"
-                src={cloudinaryUtilForUrl({ url: data?.url, ...dimension, crop: 'thumb' })}
-                alt={`Banner url ${data.url}`}
-                style={{ position: 'absolute', inset: '0' }}
-              />
-            )}
-          </div>
+  const content = () =>
+    // <Container className="p-0 h-100" fluid={smartParse(data?.fluid)} ref={placeholder}>
+    data.url ? (
+      <div className="h-100">
+        <div
+          className={`py-8 px-2 d-flex w-100 h-100 ${data.contentPosition?.horizontal} ${data.contentPosition?.verticle}`}
+        >
+          {descriptionHtml && (
+            <div className="p-4 glass" style={{ backgroundColor: getRGBAString(data?.contentBg) }}>
+              {descriptionHtml}
+            </div>
+          )}
         </div>
-      ) : (
-        <div className="p-4 text-center h3">Please add url to see content!</div>
-      )}
-    </Container>
-  );
+      </div>
+    ) : (
+      <div className="p-4 text-center h3">Please add url to see content!</div>
+    );
+    // </Container>
 
-  return isTrue(data?.parallax) ? (
-    <Parallax
-      // className="d-block h-100 w-100"
-      bgImage={cloudinaryUtilForUrl({ url: data?.url, ...dimension, crop: 'thumb' })}
-      bgImageAlt={`Banner url ${data.url}`}
-      strength={300}
-    >
-      {content(false)}
-    </Parallax>
-  ) : (
-    content(true)
+  return (
+    <Container className="p-0 h-100" fluid={smartParse(data?.fluid)} ref={placeholder}>
+      <ParallaxBanner>
+        <ParallaxBannerLayer speed={isTrue(data?.parallax) ? -30 : 0}>
+          <img
+            className="h-100 w-100 object-fit-cover"
+            src={cloudinaryUtilForUrl({ url: data?.url, ...dimension, crop: 'thumb' })}
+            alt={`Banner url ${data.url}`}
+          />
+        </ParallaxBannerLayer>
+        <ParallaxBannerLayer speed={isTrue(data?.parallax) ? -20 : 0}>
+          {content()}
+        </ParallaxBannerLayer>
+        <div style={{ height: `${data?.height || 100}${measureUnit}` }}></div>
+      </ParallaxBanner>
+    </Container>
   );
 }
 

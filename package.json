@@ -26,6 +26,7 @@
     "react-responsive-masonry": "^2.1.6",
     "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
+    "react-scroll-parallax": "^3.4.5",
     "react-spring-lightbox": "1.7.1",
     "save": "^2.9.0",
     "scroll-js": "^3.5.2",

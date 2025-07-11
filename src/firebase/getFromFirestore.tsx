@@ -20,22 +20,33 @@ export const subscribePageComponents = async (pageID, cb) => {
 
     if (pageSnap.exists()) {
       const componentListRef = collection(pageRef, 'Components');
-      const unsubscribe = onSnapshot(componentListRef, (snapshot) => {
-        const components = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          data: doc.data(),
-        }));
-        cb(components);
-      });
+      const unsubscribe = onSnapshot(
+        componentListRef,
+        (snapshot) => {
+          const components = snapshot.docs.map((doc) => ({
+            id: doc.id,
+            data: doc.data(),
+          }));
+          cb({ status: 'success', data: components });
+        },
+        (error) => {
+          console.error('onSnapshot error:', error);
+          cb({ status: 'error', error });
+        },
+      );
 
-      return unsubscribe; // so you can call it to clean up on unmount
+      return unsubscribe;
     } else {
-      cb(null);
+      cb({ status: 'not_found' });
       return null;
     }
   } catch (error) {
     console.error('Error subscribing to page components:', error);
-    cb(null);
+    if (!navigator.onLine) {
+      cb({ status: 'offline' });
+    } else {
+      cb({ status: 'error', error });
+    }
     return null;
   }
 };

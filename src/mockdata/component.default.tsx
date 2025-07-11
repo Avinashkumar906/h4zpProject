@@ -102,6 +102,6 @@ export const MOCK_IFRAME = {
   visibility: 'false',
   fluid: 'false',
   title: 'Some title about video',
-  url: '//www.youtube.com/embed/xPFlY6fY2c0?wmode=opaque&enablejsapi=1',
+  iframeUrl: '//www.youtube.com/embed/xPFlY6fY2c0?wmode=opaque&enablejsapi=1',
   description: 'Some description about video',
 };

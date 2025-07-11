@@ -10,12 +10,15 @@ import { deleteComponentOfPage, subscribePageComponents } from '../firebase/getF
 import { MdOutlineRepeatOne } from 'react-icons/md';
 import { copyToClipboard, isTrue, pasteFromClipboard } from '../util';
 import { FaCopy, FaPaste } from 'react-icons/fa';
+import { useParallaxController } from 'react-scroll-parallax';
 // import Statistics from '../components/statistics/Statistics';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function Page(props: any) {
+  const parallaxController = useParallaxController();
   const { isAuth, editable } = props;
   const [data, setData] = useState([]);
+  const [dataState, setDataState] = useState('pending');
   const [modalData, setModalData] = useState(null);
   const [modalAction, setModalAction] = useState(null);
   const [modalState, setModalState] = useState(false);
@@ -73,22 +76,40 @@ export default function Page(props: any) {
   const handlePaste = () => {
     console.log('✅ Paste:', pasteFromClipboard());
   };
+
+  const nodata = () => {
+    const contentMap = {
+      offline: 'You are offline.',
+      pending: 'Loading Data',
+    };
+
+    return (
+      <NotFound>
+        <div>{contentMap[dataState] || 'Something went wrong, please try after some time!'}</div>
+      </NotFound>
+    );
+  };
+
   useEffect(() => {
     let unsubscribe;
     const init = async () => {
       unsubscribe = await subscribePageComponents(collection, (res) => {
-        setData(res);
+        setDataState(res.status);
+        if (res.status === 'success') {
+          setData(res.data);
+        }
       });
     };
 
     init();
-
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    parallaxController.update();
     return () => {
       if (unsubscribe) unsubscribe();
     };
   }, [collection]);
 
-  return data ? (
+  return dataState === 'success' ? (
     <Fragment>
       {(data ?? [])
         .sort((a, b) => a.data?.order - b.data?.order)
@@ -159,8 +180,6 @@ export default function Page(props: any) {
       )}
     </Fragment>
   ) : (
-    <Fragment>
-      <NotFound pageID={collection}></NotFound>
-    </Fragment>
+    <Fragment>{nodata()}</Fragment>
   );
 }

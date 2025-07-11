@@ -8,12 +8,15 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
 import App from './App';
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 AOS.init();
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-    <App />
+    <ParallaxProvider>
+      <App />
+    </ParallaxProvider>
   </BrowserRouter>,
 );
 

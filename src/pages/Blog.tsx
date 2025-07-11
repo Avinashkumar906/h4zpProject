@@ -6,17 +6,32 @@ import { getFormatedDate, optimizeData } from '../util/mockData.util';
 import Parser from 'html-react-parser';
 import { startCase } from 'lodash';
 import { subscribeBlogList, subscribePageComponents } from '../firebase/getFromFirestore';
+import NotFound from './NotFound';
 
 function Blog() {
   const [data, setData] = useState([]);
+  const [dataState, setDataState] = useState('pending');
   const [blogList, setBlogList] = useState([]);
+  const nodata = () => {
+    const contentMap = {
+      offline: 'You are offline.',
+      pending: 'Loading Data',
+    };
+
+    return (
+      <NotFound>
+        <div>{contentMap[dataState] || 'Something went wrong, please try after some time!'}</div>
+      </NotFound>
+    );
+  };
   useEffect(() => {
     let unsubscribePage, unsubscribeBlogs;
 
     const init = async () => {
       // subscribe to page components
       unsubscribePage = await subscribePageComponents('blog', (res) => {
-        setData(res);
+        setDataState(res.status); // offline, success, etc.
+        setData(res.data || []); // always an array
       });
 
       // subscribe to blog list
@@ -32,7 +47,8 @@ function Blog() {
       if (unsubscribeBlogs) unsubscribeBlogs();
     };
   }, []);
-  return (
+
+  return dataState === 'success' ? (
     <Fragment>
       {data.map((m) => (
         <div key={m.id} style={{ position: 'relative' }}>
@@ -96,6 +112,8 @@ function Blog() {
         </Row>
       )}
     </Fragment>
+  ) : (
+    <Fragment>{nodata()}</Fragment>
   );
 }
 
