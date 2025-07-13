@@ -29,7 +29,7 @@ function LoadBlogs() {
           title: item.data.title,
           credit: item.data.createdBy,
           BtnUrl: item.id,
-          btnColor: 'btn-secondary',
+          btnColor: 'btn-lime',
           btnText: 'View Post',
           date: item.data.date,
           description: item.data.description,

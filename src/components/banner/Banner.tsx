@@ -1,6 +1,7 @@
 import { BannerType } from '../../util/mockData.util';
 import * as React from 'react';
 import Design1 from './Design1';
+import Design2 from './Design2';
 
 type componentPropType = {
   data: BannerType | undefined;
@@ -13,7 +14,7 @@ function Banner({ data }: componentPropType) {
       case 'design1':
         return <Design1 data={data} />;
       case 'design2':
-        return <div>Not Implemented!</div>;
+        return <Design2 data={data} />;
       default:
         return <Design1 data={data} />;
     }

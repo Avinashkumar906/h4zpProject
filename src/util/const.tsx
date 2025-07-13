@@ -140,8 +140,8 @@ export const basicFieldConfig = [
   {
     name: 'theme',
     label: 'Background',
-    type: 'select',
-    options: backgroundOptions,
+    type: 'color',
+    // options: backgroundOptions,
   },
   {
     name: 'height',

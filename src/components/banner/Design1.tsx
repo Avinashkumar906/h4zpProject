@@ -19,20 +19,8 @@ type componentPropType = {
 };
 
 function Design1({ data }: componentPropType) {
-  const [dimension, setDimension] = useState<Pick<CloudinaryParams, 'height' | 'width'>>();
-  const placeholder = useRef(null);
-  //data.order == 0 && data.height == 100 ? 'dvh' : 'vh';
   const measureUnit = data.order == 0 && data.height == 100 ? 'dvh' : 'vh';
   const descriptionHtml = safeParseHtml(data.description);
-
-  useEffect(() => {
-    if (placeholder.current?.clientWidth || placeholder.current?.clientHeight) {
-      setDimension({
-        height: placeholder.current.clientHeight,
-        width: placeholder.current.clientWidth,
-      });
-    }
-  }, []);
 
   const content = () =>
     // <Container className="p-0 h-100" fluid={smartParse(data?.fluid)} ref={placeholder}>
@@ -51,15 +39,15 @@ function Design1({ data }: componentPropType) {
     ) : (
       <div className="p-4 text-center h3">Please add url to see content!</div>
     );
-    // </Container>
+  // </Container>
 
   return (
-    <Container className="p-0 h-100" fluid={smartParse(data?.fluid)} ref={placeholder}>
+    <Container className="p-0 h-100" fluid={smartParse(data?.fluid)}>
       <ParallaxBanner>
         <ParallaxBannerLayer speed={isTrue(data?.parallax) ? -30 : 0}>
           <img
             className="h-100 w-100 object-fit-cover"
-            src={cloudinaryUtilForUrl({ url: data?.url, ...dimension, crop: 'thumb' })}
+            src={cloudinaryUtilForUrl({ url: data?.url, quality: 'auto' })}
             alt={`Banner url ${data.url}`}
           />
         </ParallaxBannerLayer>

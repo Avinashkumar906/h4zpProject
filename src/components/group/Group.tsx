@@ -5,6 +5,7 @@ import * as React from 'react';
 import MinimalCard from './Design1';
 import Title from '../common/Title';
 import Description from '../common/Description';
+import { getRGBAString } from '../common/ColorField';
 
 type componentPropType = {
   data: GroupType | undefined;
@@ -22,7 +23,7 @@ function Group({ data, id }: componentPropType) {
     <Container
       className="py-8 px-2"
       style={{
-        backgroundColor: `${data?.theme || ''}`,
+        backgroundColor: `${getRGBAString(data?.theme) || ''}`,
       }}
       fluid
     >

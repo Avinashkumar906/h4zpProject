@@ -75,7 +75,9 @@ export default function Page(props: any) {
   };
 
   const handlePaste = () => {
-    console.log('✅ Paste:', pasteFromClipboard());
+    setModalAction('PASTE');
+    setModalState(true);
+    setModalData({ docId, collection, data });
   };
 
   const nodata = () => {

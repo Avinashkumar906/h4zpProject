@@ -5,6 +5,7 @@ import * as React from 'react';
 import Title from '../common/Title';
 import CardDesign1 from './CardDesign1';
 import CardDesign2 from './CardDesign2';
+import { getRGBAString } from '../common/ColorField';
 
 type componentPropType = {
   data: BlogType | undefined;
@@ -27,7 +28,7 @@ function Blogs({ data, id }: componentPropType) {
     <Container
       className="py-8 px-2"
       style={{
-        backgroundColor: `${data?.theme || ''}`,
+        backgroundColor: `${getRGBAString(data?.theme) || ''}`,
       }}
       fluid
     >

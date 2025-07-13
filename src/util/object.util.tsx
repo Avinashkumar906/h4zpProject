@@ -6,6 +6,7 @@ export const copyToClipboard = (data: any) => {
   if (data) {
     try {
       sessionStorage.setItem('component', JSON.stringify(data));
+      alert('Copied to application clipboard.');
     } catch (error) {
       console.error('Failed to serialize and copy:', error);
     }

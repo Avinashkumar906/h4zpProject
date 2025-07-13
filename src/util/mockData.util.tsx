@@ -34,11 +34,12 @@ export type CloudinaryParams = {
   crop?: 'fill' | 'fit' | 'thumb' | 'crop' | 'scale'; //
   gravity?: 'face' | 'center' | 'auto'; //
   format?: 'auto' | 'webp' | 'jpg'; //
+  dpr?: string;
   [key: string]: string | number; // Allow additional Cloudinary params
 };
 
 export const cloudinaryUtilForUrl = (data: CloudinaryParams): string => {
-  const { url, ar, width, height, quality, crop, ...rest } = data;
+  const { url, ar, width, height, quality, crop, format, gravity, dpr, ...rest } = data;
 
   if (url.includes('res.cloudinary.com') && url.includes('/upload/')) {
     // proceed with transformations
@@ -51,8 +52,8 @@ export const cloudinaryUtilForUrl = (data: CloudinaryParams): string => {
     if (height) transformations.push(`h_${height}`);
     if (quality) transformations.push(`q_${quality}`);
     if (crop) transformations.push(`c_${crop}`);
-    // if (gravity) transformations.push(`g_${gravity}`);
-    // if (format) transformations.push(`f_${format}`);
+    if (dpr) transformations.push(`dpr_${dpr}`);
+    if (format) transformations.push(`f_${format}`);
     // else transformations.push('f_auto');
 
     // Add any additional custom transformations

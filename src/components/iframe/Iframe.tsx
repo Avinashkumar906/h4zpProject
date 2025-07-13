@@ -4,6 +4,7 @@ import { IframeType, isTrue, smartParse } from '../../util/mockData.util';
 import Title from '../common/Title';
 import Description from '../common/Description';
 import { safeParseHtml } from '../editor/rte.util';
+import { getRGBAString } from '../common/ColorField';
 type componentPropType = {
   data: IframeType | undefined;
   id: string;
@@ -26,7 +27,7 @@ function Iframe({ data }: componentPropType) {
   return (
     <Container
       style={{
-        backgroundColor: `${data?.theme || ''}`,
+        backgroundColor: `${getRGBAString(data?.theme) || ''}`,
       }}
       fluid
     >

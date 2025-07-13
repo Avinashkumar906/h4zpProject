@@ -10,31 +10,14 @@ type componentPropType = {
 };
 
 const CardDesign2 = ({ data, id }: componentPropType) => {
-  const [dimention, setDimention] = useState<Pick<CloudinaryParams, 'width'>>();
-  const placeholder = useRef(null);
-
-  useEffect(() => {
-    if (placeholder.current?.clientWidth || placeholder.current?.clientHeight) {
-      setDimention({
-        // height: placeholder.current.clientHeight,
-        width: placeholder.current.clientWidth,
-      });
-    }
-  }, []);
-
   return (
     <Container className="">
       {data.map((item, idx) => (
         <Row key={id + idx} className="align-items-center g-4">
           {/* IMAGE always on top in mobile */}
-          <Col
-            xs={12}
-            md={5}
-            ref={placeholder}
-            className={idx % 2 === 0 ? 'order-md-2' : 'order-md-1'}
-          >
+          <Col xs={12} md={5} className={idx % 2 === 0 ? 'order-md-2' : 'order-md-1'}>
             <img
-              src={cloudinaryUtilForUrl({ url: item.url, ...dimention, crop: 'fit' })}
+              src={cloudinaryUtilForUrl({ url: item.url, quality: 'auto' })}
               alt={item.title}
               className="img-fluid rounded shadow-sm impact-img"
             />

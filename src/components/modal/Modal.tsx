@@ -8,7 +8,7 @@ import {
 } from '../../firebase/getFromFirestore';
 import AddComponent from '../AddComponent';
 import UpdateComponent from '../UpdateComponent';
-import { componentOptions, getMockdata } from '../../util';
+import { componentOptions, getMockdata, pasteFromClipboard } from '../../util';
 import DraggableList from '../SortComponent';
 import PageForm from '../header/PageForm';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -21,13 +21,25 @@ export const CModal = (props: any) => {
   const { search } = useLocation();
 
   const modalData = page.data.find((f) => f.id === page?.docId);
-
-  const [formData, setFormData] = useState(
-    action === 'EDIT' ? { data: getMockdata(modalData.data.component, modalData.data) } : null,
-  );
+  const getFormData = (action) => {
+    switch (action) {
+      case 'ADD':
+        return null;
+      case 'EDIT':
+        return { data: getMockdata(modalData.data.component, modalData.data) };
+      case 'PASTE': {
+        const comp = pasteFromClipboard();
+        // delete comp.id;
+        return { data: getMockdata(comp.data.component, comp.data) };
+      }
+      default:
+        return null;
+    }
+  };
+  const [formData, setFormData] = useState(getFormData(action));
 
   const onUpdate = (formvalue) => {
-    if (action === 'ADD') {
+    if (action === 'ADD' || action === 'PASTE') {
       formvalue.order = page.data.length;
       addComponentToPage(pageID, formvalue, (snapShot) => console.log(snapShot.id));
     } else if (action === 'EDIT') {
@@ -89,6 +101,8 @@ export const CModal = (props: any) => {
         return 'Rearrange Page';
       case 'PAGE':
         return 'Add New Page';
+      case 'PASTE':
+        return `Pasting ${componentOptions.find((f) => f.value === formData?.data?.component)?.label}`;
       default:
         return '';
     }
@@ -100,9 +114,9 @@ export const CModal = (props: any) => {
         <Modal.Title>{title()}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {action === 'ADD' && (
+        {(action === 'ADD' || action === 'PASTE') && (
           <Fragment>
-            <AddComponent onComponentChange={onComponentChange} />
+            {action === 'ADD' && <AddComponent onComponentChange={onComponentChange} />}
             {formData && (
               <UpdateComponent
                 onUpdate={(updatedData) => onUpdate(updatedData)}
