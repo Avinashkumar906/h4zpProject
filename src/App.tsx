@@ -4,7 +4,6 @@ import Page from './pages/Page';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import { FIREBASE_AUTH } from './firebase/firebase';
-import Blog from './pages/Blog';
 import * as React from 'react';
 import { isTrue } from './util';
 
@@ -27,7 +26,7 @@ function App() {
       <div className="d-flex flex-column flex-grow-1">
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
-          <Route path="/blog" element={<Blog />} />
+          {/* <Route path="/blog" element={<Blog />} /> */}
           <Route path="/:page" element={<Page isAuth={isAuth} editable={editable} />} />
           <Route path="*" element={<Navigate to="/home" />} />
         </Routes>

@@ -11,6 +11,7 @@ import { MdOutlineRepeatOne } from 'react-icons/md';
 import { copyToClipboard, isTrue, pasteFromClipboard } from '../util';
 import { FaCopy, FaPaste } from 'react-icons/fa';
 import { useParallaxController } from 'react-scroll-parallax';
+import LoadBlogs from './LoadBlogs';
 // import Statistics from '../components/statistics/Statistics';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -126,6 +127,7 @@ export default function Page(props: any) {
             <DynamicComponent data={m.data} id={m.id}></DynamicComponent>
           </div>
         ))}
+      {collection === 'blog' && <LoadBlogs />}
       {/* <Statistics></Statistics> */}
       {modalState ? (
         <CModal

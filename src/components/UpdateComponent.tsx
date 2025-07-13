@@ -40,7 +40,7 @@ const UpdateComponent = (props: any) => {
           <form onSubmit={form.handleSubmit}>
             <Tabs defaultActiveKey="basic" className="mb-3">
               <Tab eventKey="basic" title="Design">
-                <Row className="flex-column flex-sm-row flex-wrap" style={{ rowGap: '16px' }}>
+                <Row className="flex-column flex-sm-row flex-wrap" style={{ rowGap: '1rem' }}>
                   <BasicControl form={form} fieldConfig={basicFieldConfig} />
                 </Row>
                 <hr />
@@ -295,7 +295,7 @@ const UpdateComponent = (props: any) => {
                                     />
                                     <AiFillCloseCircle onClick={() => remove(index)} />
                                   </div>
-                                  <div style={{ height: '25px' }}></div>
+                                  <div style={{ height: '1.5rem' }}></div>
                                   {getIn(m, 'btnLink') !== undefined && (
                                     <Col>
                                       <Form.Label>Button Link</Form.Label>

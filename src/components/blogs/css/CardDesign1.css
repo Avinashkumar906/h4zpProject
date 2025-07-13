@@ -1,5 +1,5 @@
 .impact-card {
-  border-radius: 12px;
+  border-radius: 0.5rem;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   transition:
@@ -14,5 +14,6 @@
 
 .impact-card-img {
   object-fit: cover;
-  height: 220px;
+  max-height: 35rem;
+  height: 100%;
 }

@@ -1,8 +1,4 @@
-import { useState } from 'react';
-
 function NotFound({ children }: any) {
-  // const [page] = useState(pageID);
-
   return (
     <div
       className="flex-grow-1 bg-dark text-light d-flex flex-column justify-content-center align-items-center"

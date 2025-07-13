@@ -2,15 +2,17 @@ import { Container, Row, Col } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import './css/CardDesign1.css';
-import { BlogListType, cloudinaryUtilForUrl } from '../../util';
+import { BlogListType, cloudinaryUtilForUrl, getFormatedDate } from '../../util';
 import Description from '../common/Description';
 import { useEffect, useRef, useState } from 'react';
+import { startCase } from 'lodash';
+import { Link } from 'react-router-dom';
 
 type componentPropType = {
   data: BlogListType[] | undefined;
   id: string;
 };
-const CardDesign1 = ({ data, id }: componentPropType) => {
+const CardDesign1 = ({ data, id = 'blog_Item' }: componentPropType) => {
   const [dimention, setDimention] = useState<{ height: number; width: number }>();
   const placeholder = useRef(null);
 
@@ -25,10 +27,10 @@ const CardDesign1 = ({ data, id }: componentPropType) => {
 
   return (
     <Container className="py-4">
-      <Row className="g-3">
+      <Row className="gap-4">
         {data.map((item, index) => (
-          <Col key={id + index} xs={12} md={4}>
-            <Card ref={placeholder} className="impact-card h-100">
+          <Col key={id + index} sm={12}>
+            <Card ref={placeholder} className="impact-card radius-0">
               <Card.Img
                 variant="top"
                 src={cloudinaryUtilForUrl({ url: item.url, ...dimention, crop: 'fit' })}
@@ -36,19 +38,31 @@ const CardDesign1 = ({ data, id }: componentPropType) => {
                 alt={item.title}
                 className="impact-card-img"
               />
-              <Card.Body className="d-flex flex-column justify-content-between">
-                <div>
-                  <Card.Title className="fs-5">{item.title}</Card.Title>
-                  <Description description={item.description} />
-                </div>
-                <div className="mt-3 gap-2 d-flex justify-content-between">
-                  <Button className={item.btnColor} size="sm" href={item.BtnUrl}>
-                    {item.BtnText}
-                  </Button>
-                  <small className="text-muted text-end">
-                    — {item.credit || 'Anonymous'}, {item.date}
-                  </small>
-                </div>
+              <Card.Body className="d-flex flex-column ">
+                <Row className="align-items-end">
+                  <Col className="text-start">
+                    — {startCase(item.credit.toLowerCase()) || 'Anonymous'}
+                  </Col>
+                  <Col className="text-end">
+                    <Link className={item.btnColor || 'btn-primary'} to={item.BtnUrl}>
+                      {item.BtnText || 'Read more'}
+                    </Link>
+                  </Col>
+                </Row>
+                <hr></hr>
+                <Row style={{ textOverflow: 'elipses' }}>
+                  <Col md={5} lg={4}>
+                    <div className="d-flex justify-content-arround flex-column">
+                      <Card.Text className="h2">{item.title}</Card.Text>
+                      <div className="text-muted">
+                        {getFormatedDate(item?.date, 'DD MMMM, YYYY')}
+                      </div>
+                    </div>
+                  </Col>
+                  <Col md={7} lg={8}>
+                    <Description description={item.description} />
+                  </Col>
+                </Row>
               </Card.Body>
             </Card>
           </Col>
