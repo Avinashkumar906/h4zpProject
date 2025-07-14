@@ -642,8 +642,6 @@ a:active {
 }
 
 .glass {
-  color: white;
-  border-radius: 8px;
   z-index: 10;
   backdrop-filter: blur(10px); /* the actual glass effect */
   -webkit-backdrop-filter: blur(10px); /* Safari support */

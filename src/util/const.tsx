@@ -36,20 +36,20 @@ const heightOptions = [
 ];
 
 const verticalPositionOptions = [
-  { label: 'Verticle Top', value: 'align-items-start' },
-  { label: 'Verticle Center', value: 'align-items-center' },
-  { label: 'Verticle Bottom', value: 'align-items-end' },
-  { label: 'Verticle Stretch', value: 'align-items-stretch' },
-  { label: 'verticle Baseline', value: 'align-items-baseline' },
+  { label: 'Top', value: 'align-items-start' },
+  { label: 'Middle', value: 'align-items-center' },
+  { label: 'Bottom', value: 'align-items-end' },
+  { label: 'V Stretch', value: 'align-items-stretch' },
+  // { label: 'Verticle Baseline', value: 'align-items-baseline' },
 ];
 
 const horizontalPositionOptions = [
-  { label: 'Horizontal Start', value: 'justify-content-start' },
-  { label: 'Horizontal Center', value: 'justify-content-center' },
-  { label: 'Horizontal End', value: 'justify-content-end' },
-  { label: 'Horizontal Around', value: 'justify-content-around' },
-  { label: 'Horizontal VerBetween', value: 'justify-content-between' },
-  { label: 'Horizontal Evenly', value: 'justify-content-evenly' },
+  { label: 'Left', value: 'justify-content-start' },
+  { label: 'Right', value: 'justify-content-end' },
+  { label: 'Center', value: 'justify-content-center' },
+  // { label: 'H Around', value: 'justify-content-around' },
+  // { label: 'H Between', value: 'justify-content-between' },
+  // { label: 'Horizontal Evenly', value: 'justify-content-evenly' },
 ];
 
 export const componentOptions = [

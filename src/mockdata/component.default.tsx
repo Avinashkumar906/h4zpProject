@@ -99,6 +99,11 @@ export const MOCK_IFRAME = {
     mute: 'true',
     autoplay: 'false',
   },
+  contentPosition: {
+    horizontal: 'justify-content-center',
+    verticle: 'align-items-center',
+  },
+  contentBg: '"ffffff',
   visibility: 'false',
   fluid: 'false',
   title: 'Some title about video',

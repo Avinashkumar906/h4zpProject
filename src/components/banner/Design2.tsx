@@ -20,19 +20,21 @@ type componentPropType = {
 };
 
 function design2({ data }: componentPropType) {
-  const [dimension, setDimension] = useState<Pick<CloudinaryParams, 'height' | 'width'>>();
-  const placeholder = useRef(null);
-  const measureUnit = data.order == 0 && data.height == 100 ? 'dvh' : 'vh';
   const descriptionHtml = safeParseHtml(data.description);
+  const { horizontal, verticle } = data.contentPosition;
+  const mdGridSize = horizontal === 'justify-content-center' ? 12 : 6;
+  const isReverse =
+    (mdGridSize === 6 && horizontal === 'justify-content-end') ||
+    (mdGridSize === 12 && verticle === 'align-items-end');
 
-  useEffect(() => {
-    if (placeholder.current?.clientWidth || placeholder.current?.clientHeight) {
-      setDimension({
-        height: placeholder.current.clientHeight,
-        width: placeholder.current.clientWidth,
-      });
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (placeholder.current?.clientWidth || placeholder.current?.clientHeight) {
+  //     setDimension({
+  //       height: placeholder.current.clientHeight,
+  //       width: placeholder.current.clientWidth,
+  //     });
+  //   }
+  // }, []);
 
   const content = () =>
     data.url ? (
@@ -60,15 +62,18 @@ function design2({ data }: componentPropType) {
       fluid
     >
       <Container fluid={smartParse(data.fluid)}>
-        <Row className="justify-content-center pb-3">
-          <Col sm={12} md={6}>
-            Image place holder!
-          </Col>
-          <Col sm={12} md={6}>
-            Content place holder!
+        <Row className="">
+          <Col sm={12} md={mdGridSize} className={isReverse ? 'order-1' : 'order-0'}>
             <Description description={data?.description} />
           </Col>
-          {/* <Title title={data.title} /> */}
+          <Col sm={12} md={mdGridSize}>
+            {/* Image place holder! */}
+            <img
+              className="h-100 w-100 object-fit-cover"
+              src={cloudinaryUtilForUrl({ url: data?.url, quality: 'auto' })}
+              alt={`Banner url ${data.url}`}
+            />
+          </Col>
           {/* <MinimalCard data={data.list} id={id} /> */}
         </Row>
       </Container>
@@ -76,11 +81,6 @@ function design2({ data }: componentPropType) {
     // <Container className="p-0 h-100" fluid={smartParse(data?.fluid)} ref={placeholder}>
     //   <ParallaxBanner>
     //     <ParallaxBannerLayer speed={isTrue(data?.parallax) ? -30 : 0}>
-    //       <img
-    //         className="h-100 w-100 object-fit-cover"
-    //         src={cloudinaryUtilForUrl({ url: data?.url, ...dimension, crop: 'thumb' })}
-    //         alt={`Banner url ${data.url}`}
-    //       />
     //     </ParallaxBannerLayer>
     //     <ParallaxBannerLayer speed={isTrue(data?.parallax) ? -20 : 0}>
     //       {content()}
