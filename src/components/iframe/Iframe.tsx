@@ -5,6 +5,7 @@ import Title from '../common/Title';
 import Description from '../common/Description';
 import { safeParseHtml } from '../editor/rte.util';
 import { getRGBAString } from '../common/ColorField';
+import EarlyParallax from '../common/EarlyParallax';
 type componentPropType = {
   data: IframeType;
   id?: string;
@@ -53,25 +54,29 @@ function Iframe({ data }: componentPropType) {
                 md={12 - mdGridSize}
                 className={`${isReverse ? 'order-1' : 'order-0'} d-flex ${verticle} p-0`}
               >
-                <div
-                  className="p-4 shadow-sm w-100 text-center d-flex align-items-center"
-                  style={{ zIndex: 0, backgroundColor: getRGBAString(data?.contentBg) }}
+                <EarlyParallax
+                  translateX={[isReverse ? 30 : -30, 0]}
+                  endAnimation={1.6}
+                  className="p-4 w-100 h-100 text-center d-flex align-items-center"
+                  style={{ zIndex: 10, backgroundColor: getRGBAString(data?.contentBg) }}
                 >
                   {descriptionHtml}
-                </div>
+                </EarlyParallax>
               </Col>
             )}
             <Col sm={12} md={mdGridSize} className="d-flex align-items-center p-0">
-              <iframe
-                title={data?.title || 'Random clip.'}
-                src={iframe}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                className="responsive-iframe"
-                style={{ height: `${data?.height || 100}vh` }}
-                scrolling="no"
-                frameBorder="0"
-                allowFullScreen
-              ></iframe>
+              <EarlyParallax scale={[0.7, 1]} endAnimation={1.6} className="w-100">
+                <iframe
+                  title={data?.title || 'Random clip.'}
+                  src={iframe}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  className="responsive-iframe rounded"
+                  style={{ height: `${data?.height || 100}vh`, border: '12px solid azure' }}
+                  scrolling="no"
+                  frameBorder="0"
+                  allowFullScreen
+                ></iframe>
+              </EarlyParallax>
             </Col>
           </Row>
         </Row>

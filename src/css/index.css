@@ -603,14 +603,12 @@ a:active {
 /* Iframe style */
 .responsive-iframe {
   width: 100%;
-  /* optional max width for cleaner centering */
   max-height: 80vh;
   aspect-ratio: 16 / 9;
   border: none;
-  /* border-radius: 0.5rem; */
+}
+.shadow-1 {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  /* background-color: #f8f9fa; */
-  /* transition: transform 0.3s ease; */
 }
 /* 
 .responsive-iframe:hover {

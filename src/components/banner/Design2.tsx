@@ -45,7 +45,8 @@ function design2({ data }: componentPropType) {
           >
             <EarlyParallax
               disabled={!isTrue(data.parallax)}
-              translateX={[30, 0]}
+              translateX={[isReverse ? 30 : -30, 0]}
+              endAnimation={1.6}
               // shouldAlwaysCompleteAnimation
               className="p-4 w-100 h-100 text-center d-flex align-items-center"
               style={{ zIndex: 10, backgroundColor: getRGBAString(data?.contentBg) }}
@@ -54,11 +55,13 @@ function design2({ data }: componentPropType) {
             </EarlyParallax>
           </Col>
           <Col sm={12} md={mdGridSize} className="p-0 h-100 d-flex justify-content-center">
-            <img
-              className="w-100 object-fit-contain"
-              src={cloudinaryUtilForUrl({ url: data?.url, quality: 'auto' })}
-              alt={`Banner url ${data.url}`}
-            />
+            <EarlyParallax disabled={!isTrue(data.parallax)} scale={[0.7, 1]} endAnimation={1.6}>
+              <img
+                className="w-100 object-fit-contain"
+                src={cloudinaryUtilForUrl({ url: data?.url, quality: 'auto' })}
+                alt={`Banner url ${data.url}`}
+              />
+            </EarlyParallax>
           </Col>
         </Row>
       </Container>

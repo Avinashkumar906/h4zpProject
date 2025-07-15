@@ -11,6 +11,7 @@ type EarlyParallaxProps = {
   rotate?: [number, number];
   easing?: string;
   className?: string;
+  endAnimation: number;
   style?: React.CSSProperties;
   [key: string]: any; // for additional passthrough props
 };
@@ -26,6 +27,7 @@ function EarlyParallax({
   easing,
   className,
   style,
+  endAnimation,
   ...rest
 }: EarlyParallaxProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -41,7 +43,7 @@ function EarlyParallax({
 
         setScrollRange({
           start: elementTop - viewportHeight, // when element enters bottom
-          end: elementTop - viewportHeight / 1.5, // complete earlier (at 1/4 viewport)
+          end: elementTop - viewportHeight / endAnimation, // complete earlier (at 1/4 viewport)
         });
       }
     };
