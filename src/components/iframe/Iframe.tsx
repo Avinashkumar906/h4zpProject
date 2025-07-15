@@ -19,9 +19,9 @@ function Iframe({ data }: componentPropType) {
   const descriptionHtml = safeParseHtml(data.description);
   const { horizontal, verticle } = data.contentPosition ?? {};
   const mdGridSize =
-    (descriptionHtml && horizontal === 'justify-content-center') || !descriptionHtml ? 12 : 6;
+    (descriptionHtml && horizontal === 'justify-content-center') || !descriptionHtml ? 12 : 7;
   const isReverse =
-    (mdGridSize === 6 && horizontal === 'justify-content-end') ||
+    (mdGridSize === 7 && horizontal === 'justify-content-end') ||
     (mdGridSize === 12 && verticle === 'align-items-end');
 
   useEffect(() => {
@@ -33,7 +33,7 @@ function Iframe({ data }: componentPropType) {
 
   return (
     <Container
-      className="px-2"
+      className="py-8 px-2"
       style={{
         backgroundColor: `${getRGBAString(data?.theme) || ''}`,
       }}
@@ -42,7 +42,7 @@ function Iframe({ data }: componentPropType) {
       <Container fluid={smartParse(fluid)}>
         <Row>
           {data?.title && (
-            <Col className="pt-8">
+            <Col className="my-2">
               <Title title={data?.title} />
             </Col>
           )}
@@ -50,24 +50,24 @@ function Iframe({ data }: componentPropType) {
             {descriptionHtml && (
               <Col
                 sm={12}
-                md={mdGridSize}
-                className={`${isReverse ? 'order-1' : 'order-0'} d-flex ${verticle} `}
-                style={{ minHeight: '10rem' }}
+                md={12 - mdGridSize}
+                className={`${isReverse ? 'order-1' : 'order-0'} d-flex ${verticle} p-0`}
               >
                 <div
-                  className="p-4 shadow-sm glass w-100 text-center"
+                  className="p-4 shadow-sm w-100 text-center d-flex align-items-center"
                   style={{ zIndex: 0, backgroundColor: getRGBAString(data?.contentBg) }}
                 >
                   {descriptionHtml}
                 </div>
               </Col>
             )}
-            <Col sm={12} md={mdGridSize} className="d-flex align-items-center">
+            <Col sm={12} md={mdGridSize} className="d-flex align-items-center p-0">
               <iframe
                 title={data?.title || 'Random clip.'}
                 src={iframe}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 className="responsive-iframe"
+                style={{ height: `${data?.height || 100}vh` }}
                 scrolling="no"
                 frameBorder="0"
                 allowFullScreen

@@ -19,7 +19,12 @@ const replaceAnchor = (node) => {
   } else {
     // External link: open in new tab, preserve class
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={className || 'btn btn-dark'}
+      >
         {domToReact(node.children)}
       </a>
     );
