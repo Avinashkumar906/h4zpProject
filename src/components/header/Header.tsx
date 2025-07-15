@@ -66,16 +66,13 @@ function Header(props: any) {
                     Logout
                   </div>
                 )}
-                <NavLink className={'btn btn-lime py-1'} to={`/donate${search}`}>
+                <NavLink
+                  className={'btn btn-lime py-1'}
+                  target="blank"
+                  to={`//https://rzp.io/l/wwUWk94R`}
+                >
                   Contribute <LuHandHeart />
                 </NavLink>
-                {/* {
-                  label: (
-                    <>
-                    </>
-                  ),
-                  class:,
-                } */}
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

@@ -33,6 +33,8 @@ export const rteConfig: SunEditorOptions = {
     ['save', 'preview', 'fullScreen'],
   ],
   addTagsWhitelist: 'span',
+  strictHTMLValidation: false,
+  strictMode: false,
   attributesWhitelist: {
     a: 'class href target',
     span: 'class style',

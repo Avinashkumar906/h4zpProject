@@ -7,10 +7,7 @@ function Rte({ fieldname, value }: any) {
   const [currentValue] = useState(value);
   const { setFieldValue } = useFormikContext();
 
-  const handleChange = (value) => {
-    console.log(value);
-    setFieldValue(fieldname, value);
-  };
+  const handleChange = (value) => setFieldValue(fieldname, value);
 
   return (
     <div>
