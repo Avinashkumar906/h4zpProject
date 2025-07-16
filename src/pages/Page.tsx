@@ -93,7 +93,7 @@ export default function Page(props: any) {
 
     return (
       <NotFound>
-        {contentMap[dataState] || 'Something went wrong, please try after some time!'}
+        {contentMap[dataState] || <div className="h3">Error 404, Page not found.</div>}
       </NotFound>
     );
   };
