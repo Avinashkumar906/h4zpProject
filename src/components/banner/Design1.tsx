@@ -44,16 +44,14 @@ function Design1({ data }: componentPropType) {
   return (
     <Container className="p-0 h-100" fluid={smartParse(data?.fluid)}>
       <ParallaxBanner>
-        <ParallaxBannerLayer speed={isTrue(data?.parallax) ? -30 : 0}>
+        <ParallaxBannerLayer speed={-40}>
           <img
             className="h-100 w-100 object-fit-cover"
             src={cloudinaryUtilForUrl({ url: data?.url, quality: 'auto' })}
             alt={`Banner url ${data.url}`}
           />
         </ParallaxBannerLayer>
-        <ParallaxBannerLayer speed={isTrue(data?.parallax) ? -20 : 0}>
-          {content()}
-        </ParallaxBannerLayer>
+        <ParallaxBannerLayer speed={-20}>{content()}</ParallaxBannerLayer>
         <div style={{ height: `${data?.height || 100}${measureUnit}` }}></div>
       </ParallaxBanner>
     </Container>

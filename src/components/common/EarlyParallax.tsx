@@ -1,15 +1,15 @@
 import { useEffect, useState, useRef } from 'react';
-import { Parallax } from 'react-scroll-parallax';
+import { EasingPreset, EffectNumber, EffectString, Parallax } from 'react-scroll-parallax';
 
 type EarlyParallaxProps = {
   children: React.ReactNode;
   disabled?: boolean;
-  translateX?: [number, number];
-  translateY?: [number, number];
-  opacity?: [number, number];
-  scale?: [number, number];
-  rotate?: [number, number];
-  easing?: string;
+  translateX?: EffectString | EffectNumber;
+  translateY?: EffectString | EffectNumber;
+  opacity?: EffectNumber;
+  scale?: EffectNumber;
+  rotate?: EffectNumber;
+  easing?: EasingPreset;
   className?: string;
   endAnimation: number;
   style?: React.CSSProperties;

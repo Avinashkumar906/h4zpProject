@@ -5,9 +5,9 @@ const Title = ({ title }: { title: string }) => {
 
   return (
     <Col sm={12} className="my-2">
-      <div className="text-center h1">
+      <h3 className="text-center">
         <strong>{title}</strong>
-      </div>
+      </h3>
     </Col>
   );
 };

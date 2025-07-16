@@ -6,6 +6,7 @@ import MinimalCard from './Design1';
 import Title from '../common/Title';
 import Description from '../common/Description';
 import { getRGBAString } from '../common/ColorField';
+import EarlyParallax from '../common/EarlyParallax';
 
 type componentPropType = {
   data: GroupType | undefined;
@@ -28,11 +29,13 @@ function Group({ data, id }: componentPropType) {
       fluid
     >
       <Container fluid={smartParse(data.fluid)}>
-        <Row className="justify-content-center pb-3">
-          <Title title={data.title} />
-          <MinimalCard data={data.list} id={id} />
-        </Row>
-        <Description description={data?.description} />
+        <EarlyParallax opacity={[0, 1]} endAnimation={1.6}>
+          <Row className="justify-content-center pb-3">
+            <Title title={data.title} />
+            <MinimalCard data={data.list} id={id} />
+          </Row>
+          <Description description={data?.description} />
+        </EarlyParallax>
       </Container>
     </Container>
   );

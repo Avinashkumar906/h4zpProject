@@ -1,11 +1,13 @@
+// import { ScaleLoader } from "react-spinners";
+
 function NotFound({ children }: any) {
   return (
     <div
-      className="flex-grow-1 bg-dark text-light d-flex flex-column justify-content-center align-items-center"
-      style={{ borderBottom: '1px solid' }}
+      className="d-flex position-absolute inset-0 justify-content-center align-items-center bg-lilac"
+      style={{ zIndex: 2000, position: 'absolute', inset: 0 }}
     >
       <div className="text-center">
-        <div className="h4 my-4">{children}</div>
+        <div>{children}</div>
       </div>
     </div>
   );

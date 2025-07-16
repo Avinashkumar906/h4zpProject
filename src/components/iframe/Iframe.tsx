@@ -55,7 +55,7 @@ function Iframe({ data }: componentPropType) {
                 className={`${isReverse ? 'order-1' : 'order-0'} d-flex ${verticle} p-0`}
               >
                 <EarlyParallax
-                  translateX={[isReverse ? 30 : -30, 0]}
+                  opacity={[0, 1]}
                   endAnimation={1.6}
                   className="p-4 w-100 h-100 text-center d-flex align-items-center"
                   style={{ zIndex: 10, backgroundColor: getRGBAString(data?.contentBg) }}
@@ -70,8 +70,8 @@ function Iframe({ data }: componentPropType) {
                   title={data?.title || 'Random clip.'}
                   src={iframe}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  className="responsive-iframe rounded"
-                  style={{ height: `${data?.height || 100}vh`, border: '12px solid azure' }}
+                  className="responsive-iframe rounded shadow-sm"
+                  style={{ height: `${data?.height || 100}vh` }}
                   scrolling="no"
                   frameBorder="0"
                   allowFullScreen

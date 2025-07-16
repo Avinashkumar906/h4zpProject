@@ -38,11 +38,9 @@ function Blogs({ data, id }: componentPropType) {
           {content(data, id)}
           <Col xl={12}>
             <div className="text-end">
-              {data.more && (
-                <Link to={data.more} className="text-dark">
-                  More..
-                </Link>
-              )}
+              <Link to={'/blog'} className="text-dark">
+                More..
+              </Link>
             </div>
           </Col>
         </Row>

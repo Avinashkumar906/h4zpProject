@@ -6,45 +6,44 @@ export const MOCK_BANNER = {
     verticle: 'align-items-center',
   },
   contentBg: '#ffffff',
-  url: 'https://placehold.co/600?text=Hello+World',
-  description: 'HANDS 4 ZERO POVERTY',
-  fluid: 'true',
+  url: 'https://placehold.co/600?text=PlaceHolder',
+  description: '',
+  fluid: 'lg',
   visibility: 'false',
   theme: 'bg-light',
   order: 0,
   height: 100,
   component: 'banner',
-  parallax: 'true',
+  // parallax: 'true',
   design: 'design1',
 };
 
 export const MOCK_GROUP_LIST = [
   {
-    description: 'Hellow world',
-    url: 'https://placehold.co/400?text=Hello+World',
+    description: '',
+    url: 'https://placehold.co/400?text=PlaceHolder',
   },
   {
-    description: 'Hellow world',
-    url: 'https://placehold.co/400?text=Hello+World',
+    description: '',
+    url: 'https://placehold.co/400?text=PlaceHolder',
   },
   {
-    description: 'Hellow world',
-    url: 'https://placehold.co/400?text=Hello+World',
+    description: '',
+    url: 'https://placehold.co/400?text=PlaceHolder',
   },
 ];
 
 export const MOCK_GROUP = {
   visibility: 'false',
-  stackOnSm: 'false',
-  title: 'OTHER SPECIAL PROJECTS',
+  // stackOnSm: 'false',
+  title: 'Group title',
   component: 'group',
   // itemInRow: 3,
   list: MOCK_GROUP_LIST,
-  fluid: 'false',
+  fluid: 'lg',
   theme: 'bg-light',
   design: 'design1',
-  description:
-    'Join the group of people helping to make life better for the people living in extreme poverty. The H4ZP projects are possible because of the support and care of people like you.',
+  description: 'join us to change the world',
 };
 
 export const MOCK_BUTTON_LIST = [
@@ -57,23 +56,22 @@ export const MOCK_BUTTON_LIST = [
 
 export const MOCK_JUMBOTRON = {
   btnList: MOCK_BUTTON_LIST,
-  fluid: 'false',
+  fluid: 'lg',
   theme: 'bg-light',
   visibility: 'false',
   component: 'jumbotron',
-  title: 'We are back!',
-  description: 'Some description here!',
+  title: 'Add title',
+  description: 'Write content.',
 };
 
 export const MOCK_BLOG_LIST = [
   {
     reference: '',
-    description:
-      'Seventy-five families received food supplies to last the average family of five approximately 2~3 weeks…',
-    title: 'Learn about our fall 2022 food distribution ',
-    url: 'https://placehold.co/400?text=Hello+World',
-    BtnText: 'Read more',
-    BtnUrl: '#',
+    description: 'Some description about blog…',
+    title: 'Title of blog',
+    url: 'https://placehold.co/400?text=PlaceHolder',
+    BtnText: 'Go to page',
+    BtnUrl: 'home',
     btnColor: 'btn-dark',
     date: Moment(new Date()).format('YYYY-MM-DD'),
     credit: '',
@@ -85,7 +83,7 @@ export const MOCK_BLOGS = {
   component: 'blogs',
   title: 'Recent Activities',
   more: '',
-  fluid: 'false',
+  fluid: 'lg',
   visibility: 'false',
   theme: 'bg-light',
   design: 'design1',
@@ -105,7 +103,7 @@ export const MOCK_IFRAME = {
   },
   contentBg: '"ffffff',
   visibility: 'false',
-  fluid: 'false',
+  fluid: 'lg',
   title: 'Some title about video',
   iframeUrl: '//www.youtube.com/embed/xPFlY6fY2c0?wmode=opaque&enablejsapi=1',
   description: 'Some description about video',

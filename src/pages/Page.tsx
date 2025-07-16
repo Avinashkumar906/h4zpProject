@@ -12,6 +12,7 @@ import { copyToClipboard, isTrue, pasteFromClipboard } from '../util';
 import { FaCopy, FaPaste } from 'react-icons/fa';
 import { useParallaxController } from 'react-scroll-parallax';
 import LoadBlogs from './LoadBlogs';
+import { ScaleLoader } from 'react-spinners';
 // import Statistics from '../components/statistics/Statistics';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -82,13 +83,17 @@ export default function Page(props: any) {
 
   const nodata = () => {
     const contentMap = {
-      offline: 'You are offline.',
-      pending: 'Loading Data',
+      offline: <div className="h2">You are offline.</div>,
+      pending: (
+        <div>
+          <ScaleLoader margin={8} />
+        </div>
+      ),
     };
 
     return (
       <NotFound>
-        <div>{contentMap[dataState] || 'Something went wrong, please try after some time!'}</div>
+        {contentMap[dataState] || 'Something went wrong, please try after some time!'}
       </NotFound>
     );
   };

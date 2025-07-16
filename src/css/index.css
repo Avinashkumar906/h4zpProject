@@ -201,7 +201,7 @@ a:active {
 }
 
 /* Backgrounds */
-.bg-light-sky {
+.bg-sky {
   background-color: #e0f7fa;
 }
 
@@ -213,19 +213,19 @@ a:active {
   background-color: #f3e8ff;
 }
 
-.bg-misty-rose {
+.bg-rose {
   background-color: #ffe4e1;
 }
 
-.bg-light-peach {
+.bg-peach {
   background-color: #fff2e5;
 }
 
-.bg-pale-yellow {
+.bg-yellow {
   background-color: #fffde7;
 }
 
-.bg-alice-blue {
+.bg-blue {
   background-color: #f0f8ff;
 }
 
@@ -237,7 +237,7 @@ a:active {
   background-color: #f0ffff;
 }
 
-.bg-light-lilac {
+.bg-lilac {
   background-color: #f6f0fa;
 }
 
