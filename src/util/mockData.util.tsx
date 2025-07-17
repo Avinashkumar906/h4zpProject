@@ -7,6 +7,8 @@ import {
   MOCK_GROUP_LIST,
   MOCK_IFRAME,
   MOCK_JUMBOTRON,
+  MOCK_STAT_LIST,
+  MOCK_STATISTICS,
 } from '../mockdata/component.default';
 import Moment from 'moment';
 export type JumbotronType = typeof MOCK_JUMBOTRON;
@@ -17,13 +19,15 @@ export type GroupType = typeof MOCK_GROUP;
 export type GroupListType = (typeof MOCK_GROUP_LIST)[0];
 export type BlogType = typeof MOCK_BLOGS;
 export type BlogListType = (typeof MOCK_BLOG_LIST)[0];
+export type StatisticsType = typeof MOCK_STATISTICS;
 export type ComponentType =
   | JumbotronType
   | ButtonList
   | BannerType
   | IframeType
   | GroupType
-  | BlogType;
+  | BlogType
+  | StatisticsType;
 
 export type CloudinaryParams = {
   url: string;
@@ -131,6 +135,9 @@ export const getMockdata = (component, valueToPatch?) => {
     case 'group':
       mock = MOCK_GROUP;
       break;
+    case 'statistics':
+      mock = MOCK_STATISTICS;
+      break;
     default:
       mock = null;
   }
@@ -155,6 +162,8 @@ export const getListItemOfComponent = (component) => {
       return MOCK_BLOG_LIST[0];
     case 'group':
       return MOCK_GROUP_LIST[0];
+    case 'statistics':
+      return MOCK_STAT_LIST[0];
     default:
       break;
   }

@@ -13,13 +13,14 @@ import { FaCopy, FaPaste } from 'react-icons/fa';
 import { useParallaxController } from 'react-scroll-parallax';
 import LoadBlogs from './LoadBlogs';
 import { ScaleLoader } from 'react-spinners';
+import Statistics from '../components/statistics/Statistics';
 // import Statistics from '../components/statistics/Statistics';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function Page(props: any) {
   const parallaxController = useParallaxController();
   const { isAuth, editable } = props;
-  const componentRefs = useRef({});
+  // const componentRefs = useRef({});
   const [data, setData] = useState([]);
   const [dataState, setDataState] = useState('pending');
   const [modalData, setModalData] = useState(null);
@@ -141,12 +142,11 @@ export default function Page(props: any) {
             <DynamicComponent
               data={m.data}
               id={m.id}
-              ref={(el) => (componentRefs.current[m.id] = el)}
+              // ref={(el) => (componentRefs.current[m.id] = el)}
             ></DynamicComponent>
           </div>
         ))}
       {collection === 'blog' && <LoadBlogs />}
-      {/* <Statistics></Statistics> */}
       {modalState ? (
         <CModal
           show={modalState}

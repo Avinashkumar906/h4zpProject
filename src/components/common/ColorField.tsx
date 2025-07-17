@@ -2,7 +2,17 @@ import { useState, useRef, useEffect } from 'react';
 import { SketchPicker, ColorResult, RGBColor } from 'react-color';
 import { useFormikContext } from 'formik';
 
-const LIGHT_COLORS = [
+const COLOR_PALETTE = [
+  // Additional Accents
+  '#ff6b6b',
+  '#48bb78',
+  '#4299e1',
+  '#ed64a6',
+  '#ecc94b',
+  '#9f7aea',
+  '#38b2ac',
+
+  // Light
   '#ffffff',
   '#f8f9fa',
   '#e9ecef',
@@ -13,9 +23,15 @@ const LIGHT_COLORS = [
   '#e6f7ff',
   '#e8f5e9',
   '#fce4ec',
-];
 
-const DARK_COLORS = [
+  // Mid
+  '#a0aec0',
+  '#81e6d9',
+  '#f6ad55',
+  '#90cdf4',
+  '#cbd5e0',
+
+  // Dark
   '#212529',
   '#343a40',
   '#000000',
@@ -27,8 +43,6 @@ const DARK_COLORS = [
   '#121212',
   '#3a3b3c',
 ];
-
-const MID_COLORS = ['#a0aec0', '#81e6d9', '#f6ad55', '#90cdf4', '#cbd5e0'];
 
 type ComponentPropsType = {
   fieldname: string;
@@ -100,7 +114,7 @@ function ColorField({ fieldname }: ComponentPropsType) {
         >
           <SketchPicker
             color={currentColor}
-            presetColors={[...LIGHT_COLORS, ...MID_COLORS, ...DARK_COLORS]}
+            presetColors={[...COLOR_PALETTE]}
             onChange={(updatedColor: ColorResult) => setFieldValue(fieldname, updatedColor.rgb)}
           />
         </div>

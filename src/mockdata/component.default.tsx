@@ -1,5 +1,33 @@
 import Moment from 'moment';
 
+export const MOCK_STAT_LIST = [
+  { label: 'Children Educated', value: 5000 },
+  { label: 'Villages with Clean Water', value: 12 },
+  { label: 'Meals Served', value: 25000 },
+];
+// gallery
+export const MOCK_STATISTICS = {
+  list: MOCK_STAT_LIST,
+  title: 'Some statistics',
+  description: '',
+  contentPosition: {
+    horizontal: 'justify-content-center',
+    verticle: 'align-items-center',
+  },
+  column: {
+    sm: '6',
+    md: '6',
+    lg: '4',
+    xl: '3',
+  },
+  fluid: 'lg',
+  visibility: 'false',
+  theme: '#ffffff',
+  order: 0,
+  contentWidth: 5,
+  component: 'statistics',
+};
+
 export const MOCK_BANNER = {
   contentPosition: {
     horizontal: 'justify-content-center',
@@ -10,7 +38,7 @@ export const MOCK_BANNER = {
   description: '',
   fluid: 'lg',
   visibility: 'false',
-  theme: 'bg-light',
+  theme: '#ffffff',
   order: 0,
   height: 100,
   component: 'banner',
@@ -48,7 +76,7 @@ export const MOCK_GROUP = {
   },
   list: MOCK_GROUP_LIST,
   fluid: 'lg',
-  theme: 'bg-light',
+  theme: '#ffffff',
   order: 0,
   design: 'design1',
   description: 'join us to change the world',
@@ -66,11 +94,12 @@ export const MOCK_JUMBOTRON = {
   // btnList: MOCK_BUTTON_LIST,
   fluid: 'lg',
   order: 0,
-  theme: 'bg-light',
+  theme: '#ffffff',
   visibility: 'false',
   component: 'jumbotron',
   title: 'Add title',
   description: 'Write content.',
+  design: 'design1',
 };
 
 export const MOCK_BLOG_LIST = [
@@ -95,7 +124,7 @@ export const MOCK_BLOGS = {
   more: '',
   fluid: 'lg',
   visibility: 'false',
-  theme: 'bg-light',
+  theme: '#ffffff',
   design: 'design1',
 };
 
@@ -103,7 +132,7 @@ export const MOCK_IFRAME = {
   component: 'iframe',
   height: 100,
   order: 0,
-  theme: 'bg-light',
+  theme: '#ffffff',
   youtube: {
     mute: 'true',
     autoplay: 'false',

@@ -59,7 +59,7 @@ export const componentOptions = [
   { label: 'Jumbotron', value: 'jumbotron' },
   { label: 'Card Group', value: 'group' },
   { label: 'Activity', value: 'blogs' },
-  // { label: "Statistics", value: "statistics" },
+  { label: 'Statistics', value: 'statistics' },
   // { label: 'News', value: 'news' },
 ];
 
@@ -77,6 +77,15 @@ export const basicFieldConfig = [
     options: [
       { label: 'Show', value: 'true' },
       { label: 'Hide', value: 'false' },
+    ],
+  },
+  {
+    name: 'design',
+    label: 'Design',
+    type: 'select',
+    options: [
+      { label: 'Style 1', value: 'design1' },
+      { label: 'Style 2', value: 'design2' },
     ],
   },
   // {
@@ -156,6 +165,7 @@ export const contentFieldConfig = [
     name: 'column',
     label: 'Columns',
     type: 'group',
+    size: 8,
     options: [
       {
         name: 'sm',

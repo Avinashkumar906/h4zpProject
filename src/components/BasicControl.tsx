@@ -13,7 +13,7 @@ type componentPropType = {
 const BasicControl = ({ form, fieldConfig }: componentPropType) => {
   return (
     <>
-      {fieldConfig.map(({ name, label, options, type }) => {
+      {fieldConfig.map(({ name, label, options, type, size = 4 }) => {
         if (getIn(form.values, name) === undefined) {
           return null;
         }
@@ -77,7 +77,7 @@ const BasicControl = ({ form, fieldConfig }: componentPropType) => {
 
         if (type === 'group') {
           return (
-            <Col sm={4} className="mw-250" key={name}>
+            <Col sm={size} className="mw-250" key={name}>
               <Form.Label>{label}</Form.Label>
               <InputGroup size="sm">
                 {options.map((child) => (

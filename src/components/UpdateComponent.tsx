@@ -1,18 +1,11 @@
 import { Fragment, useEffect, useState } from 'react';
 import { Formik, Field, FieldArray, getIn } from 'formik';
 import { Accordion, Col, Form, InputGroup, Row, Spinner, Tab, Tabs } from 'react-bootstrap';
-import {
-  AiFillCloseCircle,
-  AiFillDownCircle,
-  AiFillUpCircle,
-  AiFillPlusCircle,
-} from 'react-icons/ai';
 import { getListItemOfComponent } from '../util/mockData.util';
 import ImageUpload from './imageUploader/ImageUpload';
-import { backgroundOptions, basicFieldConfig, contentFieldConfig } from '../util/const';
+import { basicFieldConfig, contentFieldConfig } from '../util/const';
 import Rte from './editor/Rte';
 import BasicControl from './BasicControl';
-import FormRange from 'react-bootstrap/esm/FormRange';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const UpdateComponent = (props: any) => {
@@ -116,11 +109,20 @@ const UpdateComponent = (props: any) => {
                                         />
                                       </Col>
                                     )}
-                                    {getIn(m, 'subTitle') !== undefined && (
+                                    {getIn(m, 'label') !== undefined && (
                                       <Col sm={6} className="mb-2">
-                                        <Form.Label>Sub title</Form.Label>
+                                        <Form.Label>Stats Label</Form.Label>
                                         <Field
-                                          name={`list[${index}].subTitle`}
+                                          name={`list[${index}].label`}
+                                          className="form-control form-control-sm"
+                                        />
+                                      </Col>
+                                    )}
+                                    {getIn(m, 'value') !== undefined && (
+                                      <Col sm={6} className="mb-2">
+                                        <Form.Label>Stats Value</Form.Label>
+                                        <Field
+                                          name={`list[${index}].value`}
                                           className="form-control form-control-sm"
                                         />
                                       </Col>

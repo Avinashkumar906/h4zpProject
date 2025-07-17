@@ -3,6 +3,7 @@ import Group from './group/Group';
 import Jumbotron from './jumbotron/Jumbotron';
 import Blogs from './blogs/Blogs';
 import Iframe from './iframe/Iframe';
+import Statistics from './statistics/Statistics';
 
 function DynamicComponent(props) {
   let component;
@@ -21,6 +22,9 @@ function DynamicComponent(props) {
       break;
     case 'iframe':
       component = <Iframe data={props.data} id={props.id} />;
+      break;
+    case 'statistics':
+      component = <Statistics data={props.data} id={props.id} />;
       break;
       // case 'news':
       //   component = <News data={props.data} id={props.id} />

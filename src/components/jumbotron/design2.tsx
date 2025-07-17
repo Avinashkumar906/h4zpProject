@@ -1,19 +1,13 @@
 import { Card, Col, Row } from 'react-bootstrap';
-import Buttons from './Buttons';
 import { JumbotronType, smartParse } from '../../util/mockData.util';
 import Description from '../common/Description';
 import { getRGBAString } from '../common/ColorField';
 
-function Design1({ data, id }: { data: JumbotronType; id: string }) {
+function Design2({ data }: { data: JumbotronType; id: string }) {
   return (
     <Row className="justify-content-center align-items-center">
       <Col className="w-100">
-        <div
-          style={{
-            backgroundColor: `${getRGBAString(data?.theme) || ''}`,
-          }}
-          className="rounded-4 shadow-sm bg-light"
-        >
+        <div className="rounded-0 border-0">
           <Card.Body className="py-5 p-md-5 p-sm-2">
             <Card.Text className="h1 text-center">{data?.title}</Card.Text>
             <Description description={data.description} />
@@ -25,4 +19,4 @@ function Design1({ data, id }: { data: JumbotronType; id: string }) {
   );
 }
 
-export default Design1;
+export default Design2;
