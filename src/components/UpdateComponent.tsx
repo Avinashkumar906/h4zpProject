@@ -46,7 +46,7 @@ const UpdateComponent = (props: any) => {
                 <hr />
               </Tab>
               <Tab eventKey="main" title="Content">
-                <Row className="mb-2 gap-2">
+                <Row className="flex-column flex-sm-row flex-wrap" style={{ rowGap: '1rem' }}>
                   <BasicControl form={form} fieldConfig={contentFieldConfig} />
                 </Row>
               </Tab>

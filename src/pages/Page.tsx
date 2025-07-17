@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import DynamicComponent from '../components/Component';
 import { useParams } from 'react-router-dom';
 import { AiFillEdit, AiFillDelete } from 'react-icons/ai';
@@ -19,6 +19,7 @@ import { ScaleLoader } from 'react-spinners';
 export default function Page(props: any) {
   const parallaxController = useParallaxController();
   const { isAuth, editable } = props;
+  const componentRefs = useRef({});
   const [data, setData] = useState([]);
   const [dataState, setDataState] = useState('pending');
   const [modalData, setModalData] = useState(null);
@@ -61,6 +62,7 @@ export default function Page(props: any) {
   const onOrder = (): void => {
     setModalAction('ORDER');
     setModalState(true);
+    // html2Canva
     setModalData({ data });
   };
 
@@ -136,7 +138,11 @@ export default function Page(props: any) {
             style={{ position: 'relative' }}
             onClick={() => componentClick(m.id)}
           >
-            <DynamicComponent data={m.data} id={m.id}></DynamicComponent>
+            <DynamicComponent
+              data={m.data}
+              id={m.id}
+              ref={(el) => (componentRefs.current[m.id] = el)}
+            ></DynamicComponent>
           </div>
         ))}
       {collection === 'blog' && <LoadBlogs />}

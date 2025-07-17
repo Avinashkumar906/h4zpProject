@@ -14,6 +14,7 @@ export const MOCK_BANNER = {
   order: 0,
   height: 100,
   component: 'banner',
+  contentWidth: 8,
   // parallax: 'true',
   design: 'design1',
 };
@@ -39,6 +40,12 @@ export const MOCK_GROUP = {
   title: 'Group title',
   component: 'group',
   // itemInRow: 3,
+  column: {
+    sm: '12',
+    md: '4',
+    lg: '4',
+    xl: '4',
+  },
   list: MOCK_GROUP_LIST,
   fluid: 'lg',
   theme: 'bg-light',
@@ -111,4 +118,5 @@ export const MOCK_IFRAME = {
   title: 'Some title about video',
   iframeUrl: '//www.youtube.com/embed/xPFlY6fY2c0?wmode=opaque&enablejsapi=1',
   description: 'Some description about video',
+  contentWidth: 5,
 };

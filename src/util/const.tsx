@@ -128,26 +128,6 @@ export const basicFieldConfig = [
   },
 ];
 
-//  {getIn(form.values, 'title') !== undefined && (
-//     <Col className="mb-2">
-//       <Form.Label>Title</Form.Label>
-//       <Field name="title" className="form-control form-control-sm" />
-//     </Col>
-//   )}
-//   {getIn(form.values, 'subTitle') !== undefined && (
-//     <Col className="mb-2">
-//       <Form.Label>Sub title</Form.Label>
-//       <Field
-//         as="textarea"
-//         name="subTitle"
-//         className="form-control form-control-sm"
-//       />
-//     </Col>
-//   )}
-//   {getIn(form.values, 'iframeUrl') !== undefined && (
-
-//   )}
-
 export const contentFieldConfig = [
   {
     name: 'url',
@@ -158,6 +138,65 @@ export const contentFieldConfig = [
     name: 'contentBg',
     label: 'Content Background',
     type: 'color',
+  },
+  {
+    name: 'contentWidth',
+    label: 'Content Width',
+    size: 4,
+    type: 'select',
+    options: [
+      { label: 'X Small', value: '4' },
+      { label: 'Small', value: '5' },
+      { label: 'Medium', value: '6' },
+      { label: 'Large', value: '7' },
+      { label: 'X Large', value: '8' },
+    ],
+  },
+  {
+    name: 'column',
+    label: 'Columns',
+    type: 'group',
+    options: [
+      {
+        name: 'sm',
+        type: 'select',
+        label: 'sm',
+        options: [
+          { label: '2 Col SM', value: '6' },
+          { label: '1 Col SM', value: '12' },
+        ],
+      },
+      {
+        name: 'md',
+        type: 'select',
+        label: 'md',
+        options: [
+          { label: '2 Col MD', value: '6' },
+          { label: '3 Col MD', value: '4' },
+          { label: '4 Col MD', value: '3' },
+        ],
+      },
+      {
+        name: 'lg',
+        type: 'select',
+        label: 'lg',
+        options: [
+          { label: '2 Col LG', value: '6' },
+          { label: '3 Col LG', value: '4' },
+          { label: '4 Col LG', value: '3' },
+        ],
+      },
+      {
+        name: 'xl',
+        type: 'select',
+        label: 'xl',
+        options: [
+          { label: '3 Col XL', value: '4' },
+          { label: '4 Col XL', value: '3' },
+          { label: '6 Col XL', value: '2' },
+        ],
+      },
+    ],
   },
   {
     name: 'contentPosition',

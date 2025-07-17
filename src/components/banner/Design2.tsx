@@ -14,9 +14,11 @@ function design2({ data }: componentPropType) {
   const descriptionHtml = safeParseHtml(data.description);
   const { horizontal, verticle } = data.contentPosition ?? {};
   const mdGridSize =
-    (descriptionHtml && horizontal === 'justify-content-center') || !descriptionHtml ? 12 : 5;
+    (descriptionHtml && horizontal === 'justify-content-center') || !descriptionHtml
+      ? 12
+      : Number(data.contentWidth);
   const isReverse =
-    (mdGridSize === 5 && horizontal === 'justify-content-end') ||
+    (mdGridSize === Number(data.contentWidth) && horizontal === 'justify-content-end') ||
     (mdGridSize === 12 && verticle === 'align-items-end');
 
   // useEffect(() => {
@@ -40,7 +42,7 @@ function design2({ data }: componentPropType) {
         <Row>
           <Col
             sm={12}
-            md={12 - mdGridSize}
+            md={mdGridSize}
             className={`${isReverse ? 'order-1' : 'order-0'} ${verticle} p-0`}
           >
             <EarlyParallax
@@ -52,7 +54,7 @@ function design2({ data }: componentPropType) {
               {descriptionHtml}
             </EarlyParallax>
           </Col>
-          <Col sm={12} md={mdGridSize} className="p-0 h-100 d-flex justify-content-center">
+          <Col sm={12} md={12 - mdGridSize} className="p-0 h-100 d-flex justify-content-center">
             <EarlyParallax scale={[0.7, 1]} endAnimation={1.6}>
               <img
                 className="w-100 object-fit-contain"

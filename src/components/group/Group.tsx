@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Container, Row } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import { GroupType, smartParse } from '../../util/mockData.util';
 import * as React from 'react';
 import MinimalCard from './Design1';
@@ -32,7 +32,20 @@ function Group({ data, id }: componentPropType) {
         <EarlyParallax opacity={[0.4, 1]} endAnimation={1.6}>
           <Row className="justify-content-center pb-3">
             <Title title={data.title} />
-            <MinimalCard data={data.list} id={id} />
+            <Row className="g-3 text-center">
+              {data.list?.map((item, index) => (
+                <Col
+                  key={id + index}
+                  sm={Number(data.column.sm)}
+                  md={Number(data.column.md)}
+                  lg={Number(data.column.lg)}
+                  xl={Number(data.column.xl)}
+                  className="d-flex justify-content-center align-items-center"
+                >
+                  <MinimalCard data={item} id={id} />
+                </Col>
+              ))}
+            </Row>
           </Row>
           <Description description={data?.description} />
         </EarlyParallax>

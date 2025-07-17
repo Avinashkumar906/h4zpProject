@@ -20,9 +20,11 @@ function Iframe({ data }: componentPropType) {
   const descriptionHtml = safeParseHtml(data.description);
   const { horizontal, verticle } = data.contentPosition ?? {};
   const mdGridSize =
-    (descriptionHtml && horizontal === 'justify-content-center') || !descriptionHtml ? 12 : 7;
+    (descriptionHtml && horizontal === 'justify-content-center') || !descriptionHtml
+      ? 12
+      : Number(data.contentWidth);
   const isReverse =
-    (mdGridSize === 7 && horizontal === 'justify-content-end') ||
+    (mdGridSize === Number(data.contentWidth) && horizontal === 'justify-content-end') ||
     (mdGridSize === 12 && verticle === 'align-items-end');
 
   useEffect(() => {
@@ -52,7 +54,7 @@ function Iframe({ data }: componentPropType) {
           {descriptionHtml && (
             <Col
               sm={12}
-              md={12 - mdGridSize}
+              md={mdGridSize}
               className={`${isReverse ? 'order-1' : 'order-0'} d-flex ${verticle} p-0`}
             >
               <EarlyParallax
@@ -67,7 +69,7 @@ function Iframe({ data }: componentPropType) {
           )}
           <Col
             sm={12}
-            md={mdGridSize}
+            md={12 - mdGridSize}
             className="d-flex justify-content-center align-items-center p-0"
           >
             <EarlyParallax scale={[0.7, 1]} endAnimation={1.6} className="w-100">
