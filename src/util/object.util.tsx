@@ -31,3 +31,11 @@ export const pasteFromClipboard = () => {
     return null;
   }
 };
+
+export const getImageSize = (url: string): Promise<{ width: number; height: number }> =>
+  new Promise((resolve) => {
+    const img = new Image();
+    img.src = url;
+    img.onload = () => resolve({ width: img.naturalWidth, height: img.naturalHeight });
+    img.onerror = () => resolve({ width: 200, height: 100 }); // fallback if image fails
+  });

@@ -60,6 +60,7 @@ export const componentOptions = [
   { label: 'Card Group', value: 'group' },
   { label: 'Activity', value: 'blogs' },
   { label: 'Statistics', value: 'statistics' },
+  { label: 'Image Gallery', value: 'gallery' },
   // { label: 'News', value: 'news' },
 ];
 

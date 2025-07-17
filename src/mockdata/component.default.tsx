@@ -90,6 +90,12 @@ export const MOCK_BUTTON_LIST = [
   },
 ];
 
+export const MOCK_GALLERY_LIST = [
+  { title: 'Title', url: 'https://placehold.co/400?text=PlaceHolder' },
+  { title: 'Title', url: 'https://placehold.co/400?text=PlaceHolder' },
+  { title: 'Title', url: 'https://placehold.co/400?text=PlaceHolder' },
+];
+
 export const MOCK_JUMBOTRON = {
   // btnList: MOCK_BUTTON_LIST,
   fluid: 'lg',
@@ -100,6 +106,17 @@ export const MOCK_JUMBOTRON = {
   title: 'Add title',
   description: 'Write content.',
   design: 'design1',
+};
+
+export const MOCK_GALLERY = {
+  list: MOCK_GALLERY_LIST,
+  fluid: 'lg',
+  order: 0,
+  theme: '#ffffff',
+  visibility: 'false',
+  component: 'gallery',
+  title: 'Add title',
+  description: 'Write content.',
 };
 
 export const MOCK_BLOG_LIST = [

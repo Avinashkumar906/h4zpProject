@@ -4,6 +4,7 @@ import Jumbotron from './jumbotron/Jumbotron';
 import Blogs from './blogs/Blogs';
 import Iframe from './iframe/Iframe';
 import Statistics from './statistics/Statistics';
+import Gallery from './gallery/Gallery';
 
 function DynamicComponent(props) {
   let component;
@@ -25,6 +26,9 @@ function DynamicComponent(props) {
       break;
     case 'statistics':
       component = <Statistics data={props.data} id={props.id} />;
+      break;
+    case 'gallery':
+      component = <Gallery data={props.data} id={props.id} />;
       break;
       // case 'news':
       //   component = <News data={props.data} id={props.id} />
