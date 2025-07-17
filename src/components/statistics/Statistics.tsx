@@ -60,7 +60,10 @@ const Statistics = ({ data, id }: componentPropType) => {
               {data.list.map((item, index) => (
                 <Col
                   key={id + index}
-                  className={`col-sm-${data.column.sm} col-md-${data.column.md} col-lg-${data.column.lg} col-xl-${data.column.xl}`}
+                  sm={Number(data.column.sm)}
+                  md={Number(data.column.md)}
+                  lg={Number(data.column.lg)}
+                  xl={Number(data.column.xl)}
                 >
                   <div className="p-4 d-flex flex-column align-items-center justify-content-center">
                     <h4 className="mb-1">
