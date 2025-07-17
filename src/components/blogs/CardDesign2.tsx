@@ -15,7 +15,7 @@ const CardDesign2 = ({ data, id }: componentPropType) => {
     <Container className="">
       {data.map((item, idx) => (
         <div key={id + idx} className="py-5">
-          <EarlyParallax opacity={[0, 1]} translateY={['100px', '0px']} endAnimation={1.5}>
+          <EarlyParallax opacity={[0.4, 1]} translateY={['100px', '0px']} endAnimation={1.5}>
             <Row className="align-items-center g-4">
               {/* IMAGE always on top in mobile */}
               <Col xs={12} md={5} className={idx % 2 === 0 ? 'order-md-2' : 'order-md-1'}>

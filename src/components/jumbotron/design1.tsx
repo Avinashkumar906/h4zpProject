@@ -17,7 +17,7 @@ function Design1({ data, id }: { data: JumbotronType; id: string }) {
           <Card.Body className="py-5 p-md-5 p-sm-2">
             <Card.Text className="h1 text-center">{data?.title}</Card.Text>
             <Description description={data.description} />
-            <Buttons id={id} data={data.btnList} />
+            {/* <Buttons id={id} data={data.btnList} /> */}
           </Card.Body>
         </Card>
       </Col>

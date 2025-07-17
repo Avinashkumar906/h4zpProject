@@ -26,7 +26,6 @@ function App() {
       <div className="d-flex flex-column flex-grow-1">
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
-          {/* <Route path="/blog" element={<Blog />} /> */}
           <Route path="/:page" element={<Page isAuth={isAuth} editable={editable} />} />
           <Route path="*" element={<Navigate to="/home" />} />
         </Routes>

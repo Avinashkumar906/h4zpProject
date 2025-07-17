@@ -29,7 +29,7 @@ function Group({ data, id }: componentPropType) {
       fluid
     >
       <Container fluid={smartParse(data.fluid)}>
-        <EarlyParallax opacity={[0, 1]} endAnimation={1.6}>
+        <EarlyParallax opacity={[0.4, 1]} endAnimation={1.6}>
           <Row className="justify-content-center pb-3">
             <Title title={data.title} />
             <MinimalCard data={data.list} id={id} />

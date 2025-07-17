@@ -8,7 +8,7 @@ import { ListGroup } from 'react-bootstrap';
 import NotFound from './NotFound';
 import { deleteComponentOfPage, subscribePageComponents } from '../firebase/getFromFirestore';
 import { MdOutlineRepeatOne } from 'react-icons/md';
-import { copyToClipboard, isTrue, pasteFromClipboard } from '../util';
+import { copyToClipboard, isTrue, pasteFromClipboard, serializedata } from '../util';
 import { FaCopy, FaPaste } from 'react-icons/fa';
 import { useParallaxController } from 'react-scroll-parallax';
 import LoadBlogs from './LoadBlogs';
@@ -104,7 +104,12 @@ export default function Page(props: any) {
       unsubscribe = await subscribePageComponents(collection, (res) => {
         setDataState(res.status);
         if (res.status === 'success') {
-          setData(res.data);
+          setData(
+            res.data.map((i) => ({
+              id: i.id,
+              data: serializedata(i.data),
+            })),
+          );
         }
       });
     };

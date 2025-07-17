@@ -8,7 +8,7 @@ import {
 } from '../../firebase/getFromFirestore';
 import AddComponent from '../AddComponent';
 import UpdateComponent from '../UpdateComponent';
-import { componentOptions, getMockdata, pasteFromClipboard } from '../../util';
+import { componentOptions, pasteFromClipboard } from '../../util';
 import DraggableList from '../SortComponent';
 import PageForm from '../header/PageForm';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -26,11 +26,10 @@ export const CModal = (props: any) => {
       case 'ADD':
         return null;
       case 'EDIT':
-        return { data: getMockdata(modalData.data.component, modalData.data) };
+        return { data: modalData.data };
       case 'PASTE': {
         const comp = pasteFromClipboard();
-        // delete comp.id;
-        return { data: getMockdata(comp.data.component, comp.data) };
+        return { data: comp.data };
       }
       default:
         return null;

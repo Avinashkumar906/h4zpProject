@@ -132,8 +132,8 @@ a:active {
 
 .highlight {
   background: #fff9c4; /* soft yellow */
-  padding: 4px;
-  border-radius: 4px;
+  padding: 0 4px;
+  /* border-radius: 4px; */
 }
 
 .highlight::after {

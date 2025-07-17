@@ -9,7 +9,7 @@ import {
 } from 'react-icons/ai';
 import { getListItemOfComponent } from '../util/mockData.util';
 import ImageUpload from './imageUploader/ImageUpload';
-import { backgroundOptions, basicFieldConfig } from '../util/const';
+import { backgroundOptions, basicFieldConfig, contentFieldConfig } from '../util/const';
 import Rte from './editor/Rte';
 import BasicControl from './BasicControl';
 import FormRange from 'react-bootstrap/esm/FormRange';
@@ -45,52 +45,13 @@ const UpdateComponent = (props: any) => {
                 </Row>
                 <hr />
               </Tab>
-              <Tab eventKey="main" title="Section">
+              <Tab eventKey="main" title="Content">
                 <Row className="mb-2 gap-2">
-                  {getIn(form.values, 'title') !== undefined && (
-                    <Col className="mb-2">
-                      <Form.Label>Title</Form.Label>
-                      <Field name="title" className="form-control form-control-sm" />
-                    </Col>
-                  )}
-                  {getIn(form.values, 'subTitle') !== undefined && (
-                    <Col className="mb-2">
-                      <Form.Label>Sub title</Form.Label>
-                      <Field
-                        as="textarea"
-                        name="subTitle"
-                        className="form-control form-control-sm"
-                      />
-                    </Col>
-                  )}
-                  {getIn(form.values, 'url') !== undefined && (
-                    <Col className="mb-2">
-                      <Form.Label>Image Url</Form.Label>
-                      <InputGroup size="sm">
-                        <Field name="url" className="form-control form-control-sm" />
-                        <InputGroup.Text>
-                          <ImageUpload fieldname="url" />
-                        </InputGroup.Text>
-                      </InputGroup>
-                    </Col>
-                  )}
-                  {getIn(form.values, 'iframeUrl') !== undefined && (
-                    <Col className="mb-2">
-                      <Form.Label>Image/Iframe Url</Form.Label>
-                      <Field name="iframeUrl" className="form-control form-control-sm" />
-                    </Col>
-                  )}
-                  {getIn(form.values, 'description') !== undefined && (
-                    <Col sm={12} className="mb-2">
-                      <Form.Label>Description</Form.Label>
-                      <Rte fieldname="description" value={form.values.description}></Rte>
-                    </Col>
-                  )}
+                  <BasicControl form={form} fieldConfig={contentFieldConfig} />
                 </Row>
-                <hr />
               </Tab>
               {getIn(form.values, 'list') !== undefined && (
-                <Tab eventKey="content" title="List Item">
+                <Tab eventKey="content" title="Content List">
                   <FieldArray
                     name="list"
                     render={({ remove, insert, swap, push }) => (
@@ -99,7 +60,7 @@ const UpdateComponent = (props: any) => {
                           {form.values.list.length > 0 ? (
                             form.values.list.map((m, index) => (
                               <Accordion.Item key={`list-update-${index}`} eventKey={index}>
-                                <Accordion.Header>
+                                <Accordion.Header className="p-1">
                                   <Form.Label>Content {index + 1}</Form.Label>
                                 </Accordion.Header>
                                 <Accordion.Body>
@@ -107,21 +68,44 @@ const UpdateComponent = (props: any) => {
                                     className="mb-3 pt-2 bg-light m-0"
                                     style={{ position: 'relative' }}
                                   >
-                                    <div className="list-close h4">
-                                      <AiFillPlusCircle
-                                        onClick={() => insert(index, getListItem())}
-                                      />
-                                      <AiFillUpCircle
-                                        onClick={() => swap(index, index - 1)}
-                                        className={index === 0 && 'd-none'}
-                                      />
-                                      <AiFillDownCircle
-                                        onClick={() => swap(index, index + 1)}
-                                        className={
-                                          index === form.values.list.length - 1 && 'd-none'
-                                        }
-                                      />
-                                      <AiFillCloseCircle onClick={() => remove(index)} />
+                                    <div
+                                      className="d-flex justify-content-end mb-2"
+                                      style={{ marginTop: '-1rem' }}
+                                    >
+                                      <div
+                                        className="btn-group"
+                                        role="group"
+                                        aria-label="First group"
+                                      >
+                                        <button
+                                          type="button"
+                                          onClick={() => insert(index, getListItem())}
+                                          className="rounded-0 btn btn-purple btn-sm"
+                                        >
+                                          {/* <AiFillPlusCircle/> */} Add
+                                        </button>
+                                        <button
+                                          type="button"
+                                          onClick={() => swap(index, index - 1)}
+                                          className={`${index === 0 && 'd-none'} rounded-0 btn btn-purple btn-sm`}
+                                        >
+                                          {/* <AiFillPlusCircle/> */} Up
+                                        </button>
+                                        <button
+                                          type="button"
+                                          onClick={() => swap(index, index + 1)}
+                                          className={`${index === form.values.list.length - 1 && 'd-none'} rounded-0 btn btn-purple btn-sm`}
+                                        >
+                                          {/* <AiFillPlusCircle/>  */} Down
+                                        </button>
+                                        <button
+                                          type="button"
+                                          onClick={() => remove(index)}
+                                          className="rounded-0 btn btn-purple btn-sm"
+                                        >
+                                          {/* <AiFillPlusCircle/> */} Remove
+                                        </button>
+                                      </div>
                                     </div>
                                     {getIn(m, 'title') !== undefined && (
                                       <Col sm={6} className="mb-2">
@@ -155,16 +139,6 @@ const UpdateComponent = (props: any) => {
                                         </InputGroup>
                                       </Col>
                                     )}
-                                    <div className="w-100"></div>
-                                    {getIn(m, 'BtnText') !== undefined && (
-                                      <Col className="mb-2">
-                                        <Form.Label>Button Text</Form.Label>
-                                        <Field
-                                          name={`list[${index}].BtnText`}
-                                          className="form-control form-control-sm"
-                                        />
-                                      </Col>
-                                    )}
                                     {getIn(m, 'date') !== undefined && (
                                       <Col className="mb-2">
                                         <Form.Label>Created On</Form.Label>
@@ -175,6 +149,17 @@ const UpdateComponent = (props: any) => {
                                         />
                                       </Col>
                                     )}
+                                    <div className="w-100"></div>
+                                    {getIn(m, 'BtnText') !== undefined && (
+                                      <Col className="mb-2">
+                                        <Form.Label>Button Text</Form.Label>
+                                        <Field
+                                          name={`list[${index}].BtnText`}
+                                          className="form-control form-control-sm"
+                                        />
+                                      </Col>
+                                    )}
+
                                     {getIn(m, 'BtnUrl') !== undefined && (
                                       <Col className="mb-2">
                                         <Form.Label>Page reference</Form.Label>
@@ -216,16 +201,6 @@ const UpdateComponent = (props: any) => {
                                       </Col>
                                     )}
                                     <div className="w-100"></div>
-                                    {getIn(m, 'footer') !== undefined && (
-                                      <Col sm={12} className="mb-2">
-                                        <Form.Label>Footer</Form.Label>
-                                        <Field
-                                          as="textarea"
-                                          name={`list[${index}].footer`}
-                                          className="form-control form-control-sm"
-                                        />
-                                      </Col>
-                                    )}
                                     {getIn(m, 'description') !== undefined && (
                                       <Col sm={12} className="mb-2">
                                         <Form.Label>Description</Form.Label>
@@ -255,103 +230,6 @@ const UpdateComponent = (props: any) => {
                           {/* </div> */}
                         </Accordion>
                       </>
-                    )}
-                  />
-                </Tab>
-              )}
-
-              {getIn(form.values, 'btnList') !== undefined && (
-                <Tab eventKey="btnlist" title="Button List">
-                  <FieldArray
-                    name="btnList"
-                    render={({ remove, insert, swap, push }) => (
-                      <Accordion defaultActiveKey="0" className="mb-2">
-                        {/* <Form.Label>Button List:</Form.Label> */}
-                        {form.values.btnList.length > 0 ? (
-                          form.values.btnList.map((m, index) => (
-                            <Accordion.Item key={`list-update-${index}`} eventKey={index}>
-                              <Accordion.Header>
-                                <Form.Label>Button {index + 1}</Form.Label>
-                              </Accordion.Header>
-                              <Accordion.Body className="bg-light pt-0">
-                                <Row
-                                  key={`btnList-update-${index}`}
-                                  className="flex-column flex-sm-row"
-                                  style={{ position: 'relative' }}
-                                >
-                                  <div className="list-close h4">
-                                    <AiFillPlusCircle
-                                      onClick={() => insert(index, getListItem())}
-                                    />
-                                    <AiFillUpCircle
-                                      onClick={() => swap(index, index - 1)}
-                                      className={index === 0 && 'd-none'}
-                                    />
-                                    <AiFillDownCircle
-                                      onClick={() => swap(index, index + 1)}
-                                      className={
-                                        index === form.values.btnList.length - 1 && 'd-none'
-                                      }
-                                    />
-                                    <AiFillCloseCircle onClick={() => remove(index)} />
-                                  </div>
-                                  <div style={{ height: '1.5rem' }}></div>
-                                  {getIn(m, 'btnLink') !== undefined && (
-                                    <Col>
-                                      <Form.Label>Button Link</Form.Label>
-                                      <Field
-                                        name={`btnList[${index}].btnLink`}
-                                        className="form-control form-control-sm"
-                                      />
-                                    </Col>
-                                  )}
-                                  {getIn(m, 'btnText') !== undefined && (
-                                    <Col>
-                                      <Form.Label>Button Text</Form.Label>
-                                      <Field
-                                        name={`btnList[${index}].btnText`}
-                                        className="form-control form-control-sm"
-                                      />
-                                    </Col>
-                                  )}
-                                  {getIn(m, 'btnColor') !== undefined && (
-                                    <Col>
-                                      <Form.Label>Button Color</Form.Label>
-                                      <Field
-                                        as="select"
-                                        name={`btnList[${index}].btnColor`}
-                                        className="form-select form-select-sm"
-                                      >
-                                        <option value="btn-dark">Default</option>
-                                        <option value="btn-primary">Primary</option>
-                                        <option value="btn-secondary">Secondary</option>
-                                        <option value="btn-pink">Pink</option>
-                                        <option value="btn-yellow">Yellow</option>
-                                        <option value="btn-purple">Purple</option>
-                                        <option value="btn-orange">Orange</option>
-                                        <option value="btn-teal">Teal</option>
-                                        <option value="btn-coral">Coral</option>
-                                        <option value="btn-lime">Lime</option>
-                                      </Field>
-                                    </Col>
-                                  )}
-                                </Row>
-                              </Accordion.Body>
-                            </Accordion.Item>
-                          ))
-                        ) : (
-                          <div className="p-2 text-center">
-                            <div className="h4">No button in the list!</div>
-                            <div
-                              className="btn btn-sm btn-secondary"
-                              onClick={() => push(getListItem())}
-                            >
-                              Add
-                            </div>
-                            <hr />
-                          </div>
-                        )}
-                      </Accordion>
                     )}
                   />
                 </Tab>

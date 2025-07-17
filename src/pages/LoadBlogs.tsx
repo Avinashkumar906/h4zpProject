@@ -17,6 +17,7 @@ function LoadBlogs() {
     visibility: 'true',
     theme: '#ffffff',
     design: 'design1',
+    order: 0,
   });
 
   useEffect(() => {

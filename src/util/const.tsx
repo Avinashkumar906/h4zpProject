@@ -71,6 +71,30 @@ export const basicFieldConfig = [
     options: widthOptions, // your existing widthOptions
   },
   {
+    name: 'visibility',
+    label: 'Show on Page',
+    type: 'select',
+    options: [
+      { label: 'Show', value: 'true' },
+      { label: 'Hide', value: 'false' },
+    ],
+  },
+  // {
+  //   name: 'parallax',
+  //   label: 'Scroll Effect',
+  //   type: 'select',
+  //   options: [
+  //     { label: 'Parallax', value: 'true' },
+  //     { label: 'No Effect', value: 'false' },
+  //   ],
+  // },
+  {
+    name: 'theme',
+    label: 'Background',
+    type: 'color',
+    // options: backgroundOptions,
+  },
+  {
     name: 'youtube',
     label: 'Video Preset',
     type: 'group',
@@ -96,13 +120,39 @@ export const basicFieldConfig = [
     ],
   },
   {
-    name: 'visibility',
-    label: 'Show on Page',
+    name: 'height',
+    label: 'Section height',
+    size: 4,
     type: 'select',
-    options: [
-      { label: 'Show', value: 'true' },
-      { label: 'Hide', value: 'false' },
-    ],
+    options: heightOptions,
+  },
+];
+
+//  {getIn(form.values, 'title') !== undefined && (
+//     <Col className="mb-2">
+//       <Form.Label>Title</Form.Label>
+//       <Field name="title" className="form-control form-control-sm" />
+//     </Col>
+//   )}
+//   {getIn(form.values, 'subTitle') !== undefined && (
+//     <Col className="mb-2">
+//       <Form.Label>Sub title</Form.Label>
+//       <Field
+//         as="textarea"
+//         name="subTitle"
+//         className="form-control form-control-sm"
+//       />
+//     </Col>
+//   )}
+//   {getIn(form.values, 'iframeUrl') !== undefined && (
+
+//   )}
+
+export const contentFieldConfig = [
+  {
+    name: 'url',
+    label: 'ImageUpload',
+    type: 'upload',
   },
   {
     name: 'contentBg',
@@ -129,25 +179,18 @@ export const basicFieldConfig = [
     ],
   },
   {
-    name: 'parallax',
-    label: 'Scroll Effect',
-    type: 'select',
-    options: [
-      { label: 'Parallax', value: 'true' },
-      { label: 'No Effect', value: 'false' },
-    ],
+    name: 'title',
+    label: 'Content Title',
+    type: 'text',
   },
   {
-    name: 'theme',
-    label: 'Background',
-    type: 'color',
-    // options: backgroundOptions,
+    name: 'iframeUrl',
+    label: 'YT Video/Iframe Url',
+    type: 'text',
   },
   {
-    name: 'height',
-    label: 'Section height',
-    size: 4,
-    type: 'select',
-    options: heightOptions,
+    name: 'description',
+    label: 'Description',
+    type: 'rte',
   },
 ];

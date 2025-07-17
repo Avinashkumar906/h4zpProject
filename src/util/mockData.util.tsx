@@ -143,6 +143,10 @@ export const getMockdata = (component, valueToPatch?) => {
   return clonedMock;
 };
 
+export const serializedata = (data) => {
+  return getMockdata(data.component, data);
+};
+
 export const getListItemOfComponent = (component) => {
   switch (component) {
     case 'jumbotron':

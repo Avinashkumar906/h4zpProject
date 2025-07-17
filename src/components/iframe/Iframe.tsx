@@ -34,7 +34,7 @@ function Iframe({ data }: componentPropType) {
 
   return (
     <Container
-      className="py-8 px-2"
+      className="py-8 px-3"
       style={{
         backgroundColor: `${getRGBAString(data?.theme) || ''}`,
       }}
@@ -47,38 +47,42 @@ function Iframe({ data }: componentPropType) {
               <Title title={data?.title} />
             </Col>
           )}
-          <Row>
-            {descriptionHtml && (
-              <Col
-                sm={12}
-                md={12 - mdGridSize}
-                className={`${isReverse ? 'order-1' : 'order-0'} d-flex ${verticle} p-0`}
+        </Row>
+        <Row>
+          {descriptionHtml && (
+            <Col
+              sm={12}
+              md={12 - mdGridSize}
+              className={`${isReverse ? 'order-1' : 'order-0'} d-flex ${verticle} p-0`}
+            >
+              <EarlyParallax
+                opacity={[0.4, 1]}
+                endAnimation={1.6}
+                className="p-4 w-100 h-100 d-flex align-items-center"
+                style={{ zIndex: 10, backgroundColor: getRGBAString(data?.contentBg) }}
               >
-                <EarlyParallax
-                  opacity={[0, 1]}
-                  endAnimation={1.6}
-                  className="p-4 w-100 h-100 text-center d-flex align-items-center"
-                  style={{ zIndex: 10, backgroundColor: getRGBAString(data?.contentBg) }}
-                >
-                  {descriptionHtml}
-                </EarlyParallax>
-              </Col>
-            )}
-            <Col sm={12} md={mdGridSize} className="d-flex align-items-center p-0">
-              <EarlyParallax scale={[0.7, 1]} endAnimation={1.6} className="w-100">
-                <iframe
-                  title={data?.title || 'Random clip.'}
-                  src={iframe}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  className="responsive-iframe rounded shadow-sm"
-                  style={{ height: `${data?.height || 100}vh` }}
-                  scrolling="no"
-                  frameBorder="0"
-                  allowFullScreen
-                ></iframe>
+                {descriptionHtml}
               </EarlyParallax>
             </Col>
-          </Row>
+          )}
+          <Col
+            sm={12}
+            md={mdGridSize}
+            className="d-flex justify-content-center align-items-center p-0"
+          >
+            <EarlyParallax scale={[0.7, 1]} endAnimation={1.6} className="w-100">
+              <iframe
+                title={data?.title || 'Random clip.'}
+                src={iframe}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                className="responsive-iframe rounded shadow-sm"
+                style={{ height: `${data?.height || 100}vh` }}
+                scrolling="no"
+                frameBorder="0"
+                allowFullScreen
+              ></iframe>
+            </EarlyParallax>
+          </Col>
         </Row>
       </Container>
     </Container>

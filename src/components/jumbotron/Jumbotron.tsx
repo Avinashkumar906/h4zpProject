@@ -12,7 +12,7 @@ function Jumbotron({ data, id }: componentPropType) {
   return (
     <Container className="py-8 px-2" fluid>
       <Container fluid={smartParse(data.fluid)}>
-        <EarlyParallax opacity={[0, 1]} endAnimation={1.7}>
+        <EarlyParallax opacity={[0.4, 1]} endAnimation={1.7}>
           <Design1 data={data} id={id} />
         </EarlyParallax>
       </Container>

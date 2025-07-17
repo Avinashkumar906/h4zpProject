@@ -30,7 +30,7 @@ function design2({ data }: componentPropType) {
 
   return (
     <Container
-      className="py-8 px-2"
+      className="py-8 px-3"
       style={{
         backgroundColor: `${getRGBAString(data?.theme) || ''}`,
       }}
@@ -44,9 +44,9 @@ function design2({ data }: componentPropType) {
             className={`${isReverse ? 'order-1' : 'order-0'} ${verticle} p-0`}
           >
             <EarlyParallax
-              opacity={[0, 1]}
+              opacity={[0.4, 1]}
               endAnimation={1.6}
-              className="p-4 w-100 h-100 text-center d-flex align-items-center"
+              className="p-4 w-100 h-100 d-flex align-items-center"
               style={{ zIndex: 10, backgroundColor: getRGBAString(data?.contentBg) }}
             >
               {descriptionHtml}

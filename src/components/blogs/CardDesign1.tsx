@@ -17,7 +17,7 @@ const CardDesign1 = ({ data, id = 'blog_Item' }: componentPropType) => {
       <Row className="gap-4">
         {data.map((item, index) => (
           <Col key={id + index} sm={12}>
-            <EarlyParallax opacity={[0, 1]} translateY={['100px', '0px']} endAnimation={1.5}>
+            <EarlyParallax opacity={[0.4, 1]} translateY={['100px', '0px']} endAnimation={1.5}>
               <Card className="impact-card radius-0">
                 <Card.Img
                   variant="top"

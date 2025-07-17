@@ -42,6 +42,7 @@ export const MOCK_GROUP = {
   list: MOCK_GROUP_LIST,
   fluid: 'lg',
   theme: 'bg-light',
+  order: 0,
   design: 'design1',
   description: 'join us to change the world',
 };
@@ -55,8 +56,9 @@ export const MOCK_BUTTON_LIST = [
 ];
 
 export const MOCK_JUMBOTRON = {
-  btnList: MOCK_BUTTON_LIST,
+  // btnList: MOCK_BUTTON_LIST,
   fluid: 'lg',
+  order: 0,
   theme: 'bg-light',
   visibility: 'false',
   component: 'jumbotron',
@@ -81,6 +83,7 @@ export const MOCK_BLOG_LIST = [
 export const MOCK_BLOGS = {
   list: MOCK_BLOG_LIST,
   component: 'blogs',
+  order: 0,
   title: 'Recent Activities',
   more: '',
   fluid: 'lg',
@@ -92,6 +95,7 @@ export const MOCK_BLOGS = {
 export const MOCK_IFRAME = {
   component: 'iframe',
   height: 100,
+  order: 0,
   theme: 'bg-light',
   youtube: {
     mute: 'true',
