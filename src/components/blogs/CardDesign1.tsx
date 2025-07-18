@@ -14,7 +14,7 @@ type componentPropType = {
 const CardDesign1 = ({ data, id = 'blog_Item' }: componentPropType) => {
   return (
     <Container className="py-4">
-      <Row className="gap-4">
+      <Row className="gap-5">
         {data.map((item, index) => (
           <Col key={id + index} sm={12}>
             <EarlyParallax opacity={[0.4, 1]} translateY={['100px', '0px']} endAnimation={1.5}>

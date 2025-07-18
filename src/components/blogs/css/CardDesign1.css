@@ -14,13 +14,20 @@
 
 .impact-card-img {
   object-fit: cover;
-  max-height: 30rem;
+  /* max-height: 30rem; */
   /* min-height: 25rem; */
   height: 100%;
 }
 
 @media (orientation: landscape) {
   .impact-card-img {
-    max-height: 20rem;
+    max-height: 25vh;
+    min-height: 20vh;
+  }
+}
+@media (orientation: portrait) {
+  .impact-card-img {
+    max-height: 45vh;
+    min-height: 40vh;
   }
 }
