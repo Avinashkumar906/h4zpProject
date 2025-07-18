@@ -5,7 +5,7 @@ export function hasOwn(obj: object, key: PropertyKey): boolean {
 export const copyToClipboard = (data: any) => {
   if (data) {
     try {
-      sessionStorage.setItem('component', JSON.stringify(data));
+      localStorage.setItem('component', JSON.stringify(data));
       alert('Copied to application clipboard.');
     } catch (error) {
       console.error('Failed to serialize and copy:', error);
@@ -16,7 +16,7 @@ export const copyToClipboard = (data: any) => {
 };
 
 export const pasteFromClipboard = () => {
-  const jsonData = sessionStorage.getItem('component');
+  const jsonData = localStorage.getItem('component');
 
   if (jsonData) {
     try {

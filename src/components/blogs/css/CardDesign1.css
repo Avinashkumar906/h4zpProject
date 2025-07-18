@@ -18,3 +18,9 @@
   /* min-height: 25rem; */
   height: 100%;
 }
+
+@media (orientation: landscape) {
+  .impact-card-img {
+    max-height: 20rem;
+  }
+}

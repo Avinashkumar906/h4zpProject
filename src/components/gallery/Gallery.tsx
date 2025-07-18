@@ -28,7 +28,6 @@ function Gallery({ data }: componentPropType) {
             src: m.url,
             width,
             height,
-            loading: 'lazy',
           };
         }),
       );

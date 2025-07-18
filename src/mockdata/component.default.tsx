@@ -91,9 +91,9 @@ export const MOCK_BUTTON_LIST = [
 ];
 
 export const MOCK_GALLERY_LIST = [
-  { title: 'Title', url: 'https://placehold.co/400?text=PlaceHolder' },
-  { title: 'Title', url: 'https://placehold.co/400?text=PlaceHolder' },
-  { title: 'Title', url: 'https://placehold.co/400?text=PlaceHolder' },
+  { url: 'https://placehold.co/400?text=PlaceHolder' },
+  { url: 'https://placehold.co/400?text=PlaceHolder' },
+  { url: 'https://placehold.co/400?text=PlaceHolder' },
 ];
 
 export const MOCK_JUMBOTRON = {

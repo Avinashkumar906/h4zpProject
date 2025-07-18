@@ -30,7 +30,10 @@ function Design1({ data }: componentPropType) {
           className={`py-8 px-2 d-flex w-100 h-100 ${data.contentPosition?.horizontal} ${data.contentPosition?.verticle}`}
         >
           {descriptionHtml && (
-            <div className="p-4 glass" style={{ backgroundColor: getRGBAString(data?.contentBg) }}>
+            <div
+              className={`p-4 glass col-sm-${data.contentWidth}`}
+              style={{ backgroundColor: getRGBAString(data?.contentBg) }}
+            >
               {descriptionHtml}
             </div>
           )}

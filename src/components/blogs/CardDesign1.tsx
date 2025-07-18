@@ -41,7 +41,7 @@ const CardDesign1 = ({ data, id = 'blog_Item' }: componentPropType) => {
                   <Row style={{ textOverflow: 'elipses' }}>
                     <Col md={5} lg={4}>
                       <div className="d-flex justify-content-arround flex-column">
-                        <h3 className="h2">{item.title}</h3>
+                        <div className="h4">{item.title}</div>
                         <div className="text-muted">
                           {getFormatedDate(item?.date, 'DD MMMM, YYYY')}
                         </div>

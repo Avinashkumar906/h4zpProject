@@ -181,7 +181,7 @@ export default function Page(props: any) {
               <FaCopy />
               <span className="hover-label">Copy</span>
             </ListGroup.Item>
-            <ListGroup.Item className={!docId ? 'not-allowed' : ''} onClick={handlePaste}>
+            <ListGroup.Item onClick={handlePaste}>
               <FaPaste />
               <span className="hover-label">Paste</span>
             </ListGroup.Item>

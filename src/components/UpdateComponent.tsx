@@ -59,7 +59,7 @@ const UpdateComponent = (props: any) => {
                                 <Accordion.Body>
                                   <Row
                                     className="mb-3 pt-2 bg-light m-0"
-                                    style={{ position: 'relative' }}
+                                    style={{ position: 'relative', rowGap: '.5rem' }}
                                   >
                                     <div
                                       className="d-flex justify-content-end mb-2"
@@ -128,7 +128,7 @@ const UpdateComponent = (props: any) => {
                                       </Col>
                                     )}
                                     {getIn(m, 'url') !== undefined && (
-                                      <Col className="mb-2">
+                                      <Col sm={6} className="mb-2">
                                         <Form.Label>Image Url</Form.Label>
                                         <InputGroup size="sm">
                                           <Field
@@ -141,8 +141,9 @@ const UpdateComponent = (props: any) => {
                                         </InputGroup>
                                       </Col>
                                     )}
+                                    <div className="w-100"></div>
                                     {getIn(m, 'date') !== undefined && (
-                                      <Col className="mb-2">
+                                      <Col sm={4} className="mb-2">
                                         <Form.Label>Created On</Form.Label>
                                         <Field
                                           type="date"
@@ -151,9 +152,8 @@ const UpdateComponent = (props: any) => {
                                         />
                                       </Col>
                                     )}
-                                    <div className="w-100"></div>
                                     {getIn(m, 'BtnText') !== undefined && (
-                                      <Col className="mb-2">
+                                      <Col sm={4} className="mb-2">
                                         <Form.Label>Button Text</Form.Label>
                                         <Field
                                           name={`list[${index}].BtnText`}
@@ -163,7 +163,7 @@ const UpdateComponent = (props: any) => {
                                     )}
 
                                     {getIn(m, 'BtnUrl') !== undefined && (
-                                      <Col className="mb-2">
+                                      <Col sm={4} className="mb-2">
                                         <Form.Label>Page reference</Form.Label>
                                         <Field
                                           name={`list[${index}].BtnUrl`}
@@ -172,7 +172,7 @@ const UpdateComponent = (props: any) => {
                                       </Col>
                                     )}
                                     {getIn(m, 'btnColor') !== undefined && (
-                                      <Col className="mb-2">
+                                      <Col sm={4} className="mb-2">
                                         <Form.Label>Button Color</Form.Label>
                                         <Field
                                           as="select"
@@ -192,9 +192,9 @@ const UpdateComponent = (props: any) => {
                                         </Field>
                                       </Col>
                                     )}
-                                    <div className="w-100"></div>
+                                    {/* <div className="w-100"></div> */}
                                     {getIn(m, 'credit') !== undefined && (
-                                      <Col className="mb-2">
+                                      <Col sm={4} className="mb-2">
                                         <Form.Label>Organised by</Form.Label>
                                         <Field
                                           name={`list[${index}].credit`}
