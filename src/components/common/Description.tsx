@@ -6,11 +6,7 @@ const Description = ({ description }: { description: string }) => {
 
   if (!html) return null;
 
-  return (
-    <Row>
-      <div style={{ whiteSpace: 'pre-wrap' }}>{html}</div>
-    </Row>
-  );
+  return <Row>{html}</Row>;
 };
 
 export default Description;
