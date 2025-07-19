@@ -19,7 +19,8 @@ type componentPropType = {
 };
 
 function Design1({ data }: componentPropType) {
-  const measureUnit = data.order == 0 && data.height == 100 ? 'dvh' : 'vh';
+  // const measureUnit = data.order == 0 && data.height == 100 ? 'dvh' : 'vh';
+  const measureUnit = 'vh';
   const descriptionHtml = safeParseHtml(data.description);
 
   const content = () =>

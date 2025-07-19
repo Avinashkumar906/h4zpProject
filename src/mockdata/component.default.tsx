@@ -117,6 +117,7 @@ export const MOCK_GALLERY = {
   component: 'gallery',
   title: 'Add title',
   description: 'Write content.',
+  design: 'design1',
 };
 
 export const MOCK_BLOG_LIST = [

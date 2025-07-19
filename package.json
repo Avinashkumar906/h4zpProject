@@ -10,6 +10,7 @@
     "aos": "^2.3.4",
     "bootstrap": "^5.2.2",
     "cloudinary": "^1.32.0",
+    "embla-carousel-react": "^8.6.0",
     "firebase": "^9.12.1",
     "formik": "^2.2.9",
     "html-react-parser": "^3.0.4",

@@ -13,8 +13,6 @@ import { FaCopy, FaPaste } from 'react-icons/fa';
 import { useParallaxController } from 'react-scroll-parallax';
 import LoadBlogs from './LoadBlogs';
 import { ScaleLoader } from 'react-spinners';
-import Statistics from '../components/statistics/Statistics';
-// import Statistics from '../components/statistics/Statistics';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function Page(props: any) {

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { GroupType, smartParse } from '../../util/mockData.util';
 import * as React from 'react';
@@ -7,6 +7,10 @@ import Title from '../common/Title';
 import Description from '../common/Description';
 import { getRGBAString } from '../common/ColorField';
 import EarlyParallax from '../common/EarlyParallax';
+import useEmblaCarousel from 'embla-carousel-react';
+import useBreakpoint from '../../hook/useBreakpoint';
+import { FaChevronLeft } from 'react-icons/fa';
+import { FaChevronRight } from 'react-icons/fa';
 
 type componentPropType = {
   data: GroupType | undefined;
@@ -14,11 +18,25 @@ type componentPropType = {
 };
 
 function Group({ data, id }: componentPropType) {
-  const [lightBoxState, setLightBoxState] = useState({ show: false, activeIndex: 0 });
+  const breakpoint = useBreakpoint();
+  const columns = Number(data?.column[breakpoint] || 12);
+  const slidesToShow = 12 / columns;
 
-  const toggleLightBox = (visible, index) => {
-    setLightBoxState({ show: visible || !lightBoxState.show, activeIndex: index || 0 });
-  };
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+
+  const scrollNext = useCallback(() => {
+    if (!emblaApi) return;
+    const currentIndex = emblaApi.selectedScrollSnap();
+    const totalSlides = emblaApi.scrollSnapList().length;
+    emblaApi.scrollTo((currentIndex + 1) % totalSlides);
+  }, [emblaApi]);
+
+  const scrollPrev = useCallback(() => {
+    if (!emblaApi) return;
+    const currentIndex = emblaApi.selectedScrollSnap();
+    const totalSlides = emblaApi.scrollSnapList().length;
+    emblaApi.scrollTo((currentIndex - 1 + totalSlides) % totalSlides);
+  }, [emblaApi]);
 
   return (
     <Container
@@ -33,18 +51,41 @@ function Group({ data, id }: componentPropType) {
           <Row className="justify-content-center pb-3">
             <Title title={data.title} />
             <Row className="g-3 text-center">
-              {data.list?.map((item, index) => (
-                <Col
-                  key={id + index}
-                  sm={Number(data.column.sm)}
-                  md={Number(data.column.md)}
-                  lg={Number(data.column.lg)}
-                  xl={Number(data.column.xl)}
-                  className="d-flex justify-content-center align-items-center"
-                >
-                  <MinimalCard data={item} id={id} />
-                </Col>
-              ))}
+              <div className="embla">
+                <div className="embla__viewport" ref={emblaRef}>
+                  <div className="embla__container">
+                    {data.list?.map((item, index) => (
+                      <div
+                        key={id + index}
+                        className="embla__slide d-flex justify-content-center align-items-center p-2"
+                        style={{ flex: `0 0 ${100 / slidesToShow}%` }}
+                      >
+                        <MinimalCard data={item} id={id} />
+                      </div>
+                    ))}
+                    {/* {data.list?.map((item, index) => (
+                      <Col
+                        key={id + index}
+                        sm={Number(data.column.sm)}
+                        md={Number(data.column.md)}
+                        lg={Number(data.column.lg)}
+                        xl={Number(data.column.xl)}
+                        className="d-flex justify-content-center align-items-center"
+                      >
+                        <MinimalCard data={item} id={id} />
+                      </Col>
+                    ))} */}
+                  </div>
+                </div>
+                <div className="embla__buttons">
+                  <button onClick={scrollPrev}>
+                    <FaChevronLeft />
+                  </button>
+                  <button onClick={scrollNext}>
+                    <FaChevronRight />
+                  </button>
+                </div>
+              </div>
             </Row>
           </Row>
           <Description description={data?.description} />
