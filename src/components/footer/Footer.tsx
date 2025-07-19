@@ -34,8 +34,8 @@ function Footer(props: any) {
 
   return (
     <footer className="bg-dark text-light pt-4 pb-2">
-      <Container fluid="xl">
-        <Row className="gy-4">
+      <Container fluid="xl" className="p-0">
+        <Row className="gy-4 px-2">
           {/* Left: About */}
           <Col md={5} sm={12}>
             <div className="text-uppercase h3">Hands 4 Zero Poverty Trust</div>
