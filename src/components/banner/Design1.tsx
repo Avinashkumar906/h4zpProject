@@ -12,6 +12,7 @@ import * as React from 'react';
 import { safeParseHtml } from '../editor/rte.util';
 import { getRGBAString } from '../common/ColorField';
 import { ParallaxBanner, ParallaxBannerLayer } from 'react-scroll-parallax';
+import CloudinaryImg from '../common/Image';
 
 type componentPropType = {
   data: BannerType | undefined;
@@ -47,10 +48,12 @@ function Design1({ data }: componentPropType) {
     <Container className="p-0 h-100" fluid={smartParse(data?.fluid)}>
       <ParallaxBanner>
         <ParallaxBannerLayer speed={-40}>
-          <img
+          <CloudinaryImg
+            // <img
+            // src={cloudinaryUtilForUrl({ url: data?.url, quality: 'auto' })}
             className="h-100 w-100 object-fit-cover"
-            src={cloudinaryUtilForUrl({ url: data?.url, quality: 'auto' })}
-            alt={`Banner url ${data.url}`}
+            src={data.url}
+            // alt={`Banner url ${data.url}`}
           />
         </ParallaxBannerLayer>
         <ParallaxBannerLayer speed={-20}>{content()}</ParallaxBannerLayer>

@@ -43,7 +43,7 @@ function design2({ data }: componentPropType) {
           <Col
             sm={12}
             md={mdGridSize}
-            className={`${isReverse ? 'order-1' : 'order-0'} ${verticle} p-0`}
+            className={`${isReverse ? 'order-md-1' : 'order-md-0'} ${verticle} p-0 order-1`}
           >
             <EarlyParallax
               opacity={[0.4, 1]}

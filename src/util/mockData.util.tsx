@@ -50,25 +50,27 @@ export const cloudinaryUtilForUrl = (data: CloudinaryParams): string => {
   const { url, ar, width, height, quality, crop, format, gravity, dpr, ...rest } = data;
 
   if (url.includes('res.cloudinary.com') && url.includes('/upload/')) {
-    // proceed with transformations
-    const [domain, fileID] = url.split('/upload/');
+    const [domain, restPath] = url.split('/upload/');
+    const restParts = restPath.split('/');
+    const existingTransforms =
+      restParts[0].includes(',') || restParts[0].includes('_') ? restParts[0] : '';
+    const fileID = existingTransforms ? restParts.slice(1).join('/') : restParts.join('/');
 
     const transformations: string[] = [];
 
+    if (existingTransforms) transformations.push(existingTransforms);
     if (ar) transformations.push(`ar_${ar}`);
     if (width) transformations.push(`w_${width}`);
     if (height) transformations.push(`h_${height}`);
     if (quality) transformations.push(`q_${quality}`);
     if (crop) transformations.push(`c_${crop}`);
+    if (gravity) transformations.push(`g_${gravity}`);
     if (dpr) transformations.push(`dpr_${dpr}`);
     if (format) transformations.push(`f_${format}`);
     // else transformations.push('f_auto');
 
-    // Add any additional custom transformations
     Object.entries(rest).forEach(([key, value]) => {
-      if (value) {
-        transformations.push(`${key}_${value}`);
-      }
+      if (value) transformations.push(`${key}_${value}`);
     });
 
     const transformationString = transformations.join(',');
