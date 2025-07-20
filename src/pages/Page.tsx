@@ -99,8 +99,20 @@ export default function Page(props: any) {
     );
   };
 
+  const reset = () => {
+    setModalAction(null);
+    setModalState(false);
+    setModalData(null);
+    setDocId(null);
+    setDataState('pending');
+    setData([]);
+  };
+
   useEffect(() => {
     let unsubscribe;
+    // Page resetting
+    reset();
+    // Page reseting ends
     const init = async () => {
       unsubscribe = await subscribePageComponents(collection, (res) => {
         setDataState(res.status);
