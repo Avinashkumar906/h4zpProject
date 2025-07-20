@@ -684,25 +684,26 @@ a:active {
   display: flex;
   position: absolute;
   inset: 0;
-  width: 100%;
+  left: -1rem;
+  right: -1rem;
+  /* width: 100%; */
   justify-content: space-between;
   align-items: center;
   pointer-events: none; /* so slides can be swiped without interruption */
 }
 
 .embla__buttons button {
-  /* background-color: rgba(0,0,0,0.4); */
-  color: white;
+  background: none;
   border: none;
   font-size: 1.5rem;
-  /* padding: 0.5rem 1rem; */
   cursor: pointer;
   pointer-events: auto; /* re-enable button click */
-  /* transition: background-color 0.2s; */
+  color: rgba(0, 0, 0, 0.6);
+  transition: color 0.2s;
 }
 
 .embla__buttons button:hover {
-  color: rgba(0, 0, 0, 0.6);
+  color: inherit;
 }
 
 .embla__buttons svg {

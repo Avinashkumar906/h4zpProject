@@ -6,6 +6,7 @@ import Title from '../common/Title';
 import { getRGBAString } from '../common/ColorField';
 import Description from '../common/Description';
 import EarlyParallax from '../common/EarlyParallax';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 type componentPropType = {
   data: GalleryType | undefined;
@@ -46,8 +47,12 @@ const Carousel = ({ data, id }: componentPropType) => {
                 </div>
               </div>
               <div className="embla__buttons">
-                <button onClick={scrollPrev}>&lt;</button>
-                <button onClick={scrollNext}>&gt;</button>
+                <button className="p-1" onClick={scrollPrev}>
+                  <FaChevronLeft style={{ fontSize: '28px' }} />
+                </button>
+                <button className="p-1" onClick={scrollNext}>
+                  <FaChevronRight style={{ fontSize: '28px' }} />
+                </button>
               </div>
             </div>
           </Row>

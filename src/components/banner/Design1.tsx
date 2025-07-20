@@ -24,7 +24,6 @@ function Design1({ data }: componentPropType) {
   const descriptionHtml = safeParseHtml(data.description);
 
   const content = () =>
-    // <Container className="p-0 h-100" fluid={smartParse(data?.fluid)} ref={placeholder}>
     data.url ? (
       <div className="h-100">
         <div
@@ -33,7 +32,7 @@ function Design1({ data }: componentPropType) {
           {descriptionHtml && (
             <div
               className={`p-4 glass col-sm-${data.contentWidth}`}
-              style={{ backgroundColor: getRGBAString(data?.contentBg) }}
+              style={{ backgroundColor: getRGBAString(data?.contentBg), marginBottom: '4rem' }}
             >
               {descriptionHtml}
             </div>
@@ -43,7 +42,6 @@ function Design1({ data }: componentPropType) {
     ) : (
       <div className="p-4 text-center h3">Please add url to see content!</div>
     );
-  // </Container>
 
   return (
     <Container className="p-0 h-100" fluid={smartParse(data?.fluid)}>

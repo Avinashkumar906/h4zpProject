@@ -23,20 +23,8 @@ function Group({ data, id }: componentPropType) {
   const slidesToShow = 12 / columns;
 
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
-
-  const scrollNext = useCallback(() => {
-    if (!emblaApi) return;
-    const currentIndex = emblaApi.selectedScrollSnap();
-    const totalSlides = emblaApi.scrollSnapList().length;
-    emblaApi.scrollTo((currentIndex + 1) % totalSlides);
-  }, [emblaApi]);
-
-  const scrollPrev = useCallback(() => {
-    if (!emblaApi) return;
-    const currentIndex = emblaApi.selectedScrollSnap();
-    const totalSlides = emblaApi.scrollSnapList().length;
-    emblaApi.scrollTo((currentIndex - 1 + totalSlides) % totalSlides);
-  }, [emblaApi]);
+  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
 
   return (
     <Container
@@ -78,11 +66,11 @@ function Group({ data, id }: componentPropType) {
                   </div>
                 </div>
                 <div className="embla__buttons">
-                  <button onClick={scrollPrev}>
-                    <FaChevronLeft />
+                  <button className="p-1" onClick={scrollPrev}>
+                    <FaChevronLeft style={{ fontSize: '28px' }} />
                   </button>
-                  <button onClick={scrollNext}>
-                    <FaChevronRight />
+                  <button className="p-1" onClick={scrollNext}>
+                    <FaChevronRight style={{ fontSize: '28px' }} />
                   </button>
                 </div>
               </div>
