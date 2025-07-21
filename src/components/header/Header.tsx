@@ -9,7 +9,7 @@ import { signOut } from 'firebase/auth';
 import { FIREBASE_AUTH } from '../../firebase/firebase';
 
 const navLinks = [
-  { label: 'HOME', link: '/home' },
+  { label: 'HOME', link: '/index' },
   {
     label: 'PROJECTS',
     link: '/project',
