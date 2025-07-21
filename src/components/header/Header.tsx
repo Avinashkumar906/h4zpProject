@@ -33,7 +33,7 @@ function Header(props: any) {
       >
         <Container className="h-100" fluid="xxl">
           <Navbar.Brand className="h-100">
-            <NavLink className="d-flex align-items-center nav-link h-100" to="/home">
+            <NavLink className="d-flex align-items-center nav-link h-100" to="/index">
               <img
                 alt="logo"
                 src={logoSrc}

@@ -11,6 +11,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import useBreakpoint from '../../hook/useBreakpoint';
 import { FaChevronLeft } from 'react-icons/fa';
 import { FaChevronRight } from 'react-icons/fa';
+import Autoplay from 'embla-carousel-autoplay';
 
 type componentPropType = {
   data: GroupType | undefined;
@@ -22,7 +23,9 @@ function Group({ data, id }: componentPropType) {
   const columns = Number(data?.column[breakpoint] || 12);
   const slidesToShow = 12 / columns;
 
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
+    Autoplay({ playOnInit: true, delay: 3000 }),
+  ]);
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
 

@@ -29,7 +29,7 @@ function Footer(props: any) {
     { label: 'Contact Us', to: '/contact-us' },
     { label: 'Refund Policy', to: '/refund-policy' },
     { label: 'About Us', to: '/about' },
-    { label: 'Manage Page', to: '?editable=true' },
+    // { label: 'Manage Page', to: '?editable=true' },
   ];
 
   return (
