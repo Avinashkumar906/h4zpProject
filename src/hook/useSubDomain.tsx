@@ -4,19 +4,38 @@ export const useSubdomain = (): string | null => {
   return useMemo(() => {
     if (typeof window === 'undefined') return null;
 
-    const host = window.location.hostname; // e.g., admin.h4zpindia.org
+    const host = window.location.hostname;
+
+    const isLocalhost = ['localhost', '127.0.0.1', '::1'].includes(host);
+
+    if (isLocalhost) {
+      // Prompt only once per session to avoid annoyance
+      const existing = sessionStorage.getItem('dev-subdomain');
+      if (existing) {
+        console.log(`🪄 Using injected dev subdomain: ${existing}`);
+        return existing || null;
+      }
+
+      const subdomain = window.prompt(
+        'Enter a subdomain for local testing (or leave empty for none):',
+        '',
+      );
+      if (subdomain) {
+        sessionStorage.setItem('dev-subdomain', subdomain);
+        console.log(`🪄 Using injected dev subdomain: ${subdomain}`);
+        return subdomain;
+      }
+      return null;
+    }
 
     const parts = host.split('.');
 
-    // Handle localhost or IPs gracefully
     if (parts.length < 3) {
       return null;
     }
 
-    // Example: ['admin', 'h4zpindia', 'org']
     const subdomain = parts.slice(0, parts.length - 2).join('.');
 
-    // Ignore 'www'
     if (subdomain === 'www') return null;
 
     return subdomain;

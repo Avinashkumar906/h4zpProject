@@ -68,6 +68,7 @@ export const MOCK_GROUP = {
   title: 'Group title',
   component: 'group',
   // itemInRow: 3,
+  displayMode: 'slide',
   column: {
     sm: '12',
     md: '4',
@@ -78,7 +79,7 @@ export const MOCK_GROUP = {
   fluid: 'lg',
   theme: '#ffffff',
   order: 0,
-  design: 'design1',
+  // design: 'design1',
   description: 'join us to change the world',
 };
 

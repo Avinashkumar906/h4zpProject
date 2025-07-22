@@ -29,6 +29,58 @@ function Group({ data, id }: componentPropType) {
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
 
+  const content = () => {
+    switch (data.displayMode) {
+      case 'grid':
+        return (
+          <Row className="g-3 text-center">
+            {data.list?.map((item, index) => (
+              <Col
+                key={id + index}
+                sm={Number(data.column.sm)}
+                md={Number(data.column.md)}
+                lg={Number(data.column.lg)}
+                xl={Number(data.column.xl)}
+                className="d-flex justify-content-center align-items-center"
+              >
+                <MinimalCard data={item} id={id} />
+              </Col>
+            ))}
+          </Row>
+        );
+      case 'slide':
+        return (
+          <Row className="g-3 text-center">
+            <div className="embla">
+              <div className="embla__viewport" ref={emblaRef}>
+                <div className="embla__container">
+                  {data.list?.map((item, index) => (
+                    <div
+                      key={id + index}
+                      className="embla__slide d-flex justify-content-center align-items-center p-2"
+                      style={{ flex: `0 0 ${100 / slidesToShow}%` }}
+                    >
+                      <MinimalCard data={item} id={id} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="embla__buttons">
+                <button className="p-1" onClick={scrollPrev}>
+                  <FaChevronLeft style={{ fontSize: '28px' }} />
+                </button>
+                <button className="p-1" onClick={scrollNext}>
+                  <FaChevronRight style={{ fontSize: '28px' }} />
+                </button>
+              </div>
+            </div>
+          </Row>
+        );
+      default:
+        return null;
+    }
+  };
+
   return (
     <Container
       className="py-8 px-2"
@@ -41,44 +93,10 @@ function Group({ data, id }: componentPropType) {
         <EarlyParallax opacity={[0.4, 1]} endAnimation={1.6}>
           <Row className="justify-content-center pb-3">
             <Title title={data.title} />
-            <Row className="g-3 text-center">
-              <div className="embla">
-                <div className="embla__viewport" ref={emblaRef}>
-                  <div className="embla__container">
-                    {data.list?.map((item, index) => (
-                      <div
-                        key={id + index}
-                        className="embla__slide d-flex justify-content-center align-items-center p-2"
-                        style={{ flex: `0 0 ${100 / slidesToShow}%` }}
-                      >
-                        <MinimalCard data={item} id={id} />
-                      </div>
-                    ))}
-                    {/* {data.list?.map((item, index) => (
-                      <Col
-                        key={id + index}
-                        sm={Number(data.column.sm)}
-                        md={Number(data.column.md)}
-                        lg={Number(data.column.lg)}
-                        xl={Number(data.column.xl)}
-                        className="d-flex justify-content-center align-items-center"
-                      >
-                        <MinimalCard data={item} id={id} />
-                      </Col>
-                    ))} */}
-                  </div>
-                </div>
-                <div className="embla__buttons">
-                  <button className="p-1" onClick={scrollPrev}>
-                    <FaChevronLeft style={{ fontSize: '28px' }} />
-                  </button>
-                  <button className="p-1" onClick={scrollNext}>
-                    <FaChevronRight style={{ fontSize: '28px' }} />
-                  </button>
-                </div>
-              </div>
-            </Row>
+
+            {content()}
           </Row>
+          {/* </Row> */}
           <Description description={data?.description} />
         </EarlyParallax>
       </Container>

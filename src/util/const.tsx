@@ -89,15 +89,15 @@ export const basicFieldConfig = [
       { label: 'Style 2', value: 'design2' },
     ],
   },
-  // {
-  //   name: 'parallax',
-  //   label: 'Scroll Effect',
-  //   type: 'select',
-  //   options: [
-  //     { label: 'Parallax', value: 'true' },
-  //     { label: 'No Effect', value: 'false' },
-  //   ],
-  // },
+  {
+    name: 'displayMode',
+    label: 'Display view',
+    type: 'select',
+    options: [
+      { label: 'Slide', value: 'slide' },
+      { label: 'Grid', value: 'grid' },
+    ],
+  },
   {
     name: 'theme',
     label: 'Background',
