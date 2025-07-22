@@ -4,6 +4,7 @@ import * as React from 'react';
 import { safeParseHtml } from '../editor/rte.util';
 import { getRGBAString } from '../common/ColorField';
 import EarlyParallax from '../common/EarlyParallax';
+import CloudinaryImg from '../common/Image';
 
 type componentPropType = {
   data: BannerType | undefined;
@@ -56,7 +57,7 @@ function design2({ data }: componentPropType) {
           </Col>
           <Col sm={12} md={12 - mdGridSize} className="p-0 h-100 d-flex justify-content-center">
             <EarlyParallax scale={[0.7, 1]} endAnimation={1.6}>
-              <img
+              <CloudinaryImg
                 style={{ height: `${data.height}vh` }}
                 className="w-100 object-fit-contain"
                 src={cloudinaryUtilForUrl({ url: data?.url, quality: 'auto' })}

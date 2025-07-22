@@ -4,9 +4,10 @@ import { cloudinaryUtilForUrl } from '../../util';
 type componentPropType = {
   src: string;
   className: string;
-  // alt: string
+  style?: Record<string, string>;
+  alt?: string;
 };
-const CloudinaryImg = ({ src, className = '' }: componentPropType) => {
+const CloudinaryImg = ({ src, className = '', style = {} }: componentPropType) => {
   const imgRef = useRef(null);
   const [transformedUrl, setTransformedUrl] = useState(src);
 
@@ -39,10 +40,11 @@ const CloudinaryImg = ({ src, className = '' }: componentPropType) => {
       ref={imgRef}
       src={transformedUrl}
       className={className}
+      // style={style}
       alt={`Banner ${src}`}
       loading={'lazy'}
       //   width: '100%', height: 'auto'
-      style={{ objectFit: 'cover' }}
+      style={{ objectFit: 'cover', ...style }}
     />
   );
 };
