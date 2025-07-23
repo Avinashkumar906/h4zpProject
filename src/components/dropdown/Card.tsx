@@ -1,4 +1,4 @@
-import React, { Fragment, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import './style.css';
 import { safeParseHtml } from '../editor/rte.util';
 import { DropdownListType } from '../../util';
@@ -15,7 +15,7 @@ const DropdownCards = ({ data, id }: componentPropType) => {
 
   return (
     <div
-      className={`card w-100 mb-3 shadow-sm payment-card ${open ? 'open' : ''}`}
+      className={`card w-100 shadow-sm payment-card ${open ? 'open' : ''}`}
       onClick={() => setOpen(!open)}
     >
       <div className="card-body d-flex align-items-center gap-2">

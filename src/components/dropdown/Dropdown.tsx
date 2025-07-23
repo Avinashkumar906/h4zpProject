@@ -5,12 +5,20 @@ import { getRGBAString } from '../common/ColorField';
 import EarlyParallax from '../common/EarlyParallax';
 import Title from '../common/Title';
 import Description from '../common/Description';
+import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 
 type ComponentPropType = {
   data: DropdownType;
   id?: string;
 };
 const Dropdown = ({ data, id }: ComponentPropType) => {
+  const columnBreakpoints = {
+    576: 12 / +data.column.sm,
+    768: 12 / +data.column.md,
+    992: 12 / +data.column.lg,
+    1200: 12 / +data.column.xl,
+  };
+
   return (
     <Container
       className="py-8 px-2"
@@ -24,20 +32,16 @@ const Dropdown = ({ data, id }: ComponentPropType) => {
           <Row className="justify-content-center pb-3">
             <Title title={data.title} />
           </Row>
-          <Row className="">
-            {data.list?.map((item, index) => (
-              <Col
-                key={id + index}
-                sm={Number(data.column.sm)}
-                md={Number(data.column.md)}
-                lg={Number(data.column.lg)}
-                xl={Number(data.column.xl)}
-                className="d-flex justify-content-center align-items-start"
-              >
-                <DropdownCards data={item} id={id} />
-              </Col>
-            ))}
-          </Row>
+          <ResponsiveMasonry columnsCountBreakPoints={columnBreakpoints}>
+            <Masonry>
+              {data.list?.map((item, index) => (
+                //  <div >
+                <DropdownCards key={id + index} data={item} id={id} />
+                //  </div>
+              ))}
+            </Masonry>
+          </ResponsiveMasonry>
+          <Row className=""></Row>
           {/* <DropdownCards data={data.list} id={id}/> */}
           <Description description={data?.description} />
         </EarlyParallax>
