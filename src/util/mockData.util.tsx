@@ -3,6 +3,8 @@ import {
   MOCK_BLOG_LIST,
   MOCK_BLOGS,
   MOCK_BUTTON_LIST,
+  MOCK_DROPDOWN,
+  MOCK_DROPDOWN_LIST,
   MOCK_GALLERY,
   MOCK_GALLERY_LIST,
   MOCK_GROUP,
@@ -23,6 +25,8 @@ export type BlogType = typeof MOCK_BLOGS;
 export type BlogListType = (typeof MOCK_BLOG_LIST)[0];
 export type StatisticsType = typeof MOCK_STATISTICS;
 export type GalleryType = typeof MOCK_GALLERY;
+export type DropdownType = typeof MOCK_DROPDOWN;
+export type DropdownListType = typeof MOCK_DROPDOWN_LIST;
 export type ComponentType =
   | JumbotronType
   | ButtonList
@@ -31,6 +35,7 @@ export type ComponentType =
   | GroupType
   | BlogType
   | StatisticsType
+  | DropdownType
   | GalleryType;
 
 export type CloudinaryParams = {
@@ -147,6 +152,9 @@ export const getMockdata = (component, valueToPatch?) => {
     case 'gallery':
       mock = MOCK_GALLERY;
       break;
+    case 'dropdown':
+      mock = MOCK_DROPDOWN;
+      break;
     default:
       mock = null;
   }
@@ -175,6 +183,8 @@ export const getListItemOfComponent = (component) => {
       return MOCK_STAT_LIST[0];
     case 'gallery':
       return MOCK_GALLERY_LIST[0];
+    case 'dropdown':
+      return MOCK_DROPDOWN_LIST[0];
     default:
       break;
   }

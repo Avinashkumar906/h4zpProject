@@ -1,7 +1,6 @@
 import { Card, Col, Row } from 'react-bootstrap';
-import { JumbotronType, smartParse } from '../../util/mockData.util';
+import { JumbotronType } from '../../util/mockData.util';
 import Description from '../common/Description';
-import { getRGBAString } from '../common/ColorField';
 
 function Design2({ data }: { data: JumbotronType; id: string }) {
   return (

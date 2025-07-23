@@ -83,6 +83,32 @@ export const MOCK_GROUP = {
   description: 'join us to change the world',
 };
 
+export const MOCK_DROPDOWN_LIST = [
+  {
+    title: 'Help in Kind',
+    label: 'Volunteer or donate goods',
+    url: 'https://placehold.co/48x48?text=ICON',
+    description: '<div>Description</div>',
+  },
+];
+
+export const MOCK_DROPDOWN = {
+  visibility: 'false',
+  title: 'Group title',
+  component: 'dropdown',
+  column: {
+    sm: '12',
+    md: '6',
+    lg: '6',
+    xl: '6',
+  },
+  list: MOCK_DROPDOWN_LIST,
+  fluid: 'lg',
+  theme: '#ffffff',
+  order: 0,
+  description: 'join us to change the world',
+};
+
 export const MOCK_BUTTON_LIST = [
   {
     btnLink: '/home',

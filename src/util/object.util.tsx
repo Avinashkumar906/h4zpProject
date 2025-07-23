@@ -1,8 +1,10 @@
+import { ComponentType } from './mockData.util';
+
 export function hasOwn(obj: object, key: PropertyKey): boolean {
   return Object.prototype.hasOwnProperty.call(obj, key);
 }
 
-export const copyToClipboard = (data: any) => {
+export const copyToClipboard = (data: ComponentType) => {
   if (data) {
     try {
       localStorage.setItem('component', JSON.stringify(data));

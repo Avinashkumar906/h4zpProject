@@ -57,9 +57,9 @@ function design2({ data }: componentPropType) {
           </Col>
           <Col sm={12} md={12 - mdGridSize} className="p-0 h-100 d-flex justify-content-center">
             <EarlyParallax scale={[0.7, 1]} endAnimation={1.6}>
-              <CloudinaryImg
+              <img
                 style={{ height: `${data.height}vh` }}
-                className="w-100 object-fit-contain"
+                className="object-fit-contain"
                 src={cloudinaryUtilForUrl({ url: data?.url, quality: 'auto' })}
                 alt={`Banner url ${data.url}`}
               />

@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import DynamicComponent from '../components/Component';
 import { useParams } from 'react-router-dom';
 import { AiFillEdit, AiFillDelete } from 'react-icons/ai';
@@ -8,7 +8,7 @@ import { ListGroup } from 'react-bootstrap';
 import NotFound from './NotFound';
 import { deleteComponentOfPage, subscribePageComponents } from '../firebase/getFromFirestore';
 import { MdOutlineRepeatOne } from 'react-icons/md';
-import { copyToClipboard, isTrue, pasteFromClipboard, serializedata } from '../util';
+import { copyToClipboard, isTrue, serializedata } from '../util';
 import { FaCopy, FaPaste } from 'react-icons/fa';
 import { useParallaxController } from 'react-scroll-parallax';
 import LoadBlogs from './LoadBlogs';

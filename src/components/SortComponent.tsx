@@ -33,7 +33,7 @@ export default function DraggableList(props: any) {
 
   const handleDragEnd = (event: any) => {
     const { active, over } = event;
-    if (active.id !== over.id) {
+    if (over && active && active.id !== over.id) {
       setItems((prev) => {
         const oldIndex = prev.findIndex((i) => i.id === active.id);
         const newIndex = prev.findIndex((i) => i.id === over.id);

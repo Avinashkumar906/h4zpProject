@@ -1,9 +1,9 @@
 import { Card, Col, Row } from 'react-bootstrap';
-import { JumbotronType, smartParse } from '../../util/mockData.util';
+import { JumbotronType } from '../../util/mockData.util';
 import Description from '../common/Description';
 import { getRGBAString } from '../common/ColorField';
 
-function Design1({ data, id }: { data: JumbotronType; id: string }) {
+function Design1({ data }: { data: JumbotronType; id?: string }) {
   return (
     <Row className="justify-content-center align-items-center px-2">
       <Col className="w-100">

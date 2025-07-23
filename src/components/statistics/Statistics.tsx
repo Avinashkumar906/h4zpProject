@@ -1,5 +1,4 @@
 import CountUp from 'react-countup';
-import { MOCK_STATISTICS } from '../../mockdata/component.default';
 import { smartParse, StatisticsType } from '../../util';
 import { Col, Container, Row } from 'react-bootstrap';
 import { getRGBAString } from '../common/ColorField';

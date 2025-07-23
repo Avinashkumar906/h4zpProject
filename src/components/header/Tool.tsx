@@ -1,11 +1,10 @@
 import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { useRef } from 'react';
-import { ButtonGroup, DropdownButton } from 'react-bootstrap';
+import { DropdownButton } from 'react-bootstrap';
 import { FIREBASE_AUTH } from '../../firebase/firebase';
 import LoginForm from './LoginForm';
-import { FaTools } from 'react-icons/fa';
 
-function Tool(props: any) {
+function Tool(props: { isAuth: boolean }) {
   const { isAuth } = props;
   const dropDownRef = useRef(null);
 

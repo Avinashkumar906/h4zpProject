@@ -1,6 +1,8 @@
 // import { ScaleLoader } from "react-spinners";
 
-function NotFound({ children }: any) {
+import { ReactNode } from 'react';
+
+function NotFound({ children }: { children: ReactNode }) {
   return (
     <div
       className="d-flex position-absolute inset-0 justify-content-center align-items-center bg-lilac"

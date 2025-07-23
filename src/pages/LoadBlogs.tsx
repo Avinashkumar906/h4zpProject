@@ -1,10 +1,6 @@
 import { Fragment, useEffect, useState } from 'react';
-import { Card, Col, Container, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { BlogType, getFormatedDate, optimizeData } from '../util/mockData.util';
-import { startCase } from 'lodash';
+import { BlogType } from '../util/mockData.util';
 import { subscribeBlogList } from '../firebase/getFromFirestore';
-import { safeParseHtml } from '../components/editor/rte.util';
 import Blogs from '../components/blogs/Blogs';
 
 function LoadBlogs() {

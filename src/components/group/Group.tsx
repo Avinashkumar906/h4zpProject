@@ -93,10 +93,8 @@ function Group({ data, id }: componentPropType) {
         <EarlyParallax opacity={[0.4, 1]} endAnimation={1.6}>
           <Row className="justify-content-center pb-3">
             <Title title={data.title} />
-
-            {content()}
           </Row>
-          {/* </Row> */}
+          {content()}
           <Description description={data?.description} />
         </EarlyParallax>
       </Container>

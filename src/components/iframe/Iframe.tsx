@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { IframeType, isTrue, smartParse } from '../../util/mockData.util';
 import Title from '../common/Title';
-import Description from '../common/Description';
 import { safeParseHtml } from '../editor/rte.util';
 import { getRGBAString } from '../common/ColorField';
 import EarlyParallax from '../common/EarlyParallax';

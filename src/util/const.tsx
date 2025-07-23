@@ -61,7 +61,7 @@ export const componentOptions = [
   { label: 'Activity', value: 'blogs' },
   { label: 'Statistics', value: 'statistics' },
   { label: 'Image Gallery', value: 'gallery' },
-  // { label: 'News', value: 'news' },
+  { label: 'Card Dropdown', value: 'dropdown' },
 ];
 
 export const basicFieldConfig = [
