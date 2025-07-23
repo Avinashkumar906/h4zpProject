@@ -14,7 +14,7 @@ type componentPropType = {
 const MinimalCard = ({ data }: componentPropType) => {
   // const [parsed] = useState()
   return (
-    <Card className="minimal-card">
+    <Card className="minimal-card h-100">
       <Card.Img variant="top" src={data.url} />
       {safeParseHtml(data.description) && (
         <div className="card-body">{safeParseHtml(data.description)}</div>

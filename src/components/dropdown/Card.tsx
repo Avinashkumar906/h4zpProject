@@ -19,7 +19,7 @@ const DropdownCards = ({ data, id }: componentPropType) => {
       onClick={() => setOpen(!open)}
     >
       <div className="card-body d-flex align-items-center gap-2">
-        <img src={data.url} alt={`${id} icon`} />
+        <img src={data.url} alt={`${id} icon`} height={48} />
         <div>
           <div className="h6 mb-1">{data.label}</div>
           <p className="small card-text text-muted mb-0">{data.title}</p>

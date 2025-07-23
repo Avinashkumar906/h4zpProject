@@ -47,7 +47,7 @@ function Design1({ data }: componentPropType) {
   return (
     <Container className="p-0 h-100" fluid={smartParse(data?.fluid)}>
       <ParallaxBanner>
-        <ParallaxBannerLayer speed={-40}>
+        <ParallaxBannerLayer speed={-20}>
           <img
             src={cloudinaryUtilForUrl({ url: data?.url, quality: 'auto' })}
             className="h-100 w-100 object-fit-cover"

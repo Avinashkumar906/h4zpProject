@@ -41,7 +41,7 @@ function Group({ data, id }: componentPropType) {
                 md={Number(data.column.md)}
                 lg={Number(data.column.lg)}
                 xl={Number(data.column.xl)}
-                className="d-flex justify-content-center align-items-center"
+                className="d-flex justify-content-center align-items-start"
               >
                 <MinimalCard data={item} id={id} />
               </Col>

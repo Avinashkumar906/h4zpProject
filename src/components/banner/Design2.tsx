@@ -55,7 +55,12 @@ function design2({ data }: componentPropType) {
               {descriptionHtml}
             </EarlyParallax>
           </Col>
-          <Col sm={12} md={12 - mdGridSize} className="p-0 h-100 d-flex justify-content-center">
+          <Col
+            sm={12}
+            md={12 - mdGridSize}
+            className="p-0 h-100 d-flex justify-content-center"
+            style={{ overflow: 'hidden' }}
+          >
             <EarlyParallax scale={[0.7, 1]} endAnimation={1.6}>
               <img
                 style={{ height: `${data.height}vh` }}

@@ -1,19 +1,8 @@
 import { Fragment, useEffect, useState } from 'react';
 import * as Yup from 'yup';
-import { isEmpty } from 'lodash';
 import ImageUpload from '../imageUploader/ImageUpload';
 import { Field, Form, Formik } from 'formik';
-import {
-  Button,
-  Col,
-  Dropdown,
-  InputGroup,
-  Row,
-  Spinner,
-  Tab,
-  Tabs,
-  ToggleButtonGroup,
-} from 'react-bootstrap';
+import { Button, Col, Dropdown, InputGroup, Row, Spinner, Tab, Tabs } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { fetchPageMeta } from '../../firebase/getFromFirestore';
 
@@ -38,27 +27,27 @@ const createPageSchema = Yup.object().shape({
     isBlog: Yup.string(),
     title: Yup.string().when('isBlog', {
       is: (val) => val != 'false',
-      then: (schema) => nonEmptyString(),
+      then: () => nonEmptyString(),
       otherwise: (schema) => schema.notRequired(),
     }),
     description: Yup.string().when('isBlog', {
       is: (val) => val != 'false',
-      then: (schema) => nonEmptyString(),
+      then: () => nonEmptyString(),
       otherwise: (schema) => schema.notRequired(),
     }),
     date: Yup.string().when('isBlog', {
       is: (val) => val != 'false',
-      then: (schema) => nonEmptyString(),
+      then: () => nonEmptyString(),
       otherwise: (schema) => schema.notRequired(),
     }),
     createdBy: Yup.string().when('isBlog', {
       is: (val) => val != 'false',
-      then: (schema) => nonEmptyString(),
+      then: () => nonEmptyString(),
       otherwise: (schema) => schema.notRequired(),
     }),
     imageUrl: Yup.string().when('isBlog', {
       is: (val) => val != 'false',
-      then: (schema) => nonEmptyString(),
+      then: () => nonEmptyString(),
       otherwise: (schema) => schema.notRequired(),
     }),
   }),

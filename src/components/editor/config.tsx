@@ -38,5 +38,6 @@ export const rteConfig: SunEditorOptions = {
   attributesWhitelist: {
     a: 'class href target',
     span: 'class style',
+    img: 'class style alt src height width',
   },
 };

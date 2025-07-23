@@ -1,11 +1,9 @@
 import { Fragment, useEffect, useState } from 'react';
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Page from './pages/Page';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import { FIREBASE_AUTH } from './firebase/firebase';
-import * as React from 'react';
-import { isTrue } from './util';
 import { useSubdomain } from './hook/useSubDomain';
 
 function App() {
@@ -42,7 +40,7 @@ function App() {
 
 export default App;
 
-function useQuery() {
-  const { search } = useLocation();
-  return React.useMemo(() => new URLSearchParams(search), [search]);
-}
+// function useQuery() {
+//   const { search } = useLocation();
+//   return React.useMemo(() => new URLSearchParams(search), [search]);
+// }
