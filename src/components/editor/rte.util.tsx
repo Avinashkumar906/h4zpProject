@@ -29,11 +29,11 @@ const replaceAnchor = (node) => {
 export function safeParseHtml(html: string | undefined | null): ReturnType<typeof parse> | null {
   if (hasDisplayableContent(html)) {
     return (
-      <div className="w-100">
+      <>
         {parse(html, {
           replace: replaceAnchor,
         })}
-      </div>
+      </>
     );
   } else {
     return null;

@@ -6,6 +6,7 @@ import Iframe from './iframe/Iframe';
 import Statistics from './statistics/Statistics';
 import Gallery from './gallery/Gallery';
 import Dropdown from './dropdown/Dropdown';
+import Testimonial from './testimonial/Testimonial';
 
 function DynamicComponent(props) {
   let component;
@@ -33,6 +34,9 @@ function DynamicComponent(props) {
       break;
     case 'dropdown':
       component = <Dropdown data={props.data} id={props.id} />;
+      break;
+    case 'testimonial':
+      component = <Testimonial data={props.data} id={props.id} />;
       break;
     default:
       component = <div>Please check componet name!</div>;

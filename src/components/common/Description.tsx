@@ -1,12 +1,17 @@
-import { Row } from 'react-bootstrap';
 import { safeParseHtml } from '../editor/rte.util';
 
-const Description = ({ description }: { description: string }) => {
+const Description = ({
+  description,
+  className = '',
+}: {
+  description: string;
+  className?: string;
+}) => {
   const html = safeParseHtml(description);
 
   if (!html) return null;
 
-  return <Row>{html}</Row>;
+  return <div className={className}>{html}</div>;
 };
 
 export default Description;

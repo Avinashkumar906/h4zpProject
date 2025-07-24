@@ -35,9 +35,7 @@ const Dropdown = ({ data, id }: ComponentPropType) => {
           <ResponsiveMasonry columnsCountBreakPoints={columnBreakpoints}>
             <Masonry>
               {data.list?.map((item, index) => (
-                //  <div >
                 <DropdownCards key={id + index} data={item} id={id} />
-                //  </div>
               ))}
             </Masonry>
           </ResponsiveMasonry>

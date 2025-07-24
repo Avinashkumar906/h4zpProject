@@ -5,7 +5,7 @@ import { DropdownListType } from '../../util';
 import { useAutoHeight } from '../../hook/useAutoHeight';
 
 type componentPropType = {
-  data: DropdownListType[0];
+  data: DropdownListType;
   id?: string;
 };
 const DropdownCards = ({ data, id }: componentPropType) => {
@@ -19,10 +19,10 @@ const DropdownCards = ({ data, id }: componentPropType) => {
       onClick={() => setOpen(!open)}
     >
       <div className="card-body d-flex align-items-center gap-2">
-        <img src={data.url} alt={`${id} icon`} height={48} />
+        {data.url && <img src={data.url} alt={`${id} icon`} height={48} />}
         <div>
-          <div className="h6 mb-1">{data.label}</div>
-          <p className="small card-text text-muted mb-0">{data.title}</p>
+          {data.label && <div className="h6 mb-1">{data.label}</div>}
+          {data.title && <p className="small card-text text-muted mb-0">{data.title}</p>}
         </div>
       </div>
 

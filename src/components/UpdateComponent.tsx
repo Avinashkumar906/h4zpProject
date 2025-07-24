@@ -3,7 +3,7 @@ import { Formik, Field, FieldArray, getIn } from 'formik';
 import { Accordion, Col, Form, InputGroup, Row, Spinner, Tab, Tabs } from 'react-bootstrap';
 import { getListItemOfComponent } from '../util/mockData.util';
 import ImageUpload from './imageUploader/ImageUpload';
-import { basicFieldConfig, contentFieldConfig } from '../util/const';
+import { basicFieldConfig, contentFieldConfig, contentListFieldConfig } from '../util/const';
 import Rte from './editor/Rte';
 import BasicControl from './BasicControl';
 
@@ -100,7 +100,12 @@ const UpdateComponent = (props: any) => {
                                         </button>
                                       </div>
                                     </div>
-                                    {getIn(m, 'title') !== undefined && (
+                                    <BasicControl
+                                      form={form}
+                                      fieldConfig={contentListFieldConfig}
+                                      prefix={`list[${index}]`}
+                                    />
+                                    {/* {getIn(m, 'title') !== undefined && (
                                       <Col sm={6} className="mb-2">
                                         <Form.Label>Title</Form.Label>
                                         <Field
@@ -111,7 +116,7 @@ const UpdateComponent = (props: any) => {
                                     )}
                                     {getIn(m, 'label') !== undefined && (
                                       <Col sm={6} className="mb-2">
-                                        <Form.Label>Stats Label</Form.Label>
+                                        <Form.Label>Label</Form.Label>
                                         <Field
                                           name={`list[${index}].label`}
                                           className="form-control form-control-sm"
@@ -192,7 +197,6 @@ const UpdateComponent = (props: any) => {
                                         </Field>
                                       </Col>
                                     )}
-                                    {/* <div className="w-100"></div> */}
                                     {getIn(m, 'credit') !== undefined && (
                                       <Col sm={4} className="mb-2">
                                         <Form.Label>Organised by</Form.Label>
@@ -210,9 +214,9 @@ const UpdateComponent = (props: any) => {
                                           fieldname={`list[${index}].description`}
                                           value={form.values.list[index].description}
                                         ></Rte>
-                                        {/* <Field as="textarea" name={`list[${index}].description`} className="form-control form-control-sm" /> */}
                                       </Col>
-                                    )}
+                                    )} */}
+                                    {/* <Field as="textarea" name={`list[${index}].description`} className="form-control form-control-sm" /> */}
                                   </Row>
                                 </Accordion.Body>
                               </Accordion.Item>

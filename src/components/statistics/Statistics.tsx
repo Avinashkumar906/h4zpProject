@@ -31,11 +31,7 @@ const Statistics = ({ data, id }: componentPropType) => {
     >
       <Container fluid={smartParse(data.fluid)}>
         <Row>
-          {data?.title && (
-            <Col className="my-2">
-              <Title title={data?.title} />
-            </Col>
-          )}
+          <Title title={data?.title} />
         </Row>
         <Row>
           {descriptionHtml && (

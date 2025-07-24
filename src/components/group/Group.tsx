@@ -65,14 +65,16 @@ function Group({ data, id }: componentPropType) {
                   ))}
                 </div>
               </div>
-              <div className="embla__buttons">
-                <button className="p-1" onClick={scrollPrev}>
-                  <FaChevronLeft style={{ fontSize: '28px' }} />
-                </button>
-                <button className="p-1" onClick={scrollNext}>
-                  <FaChevronRight style={{ fontSize: '28px' }} />
-                </button>
-              </div>
+              {slidesToShow < data.list.length && (
+                <div className="embla__buttons">
+                  <button className="p-1" onClick={scrollPrev}>
+                    <FaChevronLeft style={{ fontSize: '28px' }} />
+                  </button>
+                  <button className="p-1" onClick={scrollNext}>
+                    <FaChevronRight style={{ fontSize: '28px' }} />
+                  </button>
+                </div>
+              )}
             </div>
           </Row>
         );

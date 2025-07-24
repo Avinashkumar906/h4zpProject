@@ -12,7 +12,18 @@ export const backgroundOptions = [
   { label: 'Azure', value: '#F0FFFF' },
   { label: 'Light Lilac', value: '#F6F0FA' },
 ];
-
+const buttonOptions = [
+  { label: 'Default', value: 'btn-dark' },
+  { label: 'Primary', value: 'btn-primary' },
+  { label: 'Secondary', value: 'btn-secondary' },
+  { label: 'Pink', value: 'btn-pink' },
+  { label: 'Yellow', value: 'btn-yellow' },
+  { label: 'Purple', value: 'btn-purple' },
+  { label: 'Orange', value: 'btn-orange' },
+  { label: 'Teal', value: 'btn-teal' },
+  { label: 'Coral', value: 'btn-coral' },
+  { label: 'Lime', value: 'btn-lime' },
+];
 export const widthOptions = [
   { label: 'None', value: 'false' },
   { label: 'Full Width', value: 'true' },
@@ -62,15 +73,11 @@ export const componentOptions = [
   { label: 'Statistics', value: 'statistics' },
   { label: 'Image Gallery', value: 'gallery' },
   { label: 'Card Dropdown', value: 'dropdown' },
+  { label: 'Testimonials', value: 'testimonial' },
 ];
 
 export const basicFieldConfig = [
-  {
-    name: 'fluid',
-    label: 'Width',
-    type: 'select',
-    options: widthOptions, // your existing widthOptions
-  },
+  { name: 'fluid', label: 'Width', type: 'select', options: widthOptions },
   {
     name: 'visibility',
     label: 'Show on Page',
@@ -98,12 +105,7 @@ export const basicFieldConfig = [
       { label: 'Grid', value: 'grid' },
     ],
   },
-  {
-    name: 'theme',
-    label: 'Background',
-    type: 'color',
-    // options: backgroundOptions,
-  },
+  { name: 'theme', label: 'Background', type: 'color' },
   {
     name: 'youtube',
     label: 'Video Preset',
@@ -129,26 +131,12 @@ export const basicFieldConfig = [
       },
     ],
   },
-  {
-    name: 'height',
-    label: 'Section height',
-    size: 4,
-    type: 'select',
-    options: heightOptions,
-  },
+  { name: 'height', label: 'Section height', size: 4, type: 'select', options: heightOptions },
 ];
 
 export const contentFieldConfig = [
-  {
-    name: 'url',
-    label: 'ImageUpload',
-    type: 'upload',
-  },
-  {
-    name: 'contentBg',
-    label: 'Content Background',
-    type: 'color',
-  },
+  { name: 'url', label: 'ImageUpload', type: 'upload' },
+  { name: 'contentBg', label: 'Content Background', type: 'color' },
   {
     name: 'contentWidth',
     label: 'Content Width',
@@ -182,6 +170,7 @@ export const contentFieldConfig = [
         type: 'select',
         label: 'md',
         options: [
+          { label: '1 Col MD', value: '12' },
           { label: '2 Col MD', value: '6' },
           { label: '3 Col MD', value: '4' },
           { label: '4 Col MD', value: '3' },
@@ -192,6 +181,7 @@ export const contentFieldConfig = [
         type: 'select',
         label: 'lg',
         options: [
+          { label: '1 Col LG', value: '12' },
           { label: '2 Col LG', value: '6' },
           { label: '3 Col LG', value: '4' },
           { label: '4 Col LG', value: '3' },
@@ -202,6 +192,8 @@ export const contentFieldConfig = [
         type: 'select',
         label: 'xl',
         options: [
+          { label: '1 Col XL', value: '12' },
+          { label: '2 Col XL', value: '6' },
           { label: '3 Col XL', value: '4' },
           { label: '4 Col XL', value: '3' },
           { label: '6 Col XL', value: '2' },
@@ -228,19 +220,22 @@ export const contentFieldConfig = [
       },
     ],
   },
-  {
-    name: 'title',
-    label: 'Content Title',
-    type: 'text',
-  },
-  {
-    name: 'iframeUrl',
-    label: 'YT Video/Iframe Url',
-    type: 'text',
-  },
-  {
-    name: 'description',
-    label: 'Description',
-    type: 'rte',
-  },
+  { name: 'title', label: 'Content Title', type: 'text' },
+  { name: 'iframeUrl', label: 'YT Video/Iframe Url', type: 'text' },
+  { name: 'description', label: 'Description', type: 'rte', size: 12 },
+];
+
+export const contentListFieldConfig = [
+  { name: 'url', label: 'Image Url', type: 'upload', size: 12 },
+  { name: 'name', label: 'Name', type: 'text', size: 6 },
+  { name: 'title', label: 'Title', type: 'text', size: 6 },
+  { name: 'label', label: 'Label', type: 'text', size: 6 },
+  { name: 'value', label: 'Value', type: 'text', size: 6 },
+  { name: 'date', label: 'Created On', type: 'text', size: 4 },
+  { name: 'BtnText', label: 'Button Text', type: 'text', size: 4 },
+  { name: 'BtnUrl', label: 'Page reference', type: 'text', size: 4 },
+  { name: 'btnColor', label: 'Button Color', type: 'select', size: 4, options: buttonOptions },
+  { name: 'credit', label: 'Organised by', type: 'text', size: 4 },
+  { name: 'description', label: 'Description', type: 'rte', size: 12 },
+  { name: 'quote', label: 'Quote', type: 'rte', size: 12 },
 ];

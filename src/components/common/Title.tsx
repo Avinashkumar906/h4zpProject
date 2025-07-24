@@ -4,10 +4,10 @@ const Title = ({ title }: { title: string }) => {
   if (!title) return null;
 
   return (
-    <Col sm={12} className="my-2">
-      <h3 className="text-center">
+    <Col sm={12} className="">
+      <div className="h1 text-center mb-3">
         <strong>{title}</strong>
-      </h3>
+      </div>
     </Col>
   );
 };

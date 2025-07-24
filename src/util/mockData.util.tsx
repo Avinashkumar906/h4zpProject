@@ -13,7 +13,9 @@ import {
   MOCK_JUMBOTRON,
   MOCK_STAT_LIST,
   MOCK_STATISTICS,
-} from '../mockdata/component.default';
+  MOCK_TESTIMONIAL,
+  MOCK_TESTIMONIAL_LIST,
+} from './component.default';
 import Moment from 'moment';
 export type JumbotronType = typeof MOCK_JUMBOTRON;
 export type ButtonList = typeof MOCK_BUTTON_LIST;
@@ -26,7 +28,9 @@ export type BlogListType = (typeof MOCK_BLOG_LIST)[0];
 export type StatisticsType = typeof MOCK_STATISTICS;
 export type GalleryType = typeof MOCK_GALLERY;
 export type DropdownType = typeof MOCK_DROPDOWN;
-export type DropdownListType = typeof MOCK_DROPDOWN_LIST;
+export type DropdownListType = (typeof MOCK_DROPDOWN_LIST)[0];
+export type TestimonialType = typeof MOCK_TESTIMONIAL;
+export type TestimonialListType = (typeof MOCK_TESTIMONIAL_LIST)[0];
 export type ComponentType =
   | JumbotronType
   | ButtonList
@@ -36,6 +40,7 @@ export type ComponentType =
   | BlogType
   | StatisticsType
   | DropdownType
+  | TestimonialType
   | GalleryType;
 
 export type CloudinaryParams = {
@@ -155,6 +160,9 @@ export const getMockdata = (component, valueToPatch?) => {
     case 'dropdown':
       mock = MOCK_DROPDOWN;
       break;
+    case 'testimonial':
+      mock = MOCK_TESTIMONIAL;
+      break;
     default:
       mock = null;
   }
@@ -185,6 +193,8 @@ export const getListItemOfComponent = (component) => {
       return MOCK_GALLERY_LIST[0];
     case 'dropdown':
       return MOCK_DROPDOWN_LIST[0];
+    case 'testimonial':
+      return MOCK_TESTIMONIAL_LIST[0];
     default:
       break;
   }

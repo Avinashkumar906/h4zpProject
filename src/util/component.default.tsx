@@ -64,10 +64,8 @@ export const MOCK_GROUP_LIST = [
 
 export const MOCK_GROUP = {
   visibility: 'false',
-  // stackOnSm: 'false',
   title: 'Group title',
   component: 'group',
-  // itemInRow: 3,
   displayMode: 'slide',
   column: {
     sm: '12',
@@ -79,8 +77,33 @@ export const MOCK_GROUP = {
   fluid: 'lg',
   theme: '#ffffff',
   order: 0,
-  // design: 'design1',
   description: 'join us to change the world',
+};
+
+export const MOCK_TESTIMONIAL_LIST = [
+  {
+    name: 'Jane Doe',
+    title: 'CEO, Company',
+    quote: 'Highly recommended!',
+  },
+];
+
+export const MOCK_TESTIMONIAL = {
+  visibility: 'false',
+  title: 'From our donor',
+  component: 'testimonial',
+  // displayMode: 'slide',
+  column: {
+    sm: '12',
+    md: '4',
+    lg: '3',
+    xl: '3',
+  },
+  list: MOCK_TESTIMONIAL_LIST,
+  fluid: 'lg',
+  theme: '#ffffff',
+  order: 0,
+  description: '',
 };
 
 export const MOCK_DROPDOWN_LIST = [
