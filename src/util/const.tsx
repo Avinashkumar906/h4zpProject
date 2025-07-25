@@ -72,7 +72,8 @@ export const componentOptions = [
   { label: 'Activity', value: 'blogs' },
   { label: 'Statistics', value: 'statistics' },
   { label: 'Image Gallery', value: 'gallery' },
-  { label: 'CTA Card Group', value: 'ctagroup' },
+  { label: 'Clickable Card', value: 'ctagroup' },
+  { label: 'Timeline', value: 'timeline' },
   { label: 'Testimonials', value: 'testimonial' },
 ];
 
@@ -103,6 +104,15 @@ export const basicFieldConfig = [
     options: [
       { label: 'Slide', value: 'slide' },
       { label: 'Grid', value: 'grid' },
+    ],
+  },
+  {
+    name: 'ctaMode',
+    label: 'Open On Action',
+    type: 'select',
+    options: [
+      { label: 'Popup', value: 'modal' },
+      { label: 'Dropdown', value: 'dropdown' },
     ],
   },
   { name: 'background', label: 'Background', type: 'color' },
@@ -226,6 +236,7 @@ export const contentFieldConfig = [
 
 export const contentListFieldConfig = [
   { name: 'url', label: 'Image Url', type: 'upload', size: 12 },
+  { name: 'iconUrl', label: 'Icon Url', type: 'upload', size: 12 },
   { name: 'name', label: 'Name', type: 'text', size: 6 },
   { name: 'title', label: 'Title', type: 'text', size: 6 },
   { name: 'label', label: 'Label', type: 'text', size: 6 },

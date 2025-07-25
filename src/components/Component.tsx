@@ -6,7 +6,8 @@ import Iframe from './iframe/Iframe';
 import Statistics from './statistics/Statistics';
 import Gallery from './gallery/Gallery';
 import Testimonial from './testimonial/Testimonial';
-import CTAGroup from './dropdown/CTAGroup';
+import CTAGroup from './ctagroup/CTAGroup';
+import Timeline from './timeline/Timeline';
 
 function DynamicComponent(props) {
   let component;
@@ -38,8 +39,15 @@ function DynamicComponent(props) {
     case 'testimonial':
       component = <Testimonial data={props.data} id={props.id} />;
       break;
+    case 'timeline':
+      component = <Timeline data={props.data} id={props.id} />;
+      break;
     default:
-      component = <div>Please check componet name!</div>;
+      component = (
+        <div className="container p-5 bg-warning">
+          <div className="text-center h3 "> Please check componet name!</div>
+        </div>
+      );
       break;
   }
 

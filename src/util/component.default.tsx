@@ -1,4 +1,40 @@
 import Moment from 'moment';
+export const MOCK_TIMELINE_LIST = [
+  {
+    date: '2019',
+    title: 'Founded',
+    description: 'Started with 5 volunteers.',
+    iconUrl: 'https://placehold.co/48x48?text=FO',
+  },
+  {
+    date: '2020',
+    title: 'First Campaign',
+    description: 'Launched literacy programs.',
+    iconUrl: 'https://placehold.co/48x48?text=BO',
+  },
+  {
+    date: '2021',
+    title: 'Health Drive',
+    description: 'Medical camps organized.',
+    iconUrl: 'https://placehold.co/48x48?text=HE',
+  },
+];
+export const MOCK_TIMELINE = {
+  list: MOCK_TIMELINE_LIST,
+  title: 'Our Journey',
+  description: '',
+  layout: {
+    sm: 'VERTICAL',
+    md: 'HORIZONTAL',
+    lg: 'VERTICAL_ALTERNATING',
+    xl: 'VERTICAL_ALTERNATING',
+  },
+  fluid: 'lg',
+  visibility: 'false',
+  background: '#ffffff',
+  order: 0,
+  component: 'timeline',
+};
 
 export const MOCK_STAT_LIST = [
   { label: 'Children Educated', value: 5000 },

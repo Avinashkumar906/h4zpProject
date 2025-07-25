@@ -15,6 +15,8 @@ import {
   MOCK_STATISTICS,
   MOCK_TESTIMONIAL,
   MOCK_TESTIMONIAL_LIST,
+  MOCK_TIMELINE,
+  MOCK_TIMELINE_LIST,
 } from './component.default';
 import Moment from 'moment';
 export type JumbotronType = typeof MOCK_JUMBOTRON;
@@ -31,6 +33,9 @@ export type CTAGroupType = typeof MOCK_CTAGROUP;
 export type CTAGroupListType = (typeof MOCK_CTAGROUP_LIST)[0];
 export type TestimonialType = typeof MOCK_TESTIMONIAL;
 export type TestimonialListType = (typeof MOCK_TESTIMONIAL_LIST)[0];
+export type TimelineType = typeof MOCK_TIMELINE;
+export type TimelineListType = (typeof MOCK_TIMELINE_LIST)[0];
+
 export type ComponentType =
   | JumbotronType
   | ButtonList
@@ -41,6 +46,7 @@ export type ComponentType =
   | StatisticsType
   | CTAGroupType
   | TestimonialType
+  | TimelineType
   | GalleryType;
 
 export type CloudinaryParams = {
@@ -162,6 +168,9 @@ export const getMockdata = (component, valueToPatch?) => {
       break;
     case 'testimonial':
       mock = MOCK_TESTIMONIAL;
+      break;
+    case 'timeline':
+      mock = MOCK_TIMELINE;
       break;
     default:
       mock = null;
