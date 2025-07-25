@@ -25,7 +25,7 @@ function ModalGroup({ data, id }: ComponentPropType) {
 
   return (
     <div className="m-2">
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} backdrop="static" centered size="lg">
         <Modal.Header closeButton>
           <Modal.Title>{modalData?.label}</Modal.Title>
         </Modal.Header>
