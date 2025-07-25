@@ -5,8 +5,8 @@ import Blogs from './blogs/Blogs';
 import Iframe from './iframe/Iframe';
 import Statistics from './statistics/Statistics';
 import Gallery from './gallery/Gallery';
-import Dropdown from './dropdown/Dropdown';
 import Testimonial from './testimonial/Testimonial';
+import CTAGroup from './dropdown/CTAGroup';
 
 function DynamicComponent(props) {
   let component;
@@ -32,8 +32,8 @@ function DynamicComponent(props) {
     case 'gallery':
       component = <Gallery data={props.data} id={props.id} />;
       break;
-    case 'dropdown':
-      component = <Dropdown data={props.data} id={props.id} />;
+    case 'ctagroup':
+      component = <CTAGroup data={props.data} id={props.id} />;
       break;
     case 'testimonial':
       component = <Testimonial data={props.data} id={props.id} />;

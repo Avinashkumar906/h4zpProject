@@ -4,6 +4,10 @@ export function hasOwn(obj: object, key: PropertyKey): boolean {
   return Object.prototype.hasOwnProperty.call(obj, key);
 }
 
+export function generateRandomId(prefix = 'id') {
+  return `${prefix}-${Math.random().toString(36).substr(2, 9)}`;
+}
+
 export const copyToClipboard = (data: ComponentType) => {
   if (data) {
     try {

@@ -42,7 +42,7 @@ function Design1({ data }: componentPropType) {
       className="py-8 px-2"
       fluid
       style={{
-        backgroundColor: `${getRGBAString(data?.theme) || ''}`,
+        backgroundColor: data?.background,
       }}
     >
       <Container fluid={smartParse(data.fluid)}>

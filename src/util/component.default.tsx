@@ -22,7 +22,7 @@ export const MOCK_STATISTICS = {
   },
   fluid: 'lg',
   visibility: 'false',
-  theme: '#ffffff',
+  background: '#ffffff',
   order: 0,
   contentWidth: 5,
   component: 'statistics',
@@ -33,12 +33,12 @@ export const MOCK_BANNER = {
     horizontal: 'justify-content-center',
     verticle: 'align-items-center',
   },
-  contentBg: '#ffffff',
+  // contentBg: '#ffffff',
   url: 'https://placehold.co/600?text=PlaceHolder',
   description: '',
   fluid: 'lg',
   visibility: 'false',
-  theme: '#ffffff',
+  background: '#ffffff',
   order: 0,
   height: 100,
   component: 'banner',
@@ -75,7 +75,7 @@ export const MOCK_GROUP = {
   },
   list: MOCK_GROUP_LIST,
   fluid: 'lg',
-  theme: '#ffffff',
+  background: '#ffffff',
   order: 0,
   description: 'join us to change the world',
 };
@@ -101,12 +101,12 @@ export const MOCK_TESTIMONIAL = {
   },
   list: MOCK_TESTIMONIAL_LIST,
   fluid: 'lg',
-  theme: '#ffffff',
+  background: '#ffffff',
   order: 0,
   description: '',
 };
 
-export const MOCK_DROPDOWN_LIST = [
+export const MOCK_CTAGROUP_LIST = [
   {
     title: 'Help in Kind',
     label: 'Volunteer or donate goods',
@@ -115,19 +115,20 @@ export const MOCK_DROPDOWN_LIST = [
   },
 ];
 
-export const MOCK_DROPDOWN = {
+export const MOCK_CTAGROUP = {
   visibility: 'false',
   title: 'Group title',
-  component: 'dropdown',
+  component: 'ctagroup',
   column: {
     sm: '12',
     md: '6',
     lg: '6',
     xl: '6',
   },
-  list: MOCK_DROPDOWN_LIST,
+  list: MOCK_CTAGROUP_LIST,
+  ctaMode: 'dropdown',
   fluid: 'lg',
-  theme: '#ffffff',
+  background: '#ffffff',
   order: 0,
   description: 'join us to change the world',
 };
@@ -150,7 +151,7 @@ export const MOCK_JUMBOTRON = {
   // btnList: MOCK_BUTTON_LIST,
   fluid: 'lg',
   order: 0,
-  theme: '#ffffff',
+  background: '#ffffff',
   visibility: 'false',
   component: 'jumbotron',
   title: 'Add title',
@@ -162,7 +163,7 @@ export const MOCK_GALLERY = {
   list: MOCK_GALLERY_LIST,
   fluid: 'lg',
   order: 0,
-  theme: '#ffffff',
+  background: '#ffffff',
   visibility: 'false',
   component: 'gallery',
   title: 'Add title',
@@ -192,7 +193,7 @@ export const MOCK_BLOGS = {
   more: '',
   fluid: 'lg',
   visibility: 'false',
-  theme: '#ffffff',
+  background: '#ffffff',
   design: 'design1',
 };
 
@@ -200,7 +201,7 @@ export const MOCK_IFRAME = {
   component: 'iframe',
   height: 100,
   order: 0,
-  theme: '#ffffff',
+  background: '#ffffff',
   youtube: {
     mute: 'true',
     autoplay: 'false',
@@ -209,7 +210,7 @@ export const MOCK_IFRAME = {
     horizontal: 'justify-content-center',
     verticle: 'align-items-center',
   },
-  contentBg: '"ffffff',
+  // contentBg: '"ffffff',
   visibility: 'false',
   fluid: 'lg',
   title: 'Some title about video',

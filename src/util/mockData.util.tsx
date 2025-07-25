@@ -3,8 +3,8 @@ import {
   MOCK_BLOG_LIST,
   MOCK_BLOGS,
   MOCK_BUTTON_LIST,
-  MOCK_DROPDOWN,
-  MOCK_DROPDOWN_LIST,
+  MOCK_CTAGROUP,
+  MOCK_CTAGROUP_LIST,
   MOCK_GALLERY,
   MOCK_GALLERY_LIST,
   MOCK_GROUP,
@@ -27,8 +27,8 @@ export type BlogType = typeof MOCK_BLOGS;
 export type BlogListType = (typeof MOCK_BLOG_LIST)[0];
 export type StatisticsType = typeof MOCK_STATISTICS;
 export type GalleryType = typeof MOCK_GALLERY;
-export type DropdownType = typeof MOCK_DROPDOWN;
-export type DropdownListType = (typeof MOCK_DROPDOWN_LIST)[0];
+export type CTAGroupType = typeof MOCK_CTAGROUP;
+export type CTAGroupListType = (typeof MOCK_CTAGROUP_LIST)[0];
 export type TestimonialType = typeof MOCK_TESTIMONIAL;
 export type TestimonialListType = (typeof MOCK_TESTIMONIAL_LIST)[0];
 export type ComponentType =
@@ -39,7 +39,7 @@ export type ComponentType =
   | GroupType
   | BlogType
   | StatisticsType
-  | DropdownType
+  | CTAGroupType
   | TestimonialType
   | GalleryType;
 
@@ -157,8 +157,8 @@ export const getMockdata = (component, valueToPatch?) => {
     case 'gallery':
       mock = MOCK_GALLERY;
       break;
-    case 'dropdown':
-      mock = MOCK_DROPDOWN;
+    case 'ctagroup':
+      mock = MOCK_CTAGROUP;
       break;
     case 'testimonial':
       mock = MOCK_TESTIMONIAL;
@@ -192,7 +192,7 @@ export const getListItemOfComponent = (component) => {
     case 'gallery':
       return MOCK_GALLERY_LIST[0];
     case 'dropdown':
-      return MOCK_DROPDOWN_LIST[0];
+      return MOCK_CTAGROUP_LIST[0];
     case 'testimonial':
       return MOCK_TESTIMONIAL_LIST[0];
     default:

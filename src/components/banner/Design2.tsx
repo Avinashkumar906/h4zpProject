@@ -35,7 +35,7 @@ function design2({ data }: componentPropType) {
     <Container
       className="py-8 px-3"
       style={{
-        backgroundColor: `${getRGBAString(data?.theme) || ''}`,
+        backgroundColor: data?.background,
       }}
       fluid
     >
@@ -50,7 +50,7 @@ function design2({ data }: componentPropType) {
               opacity={[0.4, 1]}
               endAnimation={1.6}
               className="p-4 w-100 h-100 d-flex align-items-center"
-              style={{ zIndex: 10, backgroundColor: getRGBAString(data?.contentBg) }}
+              style={{ zIndex: 10 }}
             >
               {descriptionHtml}
             </EarlyParallax>

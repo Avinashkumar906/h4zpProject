@@ -9,7 +9,7 @@ function Design1({ data }: { data: JumbotronType; id?: string }) {
       <Col className="w-100">
         <div
           style={{
-            backgroundColor: `${getRGBAString(data?.theme) || ''}`,
+            backgroundColor: data?.background,
           }}
           className="rounded-4 shadow-sm bg-light"
         >

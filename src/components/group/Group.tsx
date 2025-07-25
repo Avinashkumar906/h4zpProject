@@ -87,7 +87,7 @@ function Group({ data, id }: componentPropType) {
     <Container
       className="py-8 px-2"
       style={{
-        backgroundColor: `${getRGBAString(data?.theme) || ''}`,
+        backgroundColor: data?.background,
       }}
       fluid
     >

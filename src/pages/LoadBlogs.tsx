@@ -11,7 +11,7 @@ function LoadBlogs() {
     more: undefined,
     fluid: 'xl',
     visibility: 'true',
-    theme: '#ffffff',
+    background: '#ffffff',
     design: 'design1',
     order: 0,
   });
