@@ -27,7 +27,7 @@ function Jumbotron({ data, id }: componentPropType) {
       className="py-8 px-2"
       fluid
       style={{
-        backgroundColor: `${data.design === 'design2' ? getRGBAString(data?.theme) || '' : ''}`,
+        backgroundColor: `${data.design === 'design2' ? data?.background : ''}`,
       }}
     >
       <Container fluid={smartParse(data.fluid)}>

@@ -72,7 +72,7 @@ export const componentOptions = [
   { label: 'Activity', value: 'blogs' },
   { label: 'Statistics', value: 'statistics' },
   { label: 'Image Gallery', value: 'gallery' },
-  { label: 'Card Dropdown', value: 'dropdown' },
+  { label: 'CTA Card Group', value: 'ctagroup' },
   { label: 'Testimonials', value: 'testimonial' },
 ];
 
@@ -105,7 +105,7 @@ export const basicFieldConfig = [
       { label: 'Grid', value: 'grid' },
     ],
   },
-  { name: 'theme', label: 'Background', type: 'color' },
+  { name: 'background', label: 'Background', type: 'color' },
   {
     name: 'youtube',
     label: 'Video Preset',
@@ -136,7 +136,6 @@ export const basicFieldConfig = [
 
 export const contentFieldConfig = [
   { name: 'url', label: 'ImageUpload', type: 'upload' },
-  { name: 'contentBg', label: 'Content Background', type: 'color' },
   {
     name: 'contentWidth',
     label: 'Content Width',

@@ -1,16 +1,25 @@
 import { Fragment, useEffect, useState } from 'react';
-import { Formik, Field, FieldArray, getIn } from 'formik';
-import { Accordion, Col, Form, InputGroup, Row, Spinner, Tab, Tabs } from 'react-bootstrap';
+import { Formik, FieldArray, getIn } from 'formik';
+import { Accordion, Col, Form, Row, Spinner, Tab, Tabs } from 'react-bootstrap';
 import { getListItemOfComponent } from '../util/mockData.util';
-import ImageUpload from './imageUploader/ImageUpload';
 import { basicFieldConfig, contentFieldConfig, contentListFieldConfig } from '../util/const';
-import Rte from './editor/Rte';
 import BasicControl from './BasicControl';
+import { JsonEditor } from 'json-edit-react';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const UpdateComponent = (props: any) => {
   const [formData, setFormData] = useState(props.data.data);
   const [submitted, setSubmitted] = useState(false);
+
+  // const schema = generateYupSchemaFromConfig([
+  //   ...basicFieldConfig,
+  //   ...contentFieldConfig,
+  //   {
+  //     name: 'contentList',
+  //     type: 'array',
+  //     options: contentListFieldConfig,
+  //   }], formData);
+  // schema.validateSync(formik.values, { abortEarly: false });
 
   useEffect(() => {
     setFormData(props.data.data);
@@ -105,118 +114,6 @@ const UpdateComponent = (props: any) => {
                                       fieldConfig={contentListFieldConfig}
                                       prefix={`list[${index}]`}
                                     />
-                                    {/* {getIn(m, 'title') !== undefined && (
-                                      <Col sm={6} className="mb-2">
-                                        <Form.Label>Title</Form.Label>
-                                        <Field
-                                          name={`list[${index}].title`}
-                                          className="form-control form-control-sm"
-                                        />
-                                      </Col>
-                                    )}
-                                    {getIn(m, 'label') !== undefined && (
-                                      <Col sm={6} className="mb-2">
-                                        <Form.Label>Label</Form.Label>
-                                        <Field
-                                          name={`list[${index}].label`}
-                                          className="form-control form-control-sm"
-                                        />
-                                      </Col>
-                                    )}
-                                    {getIn(m, 'value') !== undefined && (
-                                      <Col sm={6} className="mb-2">
-                                        <Form.Label>Stats Value</Form.Label>
-                                        <Field
-                                          name={`list[${index}].value`}
-                                          className="form-control form-control-sm"
-                                        />
-                                      </Col>
-                                    )}
-                                    {getIn(m, 'url') !== undefined && (
-                                      <Col sm={6} className="mb-2">
-                                        <Form.Label>Image Url</Form.Label>
-                                        <InputGroup size="sm">
-                                          <Field
-                                            name={`list[${index}].url`}
-                                            className="form-control form-control-sm"
-                                          />
-                                          <InputGroup.Text>
-                                            <ImageUpload fieldname={`list[${index}].url`} />
-                                          </InputGroup.Text>
-                                        </InputGroup>
-                                      </Col>
-                                    )}
-                                    <div className="w-100"></div>
-                                    {getIn(m, 'date') !== undefined && (
-                                      <Col sm={4} className="mb-2">
-                                        <Form.Label>Created On</Form.Label>
-                                        <Field
-                                          type="date"
-                                          name={`list[${index}].date`}
-                                          className="form-control form-control-sm"
-                                        />
-                                      </Col>
-                                    )}
-                                    {getIn(m, 'BtnText') !== undefined && (
-                                      <Col sm={4} className="mb-2">
-                                        <Form.Label>Button Text</Form.Label>
-                                        <Field
-                                          name={`list[${index}].BtnText`}
-                                          className="form-control form-control-sm"
-                                        />
-                                      </Col>
-                                    )}
-
-                                    {getIn(m, 'BtnUrl') !== undefined && (
-                                      <Col sm={4} className="mb-2">
-                                        <Form.Label>Page reference</Form.Label>
-                                        <Field
-                                          name={`list[${index}].BtnUrl`}
-                                          className="form-control form-control-sm"
-                                        />
-                                      </Col>
-                                    )}
-                                    {getIn(m, 'btnColor') !== undefined && (
-                                      <Col sm={4} className="mb-2">
-                                        <Form.Label>Button Color</Form.Label>
-                                        <Field
-                                          as="select"
-                                          name={`list[${index}].btnColor`}
-                                          className="form-select form-select-sm"
-                                        >
-                                          <option value="btn-dark">Default</option>
-                                          <option value="btn-primary">Primary</option>
-                                          <option value="btn-secondary">Secondary</option>
-                                          <option value="btn-pink">Pink</option>
-                                          <option value="btn-yellow">Yellow</option>
-                                          <option value="btn-purple">Purple</option>
-                                          <option value="btn-orange">Orange</option>
-                                          <option value="btn-teal">Teal</option>
-                                          <option value="btn-coral">Coral</option>
-                                          <option value="btn-lime">Lime</option>
-                                        </Field>
-                                      </Col>
-                                    )}
-                                    {getIn(m, 'credit') !== undefined && (
-                                      <Col sm={4} className="mb-2">
-                                        <Form.Label>Organised by</Form.Label>
-                                        <Field
-                                          name={`list[${index}].credit`}
-                                          className="form-control form-control-sm"
-                                        />
-                                      </Col>
-                                    )}
-                                    <div className="w-100"></div>
-                                    {getIn(m, 'description') !== undefined && (
-                                      <Col sm={12} className="mb-2">
-                                        <Form.Label>Description</Form.Label>
-                                        <Rte
-                                          fieldname={`list[${index}].description`}
-                                          value={form.values.list[index].description}
-                                        ></Rte>
-                                      </Col>
-                                    )} */}
-                                    {/* <Field as="textarea" name={`list[${index}].description`} className="form-control form-control-sm" /> */}
                                   </Row>
                                 </Accordion.Body>
                               </Accordion.Item>
@@ -240,6 +137,24 @@ const UpdateComponent = (props: any) => {
                   />
                 </Tab>
               )}
+              <Tab eventKey="advance" title="Advance">
+                <div className="p-2">
+                  <JsonEditor
+                    className="w-100"
+                    maxWidth={'none'}
+                    data={form.values}
+                    restrictDelete={true}
+                    onUpdate={({ newData }: { newData: unknown; currentData: unknown }) => {
+                      try {
+                        // console.log(newData)
+                        form.setValues(newData);
+                      } catch (error) {
+                        console.error('Invalid JSON structure', error);
+                      }
+                    }}
+                  />
+                </div>
+              </Tab>
             </Tabs>
             <Row className="mb-2">
               <Col className="text-center">

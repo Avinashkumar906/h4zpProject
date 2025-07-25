@@ -33,7 +33,7 @@ function Design1({ data }: componentPropType) {
           {descriptionHtml && (
             <div
               className={`p-4 glass col-sm-${data.contentWidth}`}
-              style={{ backgroundColor: getRGBAString(data?.contentBg), marginBottom: '4rem' }}
+              style={{ backgroundColor: data.background, marginBottom: '4rem' }}
             >
               {descriptionHtml}
             </div>

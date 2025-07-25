@@ -1,11 +1,11 @@
 import { useMemo, useState } from 'react';
 import './style.css';
 import { safeParseHtml } from '../editor/rte.util';
-import { DropdownListType } from '../../util';
+import { CTAGroupListType } from '../../util';
 import { useAutoHeight } from '../../hook/useAutoHeight';
 
 type componentPropType = {
-  data: DropdownListType;
+  data: CTAGroupListType;
   id?: string;
 };
 const DropdownCards = ({ data, id }: componentPropType) => {
