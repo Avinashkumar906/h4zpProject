@@ -16,6 +16,7 @@
     "firebase": "^9.12.1",
     "formik": "^2.2.9",
     "html-react-parser": "^3.0.4",
+    "html2canvas": "^1.4.1",
     "json-edit-react": "^1.28.2",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",

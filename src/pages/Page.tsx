@@ -59,7 +59,6 @@ export default function Page(props: { isAuth: unknown; editable: boolean }) {
   const onOrder = (): void => {
     setModalAction('ORDER');
     setModalState(true);
-    // html2Canva
     setModalData({ data });
   };
 
@@ -143,6 +142,7 @@ export default function Page(props: { isAuth: unknown; editable: boolean }) {
             className={
               `${isAuth && editable ? 'pointer' : ''} ` + `${docId === m.id ? 'highlight' : ''}`
             }
+            id={m.id}
             key={m.id}
             style={{ position: 'relative' }}
             onClick={() => componentClick(m.id)}

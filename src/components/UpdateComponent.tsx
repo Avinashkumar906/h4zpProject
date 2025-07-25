@@ -5,6 +5,8 @@ import { getListItemOfComponent } from '../util/mockData.util';
 import { basicFieldConfig, contentFieldConfig, contentListFieldConfig } from '../util/const';
 import BasicControl from './BasicControl';
 import { JsonEditor } from 'json-edit-react';
+import { generateId } from '../util';
+import _ from 'lodash';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const UpdateComponent = (props: any) => {
@@ -22,11 +24,13 @@ const UpdateComponent = (props: any) => {
   // schema.validateSync(formik.values, { abortEarly: false });
 
   useEffect(() => {
-    setFormData(props.data.data);
+    const clone = _.cloneDeep(props.data.data);
+    clone.list = clone.list.map((item) => (item.id ? item : { id: generateId(), ...item }));
+    setFormData(clone);
   }, [props.data.data]);
 
   const getListItem = () => {
-    return getListItemOfComponent(formData.component);
+    return getListItemOfComponent({ ...formData.component, id: generateId() });
   };
 
   const submitForm = (values) => {
@@ -61,7 +65,7 @@ const UpdateComponent = (props: any) => {
                         <Accordion defaultActiveKey="0" className="mb-2">
                           {form.values.list.length > 0 ? (
                             form.values.list.map((m, index) => (
-                              <Accordion.Item key={`list-update-${index}`} eventKey={index}>
+                              <Accordion.Item key={m.id} eventKey={index}>
                                 <Accordion.Header className="p-1">
                                   <Form.Label>Content {index + 1}</Form.Label>
                                 </Accordion.Header>

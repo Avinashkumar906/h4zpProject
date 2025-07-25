@@ -63,7 +63,6 @@ export default function DraggableList(props: any) {
               <div className="list-group-item p-2 mb-2 bg-light border rounded shadow-sm">
                 {componentOptions.find((f) => f.value === item?.data?.component)?.label ||
                   item.data.component}
-                {/* {item.data.component} */}
               </div>
             </SortableItem>
           ))}

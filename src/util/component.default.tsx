@@ -1,6 +1,7 @@
 import Moment from 'moment';
 export const MOCK_TIMELINE_LIST = [
   {
+    id: '',
     date: '2019',
     title: 'Founded',
     description: 'Started with 5 volunteers.',
@@ -37,7 +38,7 @@ export const MOCK_TIMELINE = {
 };
 
 export const MOCK_STAT_LIST = [
-  { label: 'Children Educated', value: 5000 },
+  { id: '', label: 'Children Educated', value: 5000 },
   { label: 'Villages with Clean Water', value: 12 },
   { label: 'Meals Served', value: 25000 },
 ];
@@ -85,6 +86,7 @@ export const MOCK_BANNER = {
 
 export const MOCK_GROUP_LIST = [
   {
+    id: '',
     description: '',
     url: 'https://placehold.co/400?text=PlaceHolder',
   },
@@ -118,6 +120,7 @@ export const MOCK_GROUP = {
 
 export const MOCK_TESTIMONIAL_LIST = [
   {
+    id: '',
     name: 'Jane Doe',
     title: 'CEO, Company',
     quote: 'Highly recommended!',
@@ -144,6 +147,7 @@ export const MOCK_TESTIMONIAL = {
 
 export const MOCK_CTAGROUP_LIST = [
   {
+    id: '',
     title: 'Help in Kind',
     label: 'Volunteer or donate goods',
     url: 'https://placehold.co/48x48?text=ICON',
@@ -171,6 +175,7 @@ export const MOCK_CTAGROUP = {
 
 export const MOCK_BUTTON_LIST = [
   {
+    id: '',
     btnLink: '/home',
     btnText: 'Home',
     btnColor: 'btn-dark',
