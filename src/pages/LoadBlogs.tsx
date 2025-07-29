@@ -25,7 +25,7 @@ function LoadBlogs() {
           url: item.data.imageUrl,
           title: item.data.title,
           credit: item.data.createdBy,
-          BtnUrl: item.id,
+          BtnUrl: `/${item.id}`,
           btnColor: 'btn-lime',
           btnText: 'View Post',
           date: item.data.date,

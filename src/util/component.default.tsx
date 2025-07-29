@@ -1,25 +1,14 @@
 import Moment from 'moment';
 export const MOCK_TIMELINE_LIST = [
   {
-    id: '',
+    id: 'pGE2HJKrJWKwIFX4o8YJ',
     date: '2019',
     title: 'Founded',
     description: 'Started with 5 volunteers.',
     url: 'https://placehold.co/48x48?text=FO',
   },
-  {
-    date: '2020',
-    title: 'First Campaign',
-    description: 'Launched literacy programs.',
-    url: 'https://placehold.co/48x48?text=BO',
-  },
-  {
-    date: '2021',
-    title: 'Health Drive',
-    description: 'Medical camps organized.',
-    url: 'https://placehold.co/48x48?text=HE',
-  },
 ];
+
 export const MOCK_TIMELINE = {
   list: MOCK_TIMELINE_LIST,
   title: 'Our Journey',
@@ -38,10 +27,9 @@ export const MOCK_TIMELINE = {
 };
 
 export const MOCK_STAT_LIST = [
-  { id: '', label: 'Children Educated', value: 5000 },
-  { label: 'Villages with Clean Water', value: 12 },
-  { label: 'Meals Served', value: 25000 },
+  { id: 'pGE2HJKrJWKwIFX4o8YJ', label: 'Children Educated', value: 5000 },
 ];
+
 // gallery
 export const MOCK_STATISTICS = {
   list: MOCK_STAT_LIST,
@@ -86,15 +74,7 @@ export const MOCK_BANNER = {
 
 export const MOCK_GROUP_LIST = [
   {
-    id: '',
-    description: '',
-    url: 'https://placehold.co/400?text=PlaceHolder',
-  },
-  {
-    description: '',
-    url: 'https://placehold.co/400?text=PlaceHolder',
-  },
-  {
+    id: 'pGE2HJKrJWKwIFX4o8YJ',
     description: '',
     url: 'https://placehold.co/400?text=PlaceHolder',
   },
@@ -120,7 +100,7 @@ export const MOCK_GROUP = {
 
 export const MOCK_TESTIMONIAL_LIST = [
   {
-    id: '',
+    id: 'pGE2HJKrJWKwIFX4o8YJ',
     name: 'Jane Doe',
     title: 'CEO, Company',
     quote: 'Highly recommended!',
@@ -147,7 +127,7 @@ export const MOCK_TESTIMONIAL = {
 
 export const MOCK_CTAGROUP_LIST = [
   {
-    id: '',
+    id: 'pGE2HJKrJWKwIFX4o8YJ',
     title: 'Help in Kind',
     label: 'Volunteer or donate goods',
     url: 'https://placehold.co/48x48?text=ICON',
@@ -175,7 +155,7 @@ export const MOCK_CTAGROUP = {
 
 export const MOCK_BUTTON_LIST = [
   {
-    id: '',
+    id: 'pGE2HJKrJWKwIFX4o8YJ',
     btnLink: '/home',
     btnText: 'Home',
     btnColor: 'btn-dark',
@@ -183,9 +163,7 @@ export const MOCK_BUTTON_LIST = [
 ];
 
 export const MOCK_GALLERY_LIST = [
-  { id: undefined, url: 'https://placehold.co/400?text=PlaceHolder' },
-  { url: 'https://placehold.co/400?text=PlaceHolder' },
-  { url: 'https://placehold.co/400?text=PlaceHolder' },
+  { id: 'pGE2HJKrJWKwIFX4o8YJ', url: 'https://placehold.co/400?text=PlaceHolder' },
 ];
 
 export const MOCK_JUMBOTRON = {
@@ -214,7 +192,7 @@ export const MOCK_GALLERY = {
 
 export const MOCK_BLOG_LIST = [
   {
-    id: undefined,
+    id: 'pGE2HJKrJWKwIFX4o8YJ',
     reference: '',
     description: 'Some description about blog…',
     title: 'Title of blog',
