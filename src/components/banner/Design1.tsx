@@ -20,7 +20,7 @@ type componentPropType = {
 };
 
 function Design1({ data }: componentPropType) {
-  // const measureUnit = data.order == 0 && data.height == 100 ? 'dvh' : 'vh';
+  const toolbarMargin = data.order == 0 && data.height == 100 ? '4rem 0' : '0';
   const measureUnit = 'vh';
   const descriptionHtml = safeParseHtml(data.description);
 
@@ -33,7 +33,7 @@ function Design1({ data }: componentPropType) {
           {descriptionHtml && (
             <div
               className={`p-4 glass col-sm-${data.contentWidth}`}
-              style={{ backgroundColor: data.background, marginBottom: '4rem' }}
+              style={{ backgroundColor: data.background, margin: toolbarMargin }}
             >
               {descriptionHtml}
             </div>

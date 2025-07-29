@@ -40,7 +40,7 @@ export const CModal = (props: any) => {
   const onUpdate = (formvalue) => {
     if (action === 'ADD' || action === 'PASTE') {
       formvalue.order = page.data.length;
-      addComponentToPage(pageID, formvalue, (snapShot) => console.log(snapShot.id));
+      addComponentToPage(pageID, formvalue, () => onCloseModal());
     } else if (action === 'EDIT') {
       updateComponentOfPage(page.collection, page.docId, formvalue, console.log);
     }

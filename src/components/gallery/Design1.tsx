@@ -1,6 +1,5 @@
 import Container from 'react-bootstrap/Container';
 import { GalleryType, smartParse } from '../../util/mockData.util';
-import { getRGBAString } from '../common/ColorField';
 import { Image, Gallery as ReactGallery } from 'react-grid-gallery';
 import { useEffect, useState } from 'react';
 import { getImageSize } from '../../util';
