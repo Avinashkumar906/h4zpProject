@@ -25,9 +25,11 @@ const UpdateComponent = (props: any) => {
 
   useEffect(() => {
     const clone = _.cloneDeep(props.data.data);
-    clone.list = clone.list?.map((item) =>
-      item.id ? item : { ...item, id: item.id != '' ? item.id : generateId() },
-    );
+    if (clone.list) {
+      clone.list = clone.list.map((item) =>
+        item.id ? item : { ...item, id: item.id != '' ? item.id : generateId() },
+      );
+    }
     setFormData(clone);
   }, [props.data.data]);
 

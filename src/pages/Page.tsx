@@ -137,6 +137,10 @@ export default function Page(props: { isAuth: unknown; editable: boolean }) {
       {(data ?? [])
         .sort((a, b) => a.data?.order - b.data?.order)
         .filter((f) => (isAuth && editable) || isTrue(f.data?.visibility) === true)
+        // .map(m=>{
+        //   console.log(m)
+        //   return m
+        // })
         .map((m) => (
           <div
             className={

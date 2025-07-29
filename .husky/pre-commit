@@ -1,4 +1,7 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npx lint-staged
+# Tell Husky where npm lives
+export PATH="/Users/avinash/.local/state/fnm_multishells/1052_1753763934160/bin:$PATH"
+
+npm run lint-stage
