@@ -10,7 +10,7 @@ import _ from 'lodash';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const UpdateComponent = (props: any) => {
-  const [formData, setFormData] = useState(props.data.data);
+  const [formData, setFormData] = useState();
   const [submitted, setSubmitted] = useState(false);
 
   // const schema = generateYupSchemaFromConfig([
@@ -25,12 +25,16 @@ const UpdateComponent = (props: any) => {
 
   useEffect(() => {
     const clone = _.cloneDeep(props.data.data);
-    clone.list = clone.list.map((item) => (item.id ? item : { id: generateId(), ...item }));
+    clone.list = clone.list?.map((item) =>
+      item.id ? item : { ...item, id: item.id != '' ? item.id : generateId() },
+    );
     setFormData(clone);
   }, [props.data.data]);
 
   const getListItem = () => {
-    return getListItemOfComponent({ ...formData.component, id: generateId() });
+    const mock = getListItemOfComponent(props.data.data.component);
+    mock.id = generateId();
+    return mock;
   };
 
   const submitForm = (values) => {

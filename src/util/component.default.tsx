@@ -5,19 +5,19 @@ export const MOCK_TIMELINE_LIST = [
     date: '2019',
     title: 'Founded',
     description: 'Started with 5 volunteers.',
-    iconUrl: 'https://placehold.co/48x48?text=FO',
+    url: 'https://placehold.co/48x48?text=FO',
   },
   {
     date: '2020',
     title: 'First Campaign',
     description: 'Launched literacy programs.',
-    iconUrl: 'https://placehold.co/48x48?text=BO',
+    url: 'https://placehold.co/48x48?text=BO',
   },
   {
     date: '2021',
     title: 'Health Drive',
     description: 'Medical camps organized.',
-    iconUrl: 'https://placehold.co/48x48?text=HE',
+    url: 'https://placehold.co/48x48?text=HE',
   },
 ];
 export const MOCK_TIMELINE = {
@@ -183,7 +183,7 @@ export const MOCK_BUTTON_LIST = [
 ];
 
 export const MOCK_GALLERY_LIST = [
-  { url: 'https://placehold.co/400?text=PlaceHolder' },
+  { id: undefined, url: 'https://placehold.co/400?text=PlaceHolder' },
   { url: 'https://placehold.co/400?text=PlaceHolder' },
   { url: 'https://placehold.co/400?text=PlaceHolder' },
 ];
@@ -214,6 +214,7 @@ export const MOCK_GALLERY = {
 
 export const MOCK_BLOG_LIST = [
   {
+    id: undefined,
     reference: '',
     description: 'Some description about blog…',
     title: 'Title of blog',

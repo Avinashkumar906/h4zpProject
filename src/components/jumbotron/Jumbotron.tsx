@@ -3,7 +3,6 @@ import { JumbotronType, smartParse } from '../../util/mockData.util';
 import Design1 from './design1';
 import Design2 from './design2';
 import EarlyParallax from '../common/EarlyParallax';
-import { getRGBAString } from '../common/ColorField';
 
 type componentPropType = {
   data: JumbotronType | undefined;

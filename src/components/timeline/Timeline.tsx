@@ -1,5 +1,9 @@
-import { TimelineType } from '../../util';
+import { Container, Row } from 'react-bootstrap';
+import { smartParse, TimelineType } from '../../util';
+import EarlyParallax from '../common/EarlyParallax';
 import CronoTimeline from './CronoTimeline';
+import Title from '../common/Title';
+import Description from '../common/Description';
 
 type componentPropsType = {
   data: TimelineType;
@@ -8,34 +12,23 @@ type componentPropsType = {
 
 const Timeline = ({ data, id }: componentPropsType) => {
   return (
-    <CronoTimeline data={data} id={id} />
-    // <div className={`timeline-wrapper ${resolvedLayout}`}>
-    //   <div className="timeline-line" />
-
-    //   {data.list.map((item, index) => {
-    //     const isEven = index % 2 === 0;
-
-    //     const alignClass =
-    //       resolvedLayout.includes("zigzag")
-    //         ? isEven
-    //           ? "left"
-    //           : "right"
-    //         : "left";
-
-    //     return (
-    //       <div className={`timeline-item ${alignClass}`} key={id+index}>
-    //         <div className="timeline-icon">
-    //           <img src={item.iconUrl} alt="" />
-    //         </div>
-    //         <div className="timeline-content">
-    //           <div className="h5">{item.title}</div>
-    //           <p className="small">{item.date}</p>
-    //           <Description description={item.description}/>
-    //         </div>
-    //       </div>
-    //     );
-    //   })}
-    // </div>
+    <Container
+      className="py-8 px-2"
+      style={{
+        backgroundColor: data?.background,
+      }}
+      fluid
+    >
+      <Container fluid={smartParse(data.fluid)}>
+        <EarlyParallax opacity={[0.4, 1]} endAnimation={1.6}>
+          <Row className="justify-content-center pb-3">
+            <Title title={data.title} />
+          </Row>
+          <CronoTimeline data={data} id={id} />
+          <Description description={data?.description} />
+        </EarlyParallax>
+      </Container>
+    </Container>
   );
 };
 

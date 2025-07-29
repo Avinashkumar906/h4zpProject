@@ -22,6 +22,7 @@
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
+    "react-chrono-multicard": "^1.1.4",
     "react-color": "^2.19.3",
     "react-countup": "^6.5.3",
     "react-dom": "^18.2.0",

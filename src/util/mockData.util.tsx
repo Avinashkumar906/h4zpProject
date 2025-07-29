@@ -204,6 +204,8 @@ export const getListItemOfComponent = (component) => {
       return MOCK_CTAGROUP_LIST[0];
     case 'testimonial':
       return MOCK_TESTIMONIAL_LIST[0];
+    case 'timeline':
+      return MOCK_TIMELINE_LIST[0];
     default:
       break;
   }
