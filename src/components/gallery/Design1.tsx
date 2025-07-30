@@ -17,6 +17,12 @@ type componentPropType = {
 function Design1({ data }: componentPropType) {
   const [open, setOpen] = useState(false);
   const [images, setImages] = useState<Image[]>([]);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const handleImageClick = (index: number, item: Image) => {
+    setSelectedIndex(index);
+    setOpen(true);
+  };
 
   useEffect(() => {
     const prepareImages = async () => {
@@ -50,10 +56,10 @@ function Design1({ data }: componentPropType) {
         </Row>
         <ReactGallery
           images={images}
-          onClick={() => setOpen(true)}
+          onClick={handleImageClick}
           enableImageSelection={false}
         ></ReactGallery>
-        <Lightbox open={open} close={() => setOpen(false)} slides={images} />
+        <Lightbox open={open} index={selectedIndex} close={() => setOpen(false)} slides={images} />
         <Description description={data?.description} />
       </Container>
     </Container>

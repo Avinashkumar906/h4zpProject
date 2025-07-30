@@ -3,10 +3,10 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { GalleryType, smartParse } from '../../util';
 import { Container, Row } from 'react-bootstrap';
 import Title from '../common/Title';
-import { getRGBAString } from '../common/ColorField';
 import Description from '../common/Description';
 import EarlyParallax from '../common/EarlyParallax';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import useBreakpoint from '../../hook/useBreakpoint';
 
 type componentPropType = {
   data: GalleryType | undefined;
@@ -14,7 +14,7 @@ type componentPropType = {
 };
 const Carousel = ({ data, id }: componentPropType) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
-
+  const itemToShow = useBreakpoint() === 'sm' ? 1 : 3;
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
 
@@ -36,7 +36,11 @@ const Carousel = ({ data, id }: componentPropType) => {
               <div className="embla__viewport" ref={emblaRef}>
                 <div className="embla__container">
                   {data.list.map((src, index) => (
-                    <div className="embla__slide" key={index}>
+                    <div
+                      className="embla__slide p-2"
+                      key={index}
+                      // style={{ flex: `0 0 ${100 / itemToShow}%` }}
+                    >
                       <img
                         className="embla__slide__img"
                         src={src.url}

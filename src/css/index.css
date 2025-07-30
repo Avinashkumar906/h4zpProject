@@ -711,9 +711,11 @@ a:active {
 }
 /* Horizontal timeline fix */
 .timeline-main-wrapper[mode='HORIZONTAL'] > div {
-  width: 100% !important;
+  min-width: 100% !important;
 }
-
+.timeline-horz-card-wrapper {
+  min-width: 200px !important;
+}
 .timeline-card-content {
   border-radius: 0.5rem !important;
 }
