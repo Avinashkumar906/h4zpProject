@@ -1,16 +1,17 @@
 import { Fragment, useEffect, useState } from 'react';
 import { Formik, FieldArray, getIn } from 'formik';
 import { Accordion, Col, Form, Row, Spinner, Tab, Tabs } from 'react-bootstrap';
-import { getListItemOfComponent } from '../util/mockData.util';
+import { ComponentType, getListItemOfComponent } from '../util/mockData.util';
 import { basicFieldConfig, contentFieldConfig, contentListFieldConfig } from '../util/const';
 import BasicControl from './BasicControl';
 import { JsonEditor } from 'json-edit-react';
 import { generateId } from '../util';
 import _ from 'lodash';
+import MultiImageUpload from './imageUploader/MultiUpload';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const UpdateComponent = (props: any) => {
-  const [formData, setFormData] = useState();
+  const [formData, setFormData] = useState<ComponentType>();
   const [submitted, setSubmitted] = useState(false);
 
   // const schema = generateYupSchemaFromConfig([
@@ -140,7 +141,9 @@ const UpdateComponent = (props: any) => {
                               <hr />
                             </div>
                           )}
-                          {/* </div> */}
+                          {formData?.component === 'gallery' && (
+                            <MultiImageUpload fieldname={'list'} uploadPath="test" />
+                          )}
                         </Accordion>
                       </>
                     )}

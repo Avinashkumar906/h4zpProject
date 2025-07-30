@@ -38,7 +38,7 @@ export type TimelineListType = (typeof MOCK_TIMELINE_LIST)[0];
 
 export type ComponentType =
   | JumbotronType
-  | ButtonList
+  // | ButtonList
   | BannerType
   | IframeType
   | GroupType

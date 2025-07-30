@@ -40,7 +40,7 @@ const BasicControl = ({ form, fieldConfig, prefix = '' }: componentPropType) => 
 
         if (type === 'upload') {
           return (
-            <Col sm={size} className="mw-250" key={name}>
+            <Col sm={size} key={name}>
               <Form.Label>{label}</Form.Label>
               <InputGroup size="sm">
                 <Field name={name} className="form-control form-control-sm" />
@@ -54,7 +54,7 @@ const BasicControl = ({ form, fieldConfig, prefix = '' }: componentPropType) => 
 
         if (type === 'color') {
           return (
-            <Col sm={size} className="mw-250" key={name}>
+            <Col sm={size} key={name}>
               <Form.Label>{label}</Form.Label>
               <div className="form-control form-control-sm">
                 <ColorField fieldname={name} />
@@ -64,7 +64,7 @@ const BasicControl = ({ form, fieldConfig, prefix = '' }: componentPropType) => 
         }
         if (type === 'select') {
           return (
-            <Col sm={size} className="mw-250" key={name}>
+            <Col sm={size} key={name}>
               <Form.Label>{label}</Form.Label>
               <Field as={type} name={name} className="form-select form-select-sm">
                 {options.map((option, index) => (
@@ -79,7 +79,7 @@ const BasicControl = ({ form, fieldConfig, prefix = '' }: componentPropType) => 
 
         if (type === 'group') {
           return (
-            <Col sm={size} className="mw-250" key={name}>
+            <Col sm={size} key={name}>
               <Form.Label>{label}</Form.Label>
               <InputGroup size="sm">
                 {options.map((child) => (
