@@ -142,7 +142,7 @@ const UpdateComponent = (props: any) => {
                             </div>
                           )}
                           {formData?.component === 'gallery' && (
-                            <MultiImageUpload fieldname={'list'} uploadPath="test" />
+                            <MultiImageUpload fieldname={'list'} />
                           )}
                         </Accordion>
                       </>

@@ -1,6 +1,6 @@
 import { useFormikContext } from 'formik';
 import { useRef, useState } from 'react';
-import { Spinner } from 'react-bootstrap';
+import { ProgressBar } from 'react-bootstrap';
 import { FaCloudUploadAlt } from 'react-icons/fa';
 import { useLocation } from 'react-router-dom';
 import { generateId } from '../../util';
@@ -16,6 +16,9 @@ function MultiImageUpload({ fieldname, uploadPath, src = 'url' }: MultiImageUplo
   const { setFieldValue, values } = useFormikContext<any>();
   const elRef = useRef<HTMLInputElement>(null);
   const [isUploading, setIsUploading] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [totalFiles, setTotalFiles] = useState(0);
 
   const folderPath =
     uploadPath || location.pathname.replace(/^\/+/, '').replace(/\/$/, '').replace(/[?#&]/g, '_');
@@ -29,10 +32,14 @@ function MultiImageUpload({ fieldname, uploadPath, src = 'url' }: MultiImageUplo
     if (!files.length) return;
 
     setIsUploading(true);
+    setProgress(0);
+    setCurrentIndex(0);
+    setTotalFiles(files.length);
 
     const uploadedData: { [key: string]: string; id: string }[] = [];
 
-    for (const file of files) {
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
       const formData = new FormData();
       formData.append('file', file);
       formData.append('upload_preset', process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET || '');
@@ -47,6 +54,10 @@ function MultiImageUpload({ fieldname, uploadPath, src = 'url' }: MultiImageUplo
         if (data?.secure_url) {
           uploadedData.push({ [src]: data.secure_url, id: generateId() });
         }
+
+        const nextIndex = i + 1;
+        setCurrentIndex(nextIndex);
+        setProgress(Math.round((nextIndex / files.length) * 100));
       } catch (err) {
         console.error('Upload error:', err);
       }
@@ -54,13 +65,22 @@ function MultiImageUpload({ fieldname, uploadPath, src = 'url' }: MultiImageUplo
 
     const existing = Array.isArray(values[fieldname]) ? values[fieldname] : [];
     setFieldValue(fieldname, [...existing, ...uploadedData]);
+
     setIsUploading(false);
+    setProgress(0);
+    setCurrentIndex(0);
+    setTotalFiles(0);
   };
 
   return (
-    <div className="multiUploaderWrapper">
+    <div className="multiUploaderWrapper w-100 px-4">
       {isUploading ? (
-        <Spinner animation="border" size="sm" />
+        <div className="w-100 d-flex flex-column align-items-center gap-2">
+          <div className="text-muted small">
+            Uploading {currentIndex} of {totalFiles}
+          </div>
+          <ProgressBar animated now={progress} label={`${progress}%`} className="w-100" />
+        </div>
       ) : (
         <span
           onClick={handleClick}
@@ -75,7 +95,7 @@ function MultiImageUpload({ fieldname, uploadPath, src = 'url' }: MultiImageUplo
           title="Upload images"
         >
           <FaCloudUploadAlt fontSize={28} />
-          <div style={{ fontSize: '0.9rem' }}>Upload Multiple</div>
+          <div style={{ fontSize: '0.9rem' }}>Upload Batch Images</div>
         </span>
       )}
       <input type="file" ref={elRef} hidden multiple accept="image/*" onChange={handleChange} />
