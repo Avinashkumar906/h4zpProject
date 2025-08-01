@@ -9,9 +9,10 @@ import CardDesign2 from './CardDesign2';
 type componentPropType = {
   data: BlogType | undefined;
   id: string;
+  hideMore?: boolean;
 };
 
-function Blogs({ data, id }: componentPropType) {
+function Blogs({ data, id, hideMore = false }: componentPropType) {
   const content = (data: BlogType, id: string) => {
     switch (data.design) {
       case 'design1':
@@ -37,9 +38,11 @@ function Blogs({ data, id }: componentPropType) {
           {content(data, id)}
           <Col xl={12}>
             <div className="text-end">
-              <Link to={'/blog'} className="text-dark">
-                More..
-              </Link>
+              {!hideMore && (
+                <Link to={'/blog'} className="text-dark">
+                  More..
+                </Link>
+              )}
             </div>
           </Col>
         </Row>

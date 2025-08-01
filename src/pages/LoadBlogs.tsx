@@ -45,7 +45,9 @@ function LoadBlogs() {
 
   return (
     <Fragment>
-      {blogList?.list?.length !== 0 && <Blogs data={blogList} id="Blog-List-Page" />}
+      {blogList?.list?.length !== 0 && (
+        <Blogs data={blogList} hideMore={true} id="Blog-List-Page" />
+      )}
     </Fragment>
   );
 }

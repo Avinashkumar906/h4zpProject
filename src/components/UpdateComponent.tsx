@@ -157,6 +157,8 @@ const UpdateComponent = (props: any) => {
                     maxWidth={'none'}
                     data={form.values}
                     restrictDelete={true}
+                    restrictAdd={true}
+                    // rootName={fo}
                     onUpdate={({ newData }: { newData: unknown; currentData: unknown }) => {
                       try {
                         // console.log(newData)
