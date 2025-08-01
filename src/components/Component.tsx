@@ -8,6 +8,7 @@ import Gallery from './gallery/Gallery';
 import Testimonial from './testimonial/Testimonial';
 import CTAGroup from './ctagroup/CTAGroup';
 import Timeline from './timeline/Timeline';
+import RazorpayWidget from './razorpay/RazorpayWidget';
 
 function DynamicComponent(props) {
   let component;
@@ -41,6 +42,9 @@ function DynamicComponent(props) {
       break;
     case 'timeline':
       component = <Timeline data={props.data} id={props.id} />;
+      break;
+    case 'paywidget':
+      component = <RazorpayWidget data={props.data} id={props.id} />;
       break;
     default:
       component = (

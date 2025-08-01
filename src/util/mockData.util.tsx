@@ -11,6 +11,7 @@ import {
   MOCK_GROUP_LIST,
   MOCK_IFRAME,
   MOCK_JUMBOTRON,
+  MOCK_PAYWIDGET,
   MOCK_STAT_LIST,
   MOCK_STATISTICS,
   MOCK_TESTIMONIAL,
@@ -35,10 +36,11 @@ export type TestimonialType = typeof MOCK_TESTIMONIAL;
 export type TestimonialListType = (typeof MOCK_TESTIMONIAL_LIST)[0];
 export type TimelineType = typeof MOCK_TIMELINE;
 export type TimelineListType = (typeof MOCK_TIMELINE_LIST)[0];
+export type PayWidgetType = typeof MOCK_PAYWIDGET;
 
 export type ComponentType =
   | JumbotronType
-  // | ButtonList
+  | PayWidgetType
   | BannerType
   | IframeType
   | GroupType
@@ -171,6 +173,9 @@ export const getMockdata = (component, valueToPatch?) => {
       break;
     case 'timeline':
       mock = MOCK_TIMELINE;
+      break;
+    case 'paywidget':
+      mock = MOCK_PAYWIDGET;
       break;
     default:
       mock = null;

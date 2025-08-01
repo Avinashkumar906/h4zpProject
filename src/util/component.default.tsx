@@ -178,6 +178,32 @@ export const MOCK_JUMBOTRON = {
   design: 'design1',
 };
 
+export const MOCK_PAYWIDGET = {
+  fluid: 'lg',
+  order: 0,
+  background: '#ffffff',
+  visibility: 'false',
+  component: 'paywidget',
+  title: 'Add title',
+  description: 'Write content.',
+  formData: {
+    name: { type: 'text', label: 'Your Full Name', required: true },
+    pan: { type: 'text', label: 'PAN Number (optional)' },
+    amount: { type: 'text', label: 'Donation Amount (₹)', required: true },
+    email: { type: 'text', label: 'Email Address' },
+    contact: { type: 'number', label: 'Contact Number' },
+    recurrence: {
+      type: 'select',
+      label: 'Donation Type',
+      defaultValue: 'onetime',
+      options: [
+        { label: 'One-Time', value: 'onetime' },
+        // { label: "Monthly", value: "monthly" }
+      ],
+    },
+  },
+};
+
 export const MOCK_GALLERY = {
   list: MOCK_GALLERY_LIST,
   fluid: 'lg',

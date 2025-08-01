@@ -75,6 +75,7 @@ export const componentOptions = [
   { label: 'Clickable Card', value: 'ctagroup' },
   { label: 'Timeline', value: 'timeline' },
   { label: 'Testimonials', value: 'testimonial' },
+  { label: 'Payment Widget', value: 'paywidget' },
 ];
 
 export const basicFieldConfig = [

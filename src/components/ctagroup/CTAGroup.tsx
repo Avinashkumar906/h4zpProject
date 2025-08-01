@@ -23,11 +23,13 @@ const CTAGroup = ({ data, id }: ComponentPropType) => {
     switch (data.ctaMode) {
       case 'dropdown':
         return (
-          <Masonry>
-            {data.list?.map((item, index) => (
-              <DropdownCards key={id + index} data={item} id={id} />
-            ))}
-          </Masonry>
+          <ResponsiveMasonry columnsCountBreakPoints={columnBreakpoints}>
+            <Masonry>
+              {data.list?.map((item, index) => (
+                <DropdownCards key={id + index} data={item} id={id} />
+              ))}
+            </Masonry>
+          </ResponsiveMasonry>
         );
       case 'modal':
         return <ModalGroup data={data} id={id} />;
@@ -55,9 +57,7 @@ const CTAGroup = ({ data, id }: ComponentPropType) => {
           <Row className="justify-content-center pb-3">
             <Title title={data.title} />
           </Row>
-          <ResponsiveMasonry columnsCountBreakPoints={columnBreakpoints}>
-            {content()}
-          </ResponsiveMasonry>
+          {content()}
           <Row className=""></Row>
           <Description description={data?.description} />
         </EarlyParallax>

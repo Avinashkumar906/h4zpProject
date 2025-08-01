@@ -36,7 +36,7 @@ const UpdateComponent = (props: any) => {
 
   const getListItem = () => {
     const mock = getListItemOfComponent(props.data.data.component);
-    mock.id = generateId();
+    mock.id = mock.id || generateId();
     return mock;
   };
 
