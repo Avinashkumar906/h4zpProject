@@ -16,9 +16,10 @@ import { useLocation, useNavigate } from 'react-router-dom';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const CModal = (props: any) => {
   const { pageID, action, data: page } = props;
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const navigate = useNavigate();
   const { search } = useLocation();
+  const navigate = useNavigate();
+
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const modalData = page.data.find((f) => f.id === page?.docId);
   const getFormData = (action) => {

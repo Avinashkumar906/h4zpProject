@@ -7,20 +7,30 @@ import {
   AiFillTwitterSquare,
 } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import DynamicIcon from '../common/DynamicIcon';
 
 function Footer(props: any) {
   const icons = [
-    { icon: <AiFillFacebook fontSize={32} />, to: '//www.facebook.com/h4zp.org' },
-    { icon: <AiOutlineInstagram fontSize={32} />, to: '//www.instagram.com/h4zp/' },
     {
-      icon: <AiFillLinkedin fontSize={32} />,
+      icon: <DynamicIcon fullName="ai:AiFillFacebook" size={32} color="#f8f9fa" />,
+      to: '//www.facebook.com/h4zp.org',
+    },
+    {
+      icon: <DynamicIcon fullName="ai:AiOutlineInstagram" size={32} color="#f8f9fa" />,
+      to: '//www.instagram.com/h4zp/',
+    },
+    {
+      icon: <DynamicIcon fullName="ai:AiFillLinkedin" size={32} color="#f8f9fa" />,
       to: '//www.linkedin.com/company/hands-4-zero-poverty/',
     },
     {
-      icon: <AiFillYoutube fontSize={32} />,
+      icon: <DynamicIcon fullName="ai:AiFillYoutube" size={32} color="#f8f9fa" />,
       to: '//www.youtube.com/channel/UCbuJGROMb59lf8_gDAH_YnA',
     },
-    { icon: <AiFillTwitterSquare fontSize={32} />, to: '//twitter.com/hands4zero' },
+    {
+      icon: <DynamicIcon fullName="ai:AiFillTwitterSquare" size={32} color="#f8f9fa" />,
+      to: '//twitter.com/hands4zero',
+    },
   ];
 
   const links = [

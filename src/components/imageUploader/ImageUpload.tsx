@@ -3,6 +3,7 @@ import { useRef, useState } from 'react';
 import { Spinner } from 'react-bootstrap';
 import { FaCloudUploadAlt } from 'react-icons/fa';
 import { useLocation } from 'react-router-dom';
+import DynamicIcon from '../common/DynamicIcon';
 
 function ImageUpload({ fieldname, uploadPath }: Record<string, string>) {
   const location = useLocation();
@@ -45,7 +46,7 @@ function ImageUpload({ fieldname, uploadPath }: Record<string, string>) {
         <>
           <span onClick={handleClick}>
             Upload image&nbsp;
-            <FaCloudUploadAlt />
+            <DynamicIcon fullName="fa:FaCloudUploadAlt" />
           </span>
         </>
       )}

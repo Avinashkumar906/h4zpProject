@@ -7,6 +7,7 @@ import Tool from './Tool';
 import { LuHandHeart } from 'react-icons/lu';
 import { signOut } from 'firebase/auth';
 import { FIREBASE_AUTH } from '../../firebase/firebase';
+import DynamicIcon from '../common/DynamicIcon';
 
 const navLinks = [
   { label: 'HOME', link: '/index' },
@@ -61,13 +62,13 @@ function Header(props: any) {
                 ))}
 
                 {editable && !isAuth ? <Tool isAuth={isAuth}></Tool> : ''}
-                {isAuth && (
+                {editable && isAuth && (
                   <div className="btn btn-dark py-1" onClick={() => signOut(FIREBASE_AUTH)}>
                     Logout
                   </div>
                 )}
                 <NavLink className={'btn btn-lime py-1'} to={`/donate`}>
-                  Contribute <LuHandHeart />
+                  Contribute <DynamicIcon fullName="lu:LuHandHeart" color="#f8f9fa" />
                 </NavLink>
               </Nav>
             </Offcanvas.Body>
