@@ -5,8 +5,8 @@ import { Container, Row } from 'react-bootstrap';
 import Title from '../common/Title';
 import Description from '../common/Description';
 import EarlyParallax from '../common/EarlyParallax';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import useBreakpoint from '../../hook/useBreakpoint';
+import DynamicIcon from '../common/DynamicIcon';
 
 type componentPropType = {
   data: GalleryType | undefined;
@@ -52,10 +52,10 @@ const Carousel = ({ data, id }: componentPropType) => {
               </div>
               <div className="embla__buttons">
                 <button className="p-1" onClick={scrollPrev}>
-                  <FaChevronLeft style={{ fontSize: '28px' }} />
+                  <DynamicIcon fullName="fa:FaChevronLeft" size={28} color="#6c757d" />
                 </button>
                 <button className="p-1" onClick={scrollNext}>
-                  <FaChevronRight style={{ fontSize: '28px' }} />
+                  <DynamicIcon fullName="fa:FaChevronRight" size={28} color="#6c757d" />
                 </button>
               </div>
             </div>

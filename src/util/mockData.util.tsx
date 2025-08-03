@@ -20,6 +20,7 @@ import {
   MOCK_TIMELINE_LIST,
 } from './component.default';
 import Moment from 'moment';
+import { generateId } from './object.util';
 export type JumbotronType = typeof MOCK_JUMBOTRON;
 export type ButtonList = typeof MOCK_BUTTON_LIST;
 export type BannerType = typeof MOCK_BANNER;
@@ -229,7 +230,11 @@ export const serializeObject = (schema, target) => {
       const schemaValue = schema[key];
       const targetValue = target?.[key];
 
-      if (schemaValue && typeof schemaValue === 'object') {
+      // Run generateId() if key is 'id'
+      if (key === 'id') {
+        merged[key] =
+          targetValue && targetValue !== 'pGE2HJKrJWKwIFX4o8YJ' ? targetValue : generateId();
+      } else if (schemaValue && typeof schemaValue === 'object') {
         merged[key] = serializeObject(schemaValue, targetValue);
       } else {
         merged[key] = targetValue !== undefined ? targetValue : schemaValue;

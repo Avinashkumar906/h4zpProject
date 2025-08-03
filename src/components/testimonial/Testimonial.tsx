@@ -1,7 +1,5 @@
-import { Card, Container, Row, Col } from 'react-bootstrap';
-import { FaChevronLeft, FaChevronRight, FaQuoteLeft } from 'react-icons/fa';
+import { Card, Container, Row } from 'react-bootstrap';
 import { smartParse, TestimonialListType, TestimonialType } from '../../util';
-import { getRGBAString } from '../common/ColorField';
 import EarlyParallax from '../common/EarlyParallax';
 import Title from '../common/Title';
 import Description from '../common/Description';
@@ -9,6 +7,7 @@ import useBreakpoint from '../../hook/useBreakpoint';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import { useCallback } from 'react';
+import DynamicIcon from '../common/DynamicIcon';
 
 type ComponentPropType = {
   data: TestimonialType;
@@ -18,7 +17,9 @@ type ComponentPropType = {
 const TestimonialCard = ({ name, title, quote }: TestimonialListType) => (
   <Card className="m-2 shadow-sm border-0 flex-grow-1 p-2">
     <Card.Body className="d-flex flex-column">
-      <FaQuoteLeft fontSize={'3rem'} color="#6c757d" className="mb-2" />
+      <div className="mb-2">
+        <DynamicIcon fullName="fa:FaQuoteLeft" size={36} color="#6c757d" />
+      </div>
       <div className="fst-italic flex-grow-1 d-flex justify-content-center flex-column card-text">
         <Description description={quote}></Description>
       </div>
@@ -69,10 +70,10 @@ const Testimonial = ({ data, id }: ComponentPropType) => {
               {slidesToShow < data.list.length && (
                 <div className="embla__buttons">
                   <button className="p-1" onClick={scrollPrev}>
-                    <FaChevronLeft style={{ fontSize: '28px' }} />
+                    <DynamicIcon fullName="fa:FaChevronLeft" size={28} color="#6c757d" />
                   </button>
                   <button className="p-1" onClick={scrollNext}>
-                    <FaChevronRight style={{ fontSize: '28px' }} />
+                    <DynamicIcon fullName="fa:FaChevronRight" size={28} color="#6c757d" />
                   </button>
                 </div>
               )}

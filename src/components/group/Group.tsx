@@ -5,13 +5,11 @@ import * as React from 'react';
 import MinimalCard from './Design1';
 import Title from '../common/Title';
 import Description from '../common/Description';
-import { getRGBAString } from '../common/ColorField';
 import EarlyParallax from '../common/EarlyParallax';
 import useEmblaCarousel from 'embla-carousel-react';
 import useBreakpoint from '../../hook/useBreakpoint';
-import { FaChevronLeft } from 'react-icons/fa';
-import { FaChevronRight } from 'react-icons/fa';
 import Autoplay from 'embla-carousel-autoplay';
+import DynamicIcon from '../common/DynamicIcon';
 
 type componentPropType = {
   data: GroupType | undefined;
@@ -68,10 +66,10 @@ function Group({ data, id }: componentPropType) {
               {slidesToShow < data.list.length && (
                 <div className="embla__buttons">
                   <button className="p-1" onClick={scrollPrev}>
-                    <FaChevronLeft style={{ fontSize: '28px' }} />
+                    <DynamicIcon fullName="fa:FaChevronLeft" size={28} color="#6c757d" />
                   </button>
                   <button className="p-1" onClick={scrollNext}>
-                    <FaChevronRight style={{ fontSize: '28px' }} />
+                    <DynamicIcon fullName="fa:FaChevronRight" size={28} color="#6c757d" />
                   </button>
                 </div>
               )}

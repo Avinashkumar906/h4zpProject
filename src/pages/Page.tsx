@@ -1,18 +1,15 @@
 import { Fragment, useEffect, useState } from 'react';
 import DynamicComponent from '../components/Component';
 import { useParams } from 'react-router-dom';
-import { AiFillEdit, AiFillDelete } from 'react-icons/ai';
-import { MdAddCard, MdOutlineInsertPageBreak } from 'react-icons/md';
 import { CModal } from '../components/modal/Modal';
 import { ListGroup } from 'react-bootstrap';
 import NotFound from './NotFound';
 import { deleteComponentOfPage, subscribePageComponents } from '../firebase/getFromFirestore';
-import { MdOutlineRepeatOne } from 'react-icons/md';
 import { copyToClipboard, isTrue, serializedata } from '../util';
-import { FaCopy, FaPaste } from 'react-icons/fa';
 import { useParallaxController } from 'react-scroll-parallax';
 import LoadBlogs from './LoadBlogs';
 import { ScaleLoader } from 'react-spinners';
+import DynamicIcon from '../components/common/DynamicIcon';
 
 export default function Page(props: { isAuth: unknown; editable: boolean }) {
   const parallaxController = useParallaxController();
@@ -178,31 +175,31 @@ export default function Page(props: { isAuth: unknown; editable: boolean }) {
             style={{ borderTopRightRadius: 0, borderBottomRightRadius: 0 }}
           >
             <ListGroup.Item onClick={onAddComponent}>
-              <MdAddCard />
+              <DynamicIcon fullName="md:MdAddCard" />
               <span className="hover-label">Add</span>
             </ListGroup.Item>
             <ListGroup.Item className={!docId ? 'not-allowed' : ''} onClick={onEdit}>
-              <AiFillEdit />
+              <DynamicIcon fullName="ai:AiFillEdit" />
               <span className="hover-label">Edit</span>
             </ListGroup.Item>
             <ListGroup.Item className={!docId ? 'not-allowed' : ''} onClick={onDelete}>
-              <AiFillDelete />
+              <DynamicIcon fullName="ai:AiFillDelete" />
               <span className="hover-label">Delete</span>
             </ListGroup.Item>
             <ListGroup.Item className={!docId ? 'not-allowed' : ''} onClick={handleCopy}>
-              <FaCopy />
+              <DynamicIcon fullName="fa:FaCopy" />
               <span className="hover-label">Copy</span>
             </ListGroup.Item>
             <ListGroup.Item onClick={handlePaste}>
-              <FaPaste />
+              <DynamicIcon fullName="fa:FaPaste" />
               <span className="hover-label">Paste</span>
             </ListGroup.Item>
             <ListGroup.Item onClick={onOrder}>
-              <MdOutlineRepeatOne />
+              <DynamicIcon fullName="md:MdOutlineRepeatOne" />
               <span className="hover-label">Order</span>
             </ListGroup.Item>
             <ListGroup.Item>
-              <MdOutlineInsertPageBreak />
+              <DynamicIcon fullName="md:MdOutlineInsertPageBreak" />
               <span className="hover-label" onClick={onPageMeta}>
                 Page Meta
               </span>

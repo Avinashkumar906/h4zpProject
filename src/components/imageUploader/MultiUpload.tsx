@@ -1,9 +1,9 @@
 import { useFormikContext } from 'formik';
 import { useRef, useState } from 'react';
 import { ProgressBar } from 'react-bootstrap';
-import { FaCloudUploadAlt } from 'react-icons/fa';
 import { useLocation } from 'react-router-dom';
 import { generateId } from '../../util';
+import DynamicIcon from '../common/DynamicIcon';
 
 interface MultiImageUploadProps {
   fieldname: string;
@@ -94,7 +94,8 @@ function MultiImageUpload({ fieldname, uploadPath, src = 'url' }: MultiImageUplo
           }}
           title="Upload images"
         >
-          <FaCloudUploadAlt fontSize={28} />
+          <DynamicIcon fullName="fa:FaCloudUploadAlt" />
+          {/* <FaCloudUploadAlt fontSize={28} /> */}
           <div style={{ fontSize: '0.9rem' }}>Upload Batch Images</div>
         </span>
       )}

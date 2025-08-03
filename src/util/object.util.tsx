@@ -1,14 +1,17 @@
 import { ComponentType } from './mockData.util';
+import _ from 'lodash';
+
+export const generateId = () => {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const rand = _.times(18, () => _.sample(chars)).join('');
+  return rand;
+};
 
 export function hasOwn(obj: object, key: PropertyKey): boolean {
   return Object.prototype.hasOwnProperty.call(obj, key);
 }
 
-// export function generateRandomId(prefix = 'id') {
-//   return `${prefix}-${Math.random().toString(36).substr(2, 9)}`;
-// }
-
-export const generateId = () => Date.now().toString(36) + Math.random().toString(36).substring(2);
+// export const generateId = () => Date.now().toString(36) + Math.random().toString(36).substring(2);
 
 export const copyToClipboard = (data: ComponentType) => {
   if (data) {

@@ -8,6 +8,8 @@ import { JsonEditor } from 'json-edit-react';
 import { generateId } from '../util';
 import _ from 'lodash';
 import MultiImageUpload from './imageUploader/MultiUpload';
+import { ReactSortable } from 'react-sortablejs';
+import DynamicIcon from './common/DynamicIcon';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const UpdateComponent = (props: any) => {
@@ -26,17 +28,12 @@ const UpdateComponent = (props: any) => {
 
   useEffect(() => {
     const clone = _.cloneDeep(props.data.data);
-    if (clone.list) {
-      clone.list = clone.list.map((item) =>
-        item.id ? item : { ...item, id: item.id != '' ? item.id : generateId() },
-      );
-    }
     setFormData(clone);
   }, [props.data.data]);
 
   const getListItem = () => {
-    const mock = getListItemOfComponent(props.data.data.component);
-    mock.id = mock.id || generateId();
+    const mock = _.cloneDeep(getListItemOfComponent(props.data.data.component));
+    mock.id = generateId();
     return mock;
   };
 
@@ -67,80 +64,57 @@ const UpdateComponent = (props: any) => {
                 <Tab eventKey="content" title="Content List">
                   <FieldArray
                     name="list"
-                    render={({ remove, insert, swap, push }) => (
+                    render={({ remove, push, move }) => (
                       <>
                         <Accordion defaultActiveKey="0" className="mb-2">
                           {form.values.list.length > 0 ? (
-                            form.values.list.map((m, index) => (
-                              <Accordion.Item key={m.id} eventKey={index}>
-                                <Accordion.Header className="p-1">
-                                  <Form.Label>Content {index + 1}</Form.Label>
-                                </Accordion.Header>
-                                <Accordion.Body>
-                                  <Row
-                                    className="mb-3 pt-2 bg-light m-0"
-                                    style={{ position: 'relative', rowGap: '.5rem' }}
-                                  >
-                                    <div
-                                      className="d-flex justify-content-end mb-2"
-                                      style={{ marginTop: '-1rem' }}
-                                    >
+                            <ReactSortable
+                              list={form.values?.list || []}
+                              setList={() => undefined}
+                              onEnd={(a) => move(a.oldIndex, a.newIndex)}
+                            >
+                              {form.values?.list?.map((m, index) => (
+                                <Accordion.Item key={m.id} eventKey={index}>
+                                  <Accordion.Header className="p-1">
+                                    <Form.Label className="d-flex m-0 align-items-center">
                                       <div
-                                        className="btn-group"
-                                        role="group"
-                                        aria-label="First group"
+                                        style={{ cursor: 'pointer' }}
+                                        className="me-3"
+                                        onClick={(e) => {
+                                          e.stopPropagation();
+                                          remove(index);
+                                        }}
                                       >
-                                        <button
-                                          type="button"
-                                          onClick={() => insert(index, getListItem())}
-                                          className="rounded-0 btn btn-purple btn-sm"
-                                        >
-                                          {/* <AiFillPlusCircle/> */} Add
-                                        </button>
-                                        <button
-                                          type="button"
-                                          onClick={() => swap(index, index - 1)}
-                                          className={`${index === 0 && 'd-none'} rounded-0 btn btn-purple btn-sm`}
-                                        >
-                                          {/* <AiFillPlusCircle/> */} Up
-                                        </button>
-                                        <button
-                                          type="button"
-                                          onClick={() => swap(index, index + 1)}
-                                          className={`${index === form.values.list.length - 1 && 'd-none'} rounded-0 btn btn-purple btn-sm`}
-                                        >
-                                          {/* <AiFillPlusCircle/>  */} Down
-                                        </button>
-                                        <button
-                                          type="button"
-                                          onClick={() => remove(index)}
-                                          className="rounded-0 btn btn-purple btn-sm"
-                                        >
-                                          {/* <AiFillPlusCircle/> */} Remove
-                                        </button>
+                                        <DynamicIcon fullName="md:MdDelete" />
                                       </div>
-                                    </div>
+                                      ID: {m.id}
+                                    </Form.Label>
+                                  </Accordion.Header>
+                                  <Accordion.Body>
                                     <BasicControl
                                       form={form}
                                       fieldConfig={contentListFieldConfig}
                                       prefix={`list[${index}]`}
                                     />
-                                  </Row>
-                                </Accordion.Body>
-                              </Accordion.Item>
-                            ))
+                                  </Accordion.Body>
+                                </Accordion.Item>
+                              ))}
+                            </ReactSortable>
                           ) : (
                             <div className="p-2 text-center">
                               <div className="h4">No item in the list!</div>
-                              <div
-                                className="btn btn-sm btn-secondary"
-                                onClick={() => push(getListItem())}
-                              >
-                                Add item
-                              </div>
-                              <hr />
                             </div>
                           )}
+                          <div className="text-center m-2">
+                            <button
+                              type="button"
+                              className="btn-purple"
+                              onClick={() => push(getListItem())}
+                            >
+                              Add
+                            </button>
+                            <hr />
+                          </div>
                           {formData?.component === 'gallery' && (
                             <MultiImageUpload fieldname={'list'} />
                           )}
@@ -176,7 +150,7 @@ const UpdateComponent = (props: any) => {
                 {submitted ? (
                   <Spinner animation="border" />
                 ) : (
-                  <button type="submit" className="btn btn-sm btn-primary m-auto">
+                  <button type="submit" className="btn-primary">
                     Submit
                   </button>
                 )}
