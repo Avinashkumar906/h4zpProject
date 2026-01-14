@@ -13,6 +13,8 @@ import {
 } from 'firebase/firestore';
 import { FIRESTORE_DB } from './firebase';
 
+type Callback = (result: unknown | null, error: unknown) => void;
+
 export const subscribePageComponents = async (pageID, cb) => {
   try {
     const pageRef = doc(FIRESTORE_DB, 'Pages', pageID);
