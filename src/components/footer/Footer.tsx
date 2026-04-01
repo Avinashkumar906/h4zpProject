@@ -70,8 +70,8 @@ function Footer(props: any) {
           {/* Right: Social & Contact */}
           <Col md={3} sm={6}>
             <div className="text-uppercase h5">Contact</div>
-            <a className="small mb-1 text-decoration-none d-block" href="mailto:info@h4zpindia.org">
-              Email: info@h4zpindia.org
+            <a className="small mb-1 text-decoration-none d-block" href="mailto:info@h4zptrust.org">
+              Email: info@h4zptrust.org
             </a>
 
             <a className="small mb-1 text-decoration-none d-block" href="tel:+919876543210">
