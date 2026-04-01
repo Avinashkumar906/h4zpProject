@@ -82,7 +82,7 @@ function Header(props: any) {
                 )}
 
                 <NavLink className="btn btn-lime py-1" to="/donate">
-                  Contribute <DynamicIcon fullName="lu:LuHandHeart" color="#f8f9fa" />
+                  Donate <DynamicIcon fullName="lu:LuHandHeart" color="#f8f9fa" />
                 </NavLink>
               </Nav>
             </Offcanvas.Body>
