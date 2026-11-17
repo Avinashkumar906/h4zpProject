@@ -30,7 +30,7 @@
   display: flex;
   text-align: left;
   font-variant-numeric: tabular-nums;
-  padding-top: 72px;
+  /* padding-top: 72px; */
   background: var(--ink);
 }
 .hrms *,
@@ -102,7 +102,7 @@
   flex-direction: column;
   position: sticky;
   top: 0;
-  height: calc(100vh - 72px);
+  height: calc(100vh);
 }
 .hr-brand {
   display: flex;
@@ -178,7 +178,7 @@
   min-width: 0;
   padding: 22px 28px 60px;
   background: var(--paper);
-  height: calc(100vh - 72px);
+  height: calc(100vh);
   overflow: scroll;
 }
 .hr-menu-btn {
@@ -1019,7 +1019,6 @@ textarea.hr-input {
   padding: 7px;
   margin: 18px 0 12px;
   font-size: 14px;
-  border-radius: 4px;
 }
 .hr-doc__table {
   width: 100%;
